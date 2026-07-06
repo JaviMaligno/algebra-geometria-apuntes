@@ -58,11 +58,28 @@
     padding-left: 1rem;
     margin-top: 2.5rem;
   }
+  .lang-bar a.tema {
+    font-size: 0.95rem;
+    text-decoration: none;
+    margin-left: 0.6rem;
+    vertical-align: middle;
+  }
+
+  /* ── Modo noche (html.dark) ── */
+  html.dark { background: #14161a; }
+  html.dark body { background: #14161a; color: #d6d6d6; }
+  html.dark .sub, html.dark .nota { color: #a8a8a8; }
+  html.dark .nota { border-left-color: #4a4f58; }
+  html.dark ul.modulos li { border-color: #3a3f47; }
+  html.dark ul.modulos a.mod { color: #85b4ea; }
+  html.dark ul.modulos a.pdf { color: #9a9a9a; }
+  html.dark .lang-bar button { border-color: #4a4f58; color: #a8a8a8; background: none; }
+  html.dark .lang-bar button.activo { background: #2c66ad; border-color: #2c66ad; color: #fff; }
 </style>
 </head>
 <body>
 <div class="lang-bar" role="group" aria-label="Idioma / Language">
-  <button id="btn-es" onclick="setLang('es')">Español</button><button id="btn-en" onclick="setLang('en')">English</button>
+  <button id="btn-es" onclick="setLang('es')">Español</button><button id="btn-en" onclick="setLang('en')">English</button><a class="tema" id="btn-tema" href="#" onclick="toggleTheme(); return false;" title="Modo noche/día">🌙</a>
 </div>
 
 <h1 id="t-titulo">Álgebra y Geometría</h1>
@@ -139,6 +156,23 @@ if (saved !== 'es' && saved !== 'en') {
   saved = (navigator.language || '').toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
 }
 render(saved);
+
+// ── Modo noche: mismo mecanismo que en los módulos (localStorage 'theme') ──
+function applyTheme(t) {
+  document.documentElement.classList.toggle('dark', t === 'dark');
+  document.getElementById('btn-tema').textContent = t === 'dark' ? '☀' : '🌙';
+}
+function toggleTheme() {
+  var d = !document.documentElement.classList.contains('dark');
+  try { localStorage.setItem('theme', d ? 'dark' : 'light'); } catch (e) {}
+  applyTheme(d ? 'dark' : 'light');
+}
+var th;
+try { th = localStorage.getItem('theme'); } catch (e) {}
+if (th !== 'dark' && th !== 'light') {
+  th = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+}
+applyTheme(th);
 </script>
 </body>
 </html>
