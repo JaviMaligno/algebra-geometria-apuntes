@@ -9,13 +9,31 @@
   body {
     max-width: 44rem;
     margin: 0 auto;
-    padding: 3rem 1.5rem 4rem;
+    padding: 2.2rem 1.5rem 4rem;
     line-height: 1.6;
     font-family: Georgia, "Times New Roman", serif;
     color: #1a1a1a;
     background: #fff;
   }
-  h1 { line-height: 1.25; margin-bottom: 0.2em; }
+  .lang-bar { text-align: right; margin-bottom: 0.4rem; }
+  .lang-bar button {
+    font: inherit;
+    font-size: 0.85rem;
+    background: none;
+    border: 1px solid #ccc;
+    border-radius: 6px 0 0 6px;
+    padding: 0.15rem 0.7rem;
+    cursor: pointer;
+    color: #555;
+  }
+  .lang-bar button + button { border-radius: 0 6px 6px 0; border-left: none; }
+  .lang-bar button.activo {
+    background: #1a5fb4;
+    border-color: #1a5fb4;
+    color: #fff;
+    cursor: default;
+  }
+  h1 { line-height: 1.25; margin: 0 0 0.2em; }
   .sub { color: #555; margin-top: 0; }
   ul.modulos { list-style: none; padding: 0; }
   ul.modulos li {
@@ -29,18 +47,9 @@
     gap: 1rem;
     flex-wrap: wrap;
   }
-  ul.modulos a.mod {
-    font-size: 1.05rem;
-    text-decoration: none;
-    color: #1a5fb4;
-  }
+  ul.modulos a.mod { font-size: 1.05rem; text-decoration: none; color: #1a5fb4; }
   ul.modulos a.mod:hover { text-decoration: underline; }
-  ul.modulos a.pdf {
-    font-size: 0.85rem;
-    color: #777;
-    text-decoration: none;
-    white-space: nowrap;
-  }
+  ul.modulos a.pdf { font-size: 0.85rem; color: #777; text-decoration: none; white-space: nowrap; }
   ul.modulos a.pdf:hover { text-decoration: underline; }
   .nota {
     font-size: 0.9rem;
@@ -52,39 +61,84 @@
 </style>
 </head>
 <body>
-<h1>Álgebra y Geometría</h1>
-<p class="sub">Apuntes del curso — Grado en Matemáticas y Filosofía</p>
+<div class="lang-bar" role="group" aria-label="Idioma / Language">
+  <button id="btn-es" onclick="setLang('es')">Español</button><button id="btn-en" onclick="setLang('en')">English</button>
+</div>
 
-<ul class="modulos">
-  <li><a class="mod" href="apuntes-00-preliminares.html">Módulo 0 · Preliminares</a>
-      <span><a class="pdf" href="apuntes-00-preliminares.pdf">PDF</a> ·
-      <a class="pdf" href="apuntes-00-preliminares-en.html">English</a> ·
-      <a class="pdf" href="apuntes-00-preliminares-en.pdf">PDF (EN)</a></span></li>
-  <li><a class="mod" href="apuntes-01-aritmetica.html">Módulo 1 · Aritmética</a>
-      <span><a class="pdf" href="apuntes-01-aritmetica.pdf">PDF</a> ·
-      <a class="pdf" href="apuntes-01-aritmetica-en.html">English</a> ·
-      <a class="pdf" href="apuntes-01-aritmetica-en.pdf">PDF (EN)</a></span></li>
-  <li><a class="mod" href="apuntes-02-complejos.html">Módulo 2 · Números complejos</a>
-      <span><a class="pdf" href="apuntes-02-complejos.pdf">PDF</a> ·
-      <a class="pdf" href="apuntes-02-complejos-en.html">English</a> ·
-      <a class="pdf" href="apuntes-02-complejos-en.pdf">PDF (EN)</a></span></li>
-  <li><a class="mod" href="apuntes-03-polinomios.html">Módulo 3 · Polinomios</a>
-      <span><a class="pdf" href="apuntes-03-polinomios.pdf">PDF</a> ·
-      <a class="pdf" href="apuntes-03-polinomios-en.html">English</a> ·
-      <a class="pdf" href="apuntes-03-polinomios-en.pdf">PDF (EN)</a></span></li>
-  <li><a class="mod" href="apuntes-04-lineal.html">Módulo 4 · Álgebra lineal</a>
-      <span><a class="pdf" href="apuntes-04-lineal.pdf">PDF</a> ·
-      <a class="pdf" href="apuntes-04-lineal-en.html">English</a> ·
-      <a class="pdf" href="apuntes-04-lineal-en.pdf">PDF (EN)</a></span></li>
-  <li><a class="mod" href="apuntes-05-geometria.html">Módulo 5 · Geometría</a>
-      <span><a class="pdf" href="apuntes-05-geometria.pdf">PDF</a> ·
-      <a class="pdf" href="apuntes-05-geometria-en.html">English</a> ·
-      <a class="pdf" href="apuntes-05-geometria-en.pdf">PDF (EN)</a></span></li>
-</ul>
+<h1 id="t-titulo">Álgebra y Geometría</h1>
+<p class="sub" id="t-sub">Apuntes del curso — Grado en Matemáticas y Filosofía</p>
 
-<p class="nota">La versión web incluye figuras interactivas (animaciones y
-construcciones arrastrables); la versión PDF es apta para impresión.
-Cada módulo está disponible también en inglés (<em>English</em>).
-Material en elaboración.</p>
+<ul class="modulos" id="lista"></ul>
+
+<p class="nota" id="t-nota"></p>
+
+<script>
+// Portada bilingüe: un solo index, textos y enlaces según el idioma elegido.
+// La elección persiste en localStorage ('lang') y los módulos la actualizan al
+// navegarlos; la primera visita hereda el idioma del navegador.
+var I18N = {
+  es: {
+    titulo: "Álgebra y Geometría",
+    sub: "Apuntes del curso — Grado en Matemáticas y Filosofía",
+    nota: "La versión web incluye figuras interactivas (animaciones y construcciones " +
+          "arrastrables); la versión PDF es apta para impresión. Material en elaboración.",
+    pdf: "PDF",
+    mods: ["Módulo 0 · Preliminares", "Módulo 1 · Aritmética", "Módulo 2 · Números complejos",
+           "Módulo 3 · Polinomios", "Módulo 4 · Álgebra lineal", "Módulo 5 · Geometría"],
+    htmlTitle: "Álgebra y Geometría — Apuntes",
+  },
+  en: {
+    titulo: "Algebra and Geometry",
+    sub: "Lecture notes — Degree in Mathematics and Philosophy",
+    nota: "The web version includes interactive figures (animations and draggable " +
+          "constructions); the PDF version is print-friendly. Work in progress.",
+    pdf: "PDF",
+    mods: ["Module 0 · Preliminaries", "Module 1 · Arithmetic", "Module 2 · Complex numbers",
+           "Module 3 · Polynomials", "Module 4 · Linear algebra", "Module 5 · Geometry"],
+    htmlTitle: "Algebra and Geometry — Lecture notes",
+  },
+};
+var DIRS = ["00-preliminares", "01-aritmetica", "02-complejos",
+            "03-polinomios", "04-lineal", "05-geometria"];
+
+function setLang(lang) {
+  localStorage.setItem('lang', lang);
+  render(lang);
+}
+
+function render(lang) {
+  var t = I18N[lang];
+  var suf = lang === 'en' ? '-en' : '';
+  document.documentElement.lang = lang;
+  document.title = t.htmlTitle;
+  document.getElementById('t-titulo').textContent = t.titulo;
+  document.getElementById('t-sub').textContent = t.sub;
+  document.getElementById('t-nota').textContent = t.nota;
+  document.getElementById('btn-es').className = lang === 'es' ? 'activo' : '';
+  document.getElementById('btn-en').className = lang === 'en' ? 'activo' : '';
+  var ul = document.getElementById('lista');
+  ul.innerHTML = '';
+  DIRS.forEach(function (d, i) {
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.className = 'mod';
+    a.href = 'apuntes-' + d + suf + '.html';
+    a.textContent = t.mods[i];
+    var p = document.createElement('a');
+    p.className = 'pdf';
+    p.href = 'apuntes-' + d + suf + '.pdf';
+    p.textContent = t.pdf;
+    li.appendChild(a);
+    li.appendChild(p);
+    ul.appendChild(li);
+  });
+}
+
+var saved = localStorage.getItem('lang');
+if (saved !== 'es' && saved !== 'en') {
+  saved = (navigator.language || '').toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
+}
+render(saved);
+</script>
 </body>
 </html>
