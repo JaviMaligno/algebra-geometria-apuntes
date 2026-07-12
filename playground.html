@@ -240,8 +240,21 @@ try {
   const h = location.hash.slice(1);
   if (h) inicial = decodeURIComponent(atob(h));
 } catch (e) {}
-if (inicial) { cargar(inicial, 'hash'); }
-else { cargar(EJEMPLOS.rsa, 'rsa'); $('ejemplos').value = 'rsa'; }
+if (inicial) {
+  // el código traído de los apuntes se registra como una opción más del selector,
+  // seleccionada — así el desplegable siempre refleja lo que hay en el editor
+  EJEMPLOS.hash = inicial;
+  const opt = document.createElement('option');
+  opt.value = 'hash';
+  opt.textContent = EN_UI ? '— code from the notes —' : '— código de los apuntes —';
+  const sel = $('ejemplos');
+  sel.insertBefore(opt, sel.options[1] || null);
+  cargar(inicial, 'hash');
+  sel.value = 'hash';
+} else {
+  cargar(EJEMPLOS.rsa, 'rsa');
+  $('ejemplos').value = 'rsa';
+}
 
 $('ejemplos').addEventListener('change', () => {
   const k = $('ejemplos').value;
