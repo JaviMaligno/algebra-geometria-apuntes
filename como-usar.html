@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cómo usar estos apuntes — Álgebra y Geometría</title>
+<style>
+  /* Misma hoja que la portada: página hermana de index.html */
+  html { font-size: 18px; }
+  body {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: 2.2rem 1.5rem 4rem;
+    line-height: 1.6;
+    font-family: Georgia, "Times New Roman", serif;
+    color: #1a1a1a;
+    background: #fff;
+  }
+  .lang-bar { text-align: right; margin-bottom: 0.4rem; }
+  .lang-bar button {
+    font: inherit;
+    font-size: 0.85rem;
+    background: none;
+    border: 1px solid #ccc;
+    border-radius: 6px 0 0 6px;
+    padding: 0.15rem 0.7rem;
+    cursor: pointer;
+    color: #555;
+  }
+  .lang-bar button + button { border-radius: 0 6px 6px 0; border-left: none; }
+  .lang-bar button.activo {
+    background: #1a5fb4;
+    border-color: #1a5fb4;
+    color: #fff;
+    cursor: default;
+  }
+  .lang-bar a.tema {
+    font-size: 0.95rem;
+    text-decoration: none;
+    margin-left: 0.6rem;
+    vertical-align: middle;
+    font-family: "Segoe UI Emoji", "Noto Color Emoji", "Apple Color Emoji", sans-serif;
+  }
+  h1 { line-height: 1.25; margin: 0 0 0.8em; }
+  a { color: #1a5fb4; }
+  ul { padding-left: 1.3rem; }
+  li { margin: 0.5rem 0; }
+  .volver { margin-top: 2.5rem; font-size: 0.95rem; }
+  .volver a { text-decoration: none; }
+  .volver a:hover { text-decoration: underline; }
+
+  /* ── Modo noche (html.dark) ── */
+  html.dark { background: #14161a; }
+  html.dark body { background: #14161a; color: #d6d6d6; }
+  html.dark a { color: #85b4ea; }
+  html.dark .lang-bar button { border-color: #4a4f58; color: #a8a8a8; background: none; }
+  html.dark .lang-bar button.activo { background: #2c66ad; border-color: #2c66ad; color: #fff; }
+</style>
+</head>
+<body>
+<div class="lang-bar" role="group" aria-label="Idioma / Language">
+  <button id="btn-es" onclick="setLang('es')">Español</button><button id="btn-en" onclick="setLang('en')">English</button><a class="tema" id="btn-tema" href="#" onclick="toggleTheme(); return false;" title="Modo noche/día">🌙</a>
+</div>
+
+<h1 id="t-titulo"></h1>
+<div id="t-cuerpo"></div>
+<p class="volver"><a href="index.html" id="t-volver"></a></p>
+
+<script>
+// Página bilingüe hermana de la portada: mismo mecanismo (localStorage 'lang'/'theme').
+var I18N = {
+  es: {
+    titulo: "Cómo usar estos apuntes",
+    htmlTitle: "Cómo usar estos apuntes — Álgebra y Geometría",
+    volver: "← Volver al índice",
+    cuerpo:
+      "<p>Los apuntes contienen <em>todo</em> el detalle del curso: los vídeos dan el " +
+      "hilo, los apuntes el desarrollo completo (definiciones precisas, demostraciones " +
+      "íntegras y ejemplos). Al final de cada sesión hay <strong>ejercicios</strong> y " +
+      "una sección de <strong>Ampliación</strong>. Tres convenciones que valen para " +
+      "todo el curso:</p>" +
+      "<ul>" +
+      "<li>Los ejercicios marcados con <strong>★</strong> son los <strong>prioritarios</strong>: " +
+      "los alineados con el núcleo de la sesión y el mínimo recomendado; los demás son refuerzo.</li>" +
+      "<li>La <strong>Ampliación</strong> es <strong>optativa</strong> (no evaluable): " +
+      "conexiones y punteros a la bibliografía para quien quiera ir más allá.</li>" +
+      "<li>Las <strong>figuras interactivas</strong> (plano complejo, geometría 3D…) se " +
+      "pueden manipular en la versión <strong>HTML</strong>; en el <strong>PDF</strong> " +
+      "aparecen como imagen con un enlace a su versión interactiva.</li>" +
+      "</ul>",
+  },
+  en: {
+    titulo: "How to use these notes",
+    htmlTitle: "How to use these notes — Algebra and Geometry",
+    volver: "← Back to contents",
+    cuerpo:
+      "<p>The notes contain <em>all</em> the detail of the course: the videos give the " +
+      "thread, the notes the full development (precise definitions, complete proofs and " +
+      "examples). At the end of each session there are <strong>exercises</strong> and a " +
+      "<strong>Going further</strong> section. Three conventions that hold for the whole " +
+      "course:</p>" +
+      "<ul>" +
+      "<li>Exercises marked with <strong>★</strong> are the <strong>priority</strong> ones: " +
+      "those aligned with the core of the session and the recommended minimum; the rest are " +
+      "reinforcement.</li>" +
+      "<li><strong>Going further</strong> is <strong>optional</strong> (not assessed): " +
+      "connections and pointers to the bibliography for those who want to go beyond.</li>" +
+      "<li><strong>Interactive figures</strong> (complex plane, 3D geometry…) can be " +
+      "manipulated in the <strong>HTML</strong> version; in the <strong>PDF</strong> they " +
+      "appear as an image with a link to their interactive version.</li>" +
+      "</ul>",
+  },
+};
+
+function setLang(lang) {
+  localStorage.setItem('lang', lang);
+  render(lang);
+}
+
+function render(lang) {
+  var t = I18N[lang];
+  document.documentElement.lang = lang;
+  document.title = t.htmlTitle;
+  document.getElementById('t-titulo').textContent = t.titulo;
+  document.getElementById('t-cuerpo').innerHTML = t.cuerpo;
+  document.getElementById('t-volver').textContent = t.volver;
+  document.getElementById('btn-es').className = lang === 'es' ? 'activo' : '';
+  document.getElementById('btn-en').className = lang === 'en' ? 'activo' : '';
+}
+
+var saved = localStorage.getItem('lang');
+if (saved !== 'es' && saved !== 'en') {
+  saved = (navigator.language || '').toLowerCase().indexOf('es') === 0 ? 'es' : 'en';
+}
+render(saved);
+
+// ── Modo noche: mismo mecanismo que portada y módulos (localStorage 'theme') ──
+function applyTheme(t) {
+  document.documentElement.classList.toggle('dark', t === 'dark');
+  document.getElementById('btn-tema').textContent = t === 'dark' ? '☀' : '🌙';
+}
+function toggleTheme() {
+  var d = !document.documentElement.classList.contains('dark');
+  try { localStorage.setItem('theme', d ? 'dark' : 'light'); } catch (e) {}
+  applyTheme(d ? 'dark' : 'light');
+}
+var th;
+try { th = localStorage.getItem('theme'); } catch (e) {}
+if (th !== 'dark' && th !== 'light') {
+  th = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+}
+applyTheme(th);
+</script>
+</body>
+</html>
