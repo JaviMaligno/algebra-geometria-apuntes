@@ -90,7 +90,8 @@
 <h1 id="t-titulo">Álgebra y Geometría</h1>
 <p class="sub" id="t-sub">Apuntes del curso — Grado en Matemáticas y Filosofía</p>
 
-<p class="como-usar"><a href="como-usar.html" id="t-como-usar"></a></p>
+<p class="como-usar"><a href="como-usar.html" id="t-como-usar"></a><br>
+<a href="playground.html" id="t-playground"></a></p>
 
 <ul class="modulos" id="lista"></ul>
 
@@ -109,6 +110,7 @@ var I18N = {
     mods: ["Módulo 0 · Preliminares", "Módulo 1 · Aritmética", "Módulo 2 · Números complejos",
            "Módulo 3 · Polinomios", "Módulo 4 · Álgebra lineal", "Módulo 5 · Geometría"],
     comoUsar: "Cómo usar estos apuntes (★, Ampliación, figuras interactivas) →",
+    playground: "Python en el navegador (ejecuta los ejemplos sin instalar nada) →",
     htmlTitle: "Álgebra y Geometría — Apuntes",
   },
   en: {
@@ -119,6 +121,7 @@ var I18N = {
     mods: ["Module 0 · Preliminaries", "Module 1 · Arithmetic", "Module 2 · Complex numbers",
            "Module 3 · Polynomials", "Module 4 · Linear algebra", "Module 5 · Geometry"],
     comoUsar: "How to use these notes (★, Going further, interactive figures) →",
+    playground: "Python in your browser (run the examples, nothing to install) →",
     htmlTitle: "Algebra and Geometry — Lecture notes",
   },
 };
@@ -139,6 +142,7 @@ function render(lang) {
   document.getElementById('t-sub').textContent = t.sub;
   document.getElementById('t-nota').textContent = t.nota;
   document.getElementById('t-como-usar').textContent = t.comoUsar;
+  document.getElementById('t-playground').textContent = t.playground;
   document.getElementById('btn-es').className = lang === 'es' ? 'activo' : '';
   document.getElementById('btn-en').className = lang === 'en' ? 'activo' : '';
   var ul = document.getElementById('lista');

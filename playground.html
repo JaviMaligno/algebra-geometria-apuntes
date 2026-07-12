@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python en el navegador — Álgebra y Geometría</title>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+<!-- editor con sintaxis coloreada -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+<!-- enunciados con math -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+  /* Página hermana de la portada: misma tipografía y modo noche */
+  html { font-size: 18px; }
+  body {
+    max-width: 52rem;
+    margin: 0 auto;
+    padding: 2.2rem 1.5rem 4rem;
+    line-height: 1.6;
+    font-family: Georgia, "Times New Roman", serif;
+    color: #1a1a1a;
+    background: #fff;
+  }
+  h1 { line-height: 1.25; margin: 0 0 0.2em; font-size: 1.6rem; }
+  .sub { color: #555; margin-top: 0; font-size: 0.95rem; }
+  .lang-bar { text-align: right; margin-bottom: 0.4rem; }
+  .lang-bar a.tema {
+    font-size: 0.95rem; text-decoration: none;
+    font-family: "Segoe UI Emoji", "Noto Color Emoji", "Apple Color Emoji", sans-serif;
+  }
+  .volver { font-size: 0.9rem; }
+  .volver a { color: #1a5fb4; text-decoration: none; }
+
+  #enunciado {
+    max-width: 100%;
+    margin: 1rem 0 0.4rem;
+    padding: 0.6rem 1rem;
+    border-left: 3px solid #9db3d4;
+    background: #f5f7fb;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+  }
+
+  .barra {
+    display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;
+    margin: 0.6rem 0 0.5rem;
+  }
+  select, button {
+    font: inherit; font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid #ccc; border-radius: 6px;
+    background: #fff; color: #1a1a1a; cursor: pointer;
+  }
+  button.ejecutar { background: #1a5fb4; border-color: #1a5fb4; color: #fff; font-weight: bold; }
+  button.ejecutar:disabled { background: #9db3d4; border-color: #9db3d4; cursor: wait; }
+  #estado { font-size: 0.85rem; color: #777; }
+
+  .CodeMirror {
+    border: 1px solid #ccc; border-radius: 8px;
+    font-family: Consolas, "Cascadia Code", Menlo, monospace;
+    font-size: 0.85rem; line-height: 1.5;
+    height: auto; min-height: 14rem;
+  }
+  .CodeMirror-scroll { min-height: 14rem; max-height: 60vh; }
+
+  pre#salida {
+    min-height: 4rem;
+    font-family: Consolas, "Cascadia Code", Menlo, monospace;
+    font-size: 0.85rem;
+    padding: 0.8rem;
+    border-radius: 8px;
+    background: #14161a; color: #d6ffd6;
+    overflow-x: auto;
+    white-space: pre-wrap;
+  }
+  pre#salida.error { color: #ffb3b3; }
+
+  /* Modo noche (mismo mecanismo que portada y módulos) */
+  html.dark { background: #14161a; }
+  html.dark body { background: #14161a; color: #d6d6d6; }
+  html.dark .sub, html.dark #estado { color: #a8a8a8; }
+  html.dark #enunciado { background: #1d2430; border-left-color: #46689e; }
+  html.dark select, html.dark button { background: #1d2430; border-color: #4a4f58; color: #d6d6d6; }
+  html.dark button.ejecutar { background: #2c66ad; border-color: #2c66ad; color: #fff; }
+  html.dark .CodeMirror { border-color: #4a4f58; }
+  html.dark .volver a { color: #85b4ea; }
+</style>
+</head>
+<body>
+<div class="lang-bar"><a class="tema" id="btn-tema" href="#" title="Modo noche/día">🌙</a></div>
+<h1 id="t-titulo">Python en el navegador</h1>
+<p class="sub" id="t-sub">Ejecuta los ejemplos del curso sin instalar nada — Python y sympy corren
+aquí mismo (la primera carga descarga ~12&nbsp;MB; después queda en caché).</p>
+<p class="volver"><a href="index.html" id="t-volver">← Volver al índice</a></p>
+
+<div id="enunciado"></div>
+
+<div class="barra">
+  <select id="ejemplos">
+    <option value="">— ejemplos del curso —</option>
+    <option value="rsa">M1 · RSA de juguete (y no tan de juguete)</option>
+    <option value="tablas">M1 · Tablas de ℤ/nℤ y divisores de cero</option>
+    <option value="fermat">M1 · Fermat y el truco del 9</option>
+    <option value="polis">M3 · División y factorización de polinomios</option>
+    <option value="sistemas">M4 · El mismo sistema en varios mundos</option>
+    <option value="volumen">M5 · Volumen como determinante</option>
+  </select>
+  <button class="ejecutar" id="run" disabled>▶ Ejecutar</button>
+  <button id="restaurar" title="Volver al código original">⟲ Restaurar</button>
+  <button id="descargar" title="Descargar el código como .py">⬇ .py</button>
+  <span id="estado">preparando Python…</span>
+</div>
+
+<textarea id="codigo" spellcheck="false"></textarea>
+<pre id="salida">— la salida aparecerá aquí —</pre>
+
+<script>
+const EJEMPLOS = {
+rsa: `# RSA: primero de juguete, luego con números de verdad
+from sympy import nextprime, factorint
+from math import gcd
+
+p, q = nextprime(1000), nextprime(2000)
+n, phi = p*q, (p-1)*(q-1)
+e = 17; assert gcd(e, phi) == 1
+d = pow(e, -1, phi)          # inverso modular: Python nativo
+m = 65
+c = pow(m, e, n)
+print(f"juguete: {m} -> {c} -> {pow(c, d, n)}")
+print("romperlo:", factorint(n))
+
+# Ahora en serio: primos de 50 cifras (sube el exponente si te atreves)
+P = nextprime(10**49); Q = nextprime(3*10**49)
+N, PHI = P*Q, (P-1)*(Q-1)
+D = pow(e, -1, PHI)
+C = pow(271828, e, N)
+print("con 100 cifras también vuelve:", pow(C, D, N) == 271828)`,
+tablas: `# Tablas de multiplicar de Z/5Z y Z/6Z: caza los divisores de cero
+for n in (5, 6):
+    print(f"Z/{n}Z:")
+    for a in range(n):
+        print(" ", [a*b % n for b in range(n)])
+    print()
+
+# inversos: pow(a, -1, n) — da error exactamente cuando no existe (¿por qué?)
+print("inverso de 3 mod 7:", pow(3, -1, 7))
+try:
+    pow(2, -1, 6)
+except ValueError as e:
+    print("inverso de 2 mod 6:", e)`,
+fermat: `# Pequeño teorema de Fermat, comprobado; y el truco del 9
+p = 1009
+print("2^(p-1) mod p =", pow(2, p-1, p), "(p primo)")
+
+# El truco del 9: n - suma_de_cifras(n) es siempre múltiplo de 9
+n = 7345
+resto = n - sum(int(c) for c in str(n))
+print(n, "->", resto, "| ¿múltiplo de 9?", resto % 9 == 0)`,
+polis: `from sympy import symbols, Poly, div, factor, roots
+x = symbols('x')
+f, g = Poly(x**4 - 1, x), Poly(x**2 + 1, x)
+q, r = div(f, g)
+print("cociente:", q.as_expr(), "| resto:", r.as_expr())
+print("factorizar x^4-1 sobre Q:", factor(x**4 - 1))
+print("raíces con multiplicidad:", roots((x-2)**2 * (x+1)))`,
+sistemas: `# El mismo sistema en varios mundos (det A = 10)
+from sympy import Matrix
+A = Matrix([[2, 1, -1], [1, 3, 2], [1, 0, 1]])
+b = Matrix([8, 13, 4])
+print("det A =", A.det())
+print("sobre Q:", A.solve(b).T)
+print("mod 3 (cuerpo, det no nulo):", A.inv_mod(3).tolist())
+try:
+    A.inv_mod(5)
+except Exception as e:
+    print("mod 5: FALLA —", e)
+# Predicción: ¿y mod 7? ¿y mod 6? Pruébalo.`,
+volumen: `from sympy import Matrix
+
+h = 3   # ← la altura: cámbiala y re-ejecuta. ¿Qué pasa con h = 0? ¿Y con h = -3?
+u, v, w = [1, 0, 0], [1, 2, 0], [1, 1, h]
+print("volumen:", abs(Matrix([u, v, w]).det()))
+# con h = 0 los tres vectores son coplanarios: el paralelepípedo se aplasta`,
+};
+
+const ENUNCIADOS_ES = {
+  inicio: "Elige un <strong>ejemplo del curso</strong> en el desplegable, o pega tu propio código. " +
+          "<em>⟲ Restaurar</em> vuelve al original y <em>⬇ .py</em> descarga lo que hayas escrito para seguir en tu máquina.",
+  hash:   "Código traído de los apuntes — ejecútalo tal cual o modifícalo. <em>⟲ Restaurar</em> lo devuelve al original.",
+  rsa:    "<strong>RSA de juguete.</strong> Con $n = pq$ y $ed \\equiv 1 \\pmod{\\varphi(n)}$, cifrar es $c = m^e \\bmod n$ y descifrar $m = c^d \\bmod n$. Compruébalo con primos pequeños, y luego con primos de 50 cifras: cifrar sigue siendo instantáneo — factorizar $n$, no.",
+  tablas: "<strong>ℤ/nℤ por dentro.</strong> Genera las tablas de $\\mathbb{Z}/5\\mathbb{Z}$ y $\\mathbb{Z}/6\\mathbb{Z}$, localiza los divisores de cero y comprueba la dicotomía: $\\bar a$ invertible $\\iff \\gcd(a, n) = 1$.",
+  fermat: "<strong>Fermat y el truco del 9.</strong> Si $p$ es primo y $p \\nmid a$, entonces $a^{p-1} \\equiv 1 \\pmod{p}$. Y el truco de adivinación: $n - S(n) \\equiv 0 \\pmod 9$ (con $S(n)$ la suma de cifras).",
+  polis:  "<strong>Polinomios en $\\mathbb{Q}[x]$.</strong> División euclídea $f = q\\,g + r$ con $\\deg r < \\deg g$, factorización sobre $\\mathbb{Q}$ y raíces con multiplicidad.",
+  sistemas: "<strong>El mismo sistema en varios mundos.</strong> $Ax = b$ con $\\det A = 10$: resuélvelo sobre $\\mathbb{Q}$, sobre $\\mathbb{Z}/3\\mathbb{Z}$ (funciona) y sobre $\\mathbb{Z}/5\\mathbb{Z}$ (falla). Predice antes de ejecutar: ¿por qué justo ahí?",
+  volumen: "<strong>Volumen como determinante.</strong> El paralelepípedo generado por $u, v, w$ tiene volumen $\\lvert\\det[u\\;v\\;w]\\rvert$. Baja la altura $h$ hasta $0$ y mira qué pasa — y qué significa el signo si usas $h$ negativo.",
+};
+const ENUNCIADOS_EN = {
+  inicio: "Pick a <strong>course example</strong> from the dropdown, or paste your own code. " +
+          "<em>⟲ Restore</em> brings back the original and <em>⬇ .py</em> downloads your code to keep working on your machine.",
+  hash:   "Code brought from the notes — run it as is or tweak it. <em>⟲ Restore</em> brings back the original.",
+};
+
+const $ = (id) => document.getElementById(id);
+let pyodide = null;
+let EN_UI = false;
+try { EN_UI = localStorage.getItem('lang') === 'en'; } catch (e) {}
+const TXT_LISTO = EN_UI ? "ready ✓" : "listo ✓";
+
+// ── editor ──
+const cm = CodeMirror.fromTextArea($('codigo'), {
+  mode: 'python', lineNumbers: true, indentUnit: 4, viewportMargin: Infinity,
+});
+let codigoOriginal = "";
+
+function ponerEnunciado(clave) {
+  const tabla = EN_UI ? Object.assign({}, ENUNCIADOS_ES, ENUNCIADOS_EN) : ENUNCIADOS_ES;
+  $('enunciado').innerHTML = tabla[clave] || tabla.inicio;
+  if (window.renderMathInElement) {
+    renderMathInElement($('enunciado'), {
+      delimiters: [{left: "$", right: "$", display: false}],
+      throwOnError: false,
+    });
+  }
+}
+
+function cargar(codigo, claveEnunciado) {
+  codigoOriginal = codigo;
+  cm.setValue(codigo);
+  ponerEnunciado(claveEnunciado);
+}
+
+// código inicial: del hash (enlaces desde los apuntes), si no, portada de ejemplos
+let inicial = null;
+try {
+  const h = location.hash.slice(1);
+  if (h) inicial = decodeURIComponent(atob(h));
+} catch (e) {}
+if (inicial) { cargar(inicial, 'hash'); }
+else { cargar(EJEMPLOS.rsa, 'rsa'); $('ejemplos').value = 'rsa'; }
+
+$('ejemplos').addEventListener('change', () => {
+  const k = $('ejemplos').value;
+  if (k) cargar(EJEMPLOS[k], k);
+});
+
+$('restaurar').addEventListener('click', () => { cm.setValue(codigoOriginal); });
+
+$('descargar').addEventListener('click', () => {
+  const blob = new Blob([cm.getValue()], { type: "text/x-python" });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = ($('ejemplos').value || "codigo") + ".py";
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+
+// ── Python ──
+async function preparar() {
+  pyodide = await loadPyodide();
+  await pyodide.loadPackage("sympy");
+  pyodide.setStdout({ batched: (s) => { $('salida').textContent += s + "\n"; } });
+  pyodide.setStderr({ batched: (s) => { $('salida').textContent += s + "\n"; } });
+  $('run').disabled = false;
+  $('estado').textContent = TXT_LISTO;
+}
+
+$('run').addEventListener('click', async () => {
+  $('salida').textContent = "";
+  $('salida').classList.remove('error');
+  $('run').disabled = true;
+  $('estado').textContent = EN_UI ? "running…" : "ejecutando…";
+  const t = performance.now();
+  try {
+    const r = await pyodide.runPythonAsync(cm.getValue());
+    if (r !== undefined && r !== null && String(r) !== "None") $('salida').textContent += String(r);
+  } catch (e) {
+    $('salida').classList.add('error');
+    $('salida').textContent += String(e);
+  }
+  $('estado').textContent = TXT_LISTO + " (" + Math.round(performance.now() - t) + " ms)";
+  $('run').disabled = false;
+});
+
+// ── idioma compartido con el resto del sitio (UI; los ejemplos quedan en ES) ──
+if (EN_UI) {
+  document.documentElement.lang = 'en';
+  document.title = "Python in your browser — Algebra and Geometry";
+  $('t-titulo').textContent = "Python in your browser";
+  $('t-sub').textContent = "Run the course examples without installing anything — Python and sympy run right here (the first load downloads ~12 MB; it is cached afterwards).";
+  $('t-volver').textContent = "← Back to contents";
+  $('run').textContent = "▶ Run";
+  $('restaurar').textContent = "⟲ Restore";
+  $('estado').textContent = "preparing Python…";
+  ponerEnunciado($('ejemplos').value || (inicial ? 'hash' : 'rsa'));
+}
+
+// ── modo noche compartido con el resto del sitio ──
+function applyTheme(t) {
+  document.documentElement.classList.toggle('dark', t === 'dark');
+  $('btn-tema').textContent = t === 'dark' ? '☀' : '🌙';
+  cm.setOption('theme', t === 'dark' ? 'material-darker' : 'default');
+}
+$('btn-tema').addEventListener('click', (e) => {
+  e.preventDefault();
+  const d = !document.documentElement.classList.contains('dark');
+  try { localStorage.setItem('theme', d ? 'dark' : 'light'); } catch (err) {}
+  applyTheme(d ? 'dark' : 'light');
+});
+let th; try { th = localStorage.getItem('theme'); } catch (e) {}
+if (th !== 'dark' && th !== 'light') {
+  th = (matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+}
+applyTheme(th);
+
+preparar().catch(e => { $('estado').textContent = "error cargando Python: " + e; });
+</script>
+</body>
+</html>
