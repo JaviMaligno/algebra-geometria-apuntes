@@ -5076,7 +5076,8 @@ counts them and the remainder
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
 is what is left over
 (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>r</mi><mo>&lt;</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">0\le r&lt;b</annotation></semantics></math>).</figcaption></figure>
-<p><strong>Remark 1.1.4 (the convention matters).</strong> For
+<p><strong>Remark 1.1.4 (the convention matters — and it <em>is</em> a
+convention).</strong> For
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mo>−</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">a = -7</annotation></semantics></math>,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">b = 3</annotation></semantics></math>:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><mo>−</mo><mn>7</mn><mo>=</mo><mn>3</mn><mo>⋅</mo><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\;-7 = 3\cdot(-3) + 2</annotation></semantics></math>
@@ -5088,6 +5089,88 @@ The convention
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>r</mi><mo>&lt;</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">0 \le r &lt; b</annotation></semantics></math>
 makes the expression unique and is the one congruences use (Session
 3).</p>
+<p><strong>So why do we require
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b &gt; 0</annotation></semantics></math>?</strong>
+For convenience, not out of necessity. The general version holds for
+every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b \neq 0</annotation></semantics></math>:
+there exist <strong>unique</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>,</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">q, r</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mi>b</mi><mi>q</mi><mo>+</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">a = bq + r</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>r</mi><mo>&lt;</mo><mrow><mo stretchy="true" form="prefix">|</mo><mi>b</mi><mo stretchy="true" form="postfix">|</mo></mrow></mrow><annotation encoding="application/x-tex">0 \le r &lt; |b|</annotation></semantics></math>.
+And it reduces to the positive case in one line: apply the theorem to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">|</mo><mi>b</mi><mo stretchy="true" form="postfix">|</mo></mrow><annotation encoding="application/x-tex">|b|</annotation></semantics></math>,
+which gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">|</mo><mi>b</mi><mo stretchy="true" form="postfix">|</mo></mrow><mi>q</mi><mi>′</mi><mo>+</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">a = |b|q&#39; + r</annotation></semantics></math>;
+if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b &lt; 0</annotation></semantics></math>
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi>b</mi><mo stretchy="true" form="postfix">|</mo></mrow><mo>=</mo><mo>−</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">|b| = -b</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mi>b</mi><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mi>q</mi><mi>′</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">a = b(-q&#39;) + r</annotation></semantics></math>
+and it suffices to take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><mo>−</mo><mi>q</mi><mi>′</mi></mrow><annotation encoding="application/x-tex">q = -q&#39;</annotation></semantics></math>.
+For instance,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>⋅</mo><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">7 = (-3)\cdot(-2) + 1</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mn>1</mn><mo>&lt;</mo><mn>3</mn><mo>=</mo><mrow><mo stretchy="true" form="prefix">|</mo><mo>−</mo><mn>3</mn><mo stretchy="true" form="postfix">|</mo></mrow></mrow><annotation encoding="application/x-tex">0 \le 1 &lt; 3 = |-3|</annotation></semantics></math>.
+What we <strong>do</strong> have to exclude is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b = 0</annotation></semantics></math>:
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mn>0</mn><mo>⋅</mo><mi>q</mi><mo>+</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">a = 0\cdot q + r</annotation></semantics></math>
+forces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">r = a</annotation></semantics></math>,
+and the condition
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>r</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">0 \le r &lt; 0</annotation></semantics></math>
+is impossible to satisfy — it is division by zero, and the
+<strong>only</strong> genuine exclusion in the theorem. We state it with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b &gt; 0</annotation></semantics></math>
+because in everything that follows the divisor is positive by nature
+(the modulus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+of congruences, the remainders in Euclid’s algorithm, the gcd normalised
+to be
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\ge 0</annotation></semantics></math>),
+which spares the later statements a forest of absolute-value bars.</p>
+<blockquote>
+<p><em>(In
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mrow><mo stretchy="true" form="prefix">[</mo><mi>x</mi><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">K[x]</annotation></semantics></math>
+—Polynomials module— the analogous hypothesis is precisely
+<strong>“nonzero divisor”</strong>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">g \neq 0</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>deg</mo><mi>r</mi><mo>&lt;</mo><mo>deg</mo><mi>g</mi></mrow><annotation encoding="application/x-tex">\deg r &lt; \deg g</annotation></semantics></math>.
+There is no order there letting us ask for “positive”, only the degree;
+the dictionary is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><mo>⋅</mo><mo stretchy="true" form="postfix">|</mo></mrow><mo>↔</mo><mo>deg</mo></mrow><annotation encoding="application/x-tex">|\cdot| \leftrightarrow \deg</annotation></semantics></math>.
+Stated with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b \neq 0</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">|</mo><mi>b</mi><mo stretchy="true" form="postfix">|</mo></mrow><annotation encoding="application/x-tex">|b|</annotation></semantics></math>,
+division in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℤ</mi><annotation encoding="application/x-tex">\mathbb{Z}</annotation></semantics></math>
+and division in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mrow><mo stretchy="true" form="prefix">[</mo><mi>x</mi><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">K[x]</annotation></semantics></math>
+say literally the same thing: nonzero divisor, remainder smaller than
+the divisor in the measure proper to each world.)</em></p>
+</blockquote>
+<p><strong>And uniqueness depends on the band, not on the sign of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>.</strong>
+Fixing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>r</mi><mo>&lt;</mo><mrow><mo stretchy="true" form="prefix">|</mo><mi>b</mi><mo stretchy="true" form="postfix">|</mo></mrow></mrow><annotation encoding="application/x-tex">0 \le r &lt; |b|</annotation></semantics></math>
+is <strong>one</strong> choice among several, and all of them give
+existence and uniqueness: the remainder carrying the sign of the
+<strong>dividend</strong> (what C, C++, Java and Rust do, where
+<code>-7 % 3</code> is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math>),
+or the <strong>centred</strong> remainder,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mrow><mo stretchy="true" form="prefix">|</mo><mi>b</mi><mo stretchy="true" form="postfix">|</mo></mrow><mi>/</mi><mn>2</mn><mo>&lt;</mo><mi>r</mi><mo>≤</mo><mrow><mo stretchy="true" form="prefix">|</mo><mi>b</mi><mo stretchy="true" form="postfix">|</mo></mrow><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">-|b|/2 &lt; r \le |b|/2</annotation></semantics></math>,
+convenient in cryptography and in lattice reduction. Ours is
+<strong>Python</strong>’s convention: <code>-7 % 3</code> returns
+<code>2</code>. It is worth checking in the interpreter, because that
+disagreement between languages is a classic source of bugs.</p>
 <blockquote>
 <p><em>Structural lens (a mention):</em>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℤ</mi><annotation encoding="application/x-tex">\mathbb{Z}</annotation></semantics></math>
