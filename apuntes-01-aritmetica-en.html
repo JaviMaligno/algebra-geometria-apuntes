@@ -5205,7 +5205,7 @@ characterization by divisibility
 (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
 such that every common divisor divides
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>;
-exercise 8) determines it only <strong>up to sign</strong>, and the
+exercise 9) determines it only <strong>up to sign</strong>, and the
 convention fixes
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\mathrm{gcd} \ge 0</annotation></semantics></math>.
 (The case
@@ -5774,6 +5774,23 @@ is exactly the set of <strong>multiples</strong> of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>.
 <em>(The combinations of two numbers are the multiples of their gcd —
 the fine-grained version of Bézout.)</em></li>
+<li><em>(Characterization of the gcd by divisibility.)</em> Prove that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>=</mo><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">d = \mathrm{gcd}(a,b)</annotation></semantics></math>
+satisfies:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>∣</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">d \mid a</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>∣</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">d \mid b</annotation></semantics></math>,
+and <strong>every</strong> common divisor of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+divides
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>.
+<em>(Hint: the last one follows from Bézout.)</em> Check also that those
+three conditions determine
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+<strong>up to sign</strong>, and that the convention
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">d \ge 0</annotation></semantics></math>
+pins it down.</li>
 </ol>
 <h2 id="going-further-and-references">Going further and references</h2>
 <blockquote>
@@ -5786,6 +5803,42 @@ is given by the Fibonacci numbers — Lamé’s theorem). That efficiency,
 set against the cost of factoring, is the crack on which the
 cryptography of Session 4 is built. See Childs, <em>A Concrete
 Introduction to Higher Algebra</em>, ch. 3–4.</p>
+<p><strong>Going further (why the gcd is not computed by brute
+force).</strong> The direct route would be to list the divisors of each
+number, cross the two lists and keep the largest. With Example 1.1.8 it
+works: the divisors of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>252</mn><annotation encoding="application/x-tex">252</annotation></semantics></math>
+are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>6</mn><mo>,</mo><mn>7</mn><mo>,</mo><mn>9</mn><mo>,</mo><mn>12</mn><mo>,</mo><mn>14</mn><mo>,</mo><mn>18</mn><mo>,</mo><mn>21</mn><mo>,</mo><mn>28</mn><mo>,</mo><mn>36</mn><mo>,</mo><mn>42</mn><mo>,</mo><mn>63</mn><mo>,</mo><mn>84</mn><mo>,</mo><mn>126</mn><mo>,</mo><mn>252</mn></mrow><annotation encoding="application/x-tex">1, 2, 3, 4, 6, 7, 9, 12, 14, 18, 21, 28, 36, 42, 63, 84, 126, 252</annotation></semantics></math>;
+those of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>198</mn><annotation encoding="application/x-tex">198</annotation></semantics></math>
+are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>6</mn><mo>,</mo><mn>9</mn><mo>,</mo><mn>11</mn><mo>,</mo><mn>18</mn><mo>,</mo><mn>22</mn><mo>,</mo><mn>33</mn><mo>,</mo><mn>66</mn><mo>,</mo><mn>99</mn><mo>,</mo><mn>198</mn></mrow><annotation encoding="application/x-tex">1, 2, 3, 6, 9, 11, 18, 22, 33, 66, 99, 198</annotation></semantics></math>;
+the largest common one is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>18</mn><annotation encoding="application/x-tex">18</annotation></semantics></math>.</p>
+<p>But measure the work. To list the divisors of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+by trial it is enough to test candidates up to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mi>n</mi></msqrt><annotation encoding="application/x-tex">\sqrt{n}</annotation></semantics></math>
+—divisors come in pairs,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>/</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">n/d</annotation></semantics></math>,
+and one of the two is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo><msqrt><mi>n</mi></msqrt></mrow><annotation encoding="application/x-tex">\le \sqrt n</annotation></semantics></math>—,
+so that is of the order of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mi>n</mi></msqrt><annotation encoding="application/x-tex">\sqrt n</annotation></semantics></math>
+trials per number. With three digits it is tedious; with twenty digits
+it is some
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>10</mn><mn>10</mn></msup><annotation encoding="application/x-tex">10^{10}</annotation></semantics></math>
+trials per number, against the <strong>four divisions</strong> Euclid
+needed here and the few dozen it would need there.</p>
+<p>And the contrast runs deeper: Euclid delivers the gcd <strong>without
+factoring</strong> either number. That matters because <strong>no fast
+method for factoring</strong> a large integer is known —an open problem,
+not a theorem— and RSA in Session 4 is built on that asymmetry:
+multiplying two large primes is immediate, recovering them from the
+product is not.</p>
 <p><strong>Going further (Euclidean domains).</strong> Any “world” with
 a reasonable division with remainder (a <em>Euclidean domain</em>)
 repeats this entire session word for word: gcd, the Euclidean algorithm,
@@ -5977,23 +6030,15 @@ is exactly what the lemma forbids the primes. Being prime is not just
 <glyph unicode='o' horiz-adv-x='514' vert-adv-y='514' d='M484 213C484 344 380 448 257 448C130 448 29 341 29 213C29 88 133-11 256-11C383-11 484 90 484 213ZM398 222C398 185 398 127 373 83C345 37 299 17 257 17C207 17 165 42 142 81C116 123 115 176 115 222C115 259 115 316 140 357C170 408 220 423 256 423C313 423 354 391 374 357C397 315 398 264 398 222Z'/>
 <glyph unicode='r' horiz-adv-x='402' vert-adv-y='402' d='M373 380C373 412 343 442 298 442C238 442 196 400 173 338H172V442L30 431V400C98 400 107 393 107 344V77C107 31 96 31 30 31V0C83 2 96 3 147 3L274 0V31H254C181 31 178 42 178 79V229C178 270 189 417 303 417V416C301 415 285 403 285 379C285 352 306 335 329 335C350 335 373 350 373 380Z'/>
 </font>
-<font id='JRAREQ-LMRoman8-Regular' horiz-adv-x='0'>
-<font-face font-family='JRAREQ-LMRoman8-Regular' units-per-em='1000' ascent='1125' descent='292'/>
-<glyph unicode='a' horiz-adv-x='531' vert-adv-y='531' d='M514 90V145H483V90C483 49 468 33 447 33C410 33 410 79 410 90V298C410 396 315 446 224 446C141 446 67 414 67 348C67 318 88 300 114 300C142 300 161 320 161 347C161 371 146 388 124 393C161 418 215 418 222 418C278 418 334 379 334 297V266C276 263 209 260 139 231C51 193 34 135 34 102C34 16 135-10 204-10C277-10 322 31 344 71C349 33 375-5 419-5C429-5 514-1 514 90ZM334 141C334 44 252 18 212 18C160 18 116 53 116 101C116 167 178 235 334 240V141Z'/>
-<glyph unicode='c' horiz-adv-x='472' vert-adv-y='472' d='M441 120C441 132 428 132 425 132C418 132 413 131 410 121C403 100 375 21 275 21C213 21 124 69 124 217C124 361 198 415 271 415C280 415 333 415 368 397C340 388 336 365 336 353C336 326 355 306 383 306C409 306 430 324 430 354C430 416 362 446 268 446C129 446 35 335 35 216C35 89 139-10 265-10C406-10 441 108 441 120Z'/>
-<glyph unicode='f' horiz-adv-x='325' vert-adv-y='325' d='M377 632C377 675 335 704 282 704C207 704 118 650 118 543V431H36V398H118V78C118 33 106 33 42 33V0C81 3 136 3 160 3C219 3 221 3 286 0V33H266C193 33 191 44 191 80V398H311V431H188V544C188 631 237 676 281 676C297 676 306 672 310 671C292 662 287 645 287 632C287 606 306 587 332 587C359 587 377 606 377 632Z'/>
-<glyph unicode='o' horiz-adv-x='531' vert-adv-y='531' d='M500 213C500 338 397 446 265 446S30 338 30 213S137-10 265-10C394-10 500 88 500 213ZM411 222C411 176 409 121 381 79C354 39 309 21 265 21C211 21 169 47 147 82C122 123 119 172 119 222C119 260 119 320 150 363C176 398 218 418 265 418C317 418 360 393 383 358C410 316 411 262 411 222Z'/>
-<glyph unicode='r' horiz-adv-x='414' vert-adv-y='414' d='M384 378C384 413 352 441 308 441C243 441 199 392 178 336H177V441L35 430V397C103 397 111 390 111 341V78C111 33 99 33 35 33V0C74 3 129 3 153 3C212 3 214 3 279 0V33H259C186 33 184 44 184 80V228C184 303 215 411 311 413C305 409 295 401 295 378C295 347 319 333 339 333C363 333 384 349 384 378Z'/>
-<glyph unicode='s' horiz-adv-x='419' vert-adv-y='419' d='M383 129C383 177 354 247 235 269C227 271 171 281 167 281C136 288 89 309 89 349C89 379 111 421 206 421C318 421 323 339 325 311C326 303 333 300 340 300C356 300 356 307 356 326V420C356 436 356 446 343 446C338 446 335 446 319 430C317 429 308 420 305 420C305 420 302 420 296 424C280 435 251 446 206 446C66 446 35 370 35 322C35 272 72 243 75 240C115 210 138 206 205 194C252 185 329 171 329 103C329 64 303 18 211 18C110 18 81 96 68 149C64 162 63 167 51 167C35 167 35 159 35 140V16C35 0 35-10 48-10C54-10 55-9 73 10C78 15 89 28 94 33C139-8 186-10 212-10C339-10 383 63 383 129Z'/>
-<glyph unicode='t' horiz-adv-x='413' vert-adv-y='413' d='M353 125V181H322V127C322 58 291 21 253 21C186 21 186 107 186 123V398H335V431H186V615H155C154 524 113 429 20 426V398H110V125C110 8 200-10 246-10C313-10 353 50 353 125Z'/>
-</font>
 <font id='OKQVQF-CMBX9' horiz-adv-x='0'>
 <font-face font-family='OKQVQF-CMBX9' units-per-em='1000' ascent='750' descent='250'/>
 <glyph unicode='5' horiz-adv-x='591' vert-adv-y='591' glyph-name='five' d='M168 503C202 497 218 497 239 497C267 497 331 497 406 547C428 561 486 610 486 636C486 640 486 656 470 656C468 656 466 656 455 651C404 633 349 624 297 624C235 624 184 636 141 651C128 656 126 656 124 656C109 656 109 643 109 628V333C109 315 109 301 133 301C146 301 148 302 159 315C200 362 255 370 294 370C387 370 387 283 387 204C387 132 387 33 262 33C207 33 159 59 134 91C176 95 198 124 198 160C198 209 161 230 129 230C98 230 59 211 59 158C59 71 140-12 266-12C437-12 532 83 532 201C532 315 451 410 299 410C253 410 210 402 168 376V503Z'/>
 </font>
-<font id='XEXLWZ-CMSY8' horiz-adv-x='0'>
-<font-face font-family='XEXLWZ-CMSY8' units-per-em='1000' ascent='779' descent='955'/>
-<glyph unicode='|' horiz-adv-x='295' vert-adv-y='295' glyph-name='bar' d='M170 712C170 728 170 750 147 750S124 728 124 712V-212C124-228 124-250 147-250S170-228 170-212V712Z'/>
+<font id='NYWACA-CMMI8' horiz-adv-x='0'>
+<font-face font-family='NYWACA-CMMI8' units-per-em='1000' ascent='750' descent='250'/>
+<glyph unicode='a' horiz-adv-x='564' vert-adv-y='564' glyph-name='a' d='M392 381C383 398 354 441 293 441C174 441 43 302 43 154C43 50 110-10 187-10C251-10 306 41 324 61C342-8 410-10 422-10C468-10 491 28 499 45C519 81 533 139 533 143C533 149 529 156 517 156S503 150 497 125C483 70 464 18 425 18C402 18 393 37 393 65C393 82 402 116 408 141S429 226 433 244L453 320C458 344 469 386 469 391C469 414 450 422 437 422C422 422 397 412 392 381ZM324 108C274 39 222 18 190 18C144 18 121 60 121 112C121 159 148 266 170 310C199 371 248 413 294 413C359 413 378 340 378 328C378 324 353 226 347 200C334 153 334 151 324 108Z'/>
+<glyph unicode='b' horiz-adv-x='454' vert-adv-y='454' glyph-name='b' d='M244 664C245 666 248 679 248 680C248 685 244 694 232 694C228 694 197 691 174 689L118 685C96 683 86 682 86 664C86 650 100 650 112 650C160 650 160 644 160 635C160 629 150 589 144 566L57 218C49 184 49 169 49 152C49 49 112-10 189-10C312-10 440 132 440 277C440 376 376 441 296 441C240 441 197 405 175 386L244 664ZM189 18C153 18 117 46 117 119C117 146 121 171 133 219C140 248 147 276 155 305C160 323 160 325 172 340C206 382 251 413 293 413C343 413 362 364 362 319C362 282 340 175 310 116C284 62 236 18 189 18Z'/>
+<glyph unicode='p' horiz-adv-x='534' vert-adv-y='534' glyph-name='p' d='M52-121C44-153 42-161 2-161C-12-161-24-161-24-180C-24-189-15-194-10-194C0-194 4-191 78-191C150-191 171-194 178-194C182-194 197-194 197-175C197-161 183-161 171-161C123-161 123-155 123-146C123-139 141-68 171 49C184 26 215-10 269-10C392-10 520 132 520 277C520 376 456 441 376 441C316 441 268 400 239 370C218 441 151 441 141 441C105 441 80 418 64 387C41 342 30 291 30 288C30 279 37 275 45 275C58 275 59 279 66 305C79 356 97 413 138 413C163 413 170 390 170 366C170 356 166 332 164 324L52-121ZM236 308C241 325 241 327 256 345C294 390 337 413 373 413C423 413 442 364 442 319C442 282 420 175 390 116C364 62 316 18 269 18C201 18 185 96 185 103C185 105 187 116 188 119L236 308Z'/>
 </font>
 <font id='VIKFCQ-LMRoman8-Italic' horiz-adv-x='0'>
 <font-face font-family='VIKFCQ-LMRoman8-Italic' units-per-em='1000' ascent='1124' descent='292'/>
@@ -6014,11 +6059,20 @@ is exactly what the lemma forbids the primes. Being prime is not just
 <glyph unicode='u' horiz-adv-x='576' vert-adv-y='576' d='M602 143C602 156 588 156 583 156C566 156 566 153 560 128C541 51 520 18 493 18C465 18 465 50 465 62C465 69 465 79 468 91L540 383C544 397 544 399 544 402C544 421 531 431 514 431C482 431 474 400 472 391L404 116C399 96 357 18 290 18C231 18 231 79 231 96C231 152 256 221 288 308C296 328 300 338 300 358C300 413 259 441 217 441C121 441 80 301 80 288S93 275 99 275C115 275 116 278 120 296C138 358 171 413 215 413C233 413 237 400 237 382C237 359 229 338 220 315C192 238 164 165 164 110C164 19 229-10 286-10C309-10 354-7 404 51C419 1 465-10 491-10C527-10 551 12 568 43C589 83 602 143 602 143Z'/>
 <glyph unicode='z' horiz-adv-x='439' vert-adv-y='439' d='M465 145C465 158 452 158 446 158C431 158 430 154 426 141C409 93 358 59 312 59C291 59 273 66 245 76C210 89 200 89 170 89L246 165L358 266C416 325 418 326 434 346C453 369 490 417 490 429S479 441 471 441C459 441 457 440 451 431C420 379 408 370 388 370C367 370 353 386 338 404C312 432 294 441 270 441C193 441 144 351 144 324C144 312 157 312 163 312C175 312 178 313 182 323C202 372 255 372 261 372C282 372 304 364 319 358C357 344 364 343 384 342C356 308 299 258 254 218C221 188 188 159 157 127C103 70 64 12 64 2C64-10 76-10 83-10C96-10 97-9 105 4C118 24 147 61 182 61C200 61 210 55 236 27C255 4 273-10 302-10C404-10 465 115 465 145Z'/>
 </font>
-<font id='NYWACA-CMMI8' horiz-adv-x='0'>
-<font-face font-family='NYWACA-CMMI8' units-per-em='1000' ascent='750' descent='250'/>
-<glyph unicode='a' horiz-adv-x='564' vert-adv-y='564' glyph-name='a' d='M392 381C383 398 354 441 293 441C174 441 43 302 43 154C43 50 110-10 187-10C251-10 306 41 324 61C342-8 410-10 422-10C468-10 491 28 499 45C519 81 533 139 533 143C533 149 529 156 517 156S503 150 497 125C483 70 464 18 425 18C402 18 393 37 393 65C393 82 402 116 408 141S429 226 433 244L453 320C458 344 469 386 469 391C469 414 450 422 437 422C422 422 397 412 392 381ZM324 108C274 39 222 18 190 18C144 18 121 60 121 112C121 159 148 266 170 310C199 371 248 413 294 413C359 413 378 340 378 328C378 324 353 226 347 200C334 153 334 151 324 108Z'/>
-<glyph unicode='b' horiz-adv-x='454' vert-adv-y='454' glyph-name='b' d='M244 664C245 666 248 679 248 680C248 685 244 694 232 694C228 694 197 691 174 689L118 685C96 683 86 682 86 664C86 650 100 650 112 650C160 650 160 644 160 635C160 629 150 589 144 566L57 218C49 184 49 169 49 152C49 49 112-10 189-10C312-10 440 132 440 277C440 376 376 441 296 441C240 441 197 405 175 386L244 664ZM189 18C153 18 117 46 117 119C117 146 121 171 133 219C140 248 147 276 155 305C160 323 160 325 172 340C206 382 251 413 293 413C343 413 362 364 362 319C362 282 340 175 310 116C284 62 236 18 189 18Z'/>
-<glyph unicode='p' horiz-adv-x='534' vert-adv-y='534' glyph-name='p' d='M52-121C44-153 42-161 2-161C-12-161-24-161-24-180C-24-189-15-194-10-194C0-194 4-191 78-191C150-191 171-194 178-194C182-194 197-194 197-175C197-161 183-161 171-161C123-161 123-155 123-146C123-139 141-68 171 49C184 26 215-10 269-10C392-10 520 132 520 277C520 376 456 441 376 441C316 441 268 400 239 370C218 441 151 441 141 441C105 441 80 418 64 387C41 342 30 291 30 288C30 279 37 275 45 275C58 275 59 279 66 305C79 356 97 413 138 413C163 413 170 390 170 366C170 356 166 332 164 324L52-121ZM236 308C241 325 241 327 256 345C294 390 337 413 373 413C423 413 442 364 442 319C442 282 420 175 390 116C364 62 316 18 269 18C201 18 185 96 185 103C185 105 187 116 188 119L236 308Z'/>
+<font id='JRAREQ-LMRoman8-Regular' horiz-adv-x='0'>
+<font-face font-family='JRAREQ-LMRoman8-Regular' units-per-em='1000' ascent='1125' descent='292'/>
+<glyph unicode='a' horiz-adv-x='531' vert-adv-y='531' d='M514 90V145H483V90C483 49 468 33 447 33C410 33 410 79 410 90V298C410 396 315 446 224 446C141 446 67 414 67 348C67 318 88 300 114 300C142 300 161 320 161 347C161 371 146 388 124 393C161 418 215 418 222 418C278 418 334 379 334 297V266C276 263 209 260 139 231C51 193 34 135 34 102C34 16 135-10 204-10C277-10 322 31 344 71C349 33 375-5 419-5C429-5 514-1 514 90ZM334 141C334 44 252 18 212 18C160 18 116 53 116 101C116 167 178 235 334 240V141Z'/>
+<glyph unicode='c' horiz-adv-x='472' vert-adv-y='472' d='M441 120C441 132 428 132 425 132C418 132 413 131 410 121C403 100 375 21 275 21C213 21 124 69 124 217C124 361 198 415 271 415C280 415 333 415 368 397C340 388 336 365 336 353C336 326 355 306 383 306C409 306 430 324 430 354C430 416 362 446 268 446C129 446 35 335 35 216C35 89 139-10 265-10C406-10 441 108 441 120Z'/>
+<glyph unicode='f' horiz-adv-x='325' vert-adv-y='325' d='M377 632C377 675 335 704 282 704C207 704 118 650 118 543V431H36V398H118V78C118 33 106 33 42 33V0C81 3 136 3 160 3C219 3 221 3 286 0V33H266C193 33 191 44 191 80V398H311V431H188V544C188 631 237 676 281 676C297 676 306 672 310 671C292 662 287 645 287 632C287 606 306 587 332 587C359 587 377 606 377 632Z'/>
+<glyph unicode='o' horiz-adv-x='531' vert-adv-y='531' d='M500 213C500 338 397 446 265 446S30 338 30 213S137-10 265-10C394-10 500 88 500 213ZM411 222C411 176 409 121 381 79C354 39 309 21 265 21C211 21 169 47 147 82C122 123 119 172 119 222C119 260 119 320 150 363C176 398 218 418 265 418C317 418 360 393 383 358C410 316 411 262 411 222Z'/>
+<glyph unicode='r' horiz-adv-x='414' vert-adv-y='414' d='M384 378C384 413 352 441 308 441C243 441 199 392 178 336H177V441L35 430V397C103 397 111 390 111 341V78C111 33 99 33 35 33V0C74 3 129 3 153 3C212 3 214 3 279 0V33H259C186 33 184 44 184 80V228C184 303 215 411 311 413C305 409 295 401 295 378C295 347 319 333 339 333C363 333 384 349 384 378Z'/>
+<glyph unicode='s' horiz-adv-x='419' vert-adv-y='419' d='M383 129C383 177 354 247 235 269C227 271 171 281 167 281C136 288 89 309 89 349C89 379 111 421 206 421C318 421 323 339 325 311C326 303 333 300 340 300C356 300 356 307 356 326V420C356 436 356 446 343 446C338 446 335 446 319 430C317 429 308 420 305 420C305 420 302 420 296 424C280 435 251 446 206 446C66 446 35 370 35 322C35 272 72 243 75 240C115 210 138 206 205 194C252 185 329 171 329 103C329 64 303 18 211 18C110 18 81 96 68 149C64 162 63 167 51 167C35 167 35 159 35 140V16C35 0 35-10 48-10C54-10 55-9 73 10C78 15 89 28 94 33C139-8 186-10 212-10C339-10 383 63 383 129Z'/>
+<glyph unicode='t' horiz-adv-x='413' vert-adv-y='413' d='M353 125V181H322V127C322 58 291 21 253 21C186 21 186 107 186 123V398H335V431H186V615H155C154 524 113 429 20 426V398H110V125C110 8 200-10 246-10C313-10 353 50 353 125Z'/>
+</font>
+<font id='OQUYFC-CMR8' horiz-adv-x='0'>
+<font-face font-family='OQUYFC-CMR8' units-per-em='1000' ascent='750' descent='250'/>
+<glyph unicode='5' horiz-adv-x='531' vert-adv-y='531' glyph-name='five' d='M140 562C153 558 193 548 235 548C360 548 436 636 436 651C436 662 429 665 424 665C422 665 420 665 411 660C372 645 326 633 272 633C213 633 164 648 133 660C123 665 121 665 120 665C107 665 107 654 107 636V343C107 325 107 313 123 313C131 313 134 317 139 325C151 340 189 391 274 391C330 391 357 345 366 326C383 290 385 244 385 205C385 168 384 114 356 70C337 40 297 9 244 9C179 9 115 50 92 115C95 114 101 114 102 114C130 114 152 132 152 163C152 200 123 213 103 213C85 213 53 203 53 160C53 70 131-21 246-21C371-21 477 76 477 200C477 316 393 419 275 419C225 419 178 403 140 369V562Z'/>
+<glyph unicode='=' horiz-adv-x='826' vert-adv-y='826' glyph-name='equal' d='M731 333C746 333 766 333 766 356S742 379 727 379H98C83 379 59 379 59 356S79 333 94 333H731ZM727 121C742 121 766 121 766 144S746 167 731 167H94C79 167 59 167 59 144S83 121 98 121H727Z'/>
 </font>
 <font id='TGYPNS-CMSY9' horiz-adv-x='0'>
 <font-face font-family='TGYPNS-CMSY9' units-per-em='1000' ascent='777' descent='958'/>
@@ -6026,14 +6080,9 @@ is exactly what the lemma forbids the primes. Being prime is not just
 <glyph unicode='⇒' horiz-adv-x='1027' vert-adv-y='1027' glyph-name='arrowdblright' d='M740 331C791 287 840 264 873 251C830 232 785 208 740 170H92C77 170 57 170 57 149C57 127 79 127 97 127H692C629 60 594-9 594-17C594-30 606-30 615-30C627-30 632-30 637-21C718 135 830 202 959 238C967 240 970 246 970 250C970 260 961 262 959 263C910 277 840 296 754 369C717 401 675 448 642 511C632 530 631 531 615 531C606 531 594 531 594 518C594 510 628 442 692 374H97C79 374 57 374 57 352C57 331 77 331 92 331H740Z'/>
 <glyph unicode='|' horiz-adv-x='285' vert-adv-y='285' glyph-name='bar' d='M164 713C164 730 164 750 143 750C121 750 121 731 121 713V-213C121-230 121-250 142-250C164-250 164-231 164-213V713Z'/>
 </font>
-<font id='OQUYFC-CMR8' horiz-adv-x='0'>
-<font-face font-family='OQUYFC-CMR8' units-per-em='1000' ascent='750' descent='250'/>
-<glyph unicode='5' horiz-adv-x='531' vert-adv-y='531' glyph-name='five' d='M140 562C153 558 193 548 235 548C360 548 436 636 436 651C436 662 429 665 424 665C422 665 420 665 411 660C372 645 326 633 272 633C213 633 164 648 133 660C123 665 121 665 120 665C107 665 107 654 107 636V343C107 325 107 313 123 313C131 313 134 317 139 325C151 340 189 391 274 391C330 391 357 345 366 326C383 290 385 244 385 205C385 168 384 114 356 70C337 40 297 9 244 9C179 9 115 50 92 115C95 114 101 114 102 114C130 114 152 132 152 163C152 200 123 213 103 213C85 213 53 203 53 160C53 70 131-21 246-21C371-21 477 76 477 200C477 316 393 419 275 419C225 419 178 403 140 369V562Z'/>
-<glyph unicode='=' horiz-adv-x='826' vert-adv-y='826' glyph-name='equal' d='M731 333C746 333 766 333 766 356S742 379 727 379H98C83 379 59 379 59 356S79 333 94 333H731ZM727 121C742 121 766 121 766 144S746 167 731 167H94C79 167 59 167 59 144S83 121 98 121H727Z'/>
-</font>
-<font id='PJZRLC-CMR6' horiz-adv-x='0'>
-<font-face font-family='PJZRLC-CMR6' units-per-em='1000' ascent='750' descent='250'/>
-<glyph unicode='2' horiz-adv-x='611' vert-adv-y='611' glyph-name='two' d='M538 187H501C499 173 489 107 474 96C467 90 386 90 372 90H185L313 194C347 221 436 285 467 315C497 345 538 396 538 467C538 592 425 665 291 665C162 665 72 580 72 486C72 435 115 429 126 429C151 429 180 447 180 483C180 505 167 537 123 537C146 588 207 626 276 626C381 626 437 548 437 467C437 396 390 323 320 259L83 42C73 32 72 31 72 0H507L538 187Z'/>
+<font id='XEXLWZ-CMSY8' horiz-adv-x='0'>
+<font-face font-family='XEXLWZ-CMSY8' units-per-em='1000' ascent='779' descent='955'/>
+<glyph unicode='|' horiz-adv-x='295' vert-adv-y='295' glyph-name='bar' d='M170 712C170 728 170 750 147 750S124 728 124 712V-212C124-228 124-250 147-250S170-228 170-212V712Z'/>
 </font>
 <font id='ASFOFI-CMR9' horiz-adv-x='0'>
 <font-face font-family='ASFOFI-CMR9' units-per-em='1000' ascent='750' descent='250'/>
@@ -6045,6 +6094,10 @@ is exactly what the lemma forbids the primes. Being prime is not just
 <glyph unicode='5' horiz-adv-x='513' vert-adv-y='513' glyph-name='five' d='M104 345C104 327 104 316 118 316C126 316 129 320 135 329C165 371 213 395 265 395C372 395 372 241 372 205C372 174 372 112 344 67C317 25 275 6 236 6C177 6 110 43 86 117C87 117 93 115 100 115C120 115 149 128 149 164C149 195 127 213 100 213C79 213 51 201 51 161C51 70 127-22 238-22C359-22 462 76 462 200C462 321 376 420 267 420C219 420 170 404 135 368V565C165 556 196 551 227 551C350 551 422 640 422 653C422 662 416 666 411 666C409 666 407 666 398 661C351 642 305 634 263 634C220 634 175 642 129 661C119 666 117 666 116 666C104 666 104 656 104 639V345Z'/>
 <glyph unicode='7' horiz-adv-x='513' vert-adv-y='513' glyph-name='seven' d='M490 610C499 621 499 623 499 644H250C124 644 121 657 118 676H90L57 467H85C89 490 97 546 110 558C117 564 196 564 210 564H420L324 433C194 254 182 91 182 34C182 23 182-22 228-22C275-22 275 22 275 35V84C275 231 297 347 350 419L490 610Z'/>
 <glyph unicode='=' horiz-adv-x='799' vert-adv-y='799' glyph-name='equal' d='M708 331C722 331 741 331 741 352C741 374 719 374 704 374H94C79 374 57 374 57 352C57 331 77 331 90 331H708ZM704 127C719 127 741 127 741 149C741 170 722 170 708 170H90C77 170 57 170 57 149C57 127 79 127 94 127H704Z'/>
+</font>
+<font id='PJZRLC-CMR6' horiz-adv-x='0'>
+<font-face font-family='PJZRLC-CMR6' units-per-em='1000' ascent='750' descent='250'/>
+<glyph unicode='2' horiz-adv-x='611' vert-adv-y='611' glyph-name='two' d='M538 187H501C499 173 489 107 474 96C467 90 386 90 372 90H185L313 194C347 221 436 285 467 315C497 345 538 396 538 467C538 592 425 665 291 665C162 665 72 580 72 486C72 435 115 429 126 429C151 429 180 447 180 483C180 505 167 537 123 537C146 588 207 626 276 626C381 626 437 548 437 467C437 396 390 323 320 259L83 42C73 32 72 31 72 0H507L538 187Z'/>
 </font>
 <font id='FRASOG-CMMI9' horiz-adv-x='0'>
 <font-face font-family='FRASOG-CMMI9' units-per-em='1000' ascent='750' descent='250'/>
@@ -7417,10 +7470,6 @@ and
 <!-- This file was generated by dvisvgm 3.2.1 -->
 <svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='232.922pt' height='166.303pt' viewBox='0 0 232.922 166.303'>
 <defs>
-<font id='QUTMWC-CMSY9' horiz-adv-x='0'>
-<font-face font-family='QUTMWC-CMSY9' units-per-em='1000' ascent='777' descent='958'/>
-<glyph unicode='≡' horiz-adv-x='799' vert-adv-y='799' glyph-name='equivalence' d='M704 432C721 432 741 432 741 454C741 475 721 475 704 475H94C77 475 57 475 57 454C57 432 78 432 94 432H704ZM704 26C721 26 741 26 741 47C741 69 721 69 704 69H94C78 69 57 69 57 47C57 26 77 26 94 26H704ZM704 229C721 229 741 229 741 250C741 272 722 272 704 272H94C77 272 57 272 57 251C57 229 76 229 94 229H704Z'/>
-</font>
 <font id='HUTJTC-CMR8' horiz-adv-x='0'>
 <font-face font-family='HUTJTC-CMR8' units-per-em='1000' ascent='750' descent='250'/>
 <glyph unicode='(' horiz-adv-x='413' vert-adv-y='413' glyph-name='parenleft' d='M333-250C341-250 353-250 353-238C353-234 352-233 339-220C202-91 168 95 168 250C168 538 287 673 338 719C352 732 353 733 353 738S349 750 339 750C323 750 273 699 265 690C131 550 103 370 103 250C103 26 197-154 333-250Z'/>
@@ -7433,6 +7482,10 @@ and
 <glyph unicode='m' horiz-adv-x='885' vert-adv-y='885' glyph-name='m' d='M781 303C781 384 746 441 637 441C545 441 499 378 483 349C465 421 408 441 343 441C246 441 200 372 187 345H186V441L41 430V397C109 397 117 390 117 341V78C117 33 105 33 41 33V0C84 3 128 3 155 3C184 3 226 3 269 0V33C205 33 193 33 193 78V259C193 364 272 413 335 413C400 413 411 362 411 307V78C411 33 399 33 335 33V0C378 3 422 3 449 3C478 3 520 3 563 0V33C499 33 487 33 487 78V259C487 364 566 413 629 413C694 413 705 362 705 307V78C705 33 693 33 629 33V0C672 3 716 3 743 3C772 3 814 3 857 0V33C793 33 781 33 781 78V303Z'/>
 <glyph unicode='o' horiz-adv-x='531' vert-adv-y='531' glyph-name='o' d='M500 213C500 338 397 446 265 446S30 338 30 213S137-10 265-10C394-10 500 88 500 213ZM265 21C211 21 169 47 147 82C122 123 119 172 119 222C119 260 119 320 150 363C176 398 218 418 265 418C317 418 360 393 383 358C410 316 411 262 411 222C411 176 409 121 381 79C354 39 309 21 265 21Z'/>
 </font>
+<font id='QUTMWC-CMSY9' horiz-adv-x='0'>
+<font-face font-family='QUTMWC-CMSY9' units-per-em='1000' ascent='777' descent='958'/>
+<glyph unicode='≡' horiz-adv-x='799' vert-adv-y='799' glyph-name='equivalence' d='M704 432C721 432 741 432 741 454C741 475 721 475 704 475H94C77 475 57 475 57 454C57 432 78 432 94 432H704ZM704 26C721 26 741 26 741 47C741 69 721 69 704 69H94C78 69 57 69 57 47C57 26 77 26 94 26H704ZM704 229C721 229 741 229 741 250C741 272 722 272 704 272H94C77 272 57 272 57 251C57 229 76 229 94 229H704Z'/>
+</font>
 <font id='UCHNCW-CMSY8' horiz-adv-x='0'>
 <font-face font-family='UCHNCW-CMSY8' units-per-em='1000' ascent='779' descent='955'/>
 <glyph unicode='≡' horiz-adv-x='826' vert-adv-y='826' glyph-name='equivalence' d='M727 438C744 438 766 438 766 461S744 484 728 484H97C81 484 59 484 59 461S81 438 98 438H727ZM728 16C744 16 766 16 766 39S744 62 727 62H98C81 62 59 62 59 39S81 16 97 16H728ZM728 227C744 227 766 227 766 250S744 273 728 273H97C81 273 59 273 59 250S81 227 97 227H728Z'/>
@@ -7441,6 +7494,11 @@ and
 <font-face font-family='JZBBUY-LMRomanCaps10-Regular' units-per-em='1000' ascent='1100' descent='290'/>
 <glyph unicode='f' horiz-adv-x='536' vert-adv-y='536' d='M496 342L477 511H43V486C110 486 115 480 115 439V72C115 31 110 25 43 25V0L154 3L277 0V25C202 25 187 25 187 75V243H254C328 243 339 222 339 156H364V355H339C339 289 328 268 254 268H187V443C187 483 192 486 227 486H322C432 486 461 454 471 342H496Z'/>
 <glyph unicode='o' horiz-adv-x='636' vert-adv-y='636' d='M585 255C585 404 466 528 318 528C169 528 51 404 51 255C51 104 172-14 318-14S585 104 585 255ZM499 266C499 69 389 12 318 12S137 69 137 266C137 454 251 503 318 503C386 503 499 453 499 266Z'/>
+</font>
+<font id='SHYDFL-LMRoman9-Bold' horiz-adv-x='0'>
+<font-face font-family='SHYDFL-LMRoman9-Bold' units-per-em='1000' ascent='1136' descent='299'/>
+<glyph unicode='n' horiz-adv-x='657' vert-adv-y='657' d='M630 0V49H562V305C562 424 490 450 403 450C280 450 231 360 224 345H223V450L50 442V393C110 393 118 393 118 354V49H50V0L176 3L303 0V49H235V254C235 366 327 410 387 410C425 410 445 389 445 314V49H377V0L503 3L630 0Z'/>
+<glyph unicode='o' horiz-adv-x='592' vert-adv-y='592' d='M558 218C558 349 466 453 296 453C120 453 33 344 33 218C33 94 123-6 295-6C474-6 558 99 558 218ZM425 229C425 143 425 37 296 37C166 37 166 142 166 229C166 313 166 413 295 413C425 413 425 313 425 229Z'/>
 </font>
 <font id='TDULCH-CMMI8' horiz-adv-x='0'>
 <font-face font-family='TDULCH-CMMI8' units-per-em='1000' ascent='750' descent='250'/>
@@ -7451,11 +7509,6 @@ and
 <font-face font-family='XTJZVU-CMR6' units-per-em='1000' ascent='750' descent='250'/>
 <glyph unicode='1' horiz-adv-x='611' vert-adv-y='611' glyph-name='one' d='M359 635C359 665 355 665 325 665C259 601 157 601 121 601V562C147 562 213 562 273 590V85C273 52 273 39 170 39H127V0C182 4 260 4 316 4S450 4 505 0V39H462C359 39 359 52 359 85V635Z'/>
 <glyph unicode='2' horiz-adv-x='611' vert-adv-y='611' glyph-name='two' d='M538 187H501C499 173 489 107 474 96C467 90 386 90 372 90H185L313 194C347 221 436 285 467 315C497 345 538 396 538 467C538 592 425 665 291 665C162 665 72 580 72 486C72 435 115 429 126 429C151 429 180 447 180 483C180 505 167 537 123 537C146 588 207 626 276 626C381 626 437 548 437 467C437 396 390 323 320 259L83 42C73 32 72 31 72 0H507L538 187Z'/>
-</font>
-<font id='SHYDFL-LMRoman9-Bold' horiz-adv-x='0'>
-<font-face font-family='SHYDFL-LMRoman9-Bold' units-per-em='1000' ascent='1136' descent='299'/>
-<glyph unicode='n' horiz-adv-x='657' vert-adv-y='657' d='M630 0V49H562V305C562 424 490 450 403 450C280 450 231 360 224 345H223V450L50 442V393C110 393 118 393 118 354V49H50V0L176 3L303 0V49H235V254C235 366 327 410 387 410C425 410 445 389 445 314V49H377V0L503 3L630 0Z'/>
-<glyph unicode='o' horiz-adv-x='592' vert-adv-y='592' d='M558 218C558 349 466 453 296 453C120 453 33 344 33 218C33 94 123-6 295-6C474-6 558 99 558 218ZM425 229C425 143 425 37 296 37C166 37 166 142 166 229C166 313 166 413 295 413C425 413 425 313 425 229Z'/>
 </font>
 <font id='SYEPYK-CMR9' horiz-adv-x='0'>
 <font-face font-family='SYEPYK-CMR9' units-per-em='1000' ascent='750' descent='250'/>
