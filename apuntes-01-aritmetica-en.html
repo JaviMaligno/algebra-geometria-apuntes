@@ -5361,6 +5361,78 @@ Example 1.1.8, solving for each remainder:
 <em>Check:</em>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mo>⋅</mo><mn>252</mn><mo>−</mo><mn>5</mn><mo>⋅</mo><mn>198</mn><mo>=</mo><mn>1008</mn><mo>−</mo><mn>990</mn><mo>=</mo><mn>18</mn></mrow><annotation encoding="application/x-tex">4 \cdot 252 - 5 \cdot 198 = 1008 - 990 = 18</annotation></semantics></math>
 ✓.</p>
+<p><strong>Remark 1.1.11 (the coefficients are not unique — and which
+ones are <em>all</em> of them).</strong> Method 1.1.10 hands you
+<strong>one</strong> pair
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(x,y)</annotation></semantics></math>,
+and there are <strong>infinitely many</strong>. Fixing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>=</mo><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">d = \mathrm{gcd}(a,b)</annotation></semantics></math>
+and a pair
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><msub><mi>y</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(x_0, y_0)</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><msub><mi>x</mi><mn>0</mn></msub><mo>+</mo><mi>b</mi><msub><mi>y</mi><mn>0</mn></msub><mo>=</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">a x_0 + b y_0 = d</annotation></semantics></math>,
+the complete family is
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><msub><mi>x</mi><mn>0</mn></msub><mo>+</mo><mi>k</mi><mspace width="0.167em"></mspace><mfrac displaystyle="false"><mi>b</mi><mi>d</mi></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mi>y</mi><mo>=</mo><msub><mi>y</mi><mn>0</mn></msub><mo>−</mo><mi>k</mi><mspace width="0.167em"></mspace><mfrac displaystyle="false"><mi>a</mi><mi>d</mi></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mi>k</mi><mo>∈</mo><mi>ℤ</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">x = x_0 + k\,\tfrac{b}{d}, \qquad y = y_0 - k\,\tfrac{a}{d}, \qquad k \in \mathbb{Z}.</annotation></semantics></math></p>
+<p><em>They all work</em> (a direct computation — the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+terms cancel):
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>+</mo><mi>k</mi><mfrac displaystyle="false"><mi>b</mi><mi>d</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>b</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>y</mi><mn>0</mn></msub><mo>−</mo><mi>k</mi><mfrac displaystyle="false"><mi>a</mi><mi>d</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>a</mi><msub><mi>x</mi><mn>0</mn></msub><mo>+</mo><mi>b</mi><msub><mi>y</mi><mn>0</mn></msub><mo>+</mo><mi>k</mi><mrow><mo stretchy="true" form="prefix">(</mo><mfrac displaystyle="false"><mrow><mi>a</mi><mi>b</mi></mrow><mi>d</mi></mfrac><mo>−</mo><mfrac displaystyle="false"><mrow><mi>a</mi><mi>b</mi></mrow><mi>d</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>d</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">a\left(x_0 + k\tfrac{b}{d}\right) + b\left(y_0 - k\tfrac{a}{d}\right) = a x_0 + b y_0 + k\left(\tfrac{ab}{d} - \tfrac{ab}{d}\right) = d.</annotation></semantics></math></p>
+<p><em>And there are no others.</em> If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi><mi>y</mi><mo>=</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">ax + by = d</annotation></semantics></math>,
+subtracting from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><msub><mi>x</mi><mn>0</mn></msub><mo>+</mo><mi>b</mi><msub><mi>y</mi><mn>0</mn></msub><mo>=</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">a x_0 + b y_0 = d</annotation></semantics></math>
+leaves
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>−</mo><mi>b</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>y</mi><mo>−</mo><msub><mi>y</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">a(x - x_0) = -b(y - y_0)</annotation></semantics></math>;
+dividing by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>,
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac displaystyle="false"><mi>a</mi><mi>d</mi></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>−</mo><mfrac displaystyle="false"><mi>b</mi><mi>d</mi></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mi>y</mi><mo>−</mo><msub><mi>y</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">\tfrac{a}{d}(x - x_0) = -\tfrac{b}{d}(y - y_0).</annotation></semantics></math>
+So
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mfrac displaystyle="false"><mi>b</mi><mi>d</mi></mfrac><annotation encoding="application/x-tex">\tfrac{b}{d}</annotation></semantics></math>
+divides
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac displaystyle="false"><mi>a</mi><mi>d</mi></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\tfrac{a}{d}(x-x_0)</annotation></semantics></math>,
+and <strong>it is coprime to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mfrac displaystyle="false"><mi>a</mi><mi>d</mi></mfrac><annotation encoding="application/x-tex">\tfrac{a}{d}</annotation></semantics></math></strong>
+(exercise 7), whence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac displaystyle="false"><mi>b</mi><mi>d</mi></mfrac><mo>∣</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\tfrac{b}{d} \mid (x - x_0)</annotation></semantics></math>.
+<em>(This step is the generalised Euclid lemma, and it follows from
+Bézout itself: from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mfrac displaystyle="false"><mi>b</mi><mi>d</mi></mfrac><mo>+</mo><mi>v</mi><mfrac displaystyle="false"><mi>a</mi><mi>d</mi></mfrac><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">u\tfrac{b}{d} + v\tfrac{a}{d} = 1</annotation></semantics></math>,
+multiplying by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>−</mo><msub><mi>x</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">x - x_0</annotation></semantics></math>,
+both summands turn out to be multiples of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mfrac displaystyle="false"><mi>b</mi><mi>d</mi></mfrac><annotation encoding="application/x-tex">\tfrac{b}{d}</annotation></semantics></math>.)</em>
+Hence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>−</mo><msub><mi>x</mi><mn>0</mn></msub><mo>=</mo><mi>k</mi><mfrac displaystyle="false"><mi>b</mi><mi>d</mi></mfrac></mrow><annotation encoding="application/x-tex">x - x_0 = k\tfrac{b}{d}</annotation></semantics></math>
+for some
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+and substituting,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>−</mo><msub><mi>y</mi><mn>0</mn></msub><mo>=</mo><mo>−</mo><mi>k</mi><mfrac displaystyle="false"><mi>a</mi><mi>d</mi></mfrac></mrow><annotation encoding="application/x-tex">y - y_0 = -k\tfrac{a}{d}</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
+<p><strong>In Example 1.1.8</strong>
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mn>252</mn></mrow><annotation encoding="application/x-tex">a = 252</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mn>198</mn></mrow><annotation encoding="application/x-tex">b = 198</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>=</mo><mn>18</mn></mrow><annotation encoding="application/x-tex">d = 18</annotation></semantics></math>):
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac displaystyle="false"><mi>b</mi><mi>d</mi></mfrac><mo>=</mo><mn>11</mn></mrow><annotation encoding="application/x-tex">\tfrac{b}{d} = 11</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac displaystyle="false"><mi>a</mi><mi>d</mi></mfrac><mo>=</mo><mn>14</mn></mrow><annotation encoding="application/x-tex">\tfrac{a}{d} = 14</annotation></semantics></math>,
+so the family is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>4</mn><mo>+</mo><mn>11</mn><mi>k</mi><mo>,</mo><mspace width="0.278em"></mspace><mo>−</mo><mn>5</mn><mo>−</mo><mn>14</mn><mi>k</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(4 + 11k,\; -5 - 14k)</annotation></semantics></math>.
+With
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k = 1</annotation></semantics></math>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><mn>15</mn><mo>⋅</mo><mn>252</mn><mo>−</mo><mn>19</mn><mo>⋅</mo><mn>198</mn><mo>=</mo><mn>3780</mn><mo>−</mo><mn>3762</mn><mo>=</mo><mn>18</mn></mrow><annotation encoding="application/x-tex">\;15 \cdot 252 - 19 \cdot 198 = 3780 - 3762 = 18</annotation></semantics></math>
+✓.</p>
+<blockquote>
+<p>Non-uniqueness turns out to be harmless in every later use: in
+Session 3 <strong>one</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>x</mi><mo>≡</mo><mn>1</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">ax \equiv 1 \pmod n</annotation></semantics></math>
+is enough, and every member of the family gives <strong>the
+same</strong> inverse mod
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+— precisely because they differ by multiples of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mfrac displaystyle="false"><mi>b</mi><mi>d</mi></mfrac><annotation encoding="application/x-tex">\tfrac{b}{d}</annotation></semantics></math>.</p>
+</blockquote>
 <figure class='figura' id='fig_m1-s1-bajar-remontar-en'><?xml version='1.0' encoding='UTF-8'?>
 <!-- This file was generated by dvisvgm 3.2.1 -->
 <svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='479.014pt' height='248.066pt' viewBox='0 0 479.014 248.066'>
