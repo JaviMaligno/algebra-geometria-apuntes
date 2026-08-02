@@ -297,6 +297,20 @@
     /* Bloques de código con highlighting: pandoc los envuelve en div.sourceCode y su
        CSS pone margin:0 al pre (gana por especificidad) -> centramos el div envolvente. */
     div.sourceCode { max-width: 42rem; margin: 1em auto; }
+    /* Citas a resultados numerados: enlazan a su enunciado y abren en otra pestaña,
+       para no perder el sitio en el que ibas leyendo. Discretas: el subrayado
+       punteado se ve al pasar por encima, no compite con el texto. */
+    a.cita { color: inherit; text-decoration: underline; text-decoration-style: dotted;
+             text-decoration-color: #9db4d0; text-underline-offset: 0.15em; }
+    a.cita:hover { color: #1a5fb4; text-decoration-style: solid; }
+    html.dark a.cita { text-decoration-color: #5a7290; }
+    html.dark a.cita:hover { color: #85b4ea; }
+    /* El enunciado al que apuntan: al aterrizar, un destello que lo señala. */
+    span.res-def:target, span.res-def:target strong { background: #fff3c4; }
+    html.dark span.res-def:target, html.dark span.res-def:target strong { background: #4a4020; }
+    /* La barra superior es sticky (z-index 50): sin este margen, al saltar a un
+       enunciado el enunciado queda justo debajo de ella y no se ve. */
+    span.res-def { scroll-margin-top: 5rem; }
     /* Barrita "▶ ejecutar · ✎ editar · playground" bajo cada bloque Python (JS) */
     p.ejecutar-en { max-width: 42rem; margin: -0.5em auto 1em; text-align: right; font-size: 0.8rem; }
     p.ejecutar-en a { color: #888; text-decoration: none; }
@@ -4866,7 +4880,8 @@ worked example. Exercises and a Going further section at the end.</p>
 </blockquote>
 <hr />
 <h2 id="divisibility">1.1 Divisibility</h2>
-<p><strong>Definition 1.1.1.</strong> For
+<p><span id="res-1-1-1" class="res-def"><strong>Definition
+1.1.1.</strong></span> For
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>,</mo><mi>b</mi><mo>∈</mo><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">a, b \in \mathbb{Z}</annotation></semantics></math>:
 <strong><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
 divides
@@ -4877,7 +4892,8 @@ if there exists
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>∈</mo><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">c \in \mathbb{Z}</annotation></semantics></math>
 with
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mi>a</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">b = a c</annotation></semantics></math>.</p>
-<p><strong>Proposition 1.1.2.</strong> For arbitrary integers: 1.
+<p><span id="res-1-1-2" class="res-def"><strong>Proposition
+1.1.2.</strong></span> For arbitrary integers: 1.
 <em>(Transitivity)</em>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∣</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a \mid b</annotation></semantics></math>
 and
@@ -4922,7 +4938,8 @@ and
 off it.</p>
 </blockquote>
 <h2 id="euclidean-division">1.2 Euclidean division</h2>
-<p><strong>Theorem 1.1.3 (division with remainder).</strong> For
+<p><span id="res-1-1-3" class="res-def"><strong>Theorem 1.1.3 (division
+with remainder).</strong></span> For
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∈</mo><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">a \in \mathbb{Z}</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b &gt; 0</annotation></semantics></math>
@@ -5120,8 +5137,9 @@ The marks continue <strong>in both directions</strong>: when
 it falls to the left of the origin, and the mark to its left is the one
 giving the quotient — this is where the convention of Remark 1.1.4 comes
 from.</figcaption></figure>
-<p><strong>Remark 1.1.4 (the convention matters — and it <em>is</em> a
-convention).</strong> For
+<p><span id="res-1-1-4" class="res-def"><strong>Remark 1.1.4 (the
+convention matters — and it <em>is</em> a convention).</strong></span>
+For
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mo>−</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">a = -7</annotation></semantics></math>,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">b = 3</annotation></semantics></math>:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><mo>−</mo><mn>7</mn><mo>=</mo><mn>3</mn><mo>⋅</mo><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\;-7 = 3\cdot(-3) + 2</annotation></semantics></math>
@@ -5227,13 +5245,28 @@ value.</p>
 </blockquote>
 <h2 id="greatest-common-divisor-and-the-euclidean-algorithm">1.3
 Greatest common divisor and the Euclidean algorithm</h2>
-<p><strong>Definition 1.1.5.</strong> For
+<p><span id="res-1-1-5" class="res-def"><strong>Definition
+1.1.5.</strong></span> For
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a, b</annotation></semantics></math>
 not both zero,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathrm{gcd}(a,b)</annotation></semantics></math>
 is the largest of the common divisors. (It exists: the common divisors
 are bounded by 1.1.2.3 and the set is nonempty — it contains
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>.)</p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>.)
+When
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\mathrm{gcd}(a,b) = 1</annotation></semantics></math>
+we say that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+are <strong>coprime</strong> (or <em>relatively prime</em>): their only
+positive common divisor is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>,
+that is, they share no factor greater than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>.
+This is the vocabulary in which Euclid’s lemma (Session 2), the
+invertibility criterion (Session 3) and the Chinese remainder theorem
+(Session 4) are stated.</p>
 <blockquote>
 <p><strong>On “the largest” and the sign.</strong> Divisors come in
 pairs
@@ -5262,7 +5295,8 @@ so there is no greatest common divisor.) <em>(In
 factor, and it is normalized by making it monic: the same “up to a unit”
 issue.)</em></p>
 </blockquote>
-<p><strong>Lemma 1.1.6 (why the Euclidean algorithm works).</strong> If
+<p><span id="res-1-1-6" class="res-def"><strong>Lemma 1.1.6 (why the
+Euclidean algorithm works).</strong></span> If
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mi>b</mi><mi>q</mi><mo>+</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">a = bq + r</annotation></semantics></math>,
 then the <strong>common divisors of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(a,b)</annotation></semantics></math>
@@ -5281,7 +5315,8 @@ is a combination of
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>∣</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">d \mid r</annotation></semantics></math>
-(Prop. 1.1.2.2) — a common divisor of
+(<a href="#res-1-1-2" class="cita" target="_blank" rel="noopener">Prop.
+1.1.2.2</a>) — a common divisor of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>b</mi><mo>,</mo><mi>r</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(b, r)</annotation></semantics></math>.
 Conversely, if
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>∣</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">d \mid b</annotation></semantics></math>
@@ -5297,7 +5332,8 @@ so
 The two pairs have <em>the same set</em> of common divisors; in
 particular, the same maximum.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
-<p><strong>Algorithm 1.1.7 (Euclid).</strong> Divide
+<p><span id="res-1-1-7" class="res-def"><strong>Algorithm 1.1.7
+(Euclid).</strong></span> Divide
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
 by
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>,
@@ -5306,9 +5342,10 @@ replace
 repeat until the remainder is
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>;
 the gcd is <strong>the last nonzero remainder</strong>.</p>
-<p><em>Justification.</em> Each step preserves the gcd (Lemma 1.1.6).
-The remainders form a strictly decreasing sequence of nonnegative
-integers
+<p><em>Justification.</em> Each step preserves the gcd (<a
+href="#res-1-1-6" class="cita" target="_blank" rel="noopener">Lemma
+1.1.6</a>). The remainders form a strictly decreasing sequence of
+nonnegative integers
 (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>r</mi><mo>&lt;</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">0 \le r &lt; b</annotation></semantics></math>),
 which by well-ordering <strong>cannot be infinite</strong>: the
 algorithm terminates. On reaching
@@ -5316,13 +5353,15 @@ algorithm terminates. On reaching
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>d</mi><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">\mathrm{gcd}(d, 0) = d</annotation></semantics></math>.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
 <div class="ejemplo" label="Example 1.1.8.">
-<p><strong>Example 1.1.8.</strong>
+<p><span id="res-1-1-8" class="res-def"><strong>Example
+1.1.8.</strong></span>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>252</mn><mo>,</mo><mn>198</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathrm{gcd}(252, 198)</annotation></semantics></math>:
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>252</mn><mo>=</mo><mn>1</mn><mo>⋅</mo><mn>198</mn><mo>+</mo><mn>54</mn><mspace width="2.0em"></mspace><mn>198</mn><mo>=</mo><mn>3</mn><mo>⋅</mo><mn>54</mn><mo>+</mo><mn>36</mn><mspace width="2.0em"></mspace><mn>54</mn><mo>=</mo><mn>1</mn><mo>⋅</mo><mn>36</mn><mo>+</mo><mn>18</mn><mspace width="2.0em"></mspace><mn>36</mn><mo>=</mo><mn>2</mn><mo>⋅</mo><mn>18</mn><mo>+</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">252 = 1\cdot 198 + 54 \qquad 198 = 3 \cdot 54 + 36 \qquad 54 = 1 \cdot 36 + 18 \qquad 36 = 2 \cdot 18 + 0</annotation></semantics></math>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>252</mn><mo>,</mo><mn>198</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>18</mn></mrow><annotation encoding="application/x-tex">\mathrm{gcd}(252, 198) = 18</annotation></semantics></math>.</p>
 </div>
 <h2 id="bézouts-identity">1.4 Bézout’s identity</h2>
-<p><strong>Theorem 1.1.9 (Bézout).</strong> For
+<p><span id="res-1-1-9" class="res-def"><strong>Theorem 1.1.9
+(Bézout).</strong></span> For
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a, b</annotation></semantics></math>
 <strong>not both zero</strong>, there exist
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>,</mo><mi>y</mi><mo>∈</mo><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">x, y \in \mathbb{Z}</annotation></semantics></math>
@@ -5382,7 +5421,8 @@ and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
 divides every combination
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">ax + by</annotation></semantics></math>
-(Prop. 1.1.2.2), in particular
+(<a href="#res-1-1-2" class="cita" target="_blank" rel="noopener">Prop.
+1.1.2.2</a>), in particular
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>;
 since
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">d &gt; 0</annotation></semantics></math>,
@@ -5395,18 +5435,21 @@ Thus
 is the largest of the common divisors.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></li>
 </ul>
-<p><strong>Method 1.1.10 (extended Euclidean algorithm).</strong> The
-coefficients
+<p><span id="res-1-1-10" class="res-def"><strong>Method 1.1.10 (extended
+Euclidean algorithm).</strong></span> The coefficients
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x, y</annotation></semantics></math>
-are <strong>constructed</strong> by working back up the divisions of
-Example 1.1.8, solving for each remainder:
+are <strong>constructed</strong> by working back up the divisions of <a
+href="#res-1-1-8" class="cita" target="_blank" rel="noopener">Example
+1.1.8</a>, solving for each remainder:
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>18</mn><mo>=</mo><mn>54</mn><mo>−</mo><mn>36</mn><mo>=</mo><mn>54</mn><mo>−</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>198</mn><mo>−</mo><mn>3</mn><mo>⋅</mo><mn>54</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>4</mn><mo>⋅</mo><mn>54</mn><mo>−</mo><mn>198</mn></mrow><annotation encoding="application/x-tex">18 = 54 - 36 = 54 - (198 - 3\cdot 54) = 4 \cdot 54 - 198</annotation></semantics></math>
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>4</mn><mrow><mo stretchy="true" form="prefix">(</mo><mn>252</mn><mo>−</mo><mn>198</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mn>198</mn><mo>=</mo><mrow><mn>𝟒</mn><mo mathvariant="bold">⋅</mo><mn>𝟐𝟓𝟐</mn><mo mathvariant="bold">−</mo><mn>𝟓</mn><mo mathvariant="bold">⋅</mo><mn>𝟏𝟗𝟖</mn></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">= 4(252 - 198) - 198 = \mathbf{4 \cdot 252 - 5 \cdot 198}.</annotation></semantics></math>
 <em>Check:</em>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mo>⋅</mo><mn>252</mn><mo>−</mo><mn>5</mn><mo>⋅</mo><mn>198</mn><mo>=</mo><mn>1008</mn><mo>−</mo><mn>990</mn><mo>=</mo><mn>18</mn></mrow><annotation encoding="application/x-tex">4 \cdot 252 - 5 \cdot 198 = 1008 - 990 = 18</annotation></semantics></math>
 ✓.</p>
-<p><strong>Remark 1.1.11 (the coefficients are not unique — and which
-ones are <em>all</em> of them).</strong> Method 1.1.10 hands you
+<p><span id="res-1-1-11" class="res-def"><strong>Remark 1.1.11 (the
+coefficients are not unique — and which ones are <em>all</em> of
+them).</strong></span> <a href="#res-1-1-10" class="cita"
+target="_blank" rel="noopener">Method 1.1.10</a> hands you
 <strong>one</strong> pair
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(x,y)</annotation></semantics></math>,
 and there are <strong>infinitely many</strong>. Fixing
@@ -5452,7 +5495,8 @@ for some
 and substituting,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>−</mo><msub><mi>y</mi><mn>0</mn></msub><mo>=</mo><mo>−</mo><mi>k</mi><mfrac displaystyle="false"><mi>a</mi><mi>d</mi></mfrac></mrow><annotation encoding="application/x-tex">y - y_0 = -k\tfrac{a}{d}</annotation></semantics></math>.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
-<p><strong>In Example 1.1.8</strong>
+<p><strong>In <a href="#res-1-1-8" class="cita" target="_blank"
+rel="noopener">Example 1.1.8</a></strong>
 (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mn>252</mn></mrow><annotation encoding="application/x-tex">a = 252</annotation></semantics></math>,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mn>198</mn></mrow><annotation encoding="application/x-tex">b = 198</annotation></semantics></math>,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>=</mo><mn>18</mn></mrow><annotation encoding="application/x-tex">d = 18</annotation></semantics></math>):
@@ -5798,10 +5842,12 @@ and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\mathrm{gcd}(a, 1) = 1</annotation></semantics></math>.</li>
 <li>Prove that
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>−</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathrm{gcd}(a, b) = \mathrm{gcd}(a, b - a)</annotation></semantics></math>
-<strong>without</strong> using Euclidean division (only Prop. 1.1.2.2),
-and explain why this already “almost” justifies the Euclidean
-algorithm.</li>
-<li>Give the uniqueness proof of Theorem 1.1.3 <strong>by
+<strong>without</strong> using Euclidean division (only <a
+href="#res-1-1-2" class="cita" target="_blank" rel="noopener">Prop.
+1.1.2.2</a>), and explain why this already “almost” justifies the
+Euclidean algorithm.</li>
+<li>Give the uniqueness proof of <a href="#res-1-1-3" class="cita"
+target="_blank" rel="noopener">Theorem 1.1.3</a> <strong>by
 contradiction</strong>, and compare it with the direct one in these
 notes (which do you find clearer? — a connection with M0).</li>
 <li>Prove: if
@@ -5849,8 +5895,9 @@ cryptography of Session 4 is built. See Childs, <em>A Concrete
 Introduction to Higher Algebra</em>, ch. 3–4.</p>
 <p><strong>Going further (why the gcd is not computed by brute
 force).</strong> The direct route would be to list the divisors of each
-number, cross the two lists and keep the largest. With Example 1.1.8 it
-works: the divisors of
+number, cross the two lists and keep the largest. With <a
+href="#res-1-1-8" class="cita" target="_blank" rel="noopener">Example
+1.1.8</a> it works: the divisors of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>252</mn><annotation encoding="application/x-tex">252</annotation></semantics></math>
 are
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>6</mn><mo>,</mo><mn>7</mn><mo>,</mo><mn>9</mn><mo>,</mo><mn>12</mn><mo>,</mo><mn>14</mn><mo>,</mo><mn>18</mn><mo>,</mo><mn>21</mn><mo>,</mo><mn>28</mn><mo>,</mo><mn>36</mn><mo>,</mo><mn>42</mn><mo>,</mo><mn>63</mn><mo>,</mo><mn>84</mn><mo>,</mo><mn>126</mn><mo>,</mo><mn>252</mn></mrow><annotation encoding="application/x-tex">1, 2, 3, 4, 6, 7, 9, 12, 14, 18, 21, 28, 36, 42, 63, 84, 126, 252</annotation></semantics></math>;
@@ -5906,7 +5953,8 @@ and a Going further section at the end.</p>
 </blockquote>
 <hr />
 <h2 id="prime-numbers">2.1 Prime numbers</h2>
-<p><strong>Definition 1.2.1.</strong> An integer
+<p><span id="res-1-2-1" class="res-def"><strong>Definition
+1.2.1.</strong></span> An integer
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p &gt; 1</annotation></semantics></math>
 is <strong>prime</strong> if its only positive divisors are
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>
@@ -5917,9 +5965,10 @@ An integer
 that is not prime is <strong>composite</strong>. <em>(The number
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>
 is neither one thing nor the other — the reason for excluding it becomes
-visible in Theorem 1.2.6.)</em></p>
-<p><strong>Lemma 1.2.2 (the least divisor is prime).</strong> Every
-integer
+visible in <a href="#res-1-2-6" class="cita" target="_blank"
+rel="noopener">Theorem 1.2.6</a>.)</em></p>
+<p><span id="res-1-2-2" class="res-def"><strong>Lemma 1.2.2 (the least
+divisor is prime).</strong></span> Every integer
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n &gt; 1</annotation></semantics></math>
 has some prime divisor; in fact, its <strong>least</strong> divisor
 greater than
@@ -5943,7 +5992,8 @@ that
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
 would divide
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
-(transitivity, Prop. 1.1.2.1) and would be a divisor of
+(transitivity, <a href="#res-1-1-2" class="cita" target="_blank"
+rel="noopener">Prop. 1.1.2.1</a>) and would be a divisor of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
 greater than
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>
@@ -5953,8 +6003,9 @@ and smaller than
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
 is prime.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
-<p><strong>Theorem 1.2.3 (Euclid: infinitude of the primes).</strong>
-There are infinitely many prime numbers.</p>
+<p><span id="res-1-2-3" class="res-def"><strong>Theorem 1.2.3 (Euclid:
+infinitude of the primes).</strong></span> There are infinitely many
+prime numbers.</p>
 <p><em>Proof (by contradiction — the most famous in mathematics).</em>
 Suppose there were only finitely many:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub><mo>,</mo><msub><mi>p</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>p</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">p_1, p_2, \dots, p_k</annotation></semantics></math>.
@@ -5964,7 +6015,8 @@ Since
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">N &gt; 1</annotation></semantics></math>,
 it has a prime divisor
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
-(Lemma 1.2.2) — which must be one from the list. But each
+(<a href="#res-1-2-2" class="cita" target="_blank" rel="noopener">Lemma
+1.2.2</a>) — which must be one from the list. But each
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>i</mi></msub><annotation encoding="application/x-tex">p_i</annotation></semantics></math>
 leaves <strong>remainder
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math></strong>
@@ -5972,15 +6024,18 @@ when dividing
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
 (it divides the product, not the
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>;
-Prop. 1.1.2.2 with signs). Contradiction:
+<a href="#res-1-1-2" class="cita" target="_blank" rel="noopener">Prop.
+1.1.2.2</a> with signs). Contradiction:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
 is a prime outside the list, which was supposed to be complete.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
 <blockquote>
 <p><strong>M0 connection:</strong> this is the canonical example of
 proof by contradiction (and a good place to recall, in passing, the
-remark on the excluded middle). Note also the role of Lemma 1.2.2: the
-“popular-science” version of this proof usually skips it.</p>
+remark on the excluded middle). Note also the role of <a
+href="#res-1-2-2" class="cita" target="_blank" rel="noopener">Lemma
+1.2.2</a>: the “popular-science” version of this proof usually skips
+it.</p>
 </blockquote>
 <blockquote>
 <p><strong>The proof is constructive (no excluded middle?).</strong>
@@ -5989,7 +6044,8 @@ Although presented “by contradiction”, at bottom it
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>p</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">p_1,\dots,p_k</annotation></semantics></math>,
 the number
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><msub><mi>p</mi><mn>1</mn></msub><mi>⋯</mi><msub><mi>p</mi><mi>k</mi></msub><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">N = p_1\cdots p_k + 1</annotation></semantics></math>
-has (Lemma 1.2.2) a prime divisor, and that prime is
+has (<a href="#res-1-2-2" class="cita" target="_blank"
+rel="noopener">Lemma 1.2.2</a>) a prime divisor, and that prime is
 <strong>not</strong> in the list (each
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>i</mi></msub><annotation encoding="application/x-tex">p_i</annotation></semantics></math>
 leaves remainder
@@ -6001,13 +6057,15 @@ the constructivism of M0.)</em></p>
 </blockquote>
 <h2 id="euclids-lemma-where-bézout-pays-off">2.2 Euclid’s lemma — where
 Bézout pays off</h2>
-<p><strong>Lemma 1.2.4 (general version).</strong> If
+<p><span id="res-1-2-4" class="res-def"><strong>Lemma 1.2.4 (general
+version).</strong></span> If
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>c</mi><mo>,</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\mathrm{gcd}(c, a) = 1</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>∣</mo><mi>a</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">c \mid ab</annotation></semantics></math>,
 then
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>∣</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">c \mid b</annotation></semantics></math>.</p>
-<p><em>Proof.</em> Bézout (Theorem 1.1.9):
+<p><em>Proof.</em> Bézout (<a href="#res-1-1-9" class="cita"
+target="_blank" rel="noopener">Theorem 1.1.9</a>):
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>=</mo><mi>c</mi><mi>x</mi><mo>+</mo><mi>a</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">1 = cx + ay</annotation></semantics></math>.
 Multiplying by
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>:
@@ -6015,10 +6073,12 @@ Multiplying by
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>
 divides the first summand (obvious) and the second (because
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>∣</mo><mi>a</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">c \mid ab</annotation></semantics></math>);
-hence it divides the sum (Prop. 1.1.2.2):
+hence it divides the sum (<a href="#res-1-1-2" class="cita"
+target="_blank" rel="noopener">Prop. 1.1.2.2</a>):
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>∣</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">c \mid b</annotation></semantics></math>.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
-<p><strong>Corollary 1.2.5 (Euclid’s lemma).</strong> If
+<p><span id="res-1-2-5" class="res-def"><strong>Corollary 1.2.5
+(Euclid’s lemma).</strong></span> If
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
 is prime and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>∣</mo><mi>a</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">p \mid ab</annotation></semantics></math>,
@@ -6040,7 +6100,8 @@ and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
 does not divide
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>),
-and Lemma 1.2.4 gives
+and <a href="#res-1-2-4" class="cita" target="_blank"
+rel="noopener">Lemma 1.2.4</a> gives
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>∣</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">p \mid b</annotation></semantics></math>.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
 <blockquote>
@@ -6245,13 +6306,14 @@ its two primes can split between the factors.</figcaption></figure>
 <blockquote>
 <p><strong>Heuristic, not proof.</strong> It is a good mental image, but
 <strong>circular as a proof</strong> (the uniqueness of factorization is
-proved <em>with</em> this lemma): the rigorous argument is Bézout’s
-(Lemma 1.2.4).</p>
+proved <em>with</em> this lemma): the rigorous argument is Bézout’s (<a
+href="#res-1-2-4" class="cita" target="_blank" rel="noopener">Lemma
+1.2.4</a>).</p>
 </blockquote>
 <h2 id="the-fundamental-theorem-of-arithmetic">2.3 The fundamental
 theorem of arithmetic</h2>
-<p><strong>Theorem 1.2.6 (fundamental theorem of arithmetic).</strong>
-Every integer
+<p><span id="res-1-2-6" class="res-def"><strong>Theorem 1.2.6
+(fundamental theorem of arithmetic).</strong></span> Every integer
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n &gt; 1</annotation></semantics></math>
 can be written as a product of primes,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><msub><mi>p</mi><mn>1</mn></msub><msub><mi>p</mi><mn>2</mn></msub><mi>⋯</mi><msub><mi>p</mi><mi>r</mi></msub></mrow><annotation encoding="application/x-tex">n = p_1 p_2 \cdots p_r</annotation></semantics></math>,
@@ -6269,10 +6331,27 @@ and
 If
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
 is prime, done. If not,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+has a divisor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>&lt;</mo><mi>a</mi><mo>&lt;</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">1 &lt; a &lt; n</annotation></semantics></math>
+(<a href="#res-1-2-1" class="cita" target="_blank"
+rel="noopener">Definition 1.2.1</a>), and then
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mi>a</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">n = ab</annotation></semantics></math>
 with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>&lt;</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>&lt;</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">1 &lt; a, b &lt; n</annotation></semantics></math>;
-by the induction hypothesis,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mi>n</mi><mi>/</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">b = n/a</annotation></semantics></math>,
+which also satisfies
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>&lt;</mo><mi>b</mi><mo>&lt;</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">1 &lt; b &lt; n</annotation></semantics></math>:
+if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">b = 1</annotation></semantics></math>
+we would get
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">a = n</annotation></semantics></math>,
+and if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">b = n</annotation></semantics></math>
+we would get
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">a = 1</annotation></semantics></math>
+— both cases excluded. By the induction hypothesis,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
@@ -6316,14 +6395,17 @@ and the factors coincide up to order. (Base case
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><msub><mi>p</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">n = p_1</annotation></semantics></math>
 prime admits no factorizations other than itself.)
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
-<p><strong>Remark 1.2.7 (why 1 is not prime).</strong> If
+<p><span id="res-1-2-7" class="res-def"><strong>Remark 1.2.7 (why 1 is
+not prime).</strong></span> If
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>
 counted as a prime, uniqueness would die on the spot:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn><mo>=</mo><mn>2</mn><mo>⋅</mo><mn>3</mn><mo>=</mo><mn>1</mn><mo>⋅</mo><mn>2</mn><mo>⋅</mo><mn>3</mn><mo>=</mo><mn>1</mn><mo>⋅</mo><mn>1</mn><mo>⋅</mo><mn>2</mn><mo>⋅</mo><mn>3</mn><mo>=</mo><mi>⋯</mi></mrow><annotation encoding="application/x-tex">6 = 2 \cdot 3 = 1 \cdot 2 \cdot 3 = 1 \cdot 1 \cdot 2 \cdot 3 = \cdots</annotation></semantics></math>
-The exclusion is not a whim of nomenclature: it is the condition for
-Theorem 1.2.6 to be true as stated.</p>
-<p><strong>Remark 1.2.7b (negative integers and “units”).</strong>
-Theorem 1.2.6 is stated for
+The exclusion is not a whim of nomenclature: it is the condition for <a
+href="#res-1-2-6" class="cita" target="_blank" rel="noopener">Theorem
+1.2.6</a> to be true as stated.</p>
+<p><span id="res-1-2-7b" class="res-def"><strong>Remark 1.2.7b (negative
+integers and “units”).</strong></span> <a href="#res-1-2-6" class="cita"
+target="_blank" rel="noopener">Theorem 1.2.6</a> is stated for
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n &gt; 1</annotation></semantics></math>
 with positive primes, and then “up to order” is exact. If negative
 integers are allowed, uniqueness becomes “up to order <strong>and a
@@ -6335,7 +6417,8 @@ are the <strong>units</strong> of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℤ</mi><annotation encoding="application/x-tex">\mathbb{Z}</annotation></semantics></math>
 (its invertible elements), and the general statement of unique
 factorization — in any unique factorization domain — is “up to order and
-units”. Note, in passing, that under Definition 1.2.1
+units”. Note, in passing, that under <a href="#res-1-2-1" class="cita"
+target="_blank" rel="noopener">Definition 1.2.1</a>
 <strong>prime</strong> and <strong>composite</strong> only classify the
 integers
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">&gt; 1</annotation></semantics></math>:
@@ -6363,8 +6446,8 @@ by piece and with the same proofs, in
 will be this one, in disguise.</p>
 </blockquote>
 <h2 id="practical-consequences">2.4 Practical consequences</h2>
-<p><strong>Proposition 1.2.8 (gcd and lcm via exponents).</strong> For
-nonzero
+<p><span id="res-1-2-8" class="res-def"><strong>Proposition 1.2.8 (gcd
+and lcm via exponents).</strong></span> For nonzero
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a, b</annotation></semantics></math>,
 writing
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi>a</mi><mo stretchy="true" form="postfix">|</mo></mrow><mo>=</mo><mo>∏</mo><msubsup><mi>p</mi><mi>i</mi><msub><mi>α</mi><mi>i</mi></msub></msubsup></mrow><annotation encoding="application/x-tex">|a| = \prod p_i^{\alpha_i}</annotation></semantics></math>
@@ -6391,6 +6474,52 @@ the rest is taking minima/maxima and the identity
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>min</mo><mo>+</mo><mo>max</mo><mo>=</mo><mi>α</mi><mo>+</mo><mi>β</mi></mrow><annotation encoding="application/x-tex">\min + \max = \alpha + \beta</annotation></semantics></math>.
 Details: exercise 5.)</em></p>
 <blockquote>
+<p><strong>The convention is what makes the formula readable.</strong>
+“The same primes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>i</mi></msub><annotation encoding="application/x-tex">p_i</annotation></semantics></math>,
+with exponents
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\ge 0</annotation></semantics></math>”
+means: <strong>both numbers are written over a single list of
+primes</strong> — the union of the primes of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+and those of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+— putting <strong>exponent
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math></strong>
+wherever a prime does not occur. Without that convention the formula
+says nothing as soon as the two numbers share no factors: with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mn>4</mn><mo>=</mo><msup><mn>2</mn><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">a = 4 = 2^2</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mn>9</mn><mo>=</mo><msup><mn>3</mn><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">b = 9 = 3^2</annotation></semantics></math>,
+the common list is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{2,3\}</annotation></semantics></math>
+and one writes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mo>=</mo><msup><mn>2</mn><mn>2</mn></msup><msup><mn>3</mn><mn>0</mn></msup></mrow><annotation encoding="application/x-tex">4 = 2^2 3^0</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><mn>9</mn><mo>=</mo><msup><mn>2</mn><mn>0</mn></msup><msup><mn>3</mn><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\;9 = 2^0 3^2</annotation></semantics></math>,
+whence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mo>=</mo><msup><mn>2</mn><mn>0</mn></msup><msup><mn>3</mn><mn>0</mn></msup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\mathrm{gcd} = 2^0 3^0 = 1</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">l</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">m</mi></mrow><mo>=</mo><msup><mn>2</mn><mn>2</mn></msup><msup><mn>3</mn><mn>2</mn></msup><mo>=</mo><mn>36</mn></mrow><annotation encoding="application/x-tex">\mathrm{lcm} = 2^2 3^2 = 36</annotation></semantics></math>.</p>
+</blockquote>
+<div class="ejemplo" label="Example 1.2.8b.">
+<p><span id="res-1-2-8b" class="res-def"><strong>Example
+1.2.8b.</strong></span>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">a = 12</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mn>90</mn></mrow><annotation encoding="application/x-tex">b = 90</annotation></semantics></math>.
+Common list of primes,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>5</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{2, 3, 5\}</annotation></semantics></math>:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>12</mn><mo>=</mo><msup><mn>2</mn><mn>2</mn></msup><mspace width="0.167em"></mspace><msup><mn>3</mn><mn>1</mn></msup><mspace width="0.167em"></mspace><msup><mn>5</mn><mn>0</mn></msup><mo>,</mo><mspace width="2.0em"></mspace><mn>90</mn><mo>=</mo><msup><mn>2</mn><mn>1</mn></msup><mspace width="0.167em"></mspace><msup><mn>3</mn><mn>2</mn></msup><mspace width="0.167em"></mspace><msup><mn>5</mn><mn>1</mn></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">12 = 2^2\,3^1\,5^0, \qquad 90 = 2^1\,3^2\,5^1.</annotation></semantics></math>
+Minima of the exponents,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,1,0)</annotation></semantics></math>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>12</mn><mo>,</mo><mn>90</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>2</mn><mo>⋅</mo><mn>3</mn><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">\;\mathrm{gcd}(12,90) = 2\cdot 3 = 6</annotation></semantics></math>.
+Maxima,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(2,2,1)</annotation></semantics></math>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><mrow><mi mathvariant="normal">l</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">m</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>12</mn><mo>,</mo><mn>90</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>4</mn><mo>⋅</mo><mn>9</mn><mo>⋅</mo><mn>5</mn><mo>=</mo><mn>180</mn></mrow><annotation encoding="application/x-tex">\;\mathrm{lcm}(12,90) = 4\cdot 9\cdot 5 = 180</annotation></semantics></math>.
+<em>Check of the identity:</em>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn><mo>⋅</mo><mn>180</mn><mo>=</mo><mn>1080</mn><mo>=</mo><mn>12</mn><mo>⋅</mo><mn>90</mn></mrow><annotation encoding="application/x-tex">6 \cdot 180 = 1080 = 12 \cdot 90</annotation></semantics></math>
+✓.</p>
+</div>
+<blockquote>
 <p><strong>But beware the practical trap:</strong> this formula requires
 <strong>factoring</strong>, and factoring is computationally expensive;
 the Euclidean algorithm computes the gcd <strong>without
@@ -6398,8 +6527,9 @@ factoring</strong>, and blazingly fast. That asymmetry —
 multiplication/gcd cheap, factoring expensive — is not an anecdote: it
 is the basis of the cryptography of Session 4.</p>
 </blockquote>
-<p><strong>Proposition 1.2.9 (primality test up to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mi>n</mi></msqrt><annotation encoding="application/x-tex">\sqrt{n}</annotation></semantics></math>).</strong>
+<p><span id="res-1-2-9" class="res-def"><strong>Proposition 1.2.9
+(primality test up to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mi>n</mi></msqrt><annotation encoding="application/x-tex">\sqrt{n}</annotation></semantics></math>).</strong></span>
 If
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n &gt; 1</annotation></semantics></math>
 has no prime divisor
@@ -6417,7 +6547,8 @@ so
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>≤</mo><msqrt><mi>n</mi></msqrt></mrow><annotation encoding="application/x-tex">a \le \sqrt{n}</annotation></semantics></math>,
 and the least prime divisor of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
-(Lemma 1.2.2) is a prime divisor of
+(<a href="#res-1-2-2" class="cita" target="_blank" rel="noopener">Lemma
+1.2.2</a>) is a prime divisor of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
 less than or equal to
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mi>n</mi></msqrt><annotation encoding="application/x-tex">\sqrt{n}</annotation></semantics></math>.
@@ -6445,13 +6576,16 @@ and point out how the composite “splits” between the factors.</li>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>221</mn><annotation encoding="application/x-tex">221</annotation></semantics></math>
 prime? And
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>223</mn><annotation encoding="application/x-tex">223</annotation></semantics></math>?
-Decide with the test of Proposition 1.2.9, listing exactly which primes
-must be tried and why those suffice.</li>
+Decide with the test of <a href="#res-1-2-9" class="cita"
+target="_blank" rel="noopener">Proposition 1.2.9</a>, listing exactly
+which primes must be tried and why those suffice.</li>
 <li>★ Answer with the fundamental theorem of arithmetic: why is
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>
 not prime? (The correct answer is not “because the definition says
 so”.)</li>
-<li>Complete the proof of Proposition 1.2.8 (divisors via exponents; the
+<li>Complete the proof of <a href="#res-1-2-8" class="cita"
+target="_blank" rel="noopener">Proposition 1.2.8</a> (divisors via
+exponents; the
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>min</mo><mo>+</mo><mo>max</mo></mrow><annotation encoding="application/x-tex">\min + \max</annotation></semantics></math>
 identity).</li>
 <li>Prove that
@@ -6519,12 +6653,14 @@ proof. Exercises and a Going further section at the end.</p>
 </blockquote>
 <hr />
 <h2 id="congruences">3.1 Congruences</h2>
-<p><strong>Definition 1.3.1.</strong> Fix
+<p><span id="res-1-3-1" class="res-def"><strong>Definition
+1.3.1.</strong></span> Fix
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n \ge 2</annotation></semantics></math>:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><mi>a</mi><mo>≡</mo><mi>b</mi><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\;a \equiv b \pmod n</annotation></semantics></math>
 if
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>∣</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>−</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">n \mid (a - b)</annotation></semantics></math>.</p>
-<p><strong>Proposition 1.3.2.</strong>
+<p><span id="res-1-3-2" class="res-def"><strong>Proposition
+1.3.2.</strong></span>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>≡</mo><mi>b</mi><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">a \equiv b \pmod n</annotation></semantics></math>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>⇔</mo><annotation encoding="application/x-tex">\iff</annotation></semantics></math>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
@@ -6537,7 +6673,8 @@ leave the <strong>same remainder</strong> when divided by
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mi>n</mi><msub><mi>q</mi><mn>2</mn></msub><mo>+</mo><msub><mi>r</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">b = nq_2 + r_2</annotation></semantics></math>
 with
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><msub><mi>r</mi><mi>i</mi></msub><mo>&lt;</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">0 \le r_i &lt; n</annotation></semantics></math>
-(Theorem 1.1.3):
+(<a href="#res-1-1-3" class="cita" target="_blank"
+rel="noopener">Theorem 1.1.3</a>):
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>−</mo><mi>b</mi><mo>=</mo><mi>n</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>q</mi><mn>1</mn></msub><mo>−</mo><msub><mi>q</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>r</mi><mn>1</mn></msub><mo>−</mo><msub><mi>r</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">a - b = n(q_1 - q_2) + (r_1 - r_2)</annotation></semantics></math>.
 If
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>=</mo><msub><mi>r</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">r_1 = r_2</annotation></semantics></math>,
@@ -6547,13 +6684,15 @@ Conversely, if
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>∣</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>−</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">n \mid (a - b)</annotation></semantics></math>,
 then
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>∣</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>r</mi><mn>1</mn></msub><mo>−</mo><msub><mi>r</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">n \mid (r_1 - r_2)</annotation></semantics></math>
-(Prop. 1.1.2.2), and since
+(<a href="#res-1-1-2" class="cita" target="_blank" rel="noopener">Prop.
+1.1.2.2</a>), and since
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><msub><mi>r</mi><mn>1</mn></msub><mo>−</mo><msub><mi>r</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">|</mo></mrow><mo>&lt;</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">|r_1 - r_2| &lt; n</annotation></semantics></math>,
 it must be that
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>=</mo><msub><mi>r</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">r_1 = r_2</annotation></semantics></math>
 (the bounding trick from Session 1).
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
-<p><strong>Proposition 1.3.3.</strong> Congruence modulo
+<p><span id="res-1-3-3" class="res-def"><strong>Proposition
+1.3.3.</strong></span> Congruence modulo
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
 is an <strong>equivalence relation</strong> on
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℤ</mi><annotation encoding="application/x-tex">\mathbb{Z}</annotation></semantics></math>
@@ -6570,13 +6709,16 @@ and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>∣</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>b</mi><mo>−</mo><mi>c</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">n \mid (b-c)</annotation></semantics></math>,
 then
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>∣</mo><mo minsize="1.2" maxsize="1.2" stretchy="false" form="prefix">(</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>−</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>b</mi><mo>−</mo><mi>c</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo minsize="1.2" maxsize="1.2" stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>−</mo><mi>c</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">n \mid \big((a-b)+(b-c)\big) = (a-c)</annotation></semantics></math>
-(Prop. 1.1.2.2).
+(<a href="#res-1-1-2" class="cita" target="_blank" rel="noopener">Prop.
+1.1.2.2</a>).
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
-<p><strong>Definition 1.3.4.</strong> The <strong>class</strong> of
+<p><span id="res-1-3-4" class="res-def"><strong>Definition
+1.3.4.</strong></span> The <strong>class</strong> of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
 is
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>a</mi><mo accent="true">‾</mo></mover><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mspace width="0.167em"></mspace><mi>b</mi><mo>:</mo><mi>b</mi><mo>≡</mo><mi>a</mi><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mo stretchy="false" form="postfix">}</mo><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>a</mi><mo>,</mo><mi>a</mi><mo>±</mo><mi>n</mi><mo>,</mo><mi>a</mi><mo>±</mo><mn>2</mn><mi>n</mi><mo>,</mo><mi>…</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\bar{a} = \{\, b : b \equiv a \pmod n \,\} = \{a, a \pm n, a \pm 2n, \dots\}</annotation></semantics></math>.
-By Proposition 1.3.2 there are exactly
+By <a href="#res-1-3-2" class="cita" target="_blank"
+rel="noopener">Proposition 1.3.2</a> there are exactly
 <strong><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
 classes</strong>, one per remainder:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mn>0</mn><mo accent="true">‾</mo></mover><mo>,</mo><mover><mn>1</mn><mo accent="true">‾</mo></mover><mo>,</mo><mi>…</mi><mo>,</mo><mover><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><mo accent="true">¯</mo></mover></mrow><annotation encoding="application/x-tex">\bar{0}, \bar{1}, \dots, \overline{n-1}</annotation></semantics></math>.</p>
@@ -6694,12 +6836,13 @@ land on the same mark (here
 id="mathbbznmathbbz-operating-with-classes-and-the-toll-of-the-quotient">3.2
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mi>n</mi><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/n\mathbb{Z}</annotation></semantics></math>:
 operating with classes (and the toll of the quotient)</h2>
-<p><strong>Definition 1.3.5.</strong>
+<p><span id="res-1-3-5" class="res-def"><strong>Definition
+1.3.5.</strong></span>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mi>n</mi><mi>ℤ</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mover><mn>0</mn><mo accent="true">‾</mo></mover><mo>,</mo><mover><mn>1</mn><mo accent="true">‾</mo></mover><mo>,</mo><mi>…</mi><mo>,</mo><mover><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><mo accent="true">¯</mo></mover><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\mathbb{Z}/n\mathbb{Z} = \{\bar{0}, \bar{1}, \dots, \overline{n-1}\}</annotation></semantics></math>,
 with
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>a</mi><mo accent="true">‾</mo></mover><mo>+</mo><mover><mi>b</mi><mo accent="true">‾</mo></mover><mo>:=</mo><mover><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow><mo accent="true">¯</mo></mover><mo>,</mo><mspace width="2.0em"></mspace><mover><mi>a</mi><mo accent="true">‾</mo></mover><mo>⋅</mo><mover><mi>b</mi><mo accent="true">‾</mo></mover><mo>:=</mo><mover><mrow><mi>a</mi><mo>⋅</mo><mi>b</mi></mrow><mo accent="true">¯</mo></mover><mi>.</mi></mrow><annotation encoding="application/x-tex">\bar{a} + \bar{b} := \overline{a + b}, \qquad \bar{a} \cdot \bar{b} := \overline{a \cdot b}.</annotation></semantics></math></p>
-<p><strong>Proposition 1.3.6 (the operations are well defined).</strong>
-If
+<p><span id="res-1-3-6" class="res-def"><strong>Proposition 1.3.6 (the
+operations are well defined).</strong></span> If
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>≡</mo><mi>a</mi><mi>′</mi><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">a \equiv a&#39; \pmod n</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>≡</mo><mi>b</mi><mi>′</mi><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">b \equiv b&#39; \pmod n</annotation></semantics></math>,
@@ -6716,15 +6859,19 @@ term</strong>:
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>b</mi><mo>−</mo><mi>a</mi><mi>′</mi><mi>b</mi><mi>′</mi><mo>=</mo><mi>a</mi><mi>b</mi><mo>−</mo><mi>a</mi><mi>′</mi><mi>b</mi><mo>+</mo><mi>a</mi><mi>′</mi><mi>b</mi><mo>−</mo><mi>a</mi><mi>′</mi><mi>b</mi><mi>′</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>−</mo><mi>a</mi><mi>′</mi><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>b</mi><mo>+</mo><mi>a</mi><mi>′</mi><mspace width="0.167em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mi>b</mi><mo>−</mo><mi>b</mi><mi>′</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex">ab - a&#39;b&#39; = ab - a&#39;b + a&#39;b - a&#39;b&#39; = (a - a&#39;)\,b + a&#39;\,(b - b&#39;),</annotation></semantics></math>
 a combination of multiples of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
-(Prop. 1.1.2.2).
+(<a href="#res-1-1-2" class="cita" target="_blank" rel="noopener">Prop.
+1.1.2.2</a>).
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
 <blockquote>
-<p><strong>Why this is THE fine point:</strong> Definition 1.3.5
+<p><strong>Why this is THE fine point:</strong> <a href="#res-1-3-5"
+class="cita" target="_blank" rel="noopener">Definition 1.3.5</a>
 computes with <strong>representatives</strong> of the classes. If the
 result depended on the chosen representative, the definition would be
-nonsense. Proposition 1.3.6 is the <strong>mandatory toll of every
-quotient construction</strong> — a pattern worth internalizing here, in
-the most concrete example possible (M0: equivalence classes).</p>
+nonsense. <a href="#res-1-3-6" class="cita" target="_blank"
+rel="noopener">Proposition 1.3.6</a> is the <strong>mandatory toll of
+every quotient construction</strong> — a pattern worth internalizing
+here, in the most concrete example possible (M0: equivalence
+classes).</p>
 </blockquote>
 <p>The properties of the operations (associative, commutative,
 distributive, identity elements
@@ -6736,7 +6883,8 @@ these properties is called a <strong>ring</strong> — we drop the name in
 passing; its general theory is not part of this course.</p>
 <h2 id="invertibles-and-zero-divisors">3.3 Invertibles and zero
 divisors</h2>
-<p><strong>Definition 1.3.7.</strong>
+<p><span id="res-1-3-7" class="res-def"><strong>Definition
+1.3.7.</strong></span>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>a</mi><mo accent="true">‾</mo></mover><mo>∈</mo><mi>ℤ</mi><mi>/</mi><mi>n</mi><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\bar a \in \mathbb{Z}/n\mathbb{Z}</annotation></semantics></math>
 is <strong>invertible</strong> if there exists
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>x</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar x</annotation></semantics></math>
@@ -6748,12 +6896,22 @@ is a <strong>zero divisor</strong> if there exists
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>b</mi><mo accent="true">‾</mo></mover><mo>≠</mo><mover><mn>0</mn><mo accent="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\bar b \neq \bar 0</annotation></semantics></math>
 with
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>a</mi><mo accent="true">‾</mo></mover><mover><mi>b</mi><mo accent="true">‾</mo></mover><mo>=</mo><mover><mn>0</mn><mo accent="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\bar a \bar b = \bar 0</annotation></semantics></math>.</p>
-<p><strong>Theorem 1.3.8 (invertibility criterion).</strong>
+<p><span id="res-1-3-8" class="res-def"><strong>Theorem 1.3.8
+(invertibility criterion).</strong></span>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>a</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar a</annotation></semantics></math>
 is invertible in
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mi>n</mi><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/n\mathbb{Z}</annotation></semantics></math>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>⇔</mo><annotation encoding="application/x-tex">\iff</annotation></semantics></math>
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>n</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\mathrm{gcd}(a, n) = 1</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>n</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\mathrm{gcd}(a, n) = 1</annotation></semantics></math>
+— that is,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>⇔</mo><annotation encoding="application/x-tex">\iff</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+are <strong>coprime</strong> (<a href="#res-1-1-5" class="cita"
+target="_blank" rel="noopener">Definition 1.1.5</a>: sharing no factor
+greater than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>).
 Moreover, in that case the inverse <strong>is computed</strong> with the
 extended Euclidean algorithm.</p>
 <p><em>Proof.</em>
@@ -6779,13 +6937,15 @@ Every common divisor of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
-divides that combination (Prop. 1.1.2.2), hence divides
+divides that combination (<a href="#res-1-1-2" class="cita"
+target="_blank" rel="noopener">Prop. 1.1.2.2</a>), hence divides
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>:
 the gcd is
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
 <div class="ejemplo" label="Example 1.3.9.">
-<p><strong>Example 1.3.9.</strong> Inverse of
+<p><span id="res-1-3-9" class="res-def"><strong>Example
+1.3.9.</strong></span> Inverse of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mn>7</mn><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar 7</annotation></semantics></math>
 in
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mn>30</mn><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/30\mathbb{Z}</annotation></semantics></math>:
@@ -6800,8 +6960,8 @@ Hence
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn><mo>⋅</mo><mn>13</mn><mo>=</mo><mn>91</mn><mo>=</mo><mn>3</mn><mo>⋅</mo><mn>30</mn><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">7 \cdot 13 = 91 = 3\cdot 30 + 1</annotation></semantics></math>
 ✓.</p>
 </div>
-<p><strong>Proposition 1.3.9b (linear congruences, the general
-case).</strong> The congruence
+<p><span id="res-1-3-9b" class="res-def"><strong>Proposition 1.3.9b
+(linear congruences, the general case).</strong></span> The congruence
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>x</mi><mo>≡</mo><mi>b</mi><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">ax \equiv b \pmod n</annotation></semantics></math>
 has a solution <strong>if and only if</strong>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>=</mo><mo>gcd</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>n</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">d = \gcd(a, n)</annotation></semantics></math>
@@ -6835,7 +6995,8 @@ yields the equivalent congruence
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac displaystyle="false"><mi>a</mi><mi>d</mi></mfrac><mi>x</mi><mo>≡</mo><mfrac displaystyle="false"><mi>b</mi><mi>d</mi></mfrac><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mfrac displaystyle="false"><mi>n</mi><mi>d</mi></mfrac><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\tfrac{a}{d} x \equiv \tfrac{b}{d} \pmod{\tfrac{n}{d}}</annotation></semantics></math>,
 where
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>gcd</mo><mrow><mo stretchy="true" form="prefix">(</mo><mfrac displaystyle="false"><mi>a</mi><mi>d</mi></mfrac><mo>,</mo><mfrac displaystyle="false"><mi>n</mi><mi>d</mi></mfrac><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\gcd(\tfrac{a}{d}, \tfrac{n}{d}) = 1</annotation></semantics></math>:
-by Theorem 1.3.8 there is a unique solution
+by <a href="#res-1-3-8" class="cita" target="_blank"
+rel="noopener">Theorem 1.3.8</a> there is a unique solution
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>0</mn></msub><annotation encoding="application/x-tex">x_0</annotation></semantics></math>
 modulo
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mfrac displaystyle="false"><mi>n</mi><mi>d</mi></mfrac><annotation encoding="application/x-tex">\tfrac{n}{d}</annotation></semantics></math>.
@@ -6851,7 +7012,8 @@ with
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>k</mi><mo>&lt;</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">0 \le k &lt; d</annotation></semantics></math>.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
 <div class="ejemplo" label="Example 1.3.9c.">
-<p><strong>Example 1.3.9c.</strong>
+<p><span id="res-1-3-9c" class="res-def"><strong>Example
+1.3.9c.</strong></span>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn><mi>x</mi><mo>≡</mo><mn>9</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mn>15</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">6x \equiv 9 \pmod{15}</annotation></semantics></math>:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>=</mo><mo>gcd</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>6</mn><mo>,</mo><mn>15</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">d = \gcd(6,15) = 3</annotation></semantics></math>
 divides
@@ -6872,14 +7034,16 @@ The <strong>three</strong> solutions modulo
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn><mo>⋅</mo><mn>9</mn><mo>=</mo><mn>54</mn><mo>=</mo><mn>3</mn><mo>⋅</mo><mn>15</mn><mo>+</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">6 \cdot 9 = 54 = 3\cdot 15 + 9</annotation></semantics></math>
 ✓.</p>
 </div>
-<p><strong>Theorem 1.3.10 (the dichotomy).</strong> Let
+<p><span id="res-1-3-10" class="res-def"><strong>Theorem 1.3.10 (the
+dichotomy).</strong></span> Let
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>a</mi><mo accent="true">‾</mo></mover><mo>≠</mo><mover><mn>0</mn><mo accent="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\bar a \neq \bar 0</annotation></semantics></math>
 in
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mi>n</mi><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/n\mathbb{Z}</annotation></semantics></math>.
 Then:
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>a</mi><mo accent="true">‾</mo></mover><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> is a zero divisor</mtext></mrow><mo>⇔</mo><mover><mi>a</mi><mo accent="true">‾</mo></mover><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> is not invertible</mtext></mrow><mo>⇔</mo><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>n</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>&gt;</mo><mn>1</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">\bar a \text{ is a zero divisor} \iff \bar a \text{ is not invertible} \iff \mathrm{gcd}(a, n) &gt; 1.</annotation></semantics></math></p>
-<p><em>Proof.</em> The second equivalence is Theorem 1.3.8 negated. We
-prove the first in both directions.</p>
+<p><em>Proof.</em> The second equivalence is <a href="#res-1-3-8"
+class="cita" target="_blank" rel="noopener">Theorem 1.3.8</a> negated.
+We prove the first in both directions.</p>
 <p><em>(Zero divisor
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>⇒</mo><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math>
 not invertible.)</em> Let
@@ -6914,8 +7078,9 @@ Hence
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>a</mi><mo accent="true">‾</mo></mover><mover><mi>b</mi><mo accent="true">‾</mo></mover><mo>=</mo><mover><mn>0</mn><mo accent="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\bar a \bar b = \bar 0</annotation></semantics></math>:
 a zero divisor.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
-<p><strong>Remark 1.3.11 (the dichotomy is special to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mi>n</mi><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/n\mathbb{Z}</annotation></semantics></math>).</strong>
+<p><span id="res-1-3-11" class="res-def"><strong>Remark 1.3.11 (the
+dichotomy is special to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mi>n</mi><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/n\mathbb{Z}</annotation></semantics></math>).</strong></span>
 In
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℤ</mi><annotation encoding="application/x-tex">\mathbb{Z}</annotation></semantics></math>,
 the number
@@ -6938,16 +7103,21 @@ we have
 with both factors nonzero — zero divisors, exactly what Theorem 1.3.10
 detects via
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>gcd</mo><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\gcd &gt; 1</annotation></semantics></math>.</figcaption></figure>
-<p><strong>Corollary 1.3.12 (the thread of fields begins).</strong> 1.
-If
+<p><span id="res-1-3-12" class="res-def"><strong>Corollary 1.3.12 (the
+thread of fields begins).</strong></span> 1. If
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
 is <strong>prime</strong>, every nonzero element of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mi>p</mi><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/p\mathbb{Z}</annotation></semantics></math>
 is invertible — a finite world where <strong>one can divide</strong>. It
 gets a <em>name</em>:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mi>p</mi><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/p\mathbb{Z}</annotation></semantics></math>
-is a <strong>field</strong> (the formal definition and its theory, in
-the Linear Algebra module). 2. If
+is a <strong>field</strong>. This is the start of the course’s
+<strong>thread of fields</strong>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mi>p</mi><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/p\mathbb{Z}</annotation></semantics></math>
+here; second stop,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℂ</mi><annotation encoding="application/x-tex">\mathbb{C}</annotation></semantics></math>,
+in the Complex Numbers module; and the formal definition and its theory,
+in the Linear Algebra module. 2. If
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
 is <strong>composite</strong>,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mi>n</mi><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/n\mathbb{Z}</annotation></semantics></math>
@@ -7138,8 +7308,35 @@ there are zero divisors
 since
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>5</mn><annotation encoding="application/x-tex">5</annotation></semantics></math>
 is prime, is a field.</figcaption></figure>
+<blockquote>
+<p><strong>Software (RA7) — the tables, and hunting for zero
+divisors.</strong> Build the multiplication tables of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mn>5</mn><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/5\mathbb{Z}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mn>6</mn><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/6\mathbb{Z}</annotation></semantics></math>
+and locate in them what <a href="#res-1-3-10" class="cita"
+target="_blank" rel="noopener">Theorem 1.3.10</a> says. The second part
+is the more instructive one: <code>pow(a, -1, n)</code> fails
+<strong>exactly</strong> when the inverse does not exist. Before running
+it, predict which pairs it will fail on.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiplication tables of Z/5Z and Z/6Z: hunt for the zero divisors</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> (<span class="dv">5</span>, <span class="dv">6</span>):</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;Z/</span><span class="sc">{</span>n<span class="sc">}</span><span class="ss">Z:&quot;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> a <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot; &quot;</span>, [a<span class="op">*</span>b <span class="op">%</span> n <span class="cf">for</span> b <span class="kw">in</span> <span class="bu">range</span>(n)])</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># inverses: pow(a, -1, n) — raises exactly when there is none (why?)</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;inverse of 3 mod 7:&quot;</span>, <span class="bu">pow</span>(<span class="dv">3</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">7</span>))</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">pow</span>(<span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">6</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> e:</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;inverse of 2 mod 6:&quot;</span>, e)</span></code></pre></div>
+</blockquote>
 <h2 id="fermats-little-theorem">3.4 Fermat’s little theorem</h2>
-<p><strong>Theorem 1.3.13 (Fermat).</strong> If
+<p><span id="res-1-3-13" class="res-def"><strong>Theorem 1.3.13
+(Fermat).</strong></span> If
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
 is prime and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>∤</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">p \nmid a</annotation></semantics></math>,
@@ -7157,7 +7354,8 @@ is <strong>injective</strong>
 (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>a</mi><mo accent="true">‾</mo></mover><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mover><mi>a</mi><mo accent="true">‾</mo></mover><mover><mi>y</mi><mo accent="true">‾</mo></mover><mo>⇒</mo><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mover><mi>y</mi><mo accent="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\bar a \bar x = \bar a \bar y \Rightarrow \bar x = \bar y</annotation></semantics></math>,
 multiplying by
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mover><mi>a</mi><mo accent="true">‾</mo></mover><mrow><mo>−</mo><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">\bar a^{-1}</annotation></semantics></math>,
-which exists by Corollary 1.3.12.1) and never produces zero
+which exists by <a href="#res-1-3-12" class="cita" target="_blank"
+rel="noopener">Corollary 1.3.12.1</a>) and never produces zero
 (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>a</mi><mo accent="true">‾</mo></mover><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mover><mn>0</mn><mo accent="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\bar a \bar x = \bar 0</annotation></semantics></math>
 with
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>a</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar a</annotation></semantics></math>
@@ -7355,6 +7553,23 @@ modular exponentiation that sustains public-key cryptography — Session 4
 collects the debt.</p>
 </blockquote>
 <hr />
+<blockquote>
+<p><strong>Software (RA7) — Fermat checked, and the nines
+trick.</strong> The first part verifies <a href="#res-1-3-13"
+class="cita" target="_blank" rel="noopener">Theorem 1.3.13</a> with a
+large prime. The second is the same theorem in disguise: that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><mo>≡</mo><mn>1</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mn>9</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">10 \equiv 1 \pmod 9</annotation></semantics></math>
+is what makes the casting-out-nines check work.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fermat&#39;s little theorem, checked; and the nines trick</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="dv">1009</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;2^(p-1) mod p =&quot;</span>, <span class="bu">pow</span>(<span class="dv">2</span>, p<span class="op">-</span><span class="dv">1</span>, p), <span class="st">&quot;(p prime)&quot;</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># The nines trick: n - digit_sum(n) is always a multiple of 9</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">7345</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>rest <span class="op">=</span> n <span class="op">-</span> <span class="bu">sum</span>(<span class="bu">int</span>(c) <span class="cf">for</span> c <span class="kw">in</span> <span class="bu">str</span>(n))</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(n, <span class="st">&quot;-&gt;&quot;</span>, rest, <span class="st">&quot;| multiple of 9?&quot;</span>, rest <span class="op">%</span> <span class="dv">9</span> <span class="op">==</span> <span class="dv">0</span>)</span></code></pre></div>
+</blockquote>
 <h2 id="exercises-2">Exercises</h2>
 <ol type="1">
 <li>★ In
@@ -7364,8 +7579,9 @@ compute
 with the extended algorithm (not by trial and error) and check.</li>
 <li>★ Classify <strong>all</strong> the nonzero elements of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mn>12</mn><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/12\mathbb{Z}</annotation></semantics></math>
-into invertibles and zero divisors; verify the dichotomy of Theorem
-1.3.10 and exhibit, for each zero divisor, the partner
+into invertibles and zero divisors; verify the dichotomy of <a
+href="#res-1-3-10" class="cita" target="_blank" rel="noopener">Theorem
+1.3.10</a> and exhibit, for each zero divisor, the partner
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>b</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar b</annotation></semantics></math>
 that betrays it.</li>
 <li>★ Compute the remainder of
@@ -7382,7 +7598,8 @@ when divided by
 theory.)</strong> In
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mn>6</mn><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/6\mathbb{Z}</annotation></semantics></math>:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mn>2</mn><mo accent="true">‾</mo></mover><mo>⋅</mo><mover><mn>3</mn><mo accent="true">‾</mo></mover><mo>=</mo><mover><mn>0</mn><mo accent="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\bar 2 \cdot \bar 3 = \bar 0</annotation></semantics></math>.
-Locate the gcd that explains it via Theorem 1.3.10, and construct the
+Locate the gcd that explains it via <a href="#res-1-3-10" class="cita"
+target="_blank" rel="noopener">Theorem 1.3.10</a>, and construct the
 “canonical” zero divisor
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mrow><mi>n</mi><mi>/</mi><mi>d</mi></mrow><mo accent="true">¯</mo></mover><annotation encoding="application/x-tex">\overline{n/d}</annotation></semantics></math>
 for
@@ -7475,7 +7692,8 @@ end.</p>
 <hr />
 <h2 id="the-chinese-remainder-theorem">4.1 The Chinese remainder
 theorem</h2>
-<p><strong>Theorem 1.4.1 (CRT).</strong> If
+<p><span id="res-1-4-1" class="res-def"><strong>Theorem 1.4.1
+(CRT).</strong></span> If
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>m</mi><mo>,</mo><mi>n</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\mathrm{gcd}(m, n) = 1</annotation></semantics></math>,
 the system of congruences
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≡</mo><mi>a</mi><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mi>m</mi><mo stretchy="false" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mi>x</mi><mo>≡</mo><mi>b</mi><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">x \equiv a \pmod m, \qquad x \equiv b \pmod n</annotation></semantics></math>
@@ -7673,7 +7891,8 @@ and
 the other way around; combining them,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>a</mi><mspace width="0.167em"></mspace><msub><mi>e</mi><mn>1</mn></msub><mo>+</mo><mi>b</mi><mspace width="0.167em"></mspace><msub><mi>e</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">x=a\,e_1+b\,e_2</annotation></semantics></math>
 solves the system.</figcaption></figure>
-<p><strong>Lemma 1.4.2 (for the uniqueness).</strong> If
+<p><span id="res-1-4-2" class="res-def"><strong>Lemma 1.4.2 (for the
+uniqueness).</strong></span> If
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>∣</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">m \mid x</annotation></semantics></math>,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>∣</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">n \mid x</annotation></semantics></math>
 and
@@ -7686,7 +7905,8 @@ since
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>∣</mo><mi>m</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">n \mid mt</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>,</mo><mi>m</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\mathrm{gcd}(n, m) = 1</annotation></semantics></math>,
-Lemma 1.2.4 gives
+<a href="#res-1-2-4" class="cita" target="_blank" rel="noopener">Lemma
+1.2.4</a> gives
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>∣</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">n \mid t</annotation></semantics></math>,
 i.e. <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">t = ns</annotation></semantics></math>:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><mi>x</mi><mo>=</mo><mi>m</mi><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">\;x = mns</annotation></semantics></math>.
@@ -7701,12 +7921,14 @@ and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
 divide
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>−</mo><mi>x</mi><mi>′</mi></mrow><annotation encoding="application/x-tex">x - x&#39;</annotation></semantics></math>,
-and by Lemma 1.4.2,
+and by <a href="#res-1-4-2" class="cita" target="_blank"
+rel="noopener">Lemma 1.4.2</a>,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>n</mi><mo>∣</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><mi>x</mi><mi>′</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">mn \mid (x - x&#39;)</annotation></semantics></math>.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
-<p><strong>Corollary 1.4.2b (CRT for
+<p><span id="res-1-4-2b" class="res-def"><strong>Corollary 1.4.2b (CRT
+for
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
-moduli).</strong> If
+moduli).</strong></span> If
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>m</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">m_1, \dots, m_k</annotation></semantics></math>
 are <strong>pairwise coprime</strong>, the system
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≡</mo><msub><mi>a</mi><mi>i</mi></msub><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><msub><mi>m</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">x \equiv a_i \pmod{m_i}</annotation></semantics></math>
@@ -7717,7 +7939,8 @@ has a solution, unique modulo
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>.
 The case
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">k = 2</annotation></semantics></math>
-is Theorem 1.4.1. For the step,
+is <a href="#res-1-4-1" class="cita" target="_blank"
+rel="noopener">Theorem 1.4.1</a>. For the step,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>=</mo><msub><mi>m</mi><mn>1</mn></msub><mi>⋯</mi><msub><mi>m</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">M = m_1 \cdots m_{k-1}</annotation></semantics></math>
 is coprime with
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>m</mi><mi>k</mi></msub><annotation encoding="application/x-tex">m_k</annotation></semantics></math>
@@ -7745,7 +7968,8 @@ which is invertible modulo
 Exercise 5.)</em>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
 <div class="ejemplo" label="Example 1.4.3 (the riddle).">
-<p><strong>Example 1.4.3 (the riddle).</strong>
+<p><span id="res-1-4-3" class="res-def"><strong>Example 1.4.3 (the
+riddle).</strong></span>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≡</mo><mn>2</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mn>3</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">x \equiv 2 \pmod 3</annotation></semantics></math>,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≡</mo><mn>3</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mn>5</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">x \equiv 3 \pmod 5</annotation></semantics></math>.
 Bézout for
@@ -7815,8 +8039,17 @@ at every step, and multiply the squares dictated by the <strong>binary
 expansion</strong> of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>:
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>13</mn><mo>=</mo><mn>8</mn><mo>+</mo><mn>4</mn><mo>+</mo><mn>1</mn><mo>=</mo><msub><mn>1101</mn><mn>2</mn></msub><mspace width="1.0em"></mspace><mo>⇒</mo><mspace width="1.0em"></mspace><msup><mi>a</mi><mn>13</mn></msup><mo>=</mo><msup><mi>a</mi><mn>8</mn></msup><mo>⋅</mo><msup><mi>a</mi><mn>4</mn></msup><mo>⋅</mo><msup><mi>a</mi><mn>1</mn></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">k = 13 = 8 + 4 + 1 = 1101_2 \quad\Longrightarrow\quad a^{13} = a^8 \cdot a^4 \cdot a^1.</annotation></semantics></math></p>
+<p><em>(Reducing at every step is what keeps the numbers small: the
+factors being multiplied are always
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&lt;</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">&lt; n</annotation></semantics></math>,
+so no intermediate product exceeds
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>n</mi><mn>2</mn></msup><annotation encoding="application/x-tex">n^2</annotation></semantics></math>
+— one never writes down
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>a</mi><mi>k</mi></msup><annotation encoding="application/x-tex">a^k</annotation></semantics></math>,
+which would have an astronomical number of digits.)</em></p>
 <div class="ejemplo" label="Example 1.4.4.">
-<p><strong>Example 1.4.4.</strong>
+<p><span id="res-1-4-4" class="res-def"><strong>Example
+1.4.4.</strong></span>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>3</mn><mn>13</mn></msup><mrow><mspace width="0.222em"></mspace><mo>mod</mo><mspace width="0.222em"></mspace><mn>7</mn></mrow></mrow><annotation encoding="application/x-tex">3^{13} \bmod 7</annotation></semantics></math>:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><msup><mn>3</mn><mn>2</mn></msup><mo>=</mo><mn>9</mn><mo>≡</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\;3^2 = 9 \equiv 2</annotation></semantics></math>;
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>3</mn><mn>4</mn></msup><mo>≡</mo><msup><mn>2</mn><mn>2</mn></msup><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">3^4 \equiv 2^2 = 4</annotation></semantics></math>;
@@ -7863,7 +8096,18 @@ the private one is a <strong>computational asymmetry</strong>
 <ol type="1">
 <li><strong>Keys.</strong> Choose primes
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>≠</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p \neq q</annotation></semantics></math>
-(large);
+(large) — the distinctness is a <strong>hypothesis of <a
+href="#res-1-4-5" class="cita" target="_blank" rel="noopener">Theorem
+1.4.5</a></strong>, not a precaution: with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p = q</annotation></semantics></math>
+the number
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>p</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>q</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">(p-1)(q-1)</annotation></semantics></math>
+is no longer the one that makes decryption work (for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><msup><mi>p</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n = p^2</annotation></semantics></math>
+the correct exponent is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>p</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">p(p-1)</annotation></semantics></math>),
+and besides, the proof uses
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>p</mi><mo>,</mo><mi>q</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\mathrm{gcd}(p,q) = 1</annotation></semantics></math>;
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mi>p</mi><mi>q</mi></mrow><annotation encoding="application/x-tex">n = pq</annotation></semantics></math>;
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><mi>φ</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>p</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>q</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\;\varphi = (p-1)(q-1)</annotation></semantics></math>;
 choose
@@ -7885,8 +8129,8 @@ and compute
 (Messages
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>m</mi><mo>&lt;</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">0 \le m &lt; n</annotation></semantics></math>.)</li>
 </ol>
-<p><strong>Theorem 1.4.5 (RSA decrypts).</strong> With the keys built
-this way, for every
+<p><span id="res-1-4-5" class="res-def"><strong>Theorem 1.4.5 (RSA
+decrypts).</strong></span> With the keys built this way, for every
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>m</mi><mi>e</mi></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>d</mi></msup><mo>≡</mo><mi>m</mi><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\;(m^e)^d \equiv m \pmod{n}</annotation></semantics></math>.</p>
 <p><em>Proof.</em> Since
@@ -7906,7 +8150,8 @@ both sides are
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≡</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\equiv 0</annotation></semantics></math>.
 If
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>∤</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">p \nmid m</annotation></semantics></math>,
-Fermat (Theorem 1.3.13) gives
+Fermat (<a href="#res-1-3-13" class="cita" target="_blank"
+rel="noopener">Theorem 1.3.13</a>) gives
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>≡</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">m^{p-1} \equiv 1</annotation></semantics></math>,
 so
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mrow><mi>e</mi><mi>d</mi></mrow></msup><mo>=</mo><mi>m</mi><mo>⋅</mo><mo minsize="1.2" maxsize="1.2" stretchy="false" form="prefix">(</mo><msup><mi>m</mi><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></msup><msup><mo minsize="1.2" maxsize="1.2" stretchy="false" form="postfix">)</mo><mrow><mi>k</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>q</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msup><mo>≡</mo><mi>m</mi><mo>⋅</mo><mn>1</mn><mo>=</mo><mi>m</mi><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mi>p</mi><mo stretchy="false" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">m^{ed} = m \cdot \big(m^{p-1}\big)^{k(q-1)} \equiv m \cdot 1 = m \pmod p.</annotation></semantics></math>
@@ -7920,7 +8165,8 @@ both divide
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mrow><mi>e</mi><mi>d</mi></mrow></msup><mo>−</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">m^{ed} - m</annotation></semantics></math>;
 since
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>p</mi><mo>,</mo><mi>q</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\mathrm{gcd}(p,q) = 1</annotation></semantics></math>,
-<strong>Lemma 1.4.2</strong> gives
+<strong><a href="#res-1-4-2" class="cita" target="_blank"
+rel="noopener">Lemma 1.4.2</a></strong> gives
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mi>q</mi><mo>∣</mo><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>m</mi><mrow><mi>e</mi><mi>d</mi></mrow></msup><mo>−</mo><mi>m</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">pq \mid (m^{ed} - m)</annotation></semantics></math>,
 that is,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mrow><mi>e</mi><mi>d</mi></mrow></msup><mo>≡</mo><mi>m</mi><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">m^{ed} \equiv m \pmod n</annotation></semantics></math>.
@@ -7928,7 +8174,8 @@ that is,
 <blockquote>
 <p>Inventory of the proof: <strong>Bézout</strong> (built
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>),
-<strong>Fermat</strong> (the engine), <strong>CRT/Lemma 1.4.2</strong>
+<strong>Fermat</strong> (the engine), <strong>CRT/<a href="#res-1-4-2"
+class="cita" target="_blank" rel="noopener">Lemma 1.4.2</a></strong>
 (the glue). The entire module, in a ten-line proof.</p>
 </blockquote>
 <h3 id="why-it-is-secure-honesty">Why it is secure (honesty)</h3>
@@ -7995,8 +8242,26 @@ being standardized. (Going further; cf. Childs.)</p>
 carries random padding and implementation precautions without which
 there are attacks that do not require factoring. Ours is the
 mathematical core.)</em></p>
-<h3 id="example-1.4.6-a-toy-one-verified-by-hand">Example 1.4.6 (a toy
-one, verified by hand)</h3>
+<blockquote>
+<p><strong>Sufficient, not provably necessary.</strong> Read the chain
+in the direction in which it is proved: <strong>factoring
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+suffices</strong> to recover
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>φ</mi><annotation encoding="application/x-tex">\varphi</annotation></semantics></math>,
+hence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>,
+and with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+to read any message. The converse — that breaking RSA
+<strong>requires</strong> factoring — is an <strong>open
+problem</strong>: no algorithm is known that breaks RSA without
+factoring, but neither is there a proof that none exists. Saying “to
+break it one needs to factor” therefore claims more than is known; the
+correct statement is: <em>all the known security rests on the hardness
+of factoring</em>.</p>
+</blockquote>
+<h3 id="example-1.4.6-a-toy-one-verified-by-hand"><span id="res-1-4-6"
+class="res-def">Example 1.4.6 (a toy one, verified by hand)</span></h3>
 <p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">p = 3</annotation></semantics></math>,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><mn>11</mn></mrow><annotation encoding="application/x-tex">q = 11</annotation></semantics></math>:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><mi>n</mi><mo>=</mo><mn>33</mn></mrow><annotation encoding="application/x-tex">\;n = 33</annotation></semantics></math>,
@@ -8024,17 +8289,17 @@ comes from <code>sympy</code> (free: <code>pip install sympy</code>);
 modular exponentiation and the modular inverse are <strong>built
 in</strong> (three-argument <code>pow</code> and
 <code>pow(e, -1, phi)</code>).</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> nextprime</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> gcd</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> nextprime(<span class="dv">10</span><span class="op">**</span><span class="dv">6</span>)<span class="op">;</span> q <span class="op">=</span> nextprime(<span class="dv">2</span> <span class="op">*</span> <span class="dv">10</span><span class="op">**</span><span class="dv">6</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> p<span class="op">*</span>q<span class="op">;</span> phi <span class="op">=</span> (p<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>(q<span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> <span class="dv">65537</span><span class="op">;</span> <span class="cf">assert</span> gcd(e, phi) <span class="op">==</span> <span class="dv">1</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="bu">pow</span>(e, <span class="op">-</span><span class="dv">1</span>, phi)       <span class="co"># modular inverse (Bézout under the hood)</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">271828</span>                <span class="co"># the &quot;message&quot;</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="bu">pow</span>(m, e, n)          <span class="co"># encrypt (public key)</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">pow</span>(c, d, n) <span class="op">==</span> m  <span class="co"># decrypt (private key) — m comes back</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> nextprime</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> gcd</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> nextprime(<span class="dv">10</span><span class="op">**</span><span class="dv">6</span>)<span class="op">;</span> q <span class="op">=</span> nextprime(<span class="dv">2</span> <span class="op">*</span> <span class="dv">10</span><span class="op">**</span><span class="dv">6</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> p<span class="op">*</span>q<span class="op">;</span> phi <span class="op">=</span> (p<span class="op">-</span><span class="dv">1</span>)<span class="op">*</span>(q<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> <span class="dv">65537</span><span class="op">;</span> <span class="cf">assert</span> gcd(e, phi) <span class="op">==</span> <span class="dv">1</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="bu">pow</span>(e, <span class="op">-</span><span class="dv">1</span>, phi)       <span class="co"># modular inverse (Bézout under the hood)</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">271828</span>                <span class="co"># the &quot;message&quot;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="bu">pow</span>(m, e, n)          <span class="co"># encrypt (public key)</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">pow</span>(c, d, n) <span class="op">==</span> m  <span class="co"># decrypt (private key) — m comes back</span></span></code></pre></div>
 <p><em>(Seed of the SE3 mini-project: each student generates their own
 keys and messages are exchanged; guided asynchronous activity.)</em></p>
 <hr />
@@ -8063,8 +8328,9 @@ decryption. Then <strong>break</strong> someone else’s toy RSA with
 <code>sympy.factorint(n)</code> and discuss: up to what size of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
 does factoring succeed on your machine within a second?</li>
-<li>Complete the <strong>switch construction</strong> of Corollary
-1.4.2b: for pairwise coprime
+<li>Complete the <strong>switch construction</strong> of <a
+href="#res-1-4-2b" class="cita" target="_blank" rel="noopener">Corollary
+1.4.2b</a>: for pairwise coprime
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>m</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">m_1,\dots,m_k</annotation></semantics></math>,
 define
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mi>m</mi><mo accent="true">̂</mo></mover><mi>i</mi></msub><mo>=</mo><msub><mo>∏</mo><mrow><mi>j</mi><mo>≠</mo><mi>i</mi></mrow></msub><msub><mi>m</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\widehat m_i = \prod_{j\neq i} m_j</annotation></semantics></math>,
@@ -8104,7 +8370,8 @@ are the roots of
 references</h2>
 <blockquote>
 <p><strong>Going further (from Fermat to Euler, and general
-RSA).</strong> Our Theorem 1.4.5 avoids the general φ function by using
+RSA).</strong> Our <a href="#res-1-4-5" class="cita" target="_blank"
+rel="noopener">Theorem 1.4.5</a> avoids the general φ function by using
 Fermat + CRT. The alternative route: <strong>Euler’s</strong> theorem
 (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><mrow><mi>φ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msup><mo>≡</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">a^{\varphi(n)} \equiv 1</annotation></semantics></math>
 if

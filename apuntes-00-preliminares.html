@@ -233,6 +233,20 @@
     /* Bloques de código con highlighting: pandoc los envuelve en div.sourceCode y su
        CSS pone margin:0 al pre (gana por especificidad) -> centramos el div envolvente. */
     div.sourceCode { max-width: 42rem; margin: 1em auto; }
+    /* Citas a resultados numerados: enlazan a su enunciado y abren en otra pestaña,
+       para no perder el sitio en el que ibas leyendo. Discretas: el subrayado
+       punteado se ve al pasar por encima, no compite con el texto. */
+    a.cita { color: inherit; text-decoration: underline; text-decoration-style: dotted;
+             text-decoration-color: #9db4d0; text-underline-offset: 0.15em; }
+    a.cita:hover { color: #1a5fb4; text-decoration-style: solid; }
+    html.dark a.cita { text-decoration-color: #5a7290; }
+    html.dark a.cita:hover { color: #85b4ea; }
+    /* El enunciado al que apuntan: al aterrizar, un destello que lo señala. */
+    span.res-def:target, span.res-def:target strong { background: #fff3c4; }
+    html.dark span.res-def:target, html.dark span.res-def:target strong { background: #4a4020; }
+    /* La barra superior es sticky (z-index 50): sin este margen, al saltar a un
+       enunciado el enunciado queda justo debajo de ella y no se ve. */
+    span.res-def { scroll-margin-top: 5rem; }
     /* Barrita "▶ ejecutar · ✎ editar · playground" bajo cada bloque Python (JS) */
     p.ejecutar-en { max-width: 42rem; margin: -0.5em auto 1em; text-align: right; font-size: 0.8rem; }
     p.ejecutar-en a { color: #888; text-decoration: none; }
@@ -4826,7 +4840,8 @@ que cumplen
 El <strong>conjunto vacío</strong>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>⌀</mi><annotation encoding="application/x-tex">\varnothing</annotation></semantics></math>
 no tiene elementos.</p>
-<p><strong>Definición 0.1.1.</strong>
+<p><span id="res-0-1-1" class="res-def"><strong>Definición
+0.1.1.</strong></span>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>⊆</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A \subseteq B</annotation></semantics></math>
 (<strong>subconjunto</strong>) si todo elemento de
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
@@ -4846,7 +4861,8 @@ complementario
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>A</mi><mi>c</mi></msup><annotation encoding="application/x-tex">A^c</annotation></semantics></math>
 (respecto de un universo); diferencia
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>\</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A \setminus B</annotation></semantics></math>.</p>
-<p><strong>Proposición 0.1.2 (leyes de De Morgan).</strong>
+<p><span id="res-0-1-2" class="res-def"><strong>Proposición 0.1.2 (leyes
+de De Morgan).</strong></span>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>A</mi><mo>∪</mo><mi>B</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>c</mi></msup><mo>=</mo><msup><mi>A</mi><mi>c</mi></msup><mo>∩</mo><msup><mi>B</mi><mi>c</mi></msup></mrow><annotation encoding="application/x-tex">(A \cup B)^c = A^c \cap B^c</annotation></semantics></math>
 y
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>A</mi><mo>∩</mo><mi>B</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>c</mi></msup><mo>=</mo><msup><mi>A</mi><mi>c</mi></msup><mo>∪</mo><msup><mi>B</mi><mi>c</mi></msup></mrow><annotation encoding="application/x-tex">(A \cap B)^c = A^c \cup B^c</annotation></semantics></math>.</p>
@@ -4935,8 +4951,8 @@ text.f5 {font-family:QUYCTL-CMR12;font-size:14.35px}
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>A</mi><mo>∪</mo><mi>B</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>c</mi></msup><mo>=</mo><msup><mi>A</mi><mi>c</mi></msup><mo>∩</mo><msup><mi>B</mi><mi>c</mi></msup></mrow><annotation encoding="application/x-tex">(A\cup B)^c = A^c\cap B^c</annotation></semantics></math>
 — el exterior de la unión es la intersección de los complementos.</figcaption></figure>
 <h2 id="producto-cartesiano">1.2 Producto cartesiano</h2>
-<p><strong>Definición 0.1.3.</strong> El <strong>producto
-cartesiano</strong>
+<p><span id="res-0-1-3" class="res-def"><strong>Definición
+0.1.3.</strong></span> El <strong>producto cartesiano</strong>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>×</mo><mi>B</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>:</mo><mi>a</mi><mo>∈</mo><mi>A</mi><mo>,</mo><mspace width="0.167em"></mspace><mi>b</mi><mo>∈</mo><mi>B</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">A \times B = \{(a, b) : a \in A,\, b \in B\}</annotation></semantics></math>
 es el conjunto de <strong>pares ordenados</strong> (donde
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mi>′</mi><mo>,</mo><mi>b</mi><mi>′</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>⇔</mo><mi>a</mi><mo>=</mo><mi>a</mi><mi>′</mi></mrow><annotation encoding="application/x-tex">(a,b) = (a&#39;,b&#39;) \iff a = a&#39;</annotation></semantics></math>
@@ -5040,7 +5056,8 @@ n-tuplas serán las soluciones de los sistemas y los vectores de
 definición humilde sostiene medio curso.</p>
 </blockquote>
 <h2 id="aplicaciones">1.3 Aplicaciones</h2>
-<p><strong>Definición 0.1.4.</strong> Una <strong>aplicación</strong>
+<p><span id="res-0-1-4" class="res-def"><strong>Definición
+0.1.4.</strong></span> Una <strong>aplicación</strong>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>A</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">f : A \to B</annotation></semantics></math>
 asigna a cada
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∈</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">a \in A</annotation></semantics></math>
@@ -5052,7 +5069,8 @@ es el <strong>dominio</strong>,
 el <strong>codominio</strong>, y
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>A</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>:</mo><mi>a</mi><mo>∈</mo><mi>A</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">f(A) = \{f(a) : a \in A\}</annotation></semantics></math>
 la <strong>imagen</strong>.</p>
-<p><strong>Definición 0.1.5.</strong>
+<p><span id="res-0-1-5" class="res-def"><strong>Definición
+0.1.5.</strong></span>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
 es:</p>
 <ul>
@@ -5168,7 +5186,8 @@ biyectiva, ambas.</figcaption></figure>
 es
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>g</mi><mo>∘</mo><mi>f</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>g</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">(g\circ f)(a) = g(f(a))</annotation></semantics></math>;
 es <strong>asociativa</strong>.</p>
-<p><strong>Teorema 0.1.6 (conjuntos finitos).</strong> Si
+<p><span id="res-0-1-6" class="res-def"><strong>Teorema 0.1.6 (conjuntos
+finitos).</strong></span> Si
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
 es finito y
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>A</mi><mo>→</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">f : A \to A</annotation></semantics></math>,
@@ -5217,7 +5236,8 @@ del <strong>pequeño teorema de Fermat</strong> (Aritmética): multiplicar
 por una clase invertible es inyectivo, luego reordena. Y la idea de
 <strong>aplicación que respeta la estructura</strong> será la de
 <strong>morfismo</strong> (Álgebra Lineal); la composición de aquí, el
-producto de matrices de allá. (El Teorema 0.1.6 <strong>falla</strong>
+producto de matrices de allá. (El <a href="#res-0-1-6" class="cita"
+target="_blank" rel="noopener">Teorema 0.1.6</a> <strong>falla</strong>
 en conjuntos infinitos:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>↦</mo><mi>n</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n \mapsto n+1</annotation></semantics></math>
 en
@@ -5245,18 +5265,6 @@ es inyectiva y no sobreyectiva — ejercicio 6.)</p>
 <font-face font-family='HJLAUA-CMSY9' units-per-em='1000' ascent='777' descent='958'/>
 <glyph unicode='⇒' horiz-adv-x='1027' vert-adv-y='1027' glyph-name='arrowdblright' d='M740 331C791 287 840 264 873 251C830 232 785 208 740 170H92C77 170 57 170 57 149C57 127 79 127 97 127H692C629 60 594-9 594-17C594-30 606-30 615-30C627-30 632-30 637-21C718 135 830 202 959 238C967 240 970 246 970 250C970 260 961 262 959 263C910 277 840 296 754 369C717 401 675 448 642 511C632 530 631 531 615 531C606 531 594 531 594 518C594 510 628 442 692 374H97C79 374 57 374 57 352C57 331 77 331 92 331H740Z'/>
 </font>
-<font id='BUIBAL-LMRoman5-Regular' horiz-adv-x='0'>
-<font-face font-family='BUIBAL-LMRoman5-Regular' units-per-em='1000' ascent='1126' descent='303'/>
-<glyph unicode='a' horiz-adv-x='681' vert-adv-y='681' d='M635 90V145H593V92C593 82 593 38 553 38S513 82 513 92V297C513 393 412 448 288 448C227 448 111 445 111 360C111 323 139 306 164 306C191 306 217 325 217 359C217 383 203 398 194 404C227 415 275 415 286 415C371 415 424 368 424 296V270C327 265 273 262 196 235C130 212 72 170 72 105C72 11 188-11 268-11C345-11 405 20 436 71C440 36 463-6 514-6C521-6 635-6 635 90ZM424 142C424 32 304 22 279 22C220 22 164 53 164 105C164 138 185 230 424 240V142Z'/>
-<glyph unicode='e' horiz-adv-x='611' vert-adv-y='611' d='M547 119C547 136 531 136 526 136C511 136 509 132 503 118C475 49 401 25 345 25C264 25 219 70 204 87C165 135 165 198 165 225H517C538 225 547 225 547 249C547 316 511 448 324 448C172 448 65 339 65 220C65 93 187-11 339-11C498-11 547 100 547 119ZM470 256H167C179 388 276 415 323 415C462 415 469 285 470 256Z'/>
-<glyph unicode='g' horiz-adv-x='681' vert-adv-y='681' d='M635 396C635 422 614 453 566 453C542 453 489 448 436 407C413 421 368 442 306 442C188 442 106 372 106 295C106 244 143 207 158 195C134 166 128 136 128 114C128 61 162 28 171 21C121 8 63-24 63-77C63-156 195-206 340-206C474-206 617-162 617-75C617-30 591 18 542 42C475 74 411 74 304 74C279 74 235 74 230 75C182 83 171 122 171 141C171 161 181 177 184 177C184 177 188 176 191 175C231 154 270 148 305 148C423 148 505 218 505 295C505 343 472 378 460 389C508 418 553 419 569 420C566 416 561 410 561 396C561 376 574 359 598 359S635 376 635 396ZM417 295C417 240 393 181 306 181C218 181 194 239 194 295C194 350 218 409 305 409C393 409 417 351 417 295ZM548-77C548-126 459-173 340-173C225-173 132-129 132-76C132-45 167-2 242-2H307C407-2 548-2 548-77Z'/>
-<glyph unicode='i' horiz-adv-x='403' vert-adv-y='403' d='M326 0V44C259 44 251 44 251 84V442L87 431V387C158 387 166 380 166 331V84C166 53 166 44 101 44H83V0C124 3 166 4 207 4C245 4 289 3 326 0ZM262 600C262 634 235 661 201 661C168 661 140 634 140 600S167 539 201 539C234 539 262 566 262 600Z'/>
-<glyph unicode='m' horiz-adv-x='1097' vert-adv-y='1097' d='M1031 0V44H1013C948 44 948 53 948 84V302C948 425 854 442 779 442C681 442 624 393 596 349C571 441 469 442 432 442C329 442 271 387 246 344V442L82 431V387C156 387 165 380 165 331V84C165 53 165 44 100 44H82V0C125 3 167 4 210 4C252 4 295 3 337 0V44H319C254 44 254 53 254 84V258C254 369 356 409 421 409C494 409 512 368 512 303V84C512 53 512 44 447 44H429V0C472 3 514 4 557 4C599 4 642 3 684 0V44H666C601 44 601 53 601 84V258C601 369 703 409 768 409C841 409 859 368 859 303V84C859 53 859 44 794 44H776V0C819 3 861 4 904 4C946 4 989 3 1031 0Z'/>
-<glyph unicode='n' horiz-adv-x='750' vert-adv-y='750' d='M683 0V44H665C600 44 600 53 600 84V302C600 412 525 442 432 442C325 442 269 383 246 344V442L82 431V387C156 387 165 380 165 331V84C165 53 165 44 100 44H82V0C125 3 167 4 210 4C252 4 295 3 337 0V44H319C254 44 254 53 254 84V258C254 371 358 409 420 409C494 409 511 367 511 303V84C511 53 511 44 446 44H428V0C471 3 513 4 556 4C598 4 641 3 683 0Z'/>
-<glyph unicode='p' horiz-adv-x='750' vert-adv-y='750' d='M677 216C677 336 567 442 419 442C340 442 278 414 244 385V442L76 431V387C148 387 159 387 159 344V-110C159-141 159-150 94-150H76V-194C119-191 161-190 204-190C246-190 289-191 331-194V-150H313C248-150 248-141 248-110V46C291 8 345-11 402-11C554-11 677 91 677 216ZM577 216C577 107 494 22 395 22C350 22 297 41 262 86C248 103 248 105 248 124V332C291 393 367 406 407 406C506 406 577 317 577 216Z'/>
-<glyph unicode='r' horiz-adv-x='542' vert-adv-y='542' d='M479 373C479 411 443 442 390 442C340 442 276 416 237 332H236V442L76 431V387C150 387 159 380 159 331V84C159 53 159 44 94 44H76V0C118 3 163 4 205 4L348 0V44H321C244 44 244 54 244 85V224C244 317 297 407 392 409C392 409 378 395 378 373C378 337 406 322 428 322C453 322 479 339 479 373Z'/>
-<glyph unicode='s' horiz-adv-x='549' vert-adv-y='549' d='M478 126C478 171 453 204 415 228C375 253 345 257 261 270C197 280 120 292 120 345C120 380 159 418 268 418C351 418 399 385 405 316C406 301 407 295 426 295C447 295 447 302 447 323V420C447 437 447 448 431 448C426 448 422 447 414 441C410 437 392 421 388 421C388 421 385 421 379 425C356 438 319 448 269 448C104 448 70 372 70 326C70 232 186 214 278 200C336 191 428 177 428 109C428 74 399 22 278 22C210 22 144 47 114 153C109 171 108 174 91 174C70 174 70 166 70 145V17C70 0 70-11 86-11C94-11 95-10 114 9L140 34C190-10 253-11 278-11C445-11 478 76 478 126Z'/>
-</font>
 <font id='KGBCSJ-LMRoman9-Regular' horiz-adv-x='0'>
 <font-face font-family='KGBCSJ-LMRoman9-Regular' units-per-em='1000' ascent='1128' descent='292'/>
 <glyph unicode='b' horiz-adv-x='571' vert-adv-y='571' d='M536 216C536 341 437 442 317 442C249 442 202 407 178 380V694L30 683V652C98 652 107 645 107 596V0H135L172 61C203 17 253-11 307-11C426-11 536 85 536 216ZM450 217C450 170 444 117 418 77C396 45 355 14 302 14C257 14 219 38 195 75C181 96 181 97 181 116V319C181 338 181 339 192 355C226 401 275 417 313 417C356 417 396 393 422 351C448 308 450 249 450 217Z'/>
@@ -5269,6 +5277,18 @@ es inyectiva y no sobreyectiva — ejercicio 6.)</p>
 <glyph unicode='t' horiz-adv-x='400' vert-adv-y='400' d='M342 124V181H314V127C314 53 283 17 247 17C180 17 180 105 180 123V400H325V431H180V615H152C151 531 116 428 19 425V400H106V124C106 12 187-11 240-11C307-11 342 53 342 124Z'/>
 <glyph unicode='y' horiz-adv-x='542' vert-adv-y='542' d='M520 400V431C488 428 457 428 444 428C416 428 385 429 357 431V400C403 398 403 362 403 358C403 347 399 337 395 329L294 91L182 353C176 367 176 374 176 374C176 400 210 400 231 400V431L120 428C117 428 60 428 21 431V400C66 400 85 398 97 371L255 0L230-59C208-112 179-180 114-180C89-180 72-167 69-165C77-164 105-156 105-122C105-96 86-80 63-80C38-80 20-96 20-123C20-168 62-205 114-205C179-205 222-147 246-92L427 331C438 357 456 398 520 400Z'/>
 <glyph unicode='f' horiz-adv-x='571' vert-adv-y='571' d='M540 0V31C474 31 463 31 463 77V443L333 434C317 433 315 432 315 432C313 431 311 431 297 431H175V541C175 645 269 680 326 680C349 680 387 674 412 650C373 646 367 615 367 603C367 573 391 556 414 556C441 556 462 575 462 603C462 660 407 705 327 705C227 705 107 651 107 544V431H28V400H107V77C107 31 96 31 30 31V0C77 2 96 3 142 3C189 3 206 2 255 0V31C189 31 178 31 178 77V400H339C386 400 392 387 392 346V77C392 31 381 31 315 31V0C362 2 381 3 427 3C474 3 491 2 540 0Z'/>
+</font>
+<font id='BUIBAL-LMRoman5-Regular' horiz-adv-x='0'>
+<font-face font-family='BUIBAL-LMRoman5-Regular' units-per-em='1000' ascent='1126' descent='303'/>
+<glyph unicode='a' horiz-adv-x='681' vert-adv-y='681' d='M635 90V145H593V92C593 82 593 38 553 38S513 82 513 92V297C513 393 412 448 288 448C227 448 111 445 111 360C111 323 139 306 164 306C191 306 217 325 217 359C217 383 203 398 194 404C227 415 275 415 286 415C371 415 424 368 424 296V270C327 265 273 262 196 235C130 212 72 170 72 105C72 11 188-11 268-11C345-11 405 20 436 71C440 36 463-6 514-6C521-6 635-6 635 90ZM424 142C424 32 304 22 279 22C220 22 164 53 164 105C164 138 185 230 424 240V142Z'/>
+<glyph unicode='e' horiz-adv-x='611' vert-adv-y='611' d='M547 119C547 136 531 136 526 136C511 136 509 132 503 118C475 49 401 25 345 25C264 25 219 70 204 87C165 135 165 198 165 225H517C538 225 547 225 547 249C547 316 511 448 324 448C172 448 65 339 65 220C65 93 187-11 339-11C498-11 547 100 547 119ZM470 256H167C179 388 276 415 323 415C462 415 469 285 470 256Z'/>
+<glyph unicode='g' horiz-adv-x='681' vert-adv-y='681' d='M635 396C635 422 614 453 566 453C542 453 489 448 436 407C413 421 368 442 306 442C188 442 106 372 106 295C106 244 143 207 158 195C134 166 128 136 128 114C128 61 162 28 171 21C121 8 63-24 63-77C63-156 195-206 340-206C474-206 617-162 617-75C617-30 591 18 542 42C475 74 411 74 304 74C279 74 235 74 230 75C182 83 171 122 171 141C171 161 181 177 184 177C184 177 188 176 191 175C231 154 270 148 305 148C423 148 505 218 505 295C505 343 472 378 460 389C508 418 553 419 569 420C566 416 561 410 561 396C561 376 574 359 598 359S635 376 635 396ZM417 295C417 240 393 181 306 181C218 181 194 239 194 295C194 350 218 409 305 409C393 409 417 351 417 295ZM548-77C548-126 459-173 340-173C225-173 132-129 132-76C132-45 167-2 242-2H307C407-2 548-2 548-77Z'/>
+<glyph unicode='i' horiz-adv-x='403' vert-adv-y='403' d='M326 0V44C259 44 251 44 251 84V442L87 431V387C158 387 166 380 166 331V84C166 53 166 44 101 44H83V0C124 3 166 4 207 4C245 4 289 3 326 0ZM262 600C262 634 235 661 201 661C168 661 140 634 140 600S167 539 201 539C234 539 262 566 262 600Z'/>
+<glyph unicode='m' horiz-adv-x='1097' vert-adv-y='1097' d='M1031 0V44H1013C948 44 948 53 948 84V302C948 425 854 442 779 442C681 442 624 393 596 349C571 441 469 442 432 442C329 442 271 387 246 344V442L82 431V387C156 387 165 380 165 331V84C165 53 165 44 100 44H82V0C125 3 167 4 210 4C252 4 295 3 337 0V44H319C254 44 254 53 254 84V258C254 369 356 409 421 409C494 409 512 368 512 303V84C512 53 512 44 447 44H429V0C472 3 514 4 557 4C599 4 642 3 684 0V44H666C601 44 601 53 601 84V258C601 369 703 409 768 409C841 409 859 368 859 303V84C859 53 859 44 794 44H776V0C819 3 861 4 904 4C946 4 989 3 1031 0Z'/>
+<glyph unicode='n' horiz-adv-x='750' vert-adv-y='750' d='M683 0V44H665C600 44 600 53 600 84V302C600 412 525 442 432 442C325 442 269 383 246 344V442L82 431V387C156 387 165 380 165 331V84C165 53 165 44 100 44H82V0C125 3 167 4 210 4C252 4 295 3 337 0V44H319C254 44 254 53 254 84V258C254 371 358 409 420 409C494 409 511 367 511 303V84C511 53 511 44 446 44H428V0C471 3 513 4 556 4C598 4 641 3 683 0Z'/>
+<glyph unicode='p' horiz-adv-x='750' vert-adv-y='750' d='M677 216C677 336 567 442 419 442C340 442 278 414 244 385V442L76 431V387C148 387 159 387 159 344V-110C159-141 159-150 94-150H76V-194C119-191 161-190 204-190C246-190 289-191 331-194V-150H313C248-150 248-141 248-110V46C291 8 345-11 402-11C554-11 677 91 677 216ZM577 216C577 107 494 22 395 22C350 22 297 41 262 86C248 103 248 105 248 124V332C291 393 367 406 407 406C506 406 577 317 577 216Z'/>
+<glyph unicode='r' horiz-adv-x='542' vert-adv-y='542' d='M479 373C479 411 443 442 390 442C340 442 276 416 237 332H236V442L76 431V387C150 387 159 380 159 331V84C159 53 159 44 94 44H76V0C118 3 163 4 205 4L348 0V44H321C244 44 244 54 244 85V224C244 317 297 407 392 409C392 409 378 395 378 373C378 337 406 322 428 322C453 322 479 339 479 373Z'/>
+<glyph unicode='s' horiz-adv-x='549' vert-adv-y='549' d='M478 126C478 171 453 204 415 228C375 253 345 257 261 270C197 280 120 292 120 345C120 380 159 418 268 418C351 418 399 385 405 316C406 301 407 295 426 295C447 295 447 302 447 323V420C447 437 447 448 431 448C426 448 422 447 414 441C410 437 392 421 388 421C388 421 385 421 379 425C356 438 319 448 269 448C104 448 70 372 70 326C70 232 186 214 278 200C336 191 428 177 428 109C428 74 399 22 278 22C210 22 144 47 114 153C109 171 108 174 91 174C70 174 70 166 70 145V17C70 0 70-11 86-11C94-11 95-10 114 9L140 34C190-10 253-11 278-11C445-11 478 76 478 126Z'/>
 </font>
 <font id='LSMLHR-CMR9' horiz-adv-x='0'>
 <font-face font-family='LSMLHR-CMR9' units-per-em='1000' ascent='750' descent='250'/>
@@ -5371,7 +5391,8 @@ es inyectiva pero no sobreyectiva (el
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
 no tiene preimagen).</figcaption></figure>
 <h2 id="relaciones-de-equivalencia">1.4 Relaciones de equivalencia</h2>
-<p><strong>Definición 0.1.7.</strong> Una <strong>relación</strong>
+<p><span id="res-0-1-7" class="res-def"><strong>Definición
+0.1.7.</strong></span> Una <strong>relación</strong>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>∼</mo><annotation encoding="application/x-tex">\sim</annotation></semantics></math>
 en
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
@@ -5390,8 +5411,9 @@ y
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
 es
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">[</mo><mi>a</mi><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>b</mi><mo>∈</mo><mi>A</mi><mo>:</mo><mi>b</mi><mo>∼</mo><mi>a</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">[a] = \{b \in A : b \sim a\}</annotation></semantics></math>.</p>
-<p><strong>Teorema 0.1.8 (equivalencia = partición).</strong> Las clases
-de una relación de equivalencia forman una <strong>partición</strong> de
+<p><span id="res-0-1-8" class="res-def"><strong>Teorema 0.1.8
+(equivalencia = partición).</strong></span> Las clases de una relación
+de equivalencia forman una <strong>partición</strong> de
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>:
 son no vacías, su unión es
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>,
@@ -5426,7 +5448,8 @@ mismo resto al dividir por
 será una relación de equivalencia cuyas clases <strong>son</strong> los
 elementos de
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mi>n</mi><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/n\mathbb{Z}</annotation></semantics></math>
-(Aritmética). El Teorema 0.1.8 garantiza que esas clases parten
+(Aritmética). El <a href="#res-0-1-8" class="cita" target="_blank"
+rel="noopener">Teorema 0.1.8</a> garantiza que esas clases parten
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℤ</mi><annotation encoding="application/x-tex">\mathbb{Z}</annotation></semantics></math>
 limpiamente — el cimiento de toda la aritmética modular.</p>
 </blockquote>
@@ -5631,14 +5654,14 @@ Moivre, dimensión de espacios…). El “está bien fundada” descansa en el
 (todo subconjunto no vacío tiene mínimo), equivalente a la inducción —
 que Aritmética usará explícitamente.</p>
 </blockquote>
-<p><strong>Observación 0.1.9 (mención, sin sección —
-enriquecimiento).</strong> La prueba por contradicción usa el tercio
-excluso: de “no es irracional” concluimos “es racional”. Hay una
-corriente, el <strong>constructivismo</strong> (o intuicionismo,
-Brouwer), que <strong>rechaza</strong> el tercio excluso para conjuntos
-infinitos y, con él, ciertas pruebas por contradicción puras —
-exigiendo, en su lugar, <em>construir</em> el objeto. No es una rareza:
-sostiene la informática teórica (una demostración constructiva
+<p><span id="res-0-1-9" class="res-def"><strong>Observación 0.1.9
+(mención, sin sección — enriquecimiento).</strong></span> La prueba por
+contradicción usa el tercio excluso: de “no es irracional” concluimos
+“es racional”. Hay una corriente, el <strong>constructivismo</strong> (o
+intuicionismo, Brouwer), que <strong>rechaza</strong> el tercio excluso
+para conjuntos infinitos y, con él, ciertas pruebas por contradicción
+puras — exigiendo, en su lugar, <em>construir</em> el objeto. No es una
+rareza: sostiene la informática teórica (una demostración constructiva
 <em>es</em> un algoritmo). Un guiño jugoso para el perfil de Filosofía;
 no es materia evaluable. <em>(Más → ampliación.)</em></p>
 <hr />
@@ -5671,7 +5694,9 @@ su Venn al lado.</li>
 <li>Da una aplicación
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℕ</mi><mo>→</mo><mi>ℕ</mi></mrow><annotation encoding="application/x-tex">\mathbb{N} \to \mathbb{N}</annotation></semantics></math>
 inyectiva no sobreyectiva, y otra sobreyectiva no inyectiva: muestra que
-el Teorema 0.1.6 <strong>falla</strong> en conjuntos infinitos.</li>
+el <a href="#res-0-1-6" class="cita" target="_blank"
+rel="noopener">Teorema 0.1.6</a> <strong>falla</strong> en conjuntos
+infinitos.</li>
 <li>Verifica que
 “<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∼</mo><mi>b</mi><mo>⇔</mo><mi>a</mi><mo>−</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a \sim b \iff a - b</annotation></semantics></math>
 es par” es una relación de equivalencia en

@@ -233,6 +233,20 @@
     /* Bloques de código con highlighting: pandoc los envuelve en div.sourceCode y su
        CSS pone margin:0 al pre (gana por especificidad) -> centramos el div envolvente. */
     div.sourceCode { max-width: 42rem; margin: 1em auto; }
+    /* Citas a resultados numerados: enlazan a su enunciado y abren en otra pestaña,
+       para no perder el sitio en el que ibas leyendo. Discretas: el subrayado
+       punteado se ve al pasar por encima, no compite con el texto. */
+    a.cita { color: inherit; text-decoration: underline; text-decoration-style: dotted;
+             text-decoration-color: #9db4d0; text-underline-offset: 0.15em; }
+    a.cita:hover { color: #1a5fb4; text-decoration-style: solid; }
+    html.dark a.cita { text-decoration-color: #5a7290; }
+    html.dark a.cita:hover { color: #85b4ea; }
+    /* El enunciado al que apuntan: al aterrizar, un destello que lo señala. */
+    span.res-def:target, span.res-def:target strong { background: #fff3c4; }
+    html.dark span.res-def:target, html.dark span.res-def:target strong { background: #4a4020; }
+    /* La barra superior es sticky (z-index 50): sin este margen, al saltar a un
+       enunciado el enunciado queda justo debajo de ella y no se ve. */
+    span.res-def { scroll-margin-top: 5rem; }
     /* Barrita "▶ ejecutar · ✎ editar · playground" bajo cada bloque Python (JS) */
     p.ejecutar-en { max-width: 42rem; margin: -0.5em auto 1em; text-align: right; font-size: 0.8rem; }
     p.ejecutar-en a { color: #888; text-decoration: none; }
@@ -4801,14 +4815,16 @@ compatible order. Exercises and a Going further section at the end.</p>
 </blockquote>
 <hr />
 <h2 id="the-construction">1.1 The construction</h2>
-<p><strong>Definition 2.1.1.</strong> A <strong>complex number</strong>
-is an ordered pair
+<p><span id="res-2-1-1" class="res-def"><strong>Definition
+2.1.1.</strong></span> A <strong>complex number</strong> is an ordered
+pair
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>∈</mo><mi>ℝ</mi><mo>×</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">(a,b) \in \mathbb{R} \times \mathbb{R}</annotation></semantics></math>
 (Cartesian product, M0). On the set
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℂ</mi><annotation encoding="application/x-tex">\mathbb{C}</annotation></semantics></math>
 of such pairs one defines:
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>c</mi><mo>,</mo><mi>d</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>+</mo><mi>c</mi><mo>,</mo><mspace width="0.278em"></mspace><mi>b</mi><mo>+</mo><mi>d</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>⋅</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>c</mi><mo>,</mo><mi>d</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mi>c</mi><mo>−</mo><mi>b</mi><mi>d</mi><mo>,</mo><mspace width="0.278em"></mspace><mi>a</mi><mi>d</mi><mo>+</mo><mi>b</mi><mi>c</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">(a,b) + (c,d) = (a+c,\; b+d), \qquad (a,b)\cdot(c,d) = (ac - bd,\; ad + bc).</annotation></semantics></math></p>
-<p><strong>Proposition 2.1.2.</strong> 1. Pairs of the form
+<p><span id="res-2-1-2" class="res-def"><strong>Proposition
+2.1.2.</strong></span> 1. Pairs of the form
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(a, 0)</annotation></semantics></math>
 operate among themselves exactly like the reals:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>c</mi><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>+</mo><mi>c</mi><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">(a,0)+(c,0) = (a+c, 0)</annotation></semantics></math>
@@ -4827,8 +4843,9 @@ respecting the operations. 2. Writing
 (the <strong>rectangular form</strong>), and the operations of 1.1 are
 those of “operating with distributivity and substituting
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>i</mi><mn>2</mn></msup><mo>=</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i^2 = -1</annotation></semantics></math>”.</p>
-<p><em>Proof.</em> (1) and (2): direct computation with Definition
-2.1.1. (3)
+<p><em>Proof.</em> (1) and (2): direct computation with <a
+href="#res-2-1-1" class="cita" target="_blank" rel="noopener">Definition
+2.1.1</a>. (3)
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>b</mi><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>a</mi><mo>+</mo><mi>b</mi><mi>i</mi></mrow><annotation encoding="application/x-tex">(a,b) = (a,0) + (0,b) = (a,0) + (b,0)(0,1) = a + bi</annotation></semantics></math>;
 uniqueness is that of the components of the pair. That the operations
 agree: expanding
@@ -4846,11 +4863,14 @@ is not a mysterious entity one “has to take on faith”: it is the pair
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(0,1)</annotation></semantics></math>,
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>i</mi><mn>2</mn></msup><mo>=</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i^2 = -1</annotation></semantics></math>
-is a <strong>computation</strong> (1.2.2). The product formula is not
-arbitrary: it is the only one compatible with distributivity and with
+is a <strong>computation</strong> (<a href="#res-2-1-2" class="cita"
+target="_blank" rel="noopener">Proposition 2.1.2</a>(2)). The product
+formula is not arbitrary: it is the only one compatible with
+distributivity and with
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>i</mi><mn>2</mn></msup><mo>=</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i^2 = -1</annotation></semantics></math>
-(that is what 1.2.3 says). The ring properties (associativity,
-commutativity, distributivity, identities
+(that is what <a href="#res-2-1-2" class="cita" target="_blank"
+rel="noopener">Proposition 2.1.2</a>(3) says). The ring properties
+(associativity, commutativity, distributivity, identities
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">0 = (0,0)</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">1 = (1,0)</annotation></semantics></math>)
@@ -4858,7 +4878,8 @@ can be checked mechanically from 1.1 — exercise 6 does one; the rest are
 identical.</p>
 </blockquote>
 <h2 id="conjugate-and-modulus">1.2 Conjugate and modulus</h2>
-<p><strong>Definition 2.1.3.</strong> For
+<p><span id="res-2-1-3" class="res-def"><strong>Definition
+2.1.3.</strong></span> For
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>b</mi><mi>i</mi></mrow><annotation encoding="application/x-tex">z = a + bi</annotation></semantics></math>:
 the <strong>conjugate</strong>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>z</mi><mo accent="true">‾</mo></mover><mo>=</mo><mi>a</mi><mo>−</mo><mi>b</mi><mi>i</mi></mrow><annotation encoding="application/x-tex">\bar z = a - bi</annotation></semantics></math>;
@@ -4867,8 +4888,24 @@ the <strong>modulus</strong>
 the <strong>real part</strong>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">R</mi><mi mathvariant="normal">e</mi></mrow><mi>z</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">\mathrm{Re} z = a</annotation></semantics></math>
 and the <strong>imaginary part</strong>
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">m</mi></mrow><mi>z</mi><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">\mathrm{Im} z = b</annotation></semantics></math>.</p>
-<p><strong>Proposition 2.1.4 (properties of the conjugate).</strong> 1.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">m</mi></mrow><mi>z</mi><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">\mathrm{Im} z = b</annotation></semantics></math>
+— <em>careful:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">I</mi><mi mathvariant="normal">m</mi></mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">\mathrm{Im} z</annotation></semantics></math>
+is the real number
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>,
+<strong>not</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mi>i</mi></mrow><annotation encoding="application/x-tex">bi</annotation></semantics></math>;
+this is the most frequent error of the topic</em>. One says that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+is <strong>purely imaginary</strong> when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">R</mi><mi mathvariant="normal">e</mi></mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\mathrm{Re} z = 0</annotation></semantics></math>,
+that is, when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>b</mi><mi>i</mi></mrow><annotation encoding="application/x-tex">z = bi</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>∈</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">b \in \mathbb{R}</annotation></semantics></math>:
+these are exactly the points of the vertical axis.</p>
+<p><span id="res-2-1-4" class="res-def"><strong>Proposition 2.1.4
+(properties of the conjugate).</strong></span> 1.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mrow><mi>z</mi><mo>+</mo><mi>w</mi></mrow><mo accent="true">¯</mo></mover><mo>=</mo><mover><mi>z</mi><mo accent="true">‾</mo></mover><mo>+</mo><mover><mi>w</mi><mo accent="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\overline{z + w} = \bar z + \bar w</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mrow><mi>z</mi><mo>⋅</mo><mi>w</mi></mrow><mo accent="true">¯</mo></mover><mo>=</mo><mover><mi>z</mi><mo accent="true">‾</mo></mover><mo>⋅</mo><mover><mi>w</mi><mo accent="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\overline{z \cdot w} = \bar z \cdot \bar w</annotation></semantics></math>
@@ -4887,7 +4924,8 @@ and
 — they coincide. (Sum: immediate.) (2) and (3): read off directly from
 the definitions.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
-<p><strong>Proposition 2.1.5 (the key identity).</strong>
+<p><span id="res-2-1-5" class="res-def"><strong>Proposition 2.1.5 (the
+key identity).</strong></span>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><mi>z</mi><mo>⋅</mo><mover><mi>z</mi><mo accent="true">‾</mo></mover><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>z</mi><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\;z \cdot \bar z = |z|^2</annotation></semantics></math>
 — a <strong>real</strong> number,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\ge 0</annotation></semantics></math>,
@@ -4902,9 +4940,9 @@ and
 only when
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mi>b</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a = b = 0</annotation></semantics></math>.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
-<p><strong>Theorem 2.1.6 (division:
+<p><span id="res-2-1-6" class="res-def"><strong>Theorem 2.1.6 (division:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℂ</mi><annotation encoding="application/x-tex">\mathbb{C}</annotation></semantics></math>
-is a field).</strong> Every
+is a field).</strong></span> Every
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z \neq 0</annotation></semantics></math>
 has an inverse:
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>z</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>=</mo><mfrac><mover><mi>z</mi><mo accent="true">‾</mo></mover><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>z</mi><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">z^{-1} = \frac{\bar z}{|z|^2}.</annotation></semantics></math></p>
@@ -4923,17 +4961,23 @@ by 2.1.5).
 <strong>field</strong> is used as a label; the formal definition and its
 theory arrive in Linear Algebra. <strong>In practice:</strong> to
 divide, multiply numerator and denominator by the conjugate of the
-denominator — and Proposition 2.1.5 is the reason why (it makes the
+denominator — and <a href="#res-2-1-5" class="cita" target="_blank"
+rel="noopener">Proposition 2.1.5</a> is the reason why (it makes the
 denominator real).</p>
 </blockquote>
-<p><strong>Corollary 2.1.7.</strong>
+<p><span id="res-2-1-7" class="res-def"><strong>Corollary
+2.1.7.</strong></span>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi>z</mi><mi>w</mi><mo stretchy="true" form="postfix">|</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">|</mo><mi>z</mi><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi>w</mi><mo stretchy="true" form="postfix">|</mo></mrow></mrow><annotation encoding="application/x-tex">|z w| = |z| |w|</annotation></semantics></math>.</p>
 <p><em>Proof.</em>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>z</mi><mi>w</mi><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>z</mi><mi>w</mi><mo stretchy="true" form="postfix">)</mo></mrow><mover><mrow><mo stretchy="true" form="prefix">(</mo><mi>z</mi><mi>w</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo accent="true">¯</mo></mover><mo>=</mo><mi>z</mi><mover><mi>z</mi><mo accent="true">‾</mo></mover><mspace width="0.167em"></mspace><mi>w</mi><mover><mi>w</mi><mo accent="true">‾</mo></mover><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>z</mi><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>w</mi><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">|zw|^2 = (zw)\overline{(zw)} = z \bar z\, w \bar w = |z|^2 |w|^2</annotation></semantics></math>
-(using 1.4.1 and commutativity); take square roots of nonnegatives.
+(using <a href="#res-2-1-4" class="cita" target="_blank"
+rel="noopener">Proposition 2.1.4</a>(1) and commutativity); take square
+roots of nonnegatives.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
 <h2 id="the-argand-plane">1.3 The Argand plane</h2>
-<p>Definition 2.1.1 already <strong>is</strong> the identification:
+<p><a href="#res-2-1-1" class="cita" target="_blank"
+rel="noopener">Definition 2.1.1</a> already <strong>is</strong> the
+identification:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>+</mo><mi>b</mi><mi>i</mi></mrow><annotation encoding="application/x-tex">a + bi</annotation></semantics></math>
 is the point
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(a,b)</annotation></semantics></math>
@@ -5102,30 +5146,44 @@ are symmetric, with
 <h2 id="mathbbc-cannot-be-ordered-the-price-of-the-construction">1.4
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℂ</mi><annotation encoding="application/x-tex">\mathbb{C}</annotation></semantics></math>
 cannot be ordered (the price of the construction)</h2>
-<p><strong>Proposition 2.1.8.</strong> There is no total order on
+<p><span id="res-2-1-8" class="res-def"><strong>Proposition
+2.1.8.</strong></span> There is no <strong>total</strong> order on
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℂ</mi><annotation encoding="application/x-tex">\mathbb{C}</annotation></semantics></math>
-compatible with the operations (that is, satisfying:
+compatible with the operations, that is, an order satisfying
+<strong>(T)</strong> given
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a, b</annotation></semantics></math>,
+either
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>&lt;</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a &lt; b</annotation></semantics></math>,
+or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a = b</annotation></semantics></math>,
+or
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>&lt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">b &lt; a</annotation></semantics></math>;
+<strong>(O1)</strong>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>&lt;</mo><mi>b</mi><mo>⇒</mo><mi>a</mi><mo>+</mo><mi>c</mi><mo>&lt;</mo><mi>b</mi><mo>+</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">a &lt; b \Rightarrow a + c &lt; b + c</annotation></semantics></math>;
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>a</mi><mo>,</mo><mspace width="0.167em"></mspace><mn>0</mn><mo>&lt;</mo><mi>b</mi><mo>⇒</mo><mn>0</mn><mo>&lt;</mo><mi>a</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">0 &lt; a,\, 0 &lt; b \Rightarrow 0 &lt; ab</annotation></semantics></math>).</p>
+and <strong>(O2)</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>a</mi><mo>,</mo><mspace width="0.167em"></mspace><mn>0</mn><mo>&lt;</mo><mi>b</mi><mo>⇒</mo><mn>0</mn><mo>&lt;</mo><mi>a</mi><mi>b</mi></mrow><annotation encoding="application/x-tex">0 &lt; a,\, 0 &lt; b \Rightarrow 0 &lt; ab</annotation></semantics></math>.</p>
 <p><em>Proof (by contradiction, M0).</em> Suppose one exists. <em>Step
-1: every square of a nonzero element is positive.</em> If
+1: every square of a nonzero element is positive.</em> By (T), an
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x \neq 0</annotation></semantics></math>
+falls into one of two cases. If
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x &gt; 0</annotation></semantics></math>,
 then
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>⋅</mo><mi>x</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x \cdot x &gt; 0</annotation></semantics></math>.
-If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>⋅</mo><mi>x</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x \cdot x &gt; 0</annotation></semantics></math>
+by (O2). If
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x &lt; 0</annotation></semantics></math>,
 adding
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">-x</annotation></semantics></math>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">-x</annotation></semantics></math>
+to both sides by (O1):
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mo>−</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">0 &lt; -x</annotation></semantics></math>,
 so
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(-x)(-x) &gt; 0</annotation></semantics></math>,
-and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(-x)(-x) &gt; 0</annotation></semantics></math>
+by (O2), and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(-x)(-x) = x^2</annotation></semantics></math>.
 In particular
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>=</mo><msup><mn>1</mn><mn>2</mn></msup><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">1 = 1^2 &gt; 0</annotation></semantics></math>,
 and adding
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math>
+by (O1):
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>1</mn><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">-1 &lt; 0</annotation></semantics></math>.
 <em>Step 2:</em>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">i \neq 0</annotation></semantics></math>,
@@ -5155,7 +5213,8 @@ and not in
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mfrac displaystyle="true"><mn>1</mn><mi>i</mi></mfrac><annotation encoding="application/x-tex">\dfrac{1}{i}</annotation></semantics></math>
 — the divisions <strong>via the conjugate</strong>, indicating in each
-one where Proposition 2.1.5 acts.</li>
+one where <a href="#res-2-1-5" class="cita" target="_blank"
+rel="noopener">Proposition 2.1.5</a> acts.</li>
 <li>★ Plot in the plane:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mn>2</mn><mo>+</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">z = 2 + i</annotation></semantics></math>,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>z</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar z</annotation></semantics></math>,
@@ -5170,14 +5229,15 @@ geometrically?</li>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>z</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn><mi>z</mi><mo>+</mo><mn>13</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z^2 - 4z + 13 = 0</annotation></semantics></math>
 and check both solutions. Notice: they are conjugates — coincidence?
 (This will come back in S3.)</li>
-<li>Prove properties 1.4.2 and 1.4.3 from the definitions.</li>
+<li>Prove properties 2.1.4(2) and 2.1.4(3) from the definitions.</li>
 <li>Prove:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><mover><mi>z</mi><mo accent="true">‾</mo></mover><mo stretchy="true" form="postfix">|</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">|</mo><mi>z</mi><mo stretchy="true" form="postfix">|</mo></mrow></mrow><annotation encoding="application/x-tex">|\bar z| = |z|</annotation></semantics></math>,
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi>z</mi><mo stretchy="true" form="postfix">|</mo></mrow><mo>=</mo><mn>0</mn><mo>⇔</mo><mi>z</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">|z| = 0 \iff z = 0</annotation></semantics></math>.</li>
-<li>Verify the <strong>associativity of the product</strong> from
-Definition 2.1.1 for three generic pairs (mechanical but instructive:
-the rigor of the construction exacts this price only once).</li>
+<li>Verify the <strong>associativity of the product</strong> from <a
+href="#res-2-1-1" class="cita" target="_blank" rel="noopener">Definition
+2.1.1</a> for three generic pairs (mechanical but instructive: the rigor
+of the construction exacts this price only once).</li>
 <li>Prove that
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">R</mi><mi mathvariant="normal">e</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≤</mo><mrow><mo stretchy="true" form="prefix">|</mo><mi>z</mi><mo stretchy="true" form="postfix">|</mo></mrow></mrow><annotation encoding="application/x-tex">\mathrm{Re}(z) \le |z|</annotation></semantics></math>
 and
@@ -5187,8 +5247,10 @@ and
 expand and use the first with
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mover><mi>w</mi><mo accent="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">z\bar w</annotation></semantics></math>.)</em></li>
 <li><strong>(Structural counterfactual, guided.)</strong> Reproduce the
-proof of Proposition 2.1.8 filling in every step, and point out exactly
-which axiom of the order is used in each line.</li>
+proof of <a href="#res-2-1-8" class="cita" target="_blank"
+rel="noopener">Proposition 2.1.8</a> filling in every step, and point
+out exactly which axiom of the order — (T), (O1) or (O2) — is used in
+each line.</li>
 </ol>
 <h2 id="going-further-and-references">Going further and references</h2>
 <blockquote>
@@ -5202,8 +5264,9 @@ negative numbers <em>in intermediate steps</em> — Bombelli discovered
 that, computing with them formally, the correct real results emerged.
 Complex numbers entered mathematics <strong>because they
 worked</strong>, two centuries before Hamilton gave (in 1835) the
-construction by pairs of Definition 2.1.1. See Needham, <em>Visual
-Complex Analysis</em>, ch. 1.</p>
+construction by pairs of <a href="#res-2-1-1" class="cita"
+target="_blank" rel="noopener">Definition 2.1.1</a>. See Needham,
+<em>Visual Complex Analysis</em>, ch. 1.</p>
 <p><strong>References.</strong> Construction and operations: Hernández,
 <em>Álgebra y geometría</em>; Childs. The geometric view (all of this
 module’s): Needham, ch. 1 — the star reference.</p>
@@ -5221,7 +5284,8 @@ end.</p>
 </blockquote>
 <hr />
 <h2 id="the-polar-form">2.1 The polar form</h2>
-<p><strong>Definition 2.2.1.</strong> For
+<p><span id="res-2-2-1" class="res-def"><strong>Definition
+2.2.1.</strong></span> For
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>b</mi><mi>i</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z = a + bi \neq 0</annotation></semantics></math>:
 its <strong>modulus</strong> is
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">|</mo><mi>z</mi><mo stretchy="true" form="postfix">|</mo></mrow></mrow><annotation encoding="application/x-tex">r = |z|</annotation></semantics></math>
@@ -5328,8 +5392,8 @@ is the distance to the origin and the argument
 the angle with the real axis;
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mi>r</mi><mo>cos</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">a=r\cos\theta</annotation></semantics></math>,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mi>r</mi><mo>sin</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">b=r\sin\theta</annotation></semantics></math>.</figcaption></figure>
-<p><strong>Proposition 2.2.2 (the argument, up to full turns).</strong>
-Every
+<p><span id="res-2-2-2" class="res-def"><strong>Proposition 2.2.2 (the
+argument, up to full turns).</strong></span> Every
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z \neq 0</annotation></semantics></math>
 has an argument, and two arguments of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
@@ -5464,8 +5528,9 @@ is not fine print:</strong> it is exactly the mechanism that in Session
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>-th
 roots sprout. It deserves to be treated with respect from now on.</p>
 </blockquote>
-<p><strong>Method 2.2.3 (translation, with the quadrants
-watched).</strong> From polar to rectangular there is no mystery:
+<p><span id="res-2-2-3" class="res-def"><strong>Method 2.2.3
+(translation, with the quadrants watched).</strong></span> From polar to
+rectangular there is no mystery:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mi>r</mi><mo>cos</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">a = r\cos\theta</annotation></semantics></math>,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mi>r</mi><mo>sin</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">b = r\sin\theta</annotation></semantics></math>.
 The care is needed in the reverse direction.</p>
@@ -5742,7 +5807,8 @@ gives the correct argument only if
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mo>−</mo><mn>1</mn><mo>+</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">z=-1+i</annotation></semantics></math>).</figcaption></figure>
 <h2 id="the-theorem-multiplying-is-rotating">2.2 The theorem:
 multiplying is rotating</h2>
-<p><strong>Theorem 2.2.4 (product in polar form).</strong> If
+<p><span id="res-2-2-4" class="res-def"><strong>Theorem 2.2.4 (product
+in polar form).</strong></span> If
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mn>1</mn></msub><mo>=</mo><msub><mi>r</mi><mn>1</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><mo>cos</mo><mi>α</mi><mo>+</mo><mi>i</mi><mo>sin</mo><mi>α</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">z_1 = r_1(\cos\alpha + i\sin\alpha)</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mn>2</mn></msub><mo>=</mo><msub><mi>r</mi><mn>2</mn></msub><mrow><mo stretchy="true" form="prefix">(</mo><mo>cos</mo><mi>β</mi><mo>+</mo><mi>i</mi><mo>sin</mo><mi>β</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">z_2 = r_2(\cos\beta + i\sin\beta)</annotation></semantics></math>:
@@ -5773,12 +5839,23 @@ a <strong>90° rotation</strong>. And then
 stops being an oddity: <strong>two 90° rotations are a half
 turn</strong>, and a half turn is multiplying by
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math>.
-The “impossible” equation of S1 was plain geometry all along.</li>
+The “impossible” equation of S1 was plain geometry all along. <em>(With
+the status made clear: this is <strong>not a new proof</strong> of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>i</mi><mn>2</mn></msup><mo>=</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i^2 = -1</annotation></semantics></math>.
+The reading “multiplying by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+is rotating by 90°” was deduced from <a href="#res-2-2-4" class="cita"
+target="_blank" rel="noopener">Theorem 2.2.4</a>, which was proved by
+multiplying in rectangular form — where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>i</mi><mn>2</mn></msup><mo>=</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i^2 = -1</annotation></semantics></math>
+was already inside. It is the same truth, seen at last in a form one can
+remember.)</em></li>
 <li>By a positive real: it only scales. By
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math>:
 half turn. By
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>z</mi><mo accent="true">‾</mo></mover><mi>/</mi><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>z</mi><mo stretchy="true" form="postfix">|</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\bar z / |z|^2</annotation></semantics></math>
-(the inverse, Theorem 2.1.6): rotate by
+(the inverse, <a href="#res-2-1-6" class="cita" target="_blank"
+rel="noopener">Theorem 2.1.6</a>): rotate by
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">-\theta</annotation></semantics></math>
 and scale by
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">1/r</annotation></semantics></math>
@@ -5968,7 +6045,8 @@ is the prototype of the transformations that the Linear Algebra module
 will study in general; this example will be waiting for you there.</p>
 </blockquote>
 <h2 id="de-moivre">2.3 De Moivre</h2>
-<p><strong>Theorem 2.2.5 (De Moivre).</strong> For every
+<p><span id="res-2-2-5" class="res-def"><strong>Theorem 2.2.5 (De
+Moivre).</strong></span> For every
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>∈</mo><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">n \in \mathbb{Z}</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>r</mi><mrow><mo stretchy="true" form="prefix">(</mo><mo>cos</mo><mi>θ</mi><mo>+</mo><mi>i</mi><mo>sin</mo><mi>θ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z = r(\cos\theta + i\sin\theta) \neq 0</annotation></semantics></math>:
@@ -5979,7 +6057,8 @@ by induction (M0):</strong> the case
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n = 1</annotation></semantics></math>
 is the definition; the step
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>→</mo><mi>n</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n \to n+1</annotation></semantics></math>
-is Theorem 2.2.4 applied to
+is <a href="#res-2-2-4" class="cita" target="_blank"
+rel="noopener">Theorem 2.2.4</a> applied to
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>z</mi><mi>n</mi></msup><mo>⋅</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">z^n \cdot z</annotation></semantics></math>
 (moduli
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>r</mi><mi>n</mi></msup><mo>⋅</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">r^n \cdot r</annotation></semantics></math>,
@@ -5995,13 +6074,15 @@ with
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">m &gt; 0</annotation></semantics></math>,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>z</mi><mrow><mo>−</mo><mi>m</mi></mrow></msup><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>z</mi><mi>m</mi></msup><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">z^{-m} = (z^m)^{-1}</annotation></semantics></math>,
 and the inverse inverts the modulus and changes the sign of the argument
-(geometric reading of Theorem 2.1.6, checked in exercise 5): modulus
+(geometric reading of <a href="#res-2-1-6" class="cita" target="_blank"
+rel="noopener">Theorem 2.1.6</a>, checked in exercise 5): modulus
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>r</mi><mrow><mo>−</mo><mi>m</mi></mrow></msup><annotation encoding="application/x-tex">r^{-m}</annotation></semantics></math>,
 argument
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mi>m</mi><mi>θ</mi></mrow><annotation encoding="application/x-tex">-m\theta</annotation></semantics></math>.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
 <div class="ejemplo" label="Example 2.2.6.">
-<p><strong>Example 2.2.6.</strong>
+<p><span id="res-2-2-6" class="res-def"><strong>Example
+2.2.6.</strong></span>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>+</mo><mi>i</mi><mo stretchy="true" form="postfix">)</mo></mrow><mn>10</mn></msup><annotation encoding="application/x-tex">(1+i)^{10}</annotation></semantics></math>:
 in polar form,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>+</mo><mi>i</mi><mo>=</mo><msqrt><mn>2</mn></msqrt><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mi>π</mi><mi>/</mi><mn>4</mn></mrow></msup></mrow><annotation encoding="application/x-tex">1 + i = \sqrt{2}\, e^{i\pi/4}</annotation></semantics></math>;
@@ -6013,14 +6094,16 @@ De Moivre:
 </div>
 <h2 id="the-exponential-notation-and-its-status-honestly">2.4 The
 exponential notation (and its status, honestly)</h2>
-<p><strong>Definition-notation 2.7 (Euler’s formula).</strong> One
-writes
+<p><span id="res-2-2-7" class="res-def"><strong>Definition-notation
+2.2.7 (Euler’s formula).</strong></span> One writes
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>i</mi><mi>θ</mi></mrow></msup><mo>:=</mo><mo>cos</mo><mi>θ</mi><mo>+</mo><mi>i</mi><mo>sin</mo><mi>θ</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">e^{i\theta} := \cos\theta + i\sin\theta,</annotation></semantics></math>
 so that every
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">z \neq 0</annotation></semantics></math>
 is
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>r</mi><msup><mi>e</mi><mrow><mi>i</mi><mi>θ</mi></mrow></msup></mrow><annotation encoding="application/x-tex">z = r e^{i\theta}</annotation></semantics></math>,
-and Theorem 2.2.4 becomes the <strong>rule of exponents</strong>:
+and <a href="#res-2-2-4" class="cita" target="_blank"
+rel="noopener">Theorem 2.2.4</a> becomes the <strong>rule of
+exponents</strong>:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>i</mi><mi>α</mi></mrow></msup><msup><mi>e</mi><mrow><mi>i</mi><mi>β</mi></mrow></msup><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>α</mi><mo>+</mo><mi>β</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msup></mrow><annotation encoding="application/x-tex">e^{i\alpha} e^{i\beta} = e^{i(\alpha+\beta)}</annotation></semantics></math>,
 and De Moivre becomes
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>θ</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>n</mi></msup><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>n</mi><mi>θ</mi></mrow></msup></mrow><annotation encoding="application/x-tex">(e^{i\theta})^n = e^{in\theta}</annotation></semantics></math>.</p>
@@ -6029,8 +6112,14 @@ and De Moivre becomes
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>i</mi><mi>θ</mi></mrow></msup><annotation encoding="application/x-tex">e^{i\theta}</annotation></semantics></math>
 is a <strong>notation</strong> — extraordinarily convenient, and
 <em>deserving</em> of the exponential symbol precisely because it obeys
-its rule (2.4). The deep justification (that the exponential series,
-evaluated at
+the rule of exponents. That rule, however, <strong>is not a gift of the
+notation</strong>: it is <a href="#res-2-2-4" class="cita"
+target="_blank" rel="noopener">Theorem 2.2.4</a> rewritten, just as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>θ</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mi>n</mi></msup><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>n</mi><mi>θ</mi></mrow></msup></mrow><annotation encoding="application/x-tex">(e^{i\theta})^n = e^{in\theta}</annotation></semantics></math>
+is <a href="#res-2-2-5" class="cita" target="_blank"
+rel="noopener">Theorem 2.2.5</a> rewritten. The notation makes them
+evident; it does not prove them. The deep justification (that the
+exponential series, evaluated at
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>θ</mi></mrow><annotation encoding="application/x-tex">i\theta</annotation></semantics></math>,
 gives cosine and sine) belongs to analysis and to another course:
 <strong>we use the notation; we do not pretend to have proved the
@@ -6075,12 +6164,16 @@ has modulus
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">1/r</annotation></semantics></math>
 and argument
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mi>θ</mi></mrow><annotation encoding="application/x-tex">-\theta</annotation></semantics></math>
-(the geometric reading used in 2.5).</li>
+(the geometric reading used in <a href="#res-2-2-5" class="cita"
+target="_blank" rel="noopener">Theorem 2.2.5</a>, and asserted in video
+S2 V2).</li>
 <li>Prove
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi>z</mi><mi>w</mi><mo stretchy="true" form="postfix">|</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">|</mo><mi>z</mi><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi>w</mi><mo stretchy="true" form="postfix">|</mo></mrow></mrow><annotation encoding="application/x-tex">|zw| = |z||w|</annotation></semantics></math>
-with Theorem 2.2.4, and compare it with the proof via conjugates from S1
-(Corollary 2.1.7): two proofs, one identity — what does each
-contribute?</li>
+with <a href="#res-2-2-4" class="cita" target="_blank"
+rel="noopener">Theorem 2.2.4</a>, and compare it with the proof via
+conjugates from S1 (<a href="#res-2-1-7" class="cita" target="_blank"
+rel="noopener">Corollary 2.1.7</a>): two proofs, one identity — what
+does each contribute?</li>
 <li>For which
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
 is
@@ -6093,7 +6186,7 @@ references</h2>
 <blockquote>
 <p><strong>Going further (Euler’s identity).</strong> With
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>=</mo><mi>π</mi></mrow><annotation encoding="application/x-tex">\theta = \pi</annotation></semantics></math>,
-notation 2.7 produces
+notation 2.2.7 produces
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>i</mi><mi>π</mi></mrow></msup><mo>+</mo><mn>1</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">e^{i\pi} + 1 = 0</annotation></semantics></math>
 — five fundamental constants in one line, repeatedly voted “the most
 beautiful formula”. With our honest status: it is beautiful <em>as a
@@ -6120,7 +6213,8 @@ status. Exercises and a Going further section at the end.</p>
 </blockquote>
 <hr />
 <h2 id="the-n-th-roots">3.1 The n-th roots</h2>
-<p><strong>Theorem 2.3.1.</strong> Let
+<p><span id="res-2-3-1" class="res-def"><strong>Theorem
+2.3.1.</strong></span> Let
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mi>R</mi><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mi>φ</mi></mrow></msup><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">w = R\,e^{i\varphi} \neq 0</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n \ge 1</annotation></semantics></math>.
@@ -6165,7 +6259,8 @@ are
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>φ</mi><mo>+</mo><mn>2</mn><mi>k</mi><mi>π</mi></mrow><annotation encoding="application/x-tex">\varphi + 2k\pi</annotation></semantics></math>
 with
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>∈</mo><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">k \in \mathbb{Z}</annotation></semantics></math>
-(Proposition 2.2.2 — <em>here the “up to
+(<a href="#res-2-2-2" class="cita" target="_blank"
+rel="noopener">Proposition 2.2.2</a> — <em>here the “up to
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">2\pi</annotation></semantics></math>”
 comes alive</em>). Hence
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>φ</mi><mo>+</mo><mn>2</mn><mi>k</mi><mi>π</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>/</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">\theta = (\varphi + 2k\pi)/n</annotation></semantics></math>
@@ -6297,19 +6392,21 @@ as
 varies, the number of vertices of the regular polygon inscribed in the
 unit circle changes.</figcaption></figure>
 <h2 id="the-roots-of-unity">3.2 The roots of unity</h2>
-<p><strong>Definition 2.3.2.</strong> The
+<p><span id="res-2-3-2" class="res-def"><strong>Definition
+2.3.2.</strong></span> The
 <strong><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>-th
 roots of unity</strong> are the solutions of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>z</mi><mi>n</mi></msup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">z^n = 1</annotation></semantics></math>:
-by Theorem 2.3.1 (with
+by <a href="#res-2-3-1" class="cita" target="_blank"
+rel="noopener">Theorem 2.3.1</a> (with
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>1</mn><mo>,</mo><mi>φ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R = 1, \varphi = 0</annotation></semantics></math>),
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>k</mi></msub><mo>=</mo><msup><mi>e</mi><mrow><mn>2</mn><mi>k</mi><mi>π</mi><mi>i</mi><mi>/</mi><mi>n</mi></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>k</mi><mo>=</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\omega_k = e^{2k\pi i/n}, \qquad k = 0, 1, \dots, n-1</annotation></semantics></math>
 — the regular polygon with
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
 vertices inscribed in the unit circle, with one vertex at
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>.</p>
-<p><strong>Proposition 2.3.3 (multiplicative structure).</strong>
-Writing
+<p><span id="res-2-3-3" class="res-def"><strong>Proposition 2.3.3
+(multiplicative structure).</strong></span> Writing
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>=</mo><msub><mi>ω</mi><mn>1</mn></msub><mo>=</mo><msup><mi>e</mi><mrow><mn>2</mn><mi>π</mi><mi>i</mi><mi>/</mi><mi>n</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\omega = \omega_1 = e^{2\pi i/n}</annotation></semantics></math>:
 all the roots are <strong>powers of the first one</strong>,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mi>k</mi></msub><mo>=</mo><msup><mi>ω</mi><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">\omega_k = \omega^k</annotation></semantics></math>,
@@ -6331,7 +6428,8 @@ can be reduced modulo
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
 by adjusting by
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>π</mi></mrow><annotation encoding="application/x-tex">2\pi</annotation></semantics></math>
-(Proposition 2.2.2).
+(<a href="#res-2-2-2" class="cita" target="_blank"
+rel="noopener">Proposition 2.2.2</a>).
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
 <figure class='figura' id='fig_m2-s3-raices-unidad'><?xml version='1.0' encoding='UTF-8'?>
 <!-- This file was generated by dvisvgm 3.2.1 -->
@@ -6429,20 +6527,30 @@ text.f3 {font-family:QYZNNX-CMR9;font-size:8.97px}
 as vertices of the polygon inscribed in the unit circle, with
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mn>0</mn></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\omega_0=1</annotation></semantics></math>.</figcaption></figure>
 <blockquote>
-<p><strong>Remark 2.3.3.1 (the roots-of-unity “dictionary” is an
-isomorphism).</strong> The correspondence
+<p><span id="res-2-3-3-1" class="res-def"><strong>Remark 2.3.3.1 (the
+roots-of-unity “dictionary” is an isomorphism).</strong></span> The
+correspondence
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mi>n</mi><mi>ℤ</mi><mo>→</mo><mo stretchy="false" form="prefix">{</mo><mi>n</mi><mtext mathvariant="normal">-th roots of unity</mtext><mo stretchy="false" form="postfix">}</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>k</mi><mrow><mspace width="0.222em"></mspace><mo>mod</mo><mspace width="0.222em"></mspace><mi>n</mi></mrow><mo>↦</mo><msup><mi>ω</mi><mi>k</mi></msup><mo>,</mo></mrow><annotation encoding="application/x-tex">\mathbb{Z}/n\mathbb{Z} \longrightarrow \{n\text{-th roots of unity}\}, \qquad k \bmod n \longmapsto \omega^k,</annotation></semantics></math>
-is a <strong>bijection</strong> (the
+is <strong>well defined</strong> (if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≡</mo><mi>k</mi><mi>′</mi><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">k \equiv k&#39; \pmod n</annotation></semantics></math>
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mi>k</mi></msup><mo>=</mo><msup><mi>ω</mi><mrow><mi>k</mi><mi>′</mi></mrow></msup></mrow><annotation encoding="application/x-tex">\omega^k = \omega^{k&#39;}</annotation></semantics></math>,
+because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mi>n</mi></msup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\omega^n = 1</annotation></semantics></math>:
+the root depends only on the remainder, not on the representative), is a
+<strong>bijection</strong> (the
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ω</mi><mi>k</mi></msup><annotation encoding="application/x-tex">\omega^k</annotation></semantics></math>
 with
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>k</mi><mo>&lt;</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">0 \le k &lt; n</annotation></semantics></math>
-are distinct and are all the roots) that <strong>respects the
+are distinct and are all the roots) and <strong>respects the
 operation</strong>: the sum of indices modulo
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
 translates into the product of roots,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ω</mi><mi>j</mi></msup><msup><mi>ω</mi><mi>k</mi></msup><mo>=</mo><msup><mi>ω</mi><mrow><mi>j</mi><mo>+</mo><mi>k</mi><mrow><mspace width="0.222em"></mspace><mo>mod</mo><mspace width="0.222em"></mspace><mi>n</mi></mrow></mrow></msup></mrow><annotation encoding="application/x-tex">\omega^{j} \omega^{k} = \omega^{j+k \bmod n}</annotation></semantics></math>
-(Proposition 2.3.3). A bijection that carries one operation into another
-is called an <strong>isomorphism</strong>: the additive arithmetic of
+(<a href="#res-2-3-3" class="cita" target="_blank"
+rel="noopener">Proposition 2.3.3</a>). A bijection that carries one
+operation into another is called an <strong>isomorphism</strong>: the
+additive arithmetic of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mi>n</mi><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/n\mathbb{Z}</annotation></semantics></math>
 and the multiplicative arithmetic of the roots of unity are,
 structurally, <strong>the same</strong>. <em>(Note: taking another
@@ -6458,7 +6566,8 @@ bijection that respects the operation.)</em></p>
 roots of unity and rotations of the polygon are <strong>the same
 computation in three disguises</strong> — the dictionary transports the
 operation, not just the names.</figcaption></figure>
-<p><strong>Proposition 2.3.4 (the vanishing sum).</strong> For
+<p><span id="res-2-3-4" class="res-def"><strong>Proposition 2.3.4 (the
+vanishing sum).</strong></span> For
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n \ge 2</annotation></semantics></math>:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><msub><mi>ω</mi><mn>0</mn></msub><mo>+</mo><msub><mi>ω</mi><mn>1</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>ω</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\;\omega_0 + \omega_1 + \cdots + \omega_{n-1} = 0</annotation></semantics></math>.</p>
 <p><em>Proof.</em> Let
@@ -6479,14 +6588,16 @@ and since
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ω</mi><mo>≠</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\omega \neq 1</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℂ</mi><annotation encoding="application/x-tex">\mathbb{C}</annotation></semantics></math>
-is a field (Theorem 2.1.6: every nonzero element has an inverse) it has
-no zero divisors, so
+is a field (<a href="#res-2-1-6" class="cita" target="_blank"
+rel="noopener">Theorem 2.1.6</a>: every nonzero element has an inverse)
+it has no zero divisors, so
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">S = 0</annotation></semantics></math>.
 <em>(Geometrically: the center of mass of the polygon is the
 origin.)</em>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
 <h2 id="a-worked-example-in-full">3.3 A worked example in full</h2>
-<p><strong>Example 2.3.5.</strong>
+<p><span id="res-2-3-5" class="res-def"><strong>Example
+2.3.5.</strong></span>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>z</mi><mn>3</mn></msup><mo>=</mo><mo>−</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">z^3 = -8</annotation></semantics></math>.
 In polar form:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>8</mn><mo>=</mo><mn>8</mn><mspace width="0.167em"></mspace><msup><mi>e</mi><mrow><mi>i</mi><mi>π</mi></mrow></msup></mrow><annotation encoding="application/x-tex">-8 = 8\,e^{i\pi}</annotation></semantics></math>.
@@ -6587,20 +6698,25 @@ symmetric with respect to the real axis
 (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mn>2</mn></msub><mo>=</mo><mover><msub><mi>z</mi><mn>0</mn></msub><mo accent="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">z_2=\bar{z_0}</annotation></semantics></math>).</figcaption></figure>
 <h2 id="roots-of-real-polynomials-come-in-pairs">3.4 Roots of real
 polynomials come in pairs</h2>
-<p><strong>Proposition 2.3.6.</strong> Let
+<p><span id="res-2-3-6" class="res-def"><strong>Proposition
+2.3.6.</strong></span> Let
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>c</mi><mi>n</mi></msub><msup><mi>z</mi><mi>n</mi></msup><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>c</mi><mn>1</mn></msub><mi>z</mi><mo>+</mo><msub><mi>c</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">p(z) = c_n z^n + \cdots + c_1 z + c_0</annotation></semantics></math>
 have <strong>real</strong> coefficients. If
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mn>0</mn></msub><annotation encoding="application/x-tex">z_0</annotation></semantics></math>
 is a root, so is
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><msub><mi>z</mi><mn>0</mn></msub><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar{z_0}</annotation></semantics></math>.</p>
-<p><em>Proof.</em> Conjugation respects sums and products (Proposition
-2.1.4.1) and fixes the reals (1.4.3), so
+<p><em>Proof.</em> Conjugation respects sums and products (<a
+href="#res-2-1-4" class="cita" target="_blank"
+rel="noopener">Proposition 2.1.4</a>(1)) and fixes the reals (<a
+href="#res-2-1-4" class="cita" target="_blank"
+rel="noopener">Proposition 2.1.4</a>(3)), so
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mrow><mo stretchy="true" form="prefix">(</mo><mover><msub><mi>z</mi><mn>0</mn></msub><mo accent="true">‾</mo></mover><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>c</mi><mi>n</mi></msub><msup><mover><msub><mi>z</mi><mn>0</mn></msub><mo accent="true">‾</mo></mover><mrow><mspace width="0.167em"></mspace><mi>n</mi></mrow></msup><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>c</mi><mn>0</mn></msub><mo>=</mo><mover><mrow><msub><mi>c</mi><mi>n</mi></msub><msubsup><mi>z</mi><mn>0</mn><mi>n</mi></msubsup><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>c</mi><mn>0</mn></msub></mrow><mo accent="true">¯</mo></mover><mo>=</mo><mover><mrow><mi>p</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>z</mi><mn>0</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><mo accent="true">¯</mo></mover><mo>=</mo><mover><mn>0</mn><mo accent="true">‾</mo></mover><mo>=</mo><mn>0</mn><mi>.</mi><mspace width="0.278em"></mspace><mi>◼</mi></mrow><annotation encoding="application/x-tex">p(\bar{z_0}) = c_n \bar{z_0}^{\,n} + \cdots + c_0 = \overline{c_n z_0^n + \cdots + c_0} = \overline{p(z_0)} = \bar 0 = 0. \;\blacksquare</annotation></semantics></math></p>
 <blockquote>
 <p><em>(That is why the solutions of exercise 3 in S1 came out
 conjugate, and why
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mn>2</mn></msub><mo>=</mo><mover><msub><mi>z</mi><mn>0</mn></msub><mo accent="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">z_2 = \bar{z_0}</annotation></semantics></math>
-in Example 2.3.5:
+in <a href="#res-2-3-5" class="cita" target="_blank"
+rel="noopener">Example 2.3.5</a>:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>z</mi><mn>3</mn></msup><mo>+</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">z^3 + 8</annotation></semantics></math>
 has real coefficients.)</em> <strong>Announced consequence:</strong> the
 non-real roots of a real polynomial group into pairs; combined with the
@@ -6610,8 +6726,9 @@ count is completed there.</p>
 </blockquote>
 <h2 id="the-fundamental-theorem-of-algebra">3.5 The fundamental theorem
 of algebra</h2>
-<p><strong>Theorem 2.3.7 (FTA — statement).</strong> Every nonconstant
-polynomial with coefficients in
+<p><span id="res-2-3-7" class="res-def"><strong>Theorem 2.3.7 (FTA —
+statement).</strong></span> Every nonconstant polynomial with
+coefficients in
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℂ</mi><annotation encoding="application/x-tex">\mathbb{C}</annotation></semantics></math>
 has at least one root in
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℂ</mi><annotation encoding="application/x-tex">\mathbb{C}</annotation></semantics></math>.</p>
@@ -6620,13 +6737,15 @@ has at least one root in
 (S1) to solve <em>one</em> equation; the FTA says that
 <strong>everything</strong> got solved: no polynomial equation forces
 any further extension.</p>
-<p><strong>Definition 2.3.8 (algebraically closed).</strong> A field
+<p><span id="res-2-3-8" class="res-def"><strong>Definition 2.3.8
+(algebraically closed).</strong></span> A field
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
 is <em>algebraically closed</em> if every nonconstant polynomial in
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mrow><mo stretchy="true" form="prefix">[</mo><mi>x</mi><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">K[x]</annotation></semantics></math>
 has a root in
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>.
-In these terms, Theorem 2.3.7 says exactly that
+In these terms, <a href="#res-2-3-7" class="cita" target="_blank"
+rel="noopener">Theorem 2.3.7</a> says exactly that
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℂ</mi><annotation encoding="application/x-tex">\mathbb{C}</annotation></semantics></math>
 is algebraically closed. <em>(Factoring repeatedly, it follows that over
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℂ</mi><annotation encoding="application/x-tex">\mathbb{C}</annotation></semantics></math>
@@ -6670,18 +6789,22 @@ and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><msup><mi>z</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">u = z^2</annotation></semantics></math>;
 some root of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>
-will be negative — now we know what to do with it). Check Proposition
-2.3.6 in both.</li>
+will be negative — now we know what to do with it). Check <a
+href="#res-2-3-6" class="cita" target="_blank"
+rel="noopener">Proposition 2.3.6</a> in both.</li>
 <li>★ Check by De Moivre that
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mn>0</mn></msub><mo>=</mo><mn>1</mn><mo>+</mo><msqrt><mn>3</mn></msqrt><mspace width="0.167em"></mspace><mi>i</mi></mrow><annotation encoding="application/x-tex">z_0 = 1 + \sqrt 3\, i</annotation></semantics></math>
-from Example 2.3.5 satisfies
+from <a href="#res-2-3-5" class="cita" target="_blank"
+rel="noopener">Example 2.3.5</a> satisfies
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>z</mi><mn>0</mn><mn>3</mn></msubsup><mo>=</mo><mo>−</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">z_0^3 = -8</annotation></semantics></math>,
-and that the three roots found are the only ones (which part of Theorem
-2.3.1 guarantees this?).</li>
+and that the three roots found are the only ones (which part of <a
+href="#res-2-3-1" class="cita" target="_blank" rel="noopener">Theorem
+2.3.1</a> guarantees this?).</li>
 <li>★ In the hexagon of the sixth roots of unity, mark which ones are
 also cube roots, which are square roots, and verify
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ω</mi><mn>2</mn></msub><mo>⋅</mo><msub><mi>ω</mi><mn>5</mn></msub><mo>=</mo><msub><mi>ω</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">\omega_2 \cdot \omega_5 = \omega_1</annotation></semantics></math>
-(Proposition 2.3.3) on the picture.</li>
+(<a href="#res-2-3-3" class="cita" target="_blank"
+rel="noopener">Proposition 2.3.3</a>) on the picture.</li>
 <li>Prove that the product of the
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
 roots of unity is
@@ -6697,8 +6820,9 @@ Answer it from the picture of the polygon and from the formula.</li>
 <li>A real polynomial of degree 3 has
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>−</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">2 - i</annotation></semantics></math>
 as a root. What are the other possibilities for its roots? Can it have
-no real root? (Use 3.6; the formal closure of the argument will arrive
-in Polynomials.)</li>
+no real root? (Use <a href="#res-2-3-6" class="cita" target="_blank"
+rel="noopener">Proposition 2.3.6</a>; the formal closure of the argument
+will arrive in Polynomials.)</li>
 <li><strong>(GeoGebra.)</strong> Construct the
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>-th
 roots of a draggable
@@ -6737,8 +6861,9 @@ the <strong>FFT</strong> algorithm that computes it fast — signal
 processing, audio and image compression, fast multiplication of enormous
 numbers. The structure “the vertices multiply like
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mi>n</mi><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/n\mathbb{Z}</annotation></semantics></math>”
-(Proposition 2.3.3) has a technical name — <em>cyclic group</em> — and a
-theory of its own: Childs, or Aluffi, ch. II.</p>
+(<a href="#res-2-3-3" class="cita" target="_blank"
+rel="noopener">Proposition 2.3.3</a>) has a technical name — <em>cyclic
+group</em> — and a theory of its own: Childs, or Aluffi, ch. II.</p>
 <p><strong>References.</strong> Roots and polygons: Hernández; Needham,
 ch. 1. FTA: statement and context in Childs; the visual proof in
 Needham, ch. 7.</p>

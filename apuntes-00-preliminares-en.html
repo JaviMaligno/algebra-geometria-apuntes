@@ -233,6 +233,20 @@
     /* Bloques de código con highlighting: pandoc los envuelve en div.sourceCode y su
        CSS pone margin:0 al pre (gana por especificidad) -> centramos el div envolvente. */
     div.sourceCode { max-width: 42rem; margin: 1em auto; }
+    /* Citas a resultados numerados: enlazan a su enunciado y abren en otra pestaña,
+       para no perder el sitio en el que ibas leyendo. Discretas: el subrayado
+       punteado se ve al pasar por encima, no compite con el texto. */
+    a.cita { color: inherit; text-decoration: underline; text-decoration-style: dotted;
+             text-decoration-color: #9db4d0; text-underline-offset: 0.15em; }
+    a.cita:hover { color: #1a5fb4; text-decoration-style: solid; }
+    html.dark a.cita { text-decoration-color: #5a7290; }
+    html.dark a.cita:hover { color: #85b4ea; }
+    /* El enunciado al que apuntan: al aterrizar, un destello que lo señala. */
+    span.res-def:target, span.res-def:target strong { background: #fff3c4; }
+    html.dark span.res-def:target, html.dark span.res-def:target strong { background: #4a4020; }
+    /* La barra superior es sticky (z-index 50): sin este margen, al saltar a un
+       enunciado el enunciado queda justo debajo de ella y no se ve. */
+    span.res-def { scroll-margin-top: 5rem; }
     /* Barrita "▶ ejecutar · ✎ editar · playground" bajo cada bloque Python (JS) */
     p.ejecutar-en { max-width: 42rem; margin: -0.5em auto 1em; text-align: right; font-size: 0.8rem; }
     p.ejecutar-en a { color: #888; text-decoration: none; }
@@ -4825,7 +4839,8 @@ satisfying
 The <strong>empty set</strong>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>⌀</mi><annotation encoding="application/x-tex">\varnothing</annotation></semantics></math>
 has no elements.</p>
-<p><strong>Definition 0.1.1.</strong>
+<p><span id="res-0-1-1" class="res-def"><strong>Definition
+0.1.1.</strong></span>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>⊆</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A \subseteq B</annotation></semantics></math>
 (<strong>subset</strong>) if every element of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
@@ -4845,7 +4860,8 @@ complement
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>A</mi><mi>c</mi></msup><annotation encoding="application/x-tex">A^c</annotation></semantics></math>
 (with respect to a universe); difference
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>\</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A \setminus B</annotation></semantics></math>.</p>
-<p><strong>Proposition 0.1.2 (De Morgan’s laws).</strong>
+<p><span id="res-0-1-2" class="res-def"><strong>Proposition 0.1.2 (De
+Morgan’s laws).</strong></span>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>A</mi><mo>∪</mo><mi>B</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>c</mi></msup><mo>=</mo><msup><mi>A</mi><mi>c</mi></msup><mo>∩</mo><msup><mi>B</mi><mi>c</mi></msup></mrow><annotation encoding="application/x-tex">(A \cup B)^c = A^c \cap B^c</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>A</mi><mo>∩</mo><mi>B</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>c</mi></msup><mo>=</mo><msup><mi>A</mi><mi>c</mi></msup><mo>∪</mo><msup><mi>B</mi><mi>c</mi></msup></mrow><annotation encoding="application/x-tex">(A \cap B)^c = A^c \cup B^c</annotation></semantics></math>.</p>
@@ -4934,8 +4950,8 @@ text.f5 {font-family:QUYCTL-CMR12;font-size:14.35px}
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>A</mi><mo>∪</mo><mi>B</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>c</mi></msup><mo>=</mo><msup><mi>A</mi><mi>c</mi></msup><mo>∩</mo><msup><mi>B</mi><mi>c</mi></msup></mrow><annotation encoding="application/x-tex">(A\cup B)^c = A^c\cap B^c</annotation></semantics></math>
 — the outside of the union is the intersection of the complements.</figcaption></figure>
 <h2 id="cartesian-product">1.2 Cartesian product</h2>
-<p><strong>Definition 0.1.3.</strong> The <strong>Cartesian
-product</strong>
+<p><span id="res-0-1-3" class="res-def"><strong>Definition
+0.1.3.</strong></span> The <strong>Cartesian product</strong>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>×</mo><mi>B</mi><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>:</mo><mi>a</mi><mo>∈</mo><mi>A</mi><mo>,</mo><mspace width="0.167em"></mspace><mi>b</mi><mo>∈</mo><mi>B</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">A \times B = \{(a, b) : a \in A,\, b \in B\}</annotation></semantics></math>
 is the set of <strong>ordered pairs</strong> (where
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mi>′</mi><mo>,</mo><mi>b</mi><mi>′</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>⇔</mo><mi>a</mi><mo>=</mo><mi>a</mi><mi>′</mi></mrow><annotation encoding="application/x-tex">(a,b) = (a&#39;,b&#39;) \iff a = a&#39;</annotation></semantics></math>
@@ -5040,7 +5056,8 @@ and the vectors of
 humble definition carries half the course.</p>
 </blockquote>
 <h2 id="maps">1.3 Maps</h2>
-<p><strong>Definition 0.1.4.</strong> A <strong>map</strong>
+<p><span id="res-0-1-4" class="res-def"><strong>Definition
+0.1.4.</strong></span> A <strong>map</strong>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>A</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">f : A \to B</annotation></semantics></math>
 assigns to each
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∈</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">a \in A</annotation></semantics></math>
@@ -5052,7 +5069,8 @@ is the <strong>domain</strong>,
 the <strong>codomain</strong>, and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>A</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>:</mo><mi>a</mi><mo>∈</mo><mi>A</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">f(A) = \{f(a) : a \in A\}</annotation></semantics></math>
 the <strong>image</strong>.</p>
-<p><strong>Definition 0.1.5.</strong>
+<p><span id="res-0-1-5" class="res-def"><strong>Definition
+0.1.5.</strong></span>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
 is:</p>
 <ul>
@@ -5169,7 +5187,8 @@ bijective, both.</figcaption></figure>
 is
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>g</mi><mo>∘</mo><mi>f</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>g</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>a</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">(g\circ f)(a) = g(f(a))</annotation></semantics></math>;
 it is <strong>associative</strong>.</p>
-<p><strong>Theorem 0.1.6 (finite sets).</strong> If
+<p><span id="res-0-1-6" class="res-def"><strong>Theorem 0.1.6 (finite
+sets).</strong></span> If
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
 is finite and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>A</mi><mo>→</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">f : A \to A</annotation></semantics></math>,
@@ -5218,8 +5237,9 @@ proof of <strong>Fermat’s little theorem</strong> (Arithmetic):
 multiplying by an invertible class is injective, hence a rearrangement.
 And the idea of a <strong>map that respects structure</strong> will be
 that of a <strong>morphism</strong> (Linear Algebra); the composition
-here, the matrix product there. (Theorem 0.1.6 <strong>fails</strong> on
-infinite sets:
+here, the matrix product there. (<a href="#res-0-1-6" class="cita"
+target="_blank" rel="noopener">Theorem 0.1.6</a> <strong>fails</strong>
+on infinite sets:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>↦</mo><mi>n</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n \mapsto n+1</annotation></semantics></math>
 on
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℕ</mi><annotation encoding="application/x-tex">\mathbb{N}</annotation></semantics></math>
@@ -5374,7 +5394,8 @@ is injective but not surjective
 (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
 has no preimage).</figcaption></figure>
 <h2 id="equivalence-relations">1.4 Equivalence relations</h2>
-<p><strong>Definition 0.1.7.</strong> A <strong>relation</strong>
+<p><span id="res-0-1-7" class="res-def"><strong>Definition
+0.1.7.</strong></span> A <strong>relation</strong>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>∼</mo><annotation encoding="application/x-tex">\sim</annotation></semantics></math>
 on
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
@@ -5393,8 +5414,9 @@ and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
 is
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">[</mo><mi>a</mi><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>b</mi><mo>∈</mo><mi>A</mi><mo>:</mo><mi>b</mi><mo>∼</mo><mi>a</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">[a] = \{b \in A : b \sim a\}</annotation></semantics></math>.</p>
-<p><strong>Theorem 0.1.8 (equivalence = partition).</strong> The classes
-of an equivalence relation form a <strong>partition</strong> of
+<p><span id="res-0-1-8" class="res-def"><strong>Theorem 0.1.8
+(equivalence = partition).</strong></span> The classes of an equivalence
+relation form a <strong>partition</strong> of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>:
 they are nonempty, their union is
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>,
@@ -5429,7 +5451,8 @@ same remainder when dividing by
 will be an equivalence relation whose classes <strong>are</strong> the
 elements of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mi>n</mi><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/n\mathbb{Z}</annotation></semantics></math>
-(Arithmetic). Theorem 0.1.8 guarantees that these classes split
+(Arithmetic). <a href="#res-0-1-8" class="cita" target="_blank"
+rel="noopener">Theorem 0.1.8</a> guarantees that these classes split
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℤ</mi><annotation encoding="application/x-tex">\mathbb{Z}</annotation></semantics></math>
 cleanly — the foundation of all modular arithmetic.</p>
 </blockquote>
@@ -5635,16 +5658,16 @@ dimension of vector spaces…). Its being “well founded” rests on the
 (every nonempty subset has a least element), equivalent to induction —
 which Arithmetic will use explicitly.</p>
 </blockquote>
-<p><strong>Remark 0.1.9 (a mention, not a section —
-enrichment).</strong> Proof by contradiction uses the excluded middle:
-from “it is not irrational” we conclude “it is rational”. There is a
-school of thought, <strong>constructivism</strong> (or intuitionism,
-Brouwer), which <strong>rejects</strong> the excluded middle for
-infinite sets and, with it, certain pure proofs by contradiction —
-demanding, instead, that one <em>construct</em> the object. It is no
-mere curiosity: it underpins theoretical computer science (a
-constructive proof <em>is</em> an algorithm). A juicy nod for the
-Philosophy profile; not assessed material. <em>(More → Going
+<p><span id="res-0-1-9" class="res-def"><strong>Remark 0.1.9 (a mention,
+not a section — enrichment).</strong></span> Proof by contradiction uses
+the excluded middle: from “it is not irrational” we conclude “it is
+rational”. There is a school of thought, <strong>constructivism</strong>
+(or intuitionism, Brouwer), which <strong>rejects</strong> the excluded
+middle for infinite sets and, with it, certain pure proofs by
+contradiction — demanding, instead, that one <em>construct</em> the
+object. It is no mere curiosity: it underpins theoretical computer
+science (a constructive proof <em>is</em> an algorithm). A juicy nod for
+the Philosophy profile; not assessed material. <em>(More → Going
 further.)</em></p>
 <hr />
 <h2 id="exercises">Exercises</h2>
@@ -5676,8 +5699,9 @@ diagram alongside.</li>
 <li>Give a map
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℕ</mi><mo>→</mo><mi>ℕ</mi></mrow><annotation encoding="application/x-tex">\mathbb{N} \to \mathbb{N}</annotation></semantics></math>
 that is injective but not surjective, and another that is surjective but
-not injective: show that Theorem 0.1.6 <strong>fails</strong> on
-infinite sets.</li>
+not injective: show that <a href="#res-0-1-6" class="cita"
+target="_blank" rel="noopener">Theorem 0.1.6</a> <strong>fails</strong>
+on infinite sets.</li>
 <li>Verify that
 “<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∼</mo><mi>b</mi><mo>⇔</mo><mi>a</mi><mo>−</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a \sim b \iff a - b</annotation></semantics></math>
 is even” is an equivalence relation on
