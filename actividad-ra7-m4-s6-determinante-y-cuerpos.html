@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Actividad RA7-1 · El determinante decide, y cambia con el cuerpo</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <style>
+    /* Apuntes — layout: texto en columna legible, figuras más anchas. */
+    html { font-size: 18px; }
+    body {
+      max-width: 70rem;            /* ~1120px: el contenedor general */
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      line-height: 1.6;
+      font-family: Georgia, "Times New Roman", serif;
+      color: #1a1a1a;
+      background: #fff;
+    }
+
+    /* ── Modo noche (html.dark; el JS lo aplica según localStorage/preferencia) ──
+       El texto pasa a claro-sobre-oscuro; las FIGURAS (TikZ de trazo negro, Plotly
+       y JSXGraph con fondo claro propio) y el CÓDIGO van en caja clara suave:
+       mantienen su legibilidad original sin reinventar cada figura. */
+    html.dark { background: #14161a; }
+    html.dark body { background: #14161a; color: #d6d6d6; }
+    html.dark a { color: #85b4ea; }
+    html.dark blockquote { color: #b5b5b5; border-left-color: #4a4f58; }
+    html.dark th, html.dark td { border-color: #454a52; }
+    html.dark hr { border-top-color: #454a52; }
+    html.dark div.ejemplo { background: #1d2430; border-left-color: #46689e; }
+    html.dark div.sourceCode {
+      background: #e9e9e6;
+      padding: 0.45rem 0.8rem;
+      border-radius: 6px;
+      color: #1a1a1a;   /* el texto base del código heredaba el gris claro del
+                           body y quedaba gris-sobre-claro dentro de la caja */
+    }
+    /* La caja clara abraza el CONTENIDO de cada figura, no el <figure> entero
+       (60rem): pintado sobre el figure, la caja sobresalía mucho más que el
+       dibujo y delataba una asimetría que el contenido real no tiene. */
+    html.dark figure.figura > svg {                 /* TikZ: caja al ancho del dibujo */
+      background: #eceae6;
+      border-radius: 10px;
+      padding: 0.7rem 0.9rem;
+      box-sizing: border-box;
+    }
+    html.dark figure.figura .plotly-graph-div {     /* Plotly: su fondo blanco propio, redondeado */
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    html.dark figure.figura .jxgbox {               /* JSXGraph: fondo blanco explícito */
+      background: #fff;
+      border-radius: 10px;
+    }
+    html.dark figure.figura figcaption { color: #a8a8a8; }  /* la caption queda fuera de la caja */
+    html.dark nav.modnav a { color: #85b4ea; }
+    html.dark nav.modnav .mn-row-idx a { color: #9a9a9a; }
+    html.dark nav.modnav.mn-bottom { border-top-color: #3a3f47; }
+    html.dark nav#toc { color: #b5b5b5; }
+    html.dark nav#toc .toc-title { color: #d0d0d0; }
+    html.dark nav#toc a { color: #9a9a9a; }
+    html.dark nav#toc a.toc-h1 { color: #c8c8c8; }
+    html.dark nav#toc a:hover { color: #85b4ea; background: #1d2430; }
+    html.dark nav#toc a.toc-active { color: #85b4ea; background: #1d2a3e; }
+    html.dark aside.sidenote { color: #b0b0b0; border-left-color: #3d4653; }
+    html.dark nav#toc { scrollbar-color: #454a52 transparent; }
+    html.dark nav#toc::-webkit-scrollbar-thumb { background: #454a52; }
+    html.dark nav#toc::-webkit-scrollbar-thumb:hover { background: #5a6068; }
+    /* El TEXTO se limita a una columna legible (~42em) y se centra. */
+    p, ul, ol, dl, blockquote, h1, h2, h3, h4, h5, h6, table, pre {
+      max-width: 42rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* Bloques de código con highlighting: pandoc los envuelve en div.sourceCode y su
+       CSS pone margin:0 al pre (gana por especificidad) -> centramos el div envolvente. */
+    div.sourceCode { max-width: 42rem; margin: 1em auto; }
+    /* Citas a resultados numerados: enlazan a su enunciado y abren en otra pestaña,
+       para no perder el sitio en el que ibas leyendo. Discretas: el subrayado
+       punteado se ve al pasar por encima, no compite con el texto. */
+    a.cita { color: inherit; text-decoration: underline; text-decoration-style: dotted;
+             text-decoration-color: #9db4d0; text-underline-offset: 0.15em; }
+    a.cita:hover { color: #1a5fb4; text-decoration-style: solid; }
+    html.dark a.cita { text-decoration-color: #5a7290; }
+    html.dark a.cita:hover { color: #85b4ea; }
+    /* El enunciado al que apuntan: al aterrizar, un destello que lo señala. */
+    span.res-def:target, span.res-def:target strong { background: #fff3c4; }
+    html.dark span.res-def:target, html.dark span.res-def:target strong { background: #4a4020; }
+    /* La barra superior es sticky (z-index 50): sin este margen, al saltar a un
+       enunciado el enunciado queda justo debajo de ella y no se ve. */
+    span.res-def { scroll-margin-top: 5rem; }
+    /* Barrita "▶ ejecutar · ✎ editar · playground" bajo cada bloque Python (JS) */
+    p.ejecutar-en { max-width: 42rem; margin: -0.5em auto 1em; text-align: right; font-size: 0.8rem; }
+    p.ejecutar-en a { color: #888; text-decoration: none; }
+    p.ejecutar-en a:hover { color: #1a5fb4; text-decoration: underline; }
+    p.ejecutar-en .estado-python { color: #999; margin-left: 0.5em; font-style: italic; }
+    html.dark p.ejecutar-en a { color: #9a9a9a; }
+    html.dark p.ejecutar-en a:hover { color: #85b4ea; }
+    /* Salida de la ejecución en la página: mini-terminal bajo el bloque */
+    pre.salida-python {
+      max-width: 42rem;
+      margin: 0 auto 1.2em;
+      padding: 0.6rem 0.8rem;
+      border-radius: 8px;
+      background: #14161a;
+      color: #d6ffd6;
+      font-size: 0.8rem;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    pre.salida-python.con-error { color: #ffb3b3; }
+    /* El bloque en modo edición (textarea que sustituye al código resaltado) */
+    textarea.editor-python {
+      display: block;
+      width: 100%;
+      max-width: 42rem;
+      margin: 1em auto;
+      box-sizing: border-box;
+      font-family: Consolas, "Cascadia Code", Menlo, monospace;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      padding: 0.6rem 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #f8f8f6;
+      color: #1a1a1a;
+      tab-size: 4;
+      resize: vertical;
+    }
+    html.dark textarea.editor-python { background: #1d2430; border-color: #4a4f58; color: #d6d6d6; }
+    h1, h2, h3 { line-height: 1.25; }
+    blockquote {
+      border-left: 3px solid #ccc;
+      padding-left: 1rem;
+      color: #333;
+    }
+    table { border-collapse: collapse; }
+    th, td { border: 1px solid #ccc; padding: 0.3rem 0.6rem; }
+
+    /* Entorno de ejemplo (`::: ejemplo` en el md; la etiqueta la inyecta figuras.lua). */
+    div.ejemplo {
+      max-width: 42rem;
+      margin: 1.1rem auto;
+      padding: 0.65rem 1rem;
+      border-left: 3px solid #9db3d4;
+      background: #f5f7fb;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.95em;
+    }
+    div.ejemplo p { max-width: none; margin: 0.4em 0; }
+    div.ejemplo p:first-child { margin-top: 0; }
+    div.ejemplo p:last-child { margin-bottom: 0; }
+
+    /* Las FIGURAS, alineadas con la columna de texto (decisión: mismo ancho que
+       el texto; antes llegaban a 56-60rem y sobresalían lateralmente). */
+    figure.figura {
+      max-width: 42rem;
+      margin: 2rem auto;
+      text-align: center;
+    }
+    figure.figura > svg {                                      /* TikZ (SVG hijo directo del figure) */
+      width: 100%;
+      max-width: 42rem;
+      max-height: 22rem;
+      height: auto;
+    }
+    /* OJO: el selector debe ser HIJO DIRECTO (>). Un descendiente genérico pisaba
+       también los SVG internos de Plotly (dibujo recortado y pegado a la izquierda)
+       y de JSXGraph (hueco blanco en la parte baja del board). */
+    /* Ajustes puntuales: TikZ que a tamaño estándar quedan grandes. */
+    figure#fig_m1-s3-congruencias-reloj > svg { max-width: 26rem; max-height: 19rem; }
+    figure#fig_m1-s3-fermat-barajada    > svg { max-width: 30rem; max-height: 19rem; }
+    figure.figura .plotly-graph-div {                          /* Plotly: ancho/alto los fija el div inline (figlib) */
+      max-width: 42rem;                                        /* al ancho del texto, como todo */
+      margin: 0 auto;
+    }
+    /* Figuras con aspecto fijo (scaleanchor 1:1): Plotly dibuja el SVG a 500px pero
+       borra el width del div, que se estira al <figure> y descentra el dibujo. El
+       !important fija el div a 500px y lo centra; el SVG interno lo llena justo. */
+    figure.figura .plotly-graph-div.fig-fija {
+      width: 500px !important;
+      max-width: 100% !important;
+      display: block !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    /* Ecuaciones en su propia línea ($$…$$): espacio uniforme arriba/abajo. Una
+       ecuación larga no cabe en una pantalla estrecha y estiraba TODA la página (el
+       documento entero se desplazaba en horizontal); que se desplace ella sola. */
+    math[display="block"] {
+      display: block;
+      margin: 1em auto;
+      max-width: 42rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-bottom: 0.2rem;   /* aire para la barra de scroll cuando aparece */
+    }
+    /* Las tablas, ancladas a la columna de texto (42rem): una tabla ancha ENVUELVE
+       sus celdas en más líneas antes que ensancharse más allá del margen (preferencia
+       de Javier, 2026-07-14 — el max-width:100% anterior las liberaba de la columna
+       y el diccionario de M3 S1 se salía). El scroll interno queda como último
+       recurso para contenido irrompible (una fórmula larga en una celda). */
+    table { display: block; width: fit-content; max-width: 42rem; overflow-x: auto; }
+    /* Red de seguridad: una fórmula EN LÍNEA larga ($…$ con una cadena de igualdades)
+       tampoco puede arrastrar la página. Lo suyo es escribirla en bloque ($$…$$) —el
+       test de anchura lo exige—, pero si se cuela, se RECORTA en vez de ensanchar el
+       documento. OJO: clip, no auto — overflow auto convierte cada fórmula en un
+       contenedor de scroll, y como el MathML desborda 1-2px en vertical de su caja
+       de línea, Chrome en Windows pintaba una barrita con flechas pegada a CADA
+       fórmula del documento (visto en producción, 2026-07-12). clip no crea
+       contenedor de scroll: nunca hay barras. */
+    math:not([display="block"]) { max-width: 100%; overflow-x: clip; }
+    /* Red de seguridad de la figura: si algo interno no cabe (un board o un Plotly a
+       tamaño fijo), que se desplace dentro de la figura en vez de ensanchar la página. */
+    figure.figura { overflow-x: auto; }
+    /* Memes: condimento visual, más contenidos que una figura matemática. */
+    figure.figura.meme > img {
+      width: 100%;
+      max-width: 28rem;
+      border-radius: 10px;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+    }
+    html.dark figure.figura.meme > img { box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5); }
+    figure.figura figcaption {
+      max-width: 42rem;
+      margin: 0.6rem auto 0;
+      font-size: 0.92rem;
+      color: #555;
+      text-align: left;
+    }
+    /* El texto debe ser seleccionable (las libs Plotly/JSXGraph fuerzan user-select:none). */
+    p, li, h1, h2, h3, h4, h5, h6, blockquote, figcaption, td, th, dl {
+      -webkit-user-select: text;
+      user-select: text;
+    }
+
+    /* Móvil: todo a ancho completo con padding cómodo. */
+    @media (max-width: 48rem) {
+      html { font-size: 16px; }
+      body { padding: 1rem 1rem 3rem; }
+      p, ul, ol, dl, blockquote, h1, h2, h3, h4, h5, h6, table, pre,
+      math[display="block"],
+      figure.figura, figure.figura figcaption { max-width: 100%; }
+      figure.figura .plotly-graph-div { max-width: 100%; }
+      figure.figura svg { max-width: 100%; max-height: none; }  /* en móvil, ancho manda */
+    }
+
+    /* ── Navegación entre módulos (índice arriba; anterior/siguiente debajo) ────── */
+    nav.modnav {
+      max-width: 42rem;
+      margin: 0.8rem auto 1.6rem;
+      font-size: 0.95rem;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+    /* La barra superior queda FIJA al hacer scroll: banda al ancho del contenedor
+       con fondo (ligeramente translúcido) para que el texto no se lea a través. */
+    nav.modnav.mn-top {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      max-width: none;
+      margin: 0 -1.5rem 1.6rem;      /* compensa el padding lateral del body */
+      padding: 0.55rem 1.5rem 0.5rem;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(4px);
+      border-bottom: 1px solid #e4e4e4;
+    }
+    nav.modnav.mn-top .mn-row-idx,
+    nav.modnav.mn-top .mn-row-pn { max-width: 42rem; margin-left: auto; margin-right: auto; }
+    html.dark nav.modnav.mn-top {
+      background: rgba(20, 22, 26, 0.94);
+      border-bottom-color: #2e333b;
+    }
+    nav.modnav.mn-bottom { margin-top: 3rem; border-top: 1px solid #ddd; padding-top: 1rem; }
+    nav.modnav a { color: #1a5fb4; text-decoration: none; }
+    nav.modnav a:hover { text-decoration: underline; }
+    nav.modnav .mn-row-idx { text-align: center; margin-bottom: 0.3rem; }
+    nav.modnav .mn-row-idx a { color: #777; }
+    /* el icono del tema con fuente emoji: Georgia lo pintaba como un glifo raro */
+    nav.modnav a.mn-theme { font-family: "Segoe UI Emoji", "Noto Color Emoji", "Apple Color Emoji", sans-serif; text-decoration: none; }
+    nav.modnav .mn-row-pn {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+    }
+    nav.modnav .mn-prev { text-align: left; }
+    nav.modnav .mn-next { text-align: right; margin-left: auto; }
+
+    /* Las líneas horizontales, al ancho de la columna de texto: a ancho completo
+       del contenedor se extendían hasta invadir la zona del índice lateral. */
+    hr {
+      max-width: 42rem;
+      margin: 2rem auto;
+      border: none;
+      border-top: 1px solid #bbb;
+    }
+
+    /* ── Índice de contenidos ───────────────────────────────────────────────────
+       Pantalla ancha (>= 1650px): columna fija en el margen izquierdo, siempre a la
+       vista. Por debajo (móvil, tablet, portátil normal) no hay margen donde ponerlo:
+       el mismo <nav> se convierte en un panel que entra deslizándose desde la
+       izquierda al pulsar el botón ☰ de la barra superior. */
+    nav#toc {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;                        /* por encima de la barra fija (z-index 50) */
+      width: min(82vw, 20rem);
+      height: 100%;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      box-sizing: border-box;
+      padding: 1.1rem 1rem 2.5rem;
+      background: #fff;
+      border-right: 1px solid #e4e4e4;
+      box-shadow: 2px 0 14px rgba(0, 0, 0, 0.13);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #444;
+      transform: translateX(-100%);
+      visibility: hidden;                  /* fuera de pantalla: ni foco ni lectores */
+      transition: transform 0.22s ease, visibility 0.22s;
+    }
+    body.toc-open nav#toc { transform: translateX(0); visibility: visible; }
+    body.toc-open { overflow: hidden; }    /* que no se scrollee el texto por detrás */
+    html.dark nav#toc { background: #14161a; border-right-color: #2e333b; }
+
+    #toc-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: rgba(0, 0, 0, 0.42);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease;
+    }
+    body.toc-open #toc-overlay { opacity: 1; pointer-events: auto; }
+
+    nav#toc .toc-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold; color: #333; margin-bottom: 0.4rem;
+      font-size: 1rem;
+    }
+    nav#toc .toc-close {
+      font-size: 1.2rem; line-height: 1;
+      padding: 0.1rem 0.4rem;
+      color: #777; text-decoration: none;
+    }
+    html.dark nav#toc .toc-close { color: #9a9a9a; }
+    /* Barra de scroll del índice: fina y discreta (la nativa era muy llamativa) */
+    nav#toc { scrollbar-width: thin; scrollbar-color: #c9cdd4 transparent; }
+    nav#toc::-webkit-scrollbar { width: 7px; }
+    nav#toc::-webkit-scrollbar-track { background: transparent; }
+    nav#toc::-webkit-scrollbar-thumb { background: #c9cdd4; border-radius: 4px; }
+    nav#toc::-webkit-scrollbar-thumb:hover { background: #a8adb5; }
+    nav#toc a { color: #555; text-decoration: none; display: block; padding: 0.3rem 0.4rem; border-radius: 4px; }
+    nav#toc a:hover { color: #1a5fb4; background: #f0f4fa; }
+    nav#toc a.toc-h1 { margin-top: 0.55rem; font-weight: bold; color: #333; }
+    nav#toc a.toc-h2 { padding-left: 1.1rem; }
+    nav#toc a.toc-active { color: #1a5fb4; background: #eaf1fb; }
+
+    /* El botón ☰, a la izquierda de la barra superior fija. */
+    nav.modnav a.mn-toc {
+      position: absolute;
+      left: 1rem;
+      top: 0.45rem;
+      font-size: 1.15rem;
+      line-height: 1;
+      padding: 0.2rem 0.45rem;
+      color: #777;
+      text-decoration: none;
+    }
+    html.dark nav.modnav a.mn-toc { color: #9a9a9a; }
+
+    @media (min-width: 1650px) {
+      /* Aquí sí hay margen izquierdo: el panel vuelve a ser una columna en el hueco
+         entre el borde de la ventana y el contenido, sin fondo ni sombra propios. */
+      nav#toc {
+        top: 1.5rem;
+        left: 16px;
+        width: calc(50vw - 560px - 40px);
+        max-width: 300px;
+        height: auto;
+        max-height: calc(100vh - 3rem);
+        padding: 0 0.5rem 0 0;
+        background: none;
+        border-right: none;
+        box-shadow: none;
+        font-size: 0.82rem;
+        line-height: 1.45;
+        transform: none;
+        visibility: visible;
+      }
+      html.dark nav#toc { background: none; }
+      nav#toc .toc-title { font-size: 0.9rem; }
+      nav#toc a { padding: 0.1rem 0.4rem; }
+      nav#toc .toc-close, nav.modnav a.mn-toc, #toc-overlay { display: none; }
+    }
+    html { scroll-behavior: smooth; }
+    /* Al saltar a una sección desde el índice, que la barra fija no tape el título. */
+    h1[id], h2[id], h3[id] { scroll-margin-top: 5.5rem; }
+
+    /* Ajustes móviles de la barra. Van al FINAL a propósito: con la misma
+       especificidad gana la última regla, y el @media móvil de arriba está antes que
+       las definiciones que aquí se corrigen. */
+    @media (max-width: 48rem) {
+      /* La barra fija compensa con márgenes negativos el padding lateral del body;
+         en móvil ese padding es 1rem, no 1.5rem, así que con -1.5rem la barra
+         sobresalía 8px por lado y aparecía scroll horizontal. */
+      nav.modnav.mn-top { margin-left: -1rem; margin-right: -1rem; padding-left: 1rem; padding-right: 1rem; }
+      nav.modnav a.mn-toc { left: 0.35rem; }
+      /* la barra de dos filas ocupa ~96px en móvil: más margen que en escritorio */
+      h1[id], h2[id], h3[id] { scroll-margin-top: 7rem; }
+    }
+
+    /* ── Notas al margen derecho (footnotes de pandoc; solo pantallas anchas) ───── */
+    aside.sidenote { display: none; }
+    @media (min-width: 1650px) {
+      aside.sidenote {
+        display: block;
+        position: absolute;
+        left: calc(50% + 560px + 24px);
+        width: calc(50vw - 560px - 48px);
+        max-width: 300px;
+        font-size: 0.8rem;
+        line-height: 1.45;
+        color: #555;
+        border-left: 2px solid #dfe6f0;
+        padding-left: 0.6rem;
+      }
+      aside.sidenote .sn-num { color: #1a5fb4; font-weight: bold; margin-right: 0.25rem; }
+      /* si todas las notas caben al margen, la lista del final sobra */
+      body.sidenotes-active section.footnotes { display: none; }
+    }
+  </style>
+  <script>
+  // Modo noche: aplicar YA (el script corre en <head>, documentElement existe) para
+  // evitar el destello blanco antes del DOMContentLoaded.
+  (function () {
+    var t;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (t !== 'dark' && t !== 'light') {
+      t = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    }
+    if (t === 'dark') document.documentElement.classList.add('dark');
+  })();
+
+  // Navegación entre módulos + índice lateral + notas al margen.
+  // Compartido por ES y EN: el idioma se lee de <html lang> y el sufijo -en de la URL.
+  document.addEventListener('DOMContentLoaded', function () {
+    var EN = (document.documentElement.lang || '').indexOf('en') === 0;
+    var m = location.pathname.match(/apuntes-(\d\d)-[a-z-]+?(-en)?\.html$/);
+    var MODS = [
+      ['00-preliminares', EN ? 'Module 0 · Preliminaries'   : 'Módulo 0 · Preliminares'],
+      ['01-aritmetica',   EN ? 'Module 1 · Arithmetic'      : 'Módulo 1 · Aritmética'],
+      ['02-complejos',    EN ? 'Module 2 · Complex numbers' : 'Módulo 2 · Números complejos'],
+      ['03-polinomios',   EN ? 'Module 3 · Polynomials'     : 'Módulo 3 · Polinomios'],
+      ['04-lineal',       EN ? 'Module 4 · Linear algebra'  : 'Módulo 4 · Álgebra lineal'],
+      ['05-geometria',    EN ? 'Module 5 · Geometry'        : 'Módulo 5 · Geometría'],
+    ];
+    var suf = EN ? '-en' : '';
+
+    // La preferencia de idioma persiste: la portada la usa para renderizarse y
+    // navegar un módulo en un idioma la actualiza.
+    try { localStorage.setItem('lang', EN ? 'en' : 'es'); } catch (e) {}
+
+    var heads = document.querySelectorAll('body > h1[id], body > h2[id], section h1[id], section h2[id]');
+    var hasToc = heads.length > 1;
+
+    // El índice como panel deslizante (anchos < 1650px; por encima ya está a la vista).
+    var WIDE = window.matchMedia('(min-width: 1650px)');
+    function closeToc() { document.body.classList.remove('toc-open'); }
+
+    // ── 1. Barras anterior/índice/siguiente, arriba y abajo ──
+    if (m) {
+      var i = parseInt(m[1], 10);
+      function bar(cls) {
+        var nav = document.createElement('nav');
+        nav.className = 'modnav ' + cls;
+        var prev = i > 0 ? MODS[i - 1] : null;
+        var next = i < MODS.length - 1 ? MODS[i + 1] : null;
+        // misma página en el otro idioma
+        var otherHref = 'apuntes-' + MODS[i][0] + (EN ? '' : '-en') + '.html';
+        var otherLabel = EN ? 'Español' : 'English';
+        // dos filas: índice + idioma + tema arriba; anterior/siguiente debajo
+        var dark = document.documentElement.classList.contains('dark');
+        // el ☰ abre el índice de la página; solo en la barra de arriba, que es la fija
+        var tocBtn = (hasToc && cls === 'mn-top')
+          ? "<a class='mn-toc' href='#' title='" + (EN ? 'Contents of this module' : 'Contenido de este módulo') + "'>☰</a>"
+          : "";
+        nav.innerHTML = tocBtn +
+          "<div class='mn-row-idx'><a href='index.html'>" + (EN ? 'Contents' : 'Índice') + "</a>" +
+          " · <a class='mn-lang' href='" + otherHref + "'>" + otherLabel + "</a>" +
+          " · <a class='mn-theme' href='#' title='" + (EN ? 'Dark/light mode' : 'Modo noche/día') + "'>" +
+          (dark ? '☀' : '🌙') + "</a></div>" +
+          "<div class='mn-row-pn'>" +
+          (prev ? "<a class='mn-prev' href='apuntes-" + prev[0] + suf + ".html'>← " + prev[1] + "</a>" : "<span></span>") +
+          (next ? "<a class='mn-next' href='apuntes-" + next[0] + suf + ".html'>" + next[1] + " →</a>" : "<span></span>") +
+          "</div>";
+        nav.querySelector('.mn-theme').addEventListener('click', function (ev) {
+          ev.preventDefault();
+          var d = document.documentElement.classList.toggle('dark');
+          try { localStorage.setItem('theme', d ? 'dark' : 'light'); } catch (e) {}
+          document.querySelectorAll('a.mn-theme').forEach(function (a) {
+            a.textContent = d ? '☀' : '🌙';
+          });
+        });
+        var bt = nav.querySelector('.mn-toc');
+        if (bt) bt.addEventListener('click', function (ev) {
+          ev.preventDefault();
+          document.body.classList.toggle('toc-open');
+        });
+        return nav;
+      }
+      document.body.insertBefore(bar('mn-top'), document.body.firstChild);
+      document.body.appendChild(bar('mn-bottom'));
+    }
+
+    // ── 2. Índice de la página (h1 = sesiones, h2 = secciones) ──
+    if (hasToc) {
+      var toc = document.createElement('nav');
+      toc.id = 'toc';
+      var title = document.createElement('div');
+      title.className = 'toc-title';
+      title.innerHTML = "<span>" + (EN ? 'Contents' : 'Contenido') + "</span>" +
+        "<a class='toc-close' href='#' title='" + (EN ? 'Close' : 'Cerrar') + "'>✕</a>";
+      title.querySelector('.toc-close').addEventListener('click', function (ev) {
+        ev.preventDefault();
+        closeToc();
+      });
+      toc.appendChild(title);
+      heads.forEach(function (h) {
+        var a = document.createElement('a');
+        a.href = '#' + h.id;
+        // clonar el HTML del heading (no el texto plano): así el math (MathML)
+        // se renderiza también dentro del índice
+        var t = h.innerHTML;
+        if (h.tagName === 'H1') {
+          // los h1 llevan prefijo "Apuntes · Módulo · Sesión N — ..." (texto plano):
+          // quedarse con lo que sigue al segundo separador
+          var parts = t.split('·');
+          if (parts.length >= 3) t = parts.slice(2).join('·').trim();
+        }
+        a.innerHTML = t;
+        a.className = h.tagName === 'H1' ? 'toc-h1' : 'toc-h2';
+        a.dataset.target = h.id;
+        a.addEventListener('click', closeToc);   // al elegir sección, el panel se aparta
+        toc.appendChild(a);
+      });
+      document.body.appendChild(toc);
+
+      var overlay = document.createElement('div');
+      overlay.id = 'toc-overlay';
+      overlay.addEventListener('click', closeToc);
+      document.body.appendChild(overlay);
+
+      document.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Escape') closeToc();
+      });
+      // si la ventana se ensancha con el panel abierto, el índice ya se ve al margen:
+      // cerrar la clase para no dejar el body con overflow:hidden
+      var onWide = function (e) { if (e.matches) closeToc(); };
+      if (WIDE.addEventListener) WIDE.addEventListener('change', onWide);
+      else if (WIDE.addListener) WIDE.addListener(onWide);   // Safari < 14
+      // resaltar la sección visible
+      if ('IntersectionObserver' in window) {
+        var links = {};
+        toc.querySelectorAll('a[data-target]').forEach(function (a) { links[a.dataset.target] = a; });
+        var current = null;
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              if (current) current.classList.remove('toc-active');
+              current = links[e.target.id];
+              if (current) current.classList.add('toc-active');
+            }
+          });
+        }, { rootMargin: '0px 0px -75% 0px' });
+        heads.forEach(function (h) { obs.observe(h); });
+      }
+    }
+
+    // ── 2b. Bloques Python ejecutables AQUÍ MISMO (Pyodide bajo demanda) ──
+    // Cada bloque gana una barrita: ▶ ejecutar (corre el código en la propia página;
+    // Python/sympy se descargan del CDN la primera vez), ✎ editar (el bloque pasa a
+    // textarea editable) y "abrir en el playground" (el código viaja en el hash en
+    // base64; el playground hace decodeURIComponent(atob(hash))).
+    var pyodidePromesa = null;
+    function cargarPyodide() {
+      if (!pyodidePromesa) {
+        pyodidePromesa = new Promise(function (res, rej) {
+          var s = document.createElement('script');
+          s.src = 'https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js';
+          s.onload = function () {
+            loadPyodide().then(function (py) {
+              return py.loadPackage('sympy').then(function () { res(py); });
+            }).catch(rej);
+          };
+          s.onerror = function () { rej(new Error(EN ? 'network error' : 'error de red')); };
+          document.head.appendChild(s);
+        });
+      }
+      return pyodidePromesa;
+    }
+
+    document.querySelectorAll('div.sourceCode').forEach(function (div) {
+      var code = div.querySelector('code.python, code.sourceCode.python');
+      if (!code) return;
+      var editor = null;                          // textarea, si el lector edita
+      var getCodigo = function () { return editor ? editor.value : code.textContent; };
+
+      var barra = document.createElement('p');
+      barra.className = 'ejecutar-en';
+      var salida = document.createElement('pre');
+      salida.className = 'salida-python';
+      salida.style.display = 'none';
+
+      var bRun = document.createElement('a');
+      bRun.href = '#';
+      bRun.textContent = EN ? '▶ run' : '▶ ejecutar';
+      var bEdit = document.createElement('a');
+      bEdit.href = '#';
+      bEdit.textContent = EN ? '✎ edit' : '✎ editar';
+      var bRest = document.createElement('a');
+      bRest.href = '#';
+      bRest.textContent = EN ? '⟲ restore' : '⟲ restaurar';
+      bRest.style.display = 'none';
+      var bPg = document.createElement('a');
+      bPg.target = '_blank';
+      bPg.rel = 'noopener';
+      bPg.textContent = EN ? 'open in the playground ↗' : 'abrir en el playground ↗';
+      var estado = document.createElement('span');
+      estado.className = 'estado-python';
+
+      function refrescarHrefPlayground() {
+        try { bPg.href = 'playground.html#' + btoa(encodeURIComponent(getCodigo())); } catch (e) {}
+      }
+      refrescarHrefPlayground();
+      bPg.addEventListener('click', refrescarHrefPlayground);
+
+      bEdit.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        if (editor) return;
+        editor = document.createElement('textarea');
+        editor.className = 'editor-python';
+        editor.value = code.textContent;
+        editor.rows = Math.min(22, code.textContent.split('\n').length + 2);
+        div.replaceWith(editor);
+        bEdit.style.display = 'none';
+        bRest.style.display = '';
+      });
+
+      // salir del modo edición = restaurar: vuelve el bloque coloreado original
+      // (los cambios se descartan — es la semántica de "restaurar"; para conservar
+      // una variante, el camino es "abrir en el playground" y descargar el .py)
+      bRest.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        if (!editor) return;
+        editor.replaceWith(div);
+        editor = null;
+        bRest.style.display = 'none';
+        bEdit.style.display = '';
+      });
+
+      bRun.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        estado.textContent = EN ? 'loading Python (~12 MB the first time)…'
+                                : 'cargando Python (~12 MB la primera vez)…';
+        cargarPyodide().then(function (py) {
+          estado.textContent = EN ? 'running…' : 'ejecutando…';
+          salida.style.display = 'block';
+          salida.textContent = '';
+          salida.classList.remove('con-error');
+          var t0 = performance.now();
+          py.setStdout({ batched: function (s) { salida.textContent += s + '\n'; } });
+          py.setStderr({ batched: function (s) { salida.textContent += s + '\n'; } });
+          return py.runPythonAsync(getCodigo()).then(function (r) {
+            if (r !== undefined && r !== null && String(r) !== 'None') salida.textContent += String(r);
+            if (!salida.textContent) {
+              salida.textContent = EN ? '(no output — ran without errors ✓)'
+                                      : '(sin salida — ejecutado sin errores ✓)';
+            }
+            estado.textContent = '✓ ' + Math.round(performance.now() - t0) + ' ms';
+          }, function (e) {
+            salida.classList.add('con-error');
+            salida.textContent += String(e);
+            estado.textContent = '✗';
+          });
+        }).catch(function (e) { estado.textContent = String(e); });
+      });
+
+      barra.appendChild(bRun);
+      barra.appendChild(document.createTextNode(' · '));
+      barra.appendChild(bEdit);
+      barra.appendChild(bRest);
+      barra.appendChild(document.createTextNode(' · '));
+      barra.appendChild(bPg);
+      barra.appendChild(document.createTextNode(' '));
+      barra.appendChild(estado);
+      div.insertAdjacentElement('afterend', barra);
+      barra.insertAdjacentElement('afterend', salida);
+    });
+
+    // ── 3. Figuras Plotly de aspecto fijo (1:1) ──
+    // Se generan a 500×560 px absolutos y con responsive desactivado (si no, Plotly
+    // estira el contenedor y el dibujo 1:1 queda escorado). En una pantalla estrecha
+    // esos 500px no caben: ensanchaban TODA la página y el navegador móvil respondía
+    // haciendo zoom-out del documento entero. Se reajustan al ancho real disponible,
+    // conservando la proporción.
+    function ajustarFigurasFijas() {
+      if (!window.Plotly) return;
+      document.querySelectorAll('.plotly-graph-div.fig-fija').forEach(function (d) {
+        var fig = d.closest('figure.figura');
+        var caja = d.parentElement;          // wrapper con width/height en px
+        if (!fig || !caja) return;
+        var w = Math.min(500, fig.clientWidth);
+        var h = Math.round(560 * w / 500);
+        if (w < 50 || Math.abs(caja.clientWidth - w) < 2) return;
+        caja.style.width = w + 'px';
+        caja.style.height = h + 'px';
+        try { Plotly.relayout(d, { width: w, height: h }); } catch (e) {}
+      });
+    }
+    ajustarFigurasFijas();
+    var tRedim;
+    window.addEventListener('resize', function () {
+      clearTimeout(tRedim);
+      tRedim = setTimeout(ajustarFigurasFijas, 150);
+    });
+
+    // ── 4. Footnotes como notas al margen derecho (si las hay y cabe) ──
+    var fnSection = document.querySelector('section.footnotes');
+    if (fnSection && window.matchMedia('(min-width: 1650px)').matches) {
+      var ok = true;
+      var lastBottom = 0;
+      document.querySelectorAll('a.footnote-ref').forEach(function (ref) {
+        var id = (ref.getAttribute('href') || '').slice(1);
+        var note = document.getElementById(id);
+        if (!note) { ok = false; return; }
+        var aside = document.createElement('aside');
+        aside.className = 'sidenote';
+        var num = document.createElement('span');
+        num.className = 'sn-num';
+        num.textContent = ref.textContent;
+        aside.appendChild(num);
+        var clone = note.cloneNode(true);
+        clone.querySelectorAll('a.footnote-back').forEach(function (b) { b.remove(); });
+        while (clone.firstChild) aside.appendChild(clone.firstChild);
+        document.body.appendChild(aside);
+        var top = ref.getBoundingClientRect().top + window.scrollY;
+        if (top < lastBottom + 8) top = lastBottom + 8;   // que no se solapen entre sí
+        aside.style.top = top + 'px';
+        lastBottom = top + aside.offsetHeight;
+      });
+      if (ok) document.body.classList.add('sidenotes-active');
+    }
+  });
+  </script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title"><p>Actividad RA7-1 · El determinante decide, y cambia
+con el cuerpo</p></h1>
+</header>
+<h1
+id="actividad-ra7-1-el-determinante-decide-y-cambia-con-el-cuerpo">Actividad
+RA7-1 · El determinante decide, y cambia con el cuerpo</h1>
+<blockquote>
+<p><strong>De la sesión:</strong> Álgebra Lineal, Sesión 6
+(determinantes) — la promete la píldora V3. <strong>Necesitas:</strong>
+Python con <code>sympy</code>. Vale el playground del curso; no hay que
+instalar nada. <strong>Tiempo estimado:</strong> 40–50 min. <strong>Se
+evalúa</strong> lo que predices y lo que explicas, no el código: las
+llamadas están dadas.</p>
+</blockquote>
+<hr />
+<h2 id="antes-de-tocar-el-teclado">Antes de tocar el teclado</h2>
+<p>Toma el sistema del recuadro de software de los apuntes (§6.3):</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mo>−</mo><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>3</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mi>b</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>8</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>13</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>4</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">A = \begin{pmatrix} 2 &amp; 1 &amp; -1 \\ 1 &amp; 3 &amp; 2 \\ 1 &amp; 0 &amp; 1 \end{pmatrix}, \qquad b = \begin{pmatrix} 8 \\ 13 \\ 4 \end{pmatrix}.</annotation></semantics></math></p>
+<p><strong>1.</strong> Calcula
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">\det A</annotation></semantics></math>
+<strong>a mano</strong>, por el método que prefieras, y anota el
+número.</p>
+<p><strong>2.</strong> Ahora, sin ejecutar nada, rellena esta tabla. En
+cada fila, la pregunta es si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+es invertible <strong>como matriz sobre ese cuerpo</strong> — es decir,
+si
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mi>A</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\det A \neq 0</annotation></semantics></math>
+<em>en ese mundo</em>:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Coeficientes en</th>
+<th><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">\det A</annotation></semantics></math>
+vale</th>
+<th>¿<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+invertible?</th>
+<th>Por qué</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℚ</mi><annotation encoding="application/x-tex">\mathbb{Q}</annotation></semantics></math></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mn>3</mn><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/3\mathbb{Z}</annotation></semantics></math></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mn>5</mn><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/5\mathbb{Z}</annotation></semantics></math></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mn>7</mn><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/7\mathbb{Z}</annotation></semantics></math></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Esta tabla es la actividad.</strong> Lo que viene después
+solo comprueba si la acertaste.</p>
+<blockquote>
+<p>Si dudas en alguna fila, vuelve al <strong><a
+href="apuntes-04-lineal.html#res-4-6-11" class="cita" target="_blank"
+rel="noopener">Teorema 4.6.11</a></strong>: dice exactamente qué
+relación hay entre
+«<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mi>A</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\det A \neq 0</annotation></semantics></math>»
+y
+«<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+invertible», y no menciona ningún cuerpo en particular — vale en todos.
+Lo que cambia de fila a fila no es el teorema: es <strong>cuánto vale el
+número</strong>.</p>
+</blockquote>
+<h2 id="ahora-ejecútalo">Ahora ejecútalo</h2>
+<p>El código está en el recuadro de los apuntes; cópialo tal cual. La
+llamada <code>A.inv_mod(5)</code> <strong>falla a propósito</strong>:
+está dentro de un <code>try</code> para que puedas leer el error sin que
+se pare el programa.</p>
+<p><strong>3.</strong> ¿Coincide la salida con tu tabla? Si fallaste
+alguna fila, escribe <strong>en una frase</strong> qué creías y qué pasa
+en realidad. (Esta frase vale tanto como la tabla: es donde se ve el
+concepto que faltaba.)</p>
+<p><strong>4.</strong> Lee el mensaje de error de <code>mod 5</code> y
+tradúcelo al lenguaje del teorema. La biblioteca no dice «el
+determinante es cero módulo cinco»; dice otra cosa. ¿Qué relación hay
+entre las dos formulaciones?</p>
+<h2 id="la-variación-que-es-donde-se-aprende">La variación, que es donde
+se aprende</h2>
+<p><strong>5.</strong> El código termina con una pregunta: <em>¿y mod 7?
+¿y mod 6?</em> Contéstalas, <strong>prediciendo primero</strong>.</p>
+<p>El caso
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>6</mn><annotation encoding="application/x-tex">6</annotation></semantics></math>
+es distinto de todos los anteriores y merece que te pares en él:</p>
+<ul>
+<li>¿Es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mn>6</mn><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/6\mathbb{Z}</annotation></semantics></math>
+un cuerpo? (Sesión 1, y la dicotomía de Aritmética S3.)</li>
+<li>Calcula
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">\det A</annotation></semantics></math>
+módulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>6</mn><annotation encoding="application/x-tex">6</annotation></semantics></math>.
+No es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>.</li>
+<li>Y aun así, la inversa no existe. <strong>¿Por qué el <a
+href="apuntes-04-lineal.html#res-4-6-11" class="cita" target="_blank"
+rel="noopener">Teorema 4.6.11</a> no se aplica aquí?</strong></li>
+</ul>
+<blockquote>
+<p>Esta última es la pregunta importante de la actividad. Todo el curso
+ha insistido en que los enunciados llevan hipótesis y en que conviene
+saber cuál se rompe. Aquí se rompe una, y no es la del determinante.</p>
+</blockquote>
+<p><strong>6.</strong> Construye tú una matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>×</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">3\times 3</annotation></semantics></math>
+con entradas enteras que sea invertible sobre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℚ</mi><annotation encoding="application/x-tex">\mathbb{Q}</annotation></semantics></math>
+y <strong>no</strong> sobre
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mn>7</mn><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/7\mathbb{Z}</annotation></semantics></math>.
+Comprueba tu ejemplo con el mismo código. <em>(Pista: no hace falta
+buscar; se puede fabricar decidiendo primero cuánto quieres que valga el
+determinante.)</em></p>
+<h2 id="qué-entregas">Qué entregas</h2>
+<p>Un documento corto —notebook, PDF o markdown, como prefieras—
+con:</p>
+<ol type="1">
+<li>La tabla del punto 2, <strong>tal como la rellenaste antes de
+ejecutar</strong> (no la corrijas: si te equivocaste, deja el error y
+añade la frase del punto 3).</li>
+<li>Las respuestas a los puntos 4 y 5, con la del
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mn>6</mn><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/6\mathbb{Z}</annotation></semantics></math>
+razonada.</li>
+<li>Tu matriz del punto 6 y la salida que la confirma.</li>
+</ol>
+<p>No hace falta que el código sea tuyo ni que esté ordenado. Si usas
+IA, decláralo como indica la guía de uso: se corrige tu razonamiento, y
+ahí se nota.</p>
+<h2 id="lo-que-esta-actividad-quiere-dejarte">Lo que esta actividad
+quiere dejarte</h2>
+<p>Que «invertible» no es una propiedad de la tabla de números, sino de
+la tabla <strong>junto con el cuerpo donde vive</strong>. La misma
+matriz, con las mismas entradas, es invertible en un sitio y no en otro
+— y el determinante lo dice, siempre, con tal de que el sitio sea un
+cuerpo. Es el mismo hilo que arrancó en la Sesión 1 preguntando «¿qué es
+un cuerpo y por qué?», y que en Aritmética separaba
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mi>p</mi><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/p\mathbb{Z}</annotation></semantics></math>
+de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mi>n</mi><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/n\mathbb{Z}</annotation></semantics></math>.</p>
+</body>
+</html>
