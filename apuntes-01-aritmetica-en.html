@@ -7568,6 +7568,46 @@ And
 is invertible (a product of invertibles); cancelling it:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><msup><mi>a</mi><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></msup><mo accent="true">¯</mo></mover><mo>=</mo><mover><mn>1</mn><mo accent="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\overline{a^{p-1}} = \bar 1</annotation></semantics></math>.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
+<p><span id="res-1-3-13b" class="res-def"><strong>Remark 1.3.13b (the
+temptation of the cycles, and why it fails).</strong></span> Looking at
+the rearrangement it is natural to ask how many times one must multiply
+by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>a</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar a</annotation></semantics></math>
+to return to the starting point, and to expect the answer
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p-1</annotation></semantics></math>
+— which would give
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mover><mi>a</mi><mo accent="true">‾</mo></mover><mrow><mspace width="0.167em"></mspace><mi>p</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>=</mo><mover><mn>1</mn><mo accent="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">\bar a^{\,p-1} = \bar 1</annotation></semantics></math>
+for free. <strong>It does not work that way.</strong> That number is the
+<strong>order</strong> of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>a</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar a</annotation></semantics></math>,
+and although it always <em>divides</em>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p-1</annotation></semantics></math>,
+it seldom equals it: for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">p = 7</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">a = 2</annotation></semantics></math>
+the cycle is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>→</mo><mn>2</mn><mo>→</mo><mn>4</mn><mo>→</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">1 \to 2 \to 4 \to 1</annotation></semantics></math>,
+of length
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>3</mn><annotation encoding="application/x-tex">3</annotation></semantics></math>
+and not
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>6</mn><annotation encoding="application/x-tex">6</annotation></semantics></math>;
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>11</mn></mrow><annotation encoding="application/x-tex">p = 11</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">a = 3</annotation></semantics></math>
+it has length
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>5</mn><annotation encoding="application/x-tex">5</annotation></semantics></math>
+and not
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>10</mn><annotation encoding="application/x-tex">10</annotation></semantics></math>.
+It coincides exactly when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>a</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar a</annotation></semantics></math>
+is a <strong>primitive root</strong> modulo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+(see Going further). The proof above never uses the cycles: it only uses
+that the arrival list has <strong>the same elements</strong> as the
+starting one. <em>(And the fact that the order divides
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p-1</annotation></semantics></math>
+follows <strong>from</strong> Fermat, not the other way round: using it
+here would be circular.)</em></p>
 <blockquote>
 <p>Note what the proof uses: that
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mi>p</mi><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/p\mathbb{Z}</annotation></semantics></math>
