@@ -8033,11 +8033,12 @@ and the segment of the common normal realizing the minimum distance;
 rotating the view shows that they do not meet.</figcaption></figure>
 <hr />
 <blockquote>
-<p><strong>Software (RA7) — the normal, in one command.</strong>
-Machines do these computations too, and it is worth watching them do it.
-In <strong>GeoGebra 3D</strong>: type <code>u=(1,0,1)</code> and
-<code>v=(0,1,1)</code> — the direction vectors of exercise 1 —, ask for
-<code>n=Cross(u,v)</code> and then draw the plane through
+<p><span id="codigo-m5-s4-normal"></span><strong>Software (RA7) — the
+normal, in one command.</strong> Machines do these computations too, and
+it is worth watching them do it. In <strong>GeoGebra 3D</strong>: type
+<code>u=(1,0,1)</code> and <code>v=(0,1,1)</code> — the direction
+vectors of exercise 1 —, ask for <code>n=Cross(u,v)</code> and then draw
+the plane through
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">P=(1,1,0)</annotation></semantics></math>
 with that normal (exercise 2); rotate the view and check that
 <code>n</code> escapes the plane while <code>u</code> and <code>v</code>
@@ -8058,13 +8059,13 @@ the machine’s; yours is knowing what each number measures and why it
 vanishes.</p>
 </blockquote>
 <blockquote>
-<p><strong>Software (RA7) — the volume, and how it flattens.</strong>
-The determinant of the three vectors gives the volume of the
-parallelepiped they span. Change the height <code>h</code> and run it
-again: with <code>h = 0</code> the three vectors are coplanar and the
-volume is zero — linear dependence, seen as geometry —, and with
-<code>h = -3</code> the absolute value returns the same volume with the
-orientation reversed.</p>
+<p><span id="codigo-m5-s4-volumen"></span><strong>Software (RA7) — the
+volume, and how it flattens.</strong> The determinant of the three
+vectors gives the volume of the parallelepiped they span. Change the
+height <code>h</code> and run it again: with <code>h = 0</code> the
+three vectors are coplanar and the volume is zero — linear dependence,
+seen as geometry —, and with <code>h = -3</code> the absolute value
+returns the same volume with the orientation reversed.</p>
 <div class="sourceCode" id="cb2"><pre
 class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Matrix</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
