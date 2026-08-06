@@ -8393,7 +8393,7 @@ together with
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
 <strong>is equivalent to factoring
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math></strong>
-(exercise 8: from
+(exercise 10: from
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>φ</mi><annotation encoding="application/x-tex">\varphi</annotation></semantics></math>
@@ -8502,8 +8502,13 @@ class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a hr
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">271828</span>                <span class="co"># the &quot;message&quot;</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="bu">pow</span>(m, e, n)          <span class="co"># encrypt (public key)</span></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">pow</span>(c, d, n) <span class="op">==</span> m  <span class="co"># decrypt (private key) — m comes back</span></span></code></pre></div>
-<p><em>(Seed of the SE3 mini-project: each student generates their own
-keys and messages are exchanged; guided asynchronous activity.)</em></p>
+<p><em>(This block is the starting point of the <strong>SE3
+mini-project</strong>: you generate your keys, publish the public one on
+the course forum, and exchange signed messages with the rest of the
+class. The <strong>full statement</strong>, in <a
+href="https://javimaligno.github.io/algebra-geometria-apuntes/se3-rsa-en.html">SE3
+· RSA mini-project</a>. The <strong>submission</strong> goes through the
+virtual classroom.)</em></p>
 <hr />
 <h2 id="exercises-3">Exercises</h2>
 <ol type="1">
@@ -8524,12 +8529,11 @@ and decrypt the result, all by fast exponentiation.</li>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>7</mn><mn>45</mn></msup><mrow><mspace width="0.222em"></mspace><mo>mod</mo><mspace width="0.222em"></mspace><mn>11</mn></mrow></mrow><annotation encoding="application/x-tex">7^{45} \bmod 11</annotation></semantics></math>
 combining <strong>Fermat</strong> (reduce the exponent) and successive
 squaring.</li>
-<li>★ <strong>(Python — SE3 seed.)</strong> Set up the full scheme with
-primes of 6–8 digits; encrypt a numeric message and verify the
-decryption. Then <strong>break</strong> someone else’s toy RSA with
-<code>sympy.factorint(n)</code> and discuss: up to what size of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
-does factoring succeed on your machine within a second?</li>
+<li>★ <strong>(Python — SE3 warm-up.)</strong> Set up the full scheme
+with primes of 6–8 digits; encrypt a numeric message and verify the
+decryption. This is the starting point of the mini-project: get there
+with this already done. <em>(Breaking someone else’s RSA by factoring is
+phase 5 of the project, with its ladder of targets.)</em></li>
 <li>Complete the <strong>switch construction</strong> of <a
 href="#res-1-4-2b" class="cita" target="_blank" rel="noopener">Corollary
 1.4.2b</a>: for pairwise coprime
@@ -8585,6 +8589,39 @@ costs by that method, in terms of the number of binary digits of
 <li>Why does RSA require
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>e</mi><mo>,</mo><mi>φ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\mathrm{gcd}(e, \varphi) = 1</annotation></semantics></math>?
 Point out the step of the construction that would break without it.</li>
+<li><strong>(Where does 65537 come from?)</strong> The code in §4.3
+fixes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>=</mo><mn>65537</mn></mrow><annotation encoding="application/x-tex">e = 65537</annotation></semantics></math>
+without justifying it. (a) Prove that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>e</mi><annotation encoding="application/x-tex">e</annotation></semantics></math>
+must be <strong>odd</strong>. (b) <strong>(Python.)</strong> Write the
+loop running through
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>=</mo><mn>3</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>7</mn><mo>,</mo><mi>…</mi></mrow><annotation encoding="application/x-tex">e = 3, 5, 7, \dots</annotation></semantics></math>
+until
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>e</mi><mo>,</mo><mi>φ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\mathrm{gcd}(e,\varphi) = 1</annotation></semantics></math>,
+and count how many candidates it tries before succeeding, with 6-digit
+primes; repeat with several pairs
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>,</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p,q</annotation></semantics></math>.
+Is “brute force” a problem here? (c) The other way round: if you
+<strong>fix</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>=</mo><mn>65537</mn></mrow><annotation encoding="application/x-tex">e = 65537</annotation></semantics></math>
+<em>before</em> generating
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>,
+and use that 65537 is prime, what single condition must
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
+satisfy? How expensive is checking it, compared with the loop in (b)? —
+And why <em>that</em> prime: write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>65537</mn><mo>=</mo><msup><mn>2</mn><mn>16</mn></msup><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">65537 = 2^{16}+1</annotation></semantics></math>
+in binary and apply the count of <strong>exercise 7</strong>. Compare it
+with an arbitrary 17-bit
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>e</mi><annotation encoding="application/x-tex">e</annotation></semantics></math>.
+<em>(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">e = 3</annotation></semantics></math>
+would cost only 2 multiplications: why do you think it is not used? Cf.
+the fine print in §4.3.)</em></li>
 <li>Prove that knowing
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mi>p</mi><mi>q</mi></mrow><annotation encoding="application/x-tex">n = pq</annotation></semantics></math>
 and
