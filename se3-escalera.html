@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>SE3 · RSA mini-project</title>
+  <title>SE3 · Escalera de objetivos (fase 5)</title>
   <style>
     html {
       color: #1a1a1a;
@@ -920,275 +920,98 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title"><p>SE3 · RSA mini-project</p></h1>
+<h1 class="title"><p>SE3 · Escalera de objetivos (fase 5)</p></h1>
 </header>
-<h1 id="se3-rsa-mini-project">SE3 · RSA mini-project</h1>
+<h1 id="se3-escalera-de-objetivos-fase-5">SE3 · Escalera de objetivos
+(fase 5)</h1>
 <blockquote>
-<p><strong>What this is:</strong> the individual project of the course —
-<strong>10 % of the grade</strong>. You build a toy RSA, actually use it
-to exchange messages with the rest of the class, explain why it works
-using <strong>your</strong> numbers, and find out how far it holds
-before it breaks.</p>
-<p><strong>What is assessed:</strong> understanding, not code. The calls
-fit in ten lines and anyone can write them; what gets marked is whether
-you know <strong>where each number comes from</strong> and <strong>which
-step rests on what</strong>.</p>
-</blockquote>
-<h2 id="before-you-start">Before you start</h2>
-<p>Arrive with <strong>exercise 4 of Session 4</strong> already done:
-the full scheme set up with 6–8 digit primes, encrypting and decrypting.
-It is the warm-up for this, and it saves you fighting the code while you
-are trying to think about the mathematics.</p>
-<p>The starting point is the Python block in the notes, <a
-href="https://javimaligno.github.io/algebra-geometria-apuntes/apuntes-01-aritmetica-en.html#codigo-m1-s4-rsa">§4.3
-“The demo in Python”</a>, which you can run and edit on the page
-itself.</p>
-<hr />
-<h2 id="phase-1-your-keys">Phase 1 · Your keys</h2>
-<p>Generate your primes
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>≠</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p \neq q</annotation></semantics></math>,
-your
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mi>p</mi><mi>q</mi></mrow><annotation encoding="application/x-tex">n = pq</annotation></semantics></math>
-and your
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>φ</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>p</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>q</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\varphi = (p-1)(q-1)</annotation></semantics></math>.
-Use primes of <strong>6 to 8 digits</strong>: large enough that the
-exchange is not trivial, small enough that everything runs
-instantly.</p>
-<p><strong>Choose your
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>e</mi><annotation encoding="application/x-tex">e</annotation></semantics></math>,
-and be ready to justify it.</strong> Do not copy the 65537 from the box
-just because it is there: exercise 9 of the session gives you the tools
-to decide it yourself. If you end up choosing 65537, fine — but you will
-have to say why.</p>
-<p>Compute
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
-and check that it decrypts.</p>
-<blockquote>
-<p><strong>The condition
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>≠</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p \neq q</annotation></semantics></math>
-is not a precaution:</strong> it is a hypothesis of <a
-href="apuntes-01-aritmetica-en.html#res-1-4-5" class="cita"
-target="_blank" rel="noopener">Theorem 1.4.5</a>. If you make them
-equal,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>p</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>q</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">(p-1)(q-1)</annotation></semantics></math>
-stops being the number that makes decryption work.</p>
-</blockquote>
-<h2 id="phase-2-the-public-directory">Phase 2 · The public
-directory</h2>
-<p>Publish your
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>,</mo><mi>e</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(n, e)</annotation></semantics></math>
-— <strong>only that</strong> — in the <strong>“Public key
-directory”</strong> thread of the forum, in a message with your name on
-it.</p>
-<p>A public key belongs in public: that thread is not a metaphor for a
-key directory, it <strong>is</strong> a key directory. Your
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>,
-your
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
-and your
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
-never leave your machine.</p>
-<blockquote>
-<p><strong>Its own deadline.</strong> This phase takes fifteen minutes
-and has a deadline of its own, well before the final submission: if the
-directory is not complete in time, whoever publishes last is left with
-nobody to exchange with.</p>
-</blockquote>
-<h2 id="phase-3-the-exchange">Phase 3 · The exchange</h2>
-<p>Four roles. All four are required, and all four leave a trace in the
-forum.</p>
-<p><strong>1 · Sender.</strong> Pick someone from the directory, encrypt
-a numeric message with <strong>their</strong> public key and post it
-addressed to them.</p>
-<p><strong>2 · Receiver.</strong> Decrypt the message sent to you.</p>
-<p><strong>3 · Signer.</strong> Reply with the decrypted message
-<strong>and its signature</strong>
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><msup><mi>m</mi><mi>d</mi></msup><mrow><mspace width="0.222em"></mspace><mo>mod</mo><mspace width="0.222em"></mspace><mi>n</mi></mrow></mrow><annotation encoding="application/x-tex">s = m^d \bmod n</annotation></semantics></math>,
-computed with <strong>your</strong> private key.</p>
-<p><strong>4 · Verifier.</strong> Pick the signed reply of <strong>a
-third person</strong> — not yours, not the one who wrote to you — and
-verify their signature with their public key. Post whether it checks
-out.</p>
-<blockquote>
-<p><strong>Why the signature.</strong> Posting the decrypted message
-proves nothing: whoever encrypted it already knew it. The signature
-does, because it can only be produced with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>,
-and <strong>anyone</strong> can check it with the public key. It is the
-decryption theorem with the roles swapped.</p>
-</blockquote>
-<p><strong>Nobody to exchange with?</strong> My key is in the directory
-like anyone else’s. If you are left out, you exchange with me and carry
-on. No need to warn anyone or wait to be assigned a partner.</p>
-<h2 id="phase-4-the-report">Phase 4 · The report</h2>
-<p>Four parts. <strong>All of it with your numbers, not with
-letters.</strong></p>
-<p><strong>(a) Why it works.</strong></p>
-<ul>
-<li>Where your
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
-comes from: the steps of the extended Euclidean algorithm, not just the
-result.</li>
-<li>Check
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>⋅</mo><mi>d</mi><mo>≡</mo><mn>1</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mi>φ</mi><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">e \cdot d \equiv 1 \pmod{\varphi}</annotation></semantics></math>
-and write the concrete
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
-in
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mi>d</mi><mo>=</mo><mn>1</mn><mo>+</mo><mi>k</mi><mi>φ</mi></mrow><annotation encoding="application/x-tex">ed = 1 + k\varphi</annotation></semantics></math>.</li>
-<li>Why
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mrow><mi>e</mi><mi>d</mi></mrow></msup><mo>≡</mo><mi>m</mi><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">m^{ed} \equiv m \pmod n</annotation></semantics></math>:
-Fermat modulo
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>,
-Fermat modulo
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>,
-and the Chinese remainder theorem to glue the two congruences. With your
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
-and your
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>.</li>
-</ul>
-<p><strong>(b) Why YOUR
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>e</mi><annotation encoding="application/x-tex">e</annotation></semantics></math>.</strong>
-What you ruled out and why. And why not
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">e = 3</annotation></semantics></math>,
-which would be cheaper.</p>
-<p><strong>(c) Break it on purpose.</strong> Pick <strong>one</strong>
-of the two and show it running:</p>
-<ul>
-<li>Take an
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>e</mi><annotation encoding="application/x-tex">e</annotation></semantics></math>
-with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>e</mi><mo>,</mo><mi>φ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≠</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\mathrm{gcd}(e, \varphi) \neq 1</annotation></semantics></math>.
-Which step fails, <strong>exactly</strong>?</li>
-<li>Or take
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p = q</annotation></semantics></math>.
-Where does the proof collapse?</li>
-</ul>
-<p>Saying that it stops working is not enough: you have to <strong>point
-at the place</strong> where the hypothesis was doing its job.</p>
-<p><strong>(d) What it lacks to be real.</strong> Your ladder from phase
-5 says something about key size: say it. And explain why your RSA,
-correct as it is, still would not do for anything serious.</p>
-<h2 id="phase-5-the-attack-ladder">Phase 5 · The attack ladder</h2>
-<p>You have a <strong>ladder of targets</strong> — pairs
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>,</mo><mi>e</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(n, e)</annotation></semantics></math>
-with an encrypted message, of increasing size — in <a
-href="se3-escalera-en.html">SE3 · Ladder of targets</a>. None of them
-belongs to a classmate: they are mine, put there for you to break.</p>
-<p>For each one you can: factor
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>,
-recover
+<p>Rompe los que puedas. Para cada uno: <strong>factoriza
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math></strong>,
+recupera
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>φ</mi><annotation encoding="application/x-tex">\varphi</annotation></semantics></math>,
-recover
+recupera
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>,
-and read the message.</p>
-<p><strong>What you hand in is not “I broke three”, it is the
-curve:</strong> how far you got, how long the last one to fall took, and
-where your machine stalled. And then one question: if that is your wall,
-and real RSA uses keys of some 600 digits, how much margin is there?</p>
-<hr />
-<h2 id="timeline">Timeline</h2>
+y descifra
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>.
+Ninguno es de un compañero — son míos, puestos aquí para que los
+rompas.</p>
+</blockquote>
+<p>Todos usan el mismo exponente público
+<strong><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>=</mo><mn>65537</mn></mrow><annotation encoding="application/x-tex">e = 65537</annotation></semantics></math></strong>.</p>
+<p><strong>Lo que entregas no es «rompí tres», es la curva</strong>:
+hasta qué tamaño llegaste, cuánto tardó el último que cayó, y dónde se
+plantó tu máquina. Si el último no cae, eso también es un resultado —
+anota cuánto lo dejaste corriendo antes de rendirte.</p>
+<p>Cada peldaño esconde un trozo de una frase. Si los rompes todos, la
+lees entera.</p>
 <table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
 <thead>
 <tr class="header">
-<th>Phase</th>
-<th>When</th>
+<th>#</th>
+<th>cifras de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math></th>
+<th><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math></th>
+<th><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>1 · Your keys</td>
-<td>as soon as this is published</td>
+<td>1</td>
+<td>12</td>
+<td><code>268123381927</code></td>
+<td><code>69240299875</code></td>
 </tr>
 <tr class="even">
-<td>2 · Publish
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>,</mo><mi>e</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(n,e)</annotation></semantics></math></td>
-<td><strong>own deadline, in the classroom</strong></td>
+<td>2</td>
+<td>18</td>
+<td><code>196106770941891731</code></td>
+<td><code>119444168905163294</code></td>
 </tr>
 <tr class="odd">
-<td>3 · The exchange</td>
-<td>a three-week window</td>
+<td>3</td>
+<td>24</td>
+<td><code>156498784409624375982337</code></td>
+<td><code>113964876992006591942035</code></td>
 </tr>
 <tr class="even">
-<td>4 · The report</td>
-<td>until submission</td>
+<td>4</td>
+<td>30</td>
+<td><code>300938609771715990085948943317</code></td>
+<td><code>95668162781782062642164861932</code></td>
 </tr>
 <tr class="odd">
-<td>5 · The ladder</td>
-<td>whenever you like</td>
+<td>5</td>
+<td>36</td>
+<td><code>204917711387268371742322851984688183</code></td>
+<td><code>21304479931108215375821187426793675</code></td>
 </tr>
 <tr class="even">
-<td><strong>Final submission</strong></td>
-<td><strong>in the classroom</strong></td>
+<td>6</td>
+<td>40</td>
+<td><code>2202717058881736688487849487605042250331</code></td>
+<td><code>1264445538433611069549066324035703893520</code></td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>44</td>
+<td><code>27425427685664046603099625549508722926703159</code></td>
+<td><code>15962225559203590733089412682615743671210668</code></td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>48</td>
+<td><code>187286256155472782460988358755145403663262049249</code></td>
+<td><code>35779644234545033627076115865479503579162559037</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="what-you-hand-in">What you hand in</h2>
-<p><strong>A single notebook</strong> with the code and the report
-inside it, in text cells.</p>
-<p>I recommend <strong>Google Colab</strong>: nothing to install,
-<code>sympy</code> is already there, and it is handed in as a link. If
-you prefer to work locally, an equivalent <code>.ipynb</code> is just as
-good.</p>
-<p>The forum thread is <strong>not</strong> handed in: it is already
-published and timestamped.</p>
-<h2 id="how-it-is-marked">How it is marked</h2>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>Points</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Phase 1 · correct keys and <strong>justification of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>e</mi><annotation encoding="application/x-tex">e</annotation></semantics></math></strong></td>
-<td>1.5</td>
-</tr>
-<tr class="even">
-<td>Phases 2–3 · the full protocol, verifiable in the forum</td>
-<td>2.5</td>
-</tr>
-<tr class="odd">
-<td>Phase 4a · the proof with your numbers</td>
-<td>3.0</td>
-</tr>
-<tr class="even">
-<td>Phase 4c · the counterfactual</td>
-<td>1.5</td>
-</tr>
-<tr class="odd">
-<td>Phase 5 · the ladder and what you read off it</td>
-<td>1.5</td>
-</tr>
-</tbody>
-</table>
-<p>The report is worth <strong>4.5 out of 10</strong>: a notebook that
-encrypts and decrypts flawlessly, explaining nothing, does not reach a
-pass.</p>
-<p>The same criterion as the rest of the course applies: <strong>a
-result without justification scores at most one third of its
-part</strong>.</p>
-<h2 id="on-the-use-of-ai">On the use of AI</h2>
-<p><strong>Allowed and recommended</strong>, declaring what you used and
-what for, as the course guide on AI use sets out.</p>
-<p>And you may as well know how this is built: <strong>your numbers are
-yours</strong>, so no generic report will do; <strong>the forum thread
-is public and timestamped</strong>, so phase 3 is yours to do;
-<strong>the counterfactual requires causing a failure and diagnosing
-it</strong>, not describing that one exists; and <strong>the ladder is a
-measurement on your machine</strong>. You can use AI all the way through
-— what is marked is whether you understand the result.</p>
-<h2 id="what-this-project-is-meant-to-leave-you-with">What this project
-is meant to leave you with</h2>
-<p>That RSA is not a four-line recipe that works by magic. Every line
-rests on a theorem you have proved this module: Euclid gives you
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>,
-Fermat and the Chinese remainder theorem give the message back, and the
-difficulty of factoring is the only thing separating your key from
-anyone else’s.</p>
-<p>And that this “only thing” is measurable. By the end of phase 5 you
-will know, with data from your own laptop, exactly what your toy is
-worth — and why the real one needs to be so big.</p>
+<p><em>El enunciado completo del proyecto, en <a href="se3-rsa.html">SE3
+· Mini-proyecto RSA</a>.</em></p>
 </body>
 </html>
