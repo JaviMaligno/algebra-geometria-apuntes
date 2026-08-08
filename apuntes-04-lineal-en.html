@@ -5328,8 +5328,8 @@ text.f1 {font-family:NJEZFB-LMRoman10-Regular;font-size:9.96px}
 system, geometrically: lines that cross (unique solution), coincident
 lines (infinitely many) or parallel lines (no solution).</figcaption></figure>
 <hr />
-<h2 id="gaussian-elimination-the-method-with-reasons">1.3 Gaussian
-elimination: the method, with reasons</h2>
+<h2 id="gaussian-elimination-which-transformations-are-legitimate">1.3
+Gaussian elimination: which transformations are legitimate</h2>
 <p>The strategy: transform the system into another one <strong>with the
 same solution set</strong> but of simpler shape (<em>echelon form</em>),
 from which the solutions can be read off by substitution. The crucial
@@ -5376,6 +5376,35 @@ gives
 again and cannot be undone either. These are exactly the two hypotheses
 that the proof of <a href="#res-4-1-8" class="cita" target="_blank"
 rel="noopener">Theorem 4.1.8</a> spends.</p>
+<p><em>A concrete counterexample (for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\lambda = 0</annotation></semantics></math>).</em>
+The system
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>+</mo><mi>y</mi><mo>=</mo><mn>1</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>−</mo><mi>y</mi><mo>=</mo><mn>3</mn></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases} x + y = 1 \\ x - y = 3 \end{cases}</annotation></semantics></math>
+has the unique solution
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mo>,</mo><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(2,-1)</annotation></semantics></math>.
+Applying to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mn>2</mn></msub><annotation encoding="application/x-tex">E_2</annotation></semantics></math>
+the forbidden operation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mn>2</mn></msub><mo>→</mo><mn>0</mn><mo>⋅</mo><msub><mi>E</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">E_2 \to 0\cdot E_2</annotation></semantics></math>
+leaves
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>+</mo><mi>y</mi><mo>=</mo><mn>1</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mphantom><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow></mphantom><mspace width="0.167em"></mspace><mn>0</mn><mo>=</mo><mn>0</mn><mo>,</mo></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases} x + y = 1 \\ \phantom{x + y}\,0 = 0, \end{cases}</annotation></semantics></math>
+whose solution set is the <strong>whole</strong> line
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>+</mo><mi>y</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x + y = 1</annotation></semantics></math>:
+solutions have appeared out of nowhere. The proof of the theorem fails
+exactly where it should, in the reverse inclusion: undoing the operation
+would require multiplying by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>0</mn><mrow><mo>−</mo><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">0^{-1}</annotation></semantics></math>,
+which exists in no field.</p>
+<blockquote>
+<p><strong>Mind the moral.</strong> A row
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">0 = 0</annotation></semantics></math>
+<strong>obtained legally</strong> during elimination is not an error: it
+means one equation was redundant (see <a href="#res-4-1-16" class="cita"
+target="_blank" rel="noopener">Example 4.1.16</a>). What is illegitimate
+is to <em>manufacture</em> it with a non-reversible operation, because
+then information has been thrown away. The difference is made by
+reversibility, not by the look of the row.</p>
+</blockquote>
 <p><span id="res-4-1-8" class="res-def"><strong>Theorem 4.1.8
 (elementary operations preserve the solutions).</strong></span> If a
 system
@@ -5480,15 +5509,75 @@ Gaussian elimination: we may chain operations with complete freedom,
 knowing that the solution set is untouched. Note the double role of the
 field: the reversibility of (T2) uses
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>λ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">\lambda^{-1}</annotation></semantics></math>,
-and back substitution (below) will divide by pivots.</p>
+and back substitution (§1.4) will divide by pivots.</p>
+<hr />
+<h2 id="the-table-and-the-staircase">1.4 The table and the
+staircase</h2>
+<p>While one operates, the unknowns take no part: they only record which
+coefficient combines with which, and that information is already carried
+by the <strong>position</strong>. So we stop writing them: first we fix
+the table that remains (§ <em>The augmented matrix</em>), and on it we
+say <strong>where</strong> we are transforming to (§ <em>Echelon
+forms</em>).</p>
+<h3 id="the-augmented-matrix">The augmented matrix</h3>
+<p><span id="res-4-1-10" class="res-def"><strong>Definition
+4.1.10.</strong></span> Given a system of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
+equations and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+unknowns with coefficients
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><annotation encoding="application/x-tex">a_{ij}</annotation></semantics></math>
+and right-hand sides
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>b</mi><mi>i</mi></msub><annotation encoding="application/x-tex">b_i</annotation></semantics></math>,
+its <strong>coefficient matrix</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+is the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">m \times n</annotation></semantics></math>
+table with entry
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><annotation encoding="application/x-tex">a_{ij}</annotation></semantics></math>
+in row
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>,
+column
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>;
+its <strong>augmented matrix</strong> is
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">[</mo><mi>A</mi><mo>∣</mo><mi>b</mi><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>11</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mrow><mn>1</mn><mi>n</mi></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mrow><mi>m</mi><mn>1</mn></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mrow><mi>m</mi><mi>n</mi></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mi>m</mi></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">[A \mid b] = \left[\begin{array}{ccc|c} a_{11} &amp; \cdots &amp; a_{1n} &amp; b_1 \\ \vdots &amp; &amp; \vdots &amp; \vdots \\ a_{m1} &amp; \cdots &amp; a_{mn} &amp; b_m \end{array}\right].</annotation></semantics></math></p>
+<p><strong>Index convention (in force for the whole module).</strong> In
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><annotation encoding="application/x-tex">a_{ij}</annotation></semantics></math>
+the <strong>first</strong> index is the <strong>row</strong> and the
+second the <strong>column</strong>. With it, the translation is
+complete:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mtext mathvariant="normal">equation </mtext><mspace width="0.333em"></mspace></mrow><mi>i</mi><mspace width="0.278em"></mspace><mo>↔</mo><mspace width="0.278em"></mspace><mrow><mtext mathvariant="normal">row </mtext><mspace width="0.333em"></mspace></mrow><mi>i</mi><mo>,</mo><mspace width="2.0em"></mspace><mrow><mtext mathvariant="normal">unknown </mtext><mspace width="0.333em"></mspace></mrow><mi>j</mi><mspace width="0.278em"></mspace><mo>↔</mo><mspace width="0.278em"></mspace><mrow><mtext mathvariant="normal">column </mtext><mspace width="0.333em"></mspace></mrow><mi>j</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">\text{equation } i \;\longleftrightarrow\; \text{row } i, \qquad \text{unknown } j \;\longleftrightarrow\; \text{column } j,</annotation></semantics></math>
+and the elementary operations (T1), (T2), (T3) on equations are
+<strong>exactly</strong> the same operations on the
+<strong>rows</strong> of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">[</mo><mi>A</mi><mo>∣</mo><mi>b</mi><mo stretchy="true" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[A\mid b]</annotation></semantics></math>.
+There is nothing new to prove: <a href="#res-4-1-8" class="cita"
+target="_blank" rel="noopener">Theorem 4.1.8</a> reads verbatim on the
+table. For instance,
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mn>2</mn><mi>x</mi><mo>+</mo><mn>3</mn><mi>y</mi><mo>=</mo><mn>7</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mphantom><mn>2</mn></mphantom><mi>x</mi><mo>−</mo><mphantom><mn>3</mn></mphantom><mi>y</mi><mo>=</mo><mn>1</mn></mtd></mtr></mtable></mrow><mspace width="0.278em"></mspace><mo>↔</mo><mspace width="0.278em"></mspace><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>3</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>7</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mo>−</mo><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>E</mi><mn>2</mn></msub><mo>→</mo><msub><mi>E</mi><mn>2</mn></msub><mo>−</mo><mfrac displaystyle="false"><mn>1</mn><mn>2</mn></mfrac><msub><mi>E</mi><mn>1</mn></msub><mspace width="0.278em"></mspace><mo>=</mo><mspace width="0.278em"></mspace><msub><mi>F</mi><mn>2</mn></msub><mo>→</mo><msub><mi>F</mi><mn>2</mn></msub><mo>−</mo><mfrac displaystyle="false"><mn>1</mn><mn>2</mn></mfrac><msub><mi>F</mi><mn>1</mn></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">\begin{cases} 2x + 3y = 7 \\ \phantom{2}x - \phantom{3}y = 1 \end{cases} \;\longleftrightarrow\; \left[\begin{array}{cc|c} 2 &amp; 3 &amp; 7 \\ 1 &amp; -1 &amp; 1 \end{array}\right], \qquad E_2 \to E_2 - \tfrac12 E_1 \;=\; F_2 \to F_2 - \tfrac12 F_1 .</annotation></semantics></math></p>
+<p>For now the matrix is mere <strong>notation</strong>; in Session 2 it
+will come to life: from it will emerge operations (sum, product,
+inverse) with meaning.</p>
 <h3 id="echelon-forms">Echelon forms</h3>
-<p><span id="res-4-1-10" class="res-def"><strong>Definition 4.1.10
+<p><span id="res-4-1-11" class="res-def"><strong>Definition 4.1.11
 (echelon form).</strong></span> A matrix is in (row) <strong>echelon
 form</strong> if: 1. the zero rows (if any) are at the bottom; 2. the
 first nonzero coefficient of each nonzero row —its
 <strong>pivot</strong>— lies strictly to the right of the pivot of the
 previous row.</p>
-<p><span id="res-4-1-11" class="res-def"><strong>Definition 4.1.11
+<p>Condition 2 draws a staircase with nothing but zeros below it. Note
+that a step may <strong>skip several columns</strong> (that is legal,
+and those pivot-free columns are the ones that will give free unknowns);
+what it may not do is go back or repeat a column:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><munder><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>p</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>*</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>*</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>*</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>*</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>*</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>p</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>*</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>*</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>*</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>p</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>*</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo accent="true">⏟</mo></munder><mtext mathvariant="normal">echelon form</mtext></munder><mspace width="2.0em"></mspace><mspace width="2.0em"></mspace><munder><munder><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>p</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>*</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>*</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>*</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>*</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>*</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>p</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>*</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>*</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>*</mo></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>p</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>*</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>*</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>*</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>*</mo></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mo accent="true">⏟</mo></munder><mtext mathvariant="normal">not: the pivot goes back</mtext></munder></mrow><annotation encoding="application/x-tex">\underbrace{\left[\begin{array}{ccccc|c} p &amp; * &amp; * &amp; * &amp; * &amp; * \\ 0 &amp; 0 &amp; p &amp; * &amp; * &amp; * \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; p &amp; * \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \end{array}\right]}_{\text{echelon form}} \qquad\qquad \underbrace{\left[\begin{array}{ccccc|c} p &amp; * &amp; * &amp; * &amp; * &amp; * \\ 0 &amp; 0 &amp; p &amp; * &amp; * &amp; * \\ 0 &amp; p &amp; * &amp; * &amp; * &amp; * \end{array}\right]}_{\text{not: the pivot goes back}}</annotation></semantics></math></p>
+<p><strong>Pivots are looked for in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></strong>,
+in front of the bar. A row with zeros throughout the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+part and a nonzero entry behind the bar has no pivot: it is the equation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">0 = c</annotation></semantics></math>,
+and it will decide the outcome of the system (see below).</p>
+<p><span id="res-4-1-12" class="res-def"><strong>Definition 4.1.12
 (reduced echelon form).</strong></span> A matrix in echelon form is in
 <strong>reduced echelon form</strong> if in addition: 3. all pivots
 equal
@@ -5499,13 +5588,13 @@ equal
 require pivots
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">=1</annotation></semantics></math>
 already in the echelon form). The essential thing is the
-<strong>staircase of pivots</strong> (<a href="#res-4-1-10" class="cita"
-target="_blank" rel="noopener">Def. 4.1.10</a>); the reduced form
-(4.1.11) is the “maximally clean” version. To solve systems the echelon
+<strong>staircase of pivots</strong> (<a href="#res-4-1-11" class="cita"
+target="_blank" rel="noopener">Def. 4.1.11</a>); the reduced form
+(4.1.12) is the “maximally clean” version. To solve systems the echelon
 form suffices; the reduced form is convenient for theoretical
 results.</p>
 </blockquote>
-<p><span id="res-4-1-12" class="res-def"><strong>Theorem 4.1.12
+<p><span id="res-4-1-13" class="res-def"><strong>Theorem 4.1.13
 (existence).</strong></span> Every matrix can be brought to echelon form
 by elementary operations (and to the reduced form, if desired).</p>
 <p><em>Proof (algorithmic, by induction on the number of columns).</em>
@@ -5535,7 +5624,7 @@ normalized to
 and with (T3), working from the bottom up, the coefficients
 <em>above</em> each pivot are killed.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
-<p><span id="res-4-1-13" class="res-def"><strong>Remark 4.1.13
+<p><span id="res-4-1-14" class="res-def"><strong>Remark 4.1.14
 (uniqueness).</strong></span> The echelon form of a matrix is
 <strong>not</strong> unique (different pivot choices give different
 echelon forms). The <strong>reduced form is unique</strong> — we state
@@ -5546,9 +5635,22 @@ position of pivot columns) will underpin the <strong>rank</strong>
 <h3 id="back-substitution-and-reading-off-the-three-cases">Back
 substitution and reading off the three cases</h3>
 <p>With the system in echelon form, one solves <strong>from the bottom
-up</strong>: the last nontrivial equation determines (dividing by its
-pivot — the field again) its unknown in terms of the later ones;
-substitute into the previous one, and so on.</p>
+up</strong>. Take the last nonzero row, with pivot
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>r</mi></msub><annotation encoding="application/x-tex">p_r</annotation></semantics></math>
+in column
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>j</mi><mi>r</mi></msub><annotation encoding="application/x-tex">j_r</annotation></semantics></math>.
+By the staircase shape, to the left of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>j</mi><mi>r</mi></msub><annotation encoding="application/x-tex">j_r</annotation></semantics></math>
+that row has only zeros, so its equation involves
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><msub><mi>j</mi><mi>r</mi></msub></msub><annotation encoding="application/x-tex">x_{j_r}</annotation></semantics></math>
+and, at most, unknowns <strong>further to the right</strong>: <span
+class="math display">$$p_r x_{j_r} + \sum_{j &gt; j_r} a_{rj}x_j = b_r
+\qquad\Longrightarrow\qquad x_{j_r} = p_r^{-1}\Bigl(b_r - \sum_{j &gt;
+j_r} a_{rj}x_j\Bigr),$$</span> where dividing by the pivot is —once
+again— using that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+is a field. One goes up a step and repeats: <strong>each pivot solves
+for its own unknown</strong>, in terms of those not yet fixed.</p>
 <p>The degenerate rows and the pivots dictate the type of system:</p>
 <ul>
 <li>a row
@@ -5567,12 +5669,18 @@ the rest looks like.</li>
 what decides between a unique solution and infinitely many <strong>is
 not the presence of rows
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">0=0</annotation></semantics></math>,
-but the pivots</strong>: if <strong>every unknown</strong> (column) has
-a pivot, the solution is <strong>unique</strong>; if some unknown is
+but the pivots</strong>: if <strong>every unknown</strong> (column of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>)
+has a pivot, the solution is <strong>unique</strong>; if some unknown is
 left <strong>without a pivot</strong>, that unknown is
-<strong>free</strong> and there are <strong>infinitely many</strong>
-solutions (over an infinite field).</p>
-<p><span id="res-4-1-13b" class="res-def"><strong>Remark 4.1.13b
+<strong>free</strong> —it takes any value and the others are solved for
+in terms of it— and there are <strong>infinitely many</strong> solutions
+(over an infinite field; the exact count for any
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>,
+finite ones included, is <a href="#res-4-4-5b" class="cita"
+target="_blank" rel="noopener">Corollary 4.4.5b</a> of Session 4:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>K</mi><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>n</mi><mo>−</mo><mi>r</mi></mrow></msup><annotation encoding="application/x-tex">|K|^{n-r}</annotation></semantics></math>).</p>
+<p><span id="res-4-1-14b" class="res-def"><strong>Remark 4.1.14b
 (frequent error).</strong></span> “There is a row
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">0=0</annotation></semantics></math>”
 does <strong>not</strong> imply that there are free unknowns: with more
@@ -5582,22 +5690,28 @@ and there may still be a pivot in every column — unique solution.
 Redundancy speaks of the <em>rows</em>; freedom, of the
 <em>columns</em>. The precise detail —<em>parametrization</em>— is
 developed in Session 4.</p>
-<h3 id="a-complete-example">A complete example</h3>
-<p><span id="res-4-1-14" class="res-def"><strong>Example
-4.1.14.</strong></span> We solve over
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math>:
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>+</mo><mi>y</mi><mo>+</mo><mi>z</mi><mo>=</mo><mn>6</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>+</mo><mn>2</mn><mi>y</mi><mo>+</mo><mn>3</mn><mi>z</mi><mo>=</mo><mn>14</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>+</mo><mn>4</mn><mi>y</mi><mo>+</mo><mn>9</mn><mi>z</mi><mo>=</mo><mn>36</mn></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases} x + y + z = 6 \\ x + 2y + 3z = 14 \\ x + 4y + 9z = 36 \end{cases}</annotation></semantics></math></p>
-<p><em>Step 1.</em> We make zeros below the first pivot with (T3):
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mn>2</mn></msub><mo>→</mo><msub><mi>E</mi><mn>2</mn></msub><mo>−</mo><msub><mi>E</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">E_2 \to E_2 - E_1</annotation></semantics></math>
+<h3 id="complete-examples">Complete examples</h3>
+<p><span id="res-4-1-15" class="res-def"><strong>Example 4.1.15
+(consistent, unique solution).</strong></span> We solve over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math>,
+with the system and its augmented matrix side by side:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>+</mo><mi>y</mi><mo>+</mo><mi>z</mi><mo>=</mo><mn>6</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>+</mo><mn>2</mn><mi>y</mi><mo>+</mo><mn>3</mn><mi>z</mi><mo>=</mo><mn>14</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>+</mo><mn>4</mn><mi>y</mi><mo>+</mo><mn>9</mn><mi>z</mi><mo>=</mo><mn>36</mn></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mo>↔</mo><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>6</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>3</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>14</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>4</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>9</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>36</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">\begin{cases} x + y + z = 6 \\ x + 2y + 3z = 14 \\ x + 4y + 9z = 36 \end{cases} \qquad\longleftrightarrow\qquad \left[\begin{array}{ccc|c} 1&amp;1&amp;1&amp;6 \\ 1&amp;2&amp;3&amp;14 \\ 1&amp;4&amp;9&amp;36 \end{array}\right]</annotation></semantics></math></p>
+<p><em>Step 1.</em> Zeros below the first pivot with (T3):
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mn>2</mn></msub><mo>→</mo><msub><mi>F</mi><mn>2</mn></msub><mo>−</mo><msub><mi>F</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">F_2 \to F_2 - F_1</annotation></semantics></math>
 and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mn>3</mn></msub><mo>→</mo><msub><mi>E</mi><mn>3</mn></msub><mo>−</mo><msub><mi>E</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">E_3 \to E_3 - E_1</annotation></semantics></math>:
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>+</mo><mi>y</mi><mo>+</mo><mi>z</mi><mo>=</mo><mn>6</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mphantom><mrow><mi>x</mi><mo>+</mo><mrow></mrow></mrow></mphantom><mi>y</mi><mo>+</mo><mn>2</mn><mi>z</mi><mo>=</mo><mn>8</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mphantom><mrow><mi>x</mi><mo>+</mo><mrow></mrow></mrow></mphantom><mn>3</mn><mi>y</mi><mo>+</mo><mn>8</mn><mi>z</mi><mo>=</mo><mn>30</mn></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases} x + y + z = 6 \\ \phantom{x+{}} y + 2z = 8 \\ \phantom{x+{}} 3y + 8z = 30 \end{cases}</annotation></semantics></math></p>
-<p><em>Step 2.</em> We kill the entry below the second pivot:
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mn>3</mn></msub><mo>→</mo><msub><mi>E</mi><mn>3</mn></msub><mo>−</mo><mn>3</mn><msub><mi>E</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">E_3 \to E_3 - 3E_2</annotation></semantics></math>:
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>x</mi><mo>+</mo><mi>y</mi><mo>+</mo><mi>z</mi><mo>=</mo><mn>6</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mphantom><mrow><mi>x</mi><mo>+</mo><mrow></mrow></mrow></mphantom><mi>y</mi><mo>+</mo><mn>2</mn><mi>z</mi><mo>=</mo><mn>8</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mphantom><mrow><mi>x</mi><mo>+</mo><mi>y</mi><mo>+</mo><mrow></mrow></mrow></mphantom><mn>2</mn><mi>z</mi><mo>=</mo><mn>6</mn></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{cases} x + y + z = 6 \\ \phantom{x+{}} y + 2z = 8 \\ \phantom{x+y+{}} 2z = 6 \end{cases}</annotation></semantics></math></p>
-<p>The system is in echelon form, with no degenerate rows and with three
-pivots for three unknowns: <strong>consistent with a unique
-solution</strong>.</p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mn>3</mn></msub><mo>→</mo><msub><mi>F</mi><mn>3</mn></msub><mo>−</mo><msub><mi>F</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">F_3 \to F_3 - F_1</annotation></semantics></math>.
+<em>Step 2.</em> Zeros below the second:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mn>3</mn></msub><mo>→</mo><msub><mi>F</mi><mn>3</mn></msub><mo>−</mo><mn>3</mn><msub><mi>F</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">F_3 \to F_3 - 3F_2</annotation></semantics></math>:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>6</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>3</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>14</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>4</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>9</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>36</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mover><mo>→</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mrow><msub><mi>F</mi><mn>2</mn></msub><mo>−</mo><msub><mi>F</mi><mn>1</mn></msub></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mrow><msub><mi>F</mi><mn>3</mn></msub><mo>−</mo><msub><mi>F</mi><mn>1</mn></msub></mrow></mtd></mtr></mtable></mover><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>6</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>8</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>3</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>8</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>30</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mover><mo>→</mo><mrow><msub><mi>F</mi><mn>3</mn></msub><mo>−</mo><mn>3</mn><msub><mi>F</mi><mn>2</mn></msub></mrow></mover><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>6</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>8</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>6</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">\left[\begin{array}{ccc|c} 1&amp;1&amp;1&amp;6 \\ 1&amp;2&amp;3&amp;14 \\ 1&amp;4&amp;9&amp;36 \end{array}\right] \xrightarrow{\substack{F_2 - F_1 \\ F_3 - F_1}} \left[\begin{array}{ccc|c} 1&amp;1&amp;1&amp;6 \\ 0&amp;1&amp;2&amp;8 \\ 0&amp;3&amp;8&amp;30 \end{array}\right] \xrightarrow{F_3 - 3F_2} \left[\begin{array}{ccc|c} 1&amp;1&amp;1&amp;6 \\ 0&amp;1&amp;2&amp;8 \\ 0&amp;0&amp;2&amp;6 \end{array}\right]</annotation></semantics></math></p>
+<p>The matrix is in echelon form, with no degenerate rows and with three
+<strong>pivots</strong>
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>2</mn><annotation encoding="application/x-tex">2</annotation></semantics></math>)
+for the three columns of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>:
+<strong>consistent with a unique solution</strong> — and this is
+asserted <em>before</em> computing any unknown.</p>
 <p><em>Step 3 (back substitution).</em> From
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>z</mi><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">2z = 6</annotation></semantics></math>,
 dividing by the pivot
@@ -5610,51 +5724,76 @@ Substituting into
 And into the first:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>6</mn><mo>−</mo><mn>2</mn><mo>−</mo><mn>3</mn><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x = 6 - 2 - 3 = 1</annotation></semantics></math>.</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mtext mathvariant="normal">Unique solution: </mtext><mspace width="0.333em"></mspace></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">\text{Unique solution: } (x,y,z) = (1,2,3).</annotation></semantics></math></p>
-<p><em>Check</em> (always good practice):
+<p><em>Check</em> (always good practice, and in the
+<strong>original</strong> equations):
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>+</mo><mn>2</mn><mo>+</mo><mn>3</mn><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">1+2+3 = 6</annotation></semantics></math>
 ✓;
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>+</mo><mn>4</mn><mo>+</mo><mn>9</mn><mo>=</mo><mn>14</mn></mrow><annotation encoding="application/x-tex">1 + 4 + 9 = 14</annotation></semantics></math>
 ✓;
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>+</mo><mn>8</mn><mo>+</mo><mn>27</mn><mo>=</mo><mn>36</mn></mrow><annotation encoding="application/x-tex">1 + 8 + 27 = 36</annotation></semantics></math>
 ✓.</p>
-<hr />
-<h2 id="the-augmented-matrix-the-system-as-a-table">1.4 The augmented
-matrix: the system as a table</h2>
-<p>In the previous example, the unknowns
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">x, y, z</annotation></semantics></math>
-act as mere <strong>placeholders</strong>: all the work happens on the
-coefficients. We collect them in a table.</p>
-<p><span id="res-4-1-15" class="res-def"><strong>Definition
-4.1.15.</strong></span> Given a system of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
-equations and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
-unknowns with coefficients
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><annotation encoding="application/x-tex">a_{ij}</annotation></semantics></math>
-and right-hand sides
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>b</mi><mi>i</mi></msub><annotation encoding="application/x-tex">b_i</annotation></semantics></math>,
-its <strong>coefficient matrix</strong>
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
-is the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">m \times n</annotation></semantics></math>
-table with entry
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><annotation encoding="application/x-tex">a_{ij}</annotation></semantics></math>
-in row
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>,
-column
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>;
-its <strong>augmented matrix</strong> is
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">[</mo><mi>A</mi><mo>∣</mo><mi>b</mi><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mn>11</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mrow><mn>1</mn><mi>n</mi></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mrow><mi>m</mi><mn>1</mn></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>a</mi><mrow><mi>m</mi><mi>n</mi></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>b</mi><mi>m</mi></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">[A \mid b] = \left[\begin{array}{ccc|c} a_{11} &amp; \cdots &amp; a_{1n} &amp; b_1 \\ \vdots &amp; &amp; \vdots &amp; \vdots \\ a_{m1} &amp; \cdots &amp; a_{mn} &amp; b_m \end{array}\right].</annotation></semantics></math></p>
-<p>The elementary operations on equations are exactly <strong>operations
-on the rows</strong> of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">[</mo><mi>A</mi><mo>∣</mo><mi>b</mi><mo stretchy="true" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[A \mid b]</annotation></semantics></math>.
-<a href="#res-4-1-14" class="cita" target="_blank"
-rel="noopener">Example 4.1.14</a>, in parallel:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>6</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>3</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>14</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>4</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>9</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>36</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mover><mo>→</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mrow><msub><mi>F</mi><mn>2</mn></msub><mo>−</mo><msub><mi>F</mi><mn>1</mn></msub></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mrow><msub><mi>F</mi><mn>3</mn></msub><mo>−</mo><msub><mi>F</mi><mn>1</mn></msub></mrow></mtd></mtr></mtable></mover><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>6</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>8</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>3</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>8</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>30</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mover><mo>→</mo><mrow><msub><mi>F</mi><mn>3</mn></msub><mo>−</mo><mn>3</mn><msub><mi>F</mi><mn>2</mn></msub></mrow></mover><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>6</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>8</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>6</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">\left[\begin{array}{ccc|c} 1&amp;1&amp;1&amp;6 \\ 1&amp;2&amp;3&amp;14 \\ 1&amp;4&amp;9&amp;36 \end{array}\right] \xrightarrow{\substack{F_2 - F_1 \\ F_3 - F_1}} \left[\begin{array}{ccc|c} 1&amp;1&amp;1&amp;6 \\ 0&amp;1&amp;2&amp;8 \\ 0&amp;3&amp;8&amp;30 \end{array}\right] \xrightarrow{F_3 - 3F_2} \left[\begin{array}{ccc|c} 1&amp;1&amp;1&amp;6 \\ 0&amp;1&amp;2&amp;8 \\ 0&amp;0&amp;2&amp;6 \end{array}\right]</annotation></semantics></math></p>
-<p>We have solved the system <strong>without writing a single
-unknown</strong>. For now the matrix is mere <em>notation</em>; in
-Session 2 it will come to life: from it will emerge operations (sum,
-product, inverse) with meaning.</p>
+<p>Note that all the work happened on the table, <strong>without writing
+a single unknown</strong>.</p>
+<p><span id="res-4-1-16" class="res-def"><strong>Example 4.1.16 (the
+other two outcomes, with the same system).</strong></span> We change
+only the third equation of the previous example to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>+</mo><mn>3</mn><mi>y</mi><mo>+</mo><mn>5</mn><mi>z</mi><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">x + 3y + 5z = c</annotation></semantics></math>
+and apply <strong>the same</strong> operations:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>6</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>3</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>14</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>3</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>5</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>c</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mover><mo>→</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mrow><msub><mi>F</mi><mn>2</mn></msub><mo>−</mo><msub><mi>F</mi><mn>1</mn></msub></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mrow><msub><mi>F</mi><mn>3</mn></msub><mo>−</mo><msub><mi>F</mi><mn>1</mn></msub></mrow></mtd></mtr></mtable></mover><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>6</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>8</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>4</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>c</mi><mo>−</mo><mn>6</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mover><mo>→</mo><mrow><msub><mi>F</mi><mn>3</mn></msub><mo>−</mo><mn>2</mn><msub><mi>F</mi><mn>2</mn></msub></mrow></mover><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>6</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>8</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>c</mi><mo>−</mo><mn>22</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">\left[\begin{array}{ccc|c} 1&amp;1&amp;1&amp;6 \\ 1&amp;2&amp;3&amp;14 \\ 1&amp;3&amp;5&amp;c \end{array}\right] \xrightarrow{\substack{F_2 - F_1 \\ F_3 - F_1}} \left[\begin{array}{ccc|c} 1&amp;1&amp;1&amp;6 \\ 0&amp;1&amp;2&amp;8 \\ 0&amp;2&amp;4&amp;c-6 \end{array}\right] \xrightarrow{F_3 - 2F_2} \left[\begin{array}{ccc|c} 1&amp;1&amp;1&amp;6 \\ 0&amp;1&amp;2&amp;8 \\ 0&amp;0&amp;0&amp;c-22 \end{array}\right]</annotation></semantics></math></p>
+<p><em>Case
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mn>22</mn></mrow><annotation encoding="application/x-tex">c = 22</annotation></semantics></math>
+(consistent, infinitely many solutions).</em> The last row becomes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">0 = 0</annotation></semantics></math>:
+the third equation was <strong>redundant</strong> —indeed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mn>3</mn></msub><mo>=</mo><mn>2</mn><msub><mi>E</mi><mn>2</mn></msub><mo>−</mo><msub><mi>E</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">E_3 = 2E_2 - E_1</annotation></semantics></math>,
+and the elimination discovered it by itself—. There are pivots in the
+columns of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>,
+but <strong>not in that of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math></strong>:
+the unknown
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math>
+is <strong>free</strong>. Setting
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">z = t</annotation></semantics></math>
+with arbitrary
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>∈</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">t \in \mathbb{R}</annotation></semantics></math>,
+back substitution gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>8</mn><mo>−</mo><mn>2</mn><mi>t</mi></mrow><annotation encoding="application/x-tex">y = 8 - 2t</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>6</mn><mo>−</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>8</mn><mo>−</mo><mn>2</mn><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mi>t</mi><mo>=</mo><mo>−</mo><mn>2</mn><mo>+</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">x = 6 - (8-2t) - t = -2 + t</annotation></semantics></math>,
+that is
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mn>2</mn><mo>+</mo><mi>t</mi><mo>,</mo><mspace width="0.278em"></mspace><mn>8</mn><mo>−</mo><mn>2</mn><mi>t</mi><mo>,</mo><mspace width="0.278em"></mspace><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mn>2</mn><mo>,</mo><mn>8</mn><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>t</mi><mspace width="0.167em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mo>−</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mi>t</mi><mo>∈</mo><mi>ℝ</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">(x,y,z) = (-2 + t,\; 8 - 2t,\; t) = (-2, 8, 0) + t\,(1,-2,1), \qquad t \in \mathbb{R}:</annotation></semantics></math>
+a <strong>line</strong> of solutions (the three planes meet in a line,
+not in a point). Check with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t=0</annotation></semantics></math>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mn>2</mn><mo>,</mo><mn>8</mn><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(-2,8,0)</annotation></semantics></math>
+✓; with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">t=1</annotation></semantics></math>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mn>1</mn><mo>,</mo><mn>6</mn><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(-1,6,1)</annotation></semantics></math>
+✓.</p>
+<p><em>Case
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mn>23</mn></mrow><annotation encoding="application/x-tex">c = 23</annotation></semantics></math>
+(inconsistent).</em> The last row becomes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0 = 1</annotation></semantics></math>,
+which never holds: the solution set is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>⌀</mi><annotation encoding="application/x-tex">\varnothing</annotation></semantics></math>.
+The reading is transparent: the third equation is a consequence of the
+first two, which force it to equal
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>22</mn><annotation encoding="application/x-tex">22</annotation></semantics></math>;
+demanding
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>23</mn><annotation encoding="application/x-tex">23</annotation></semantics></math>
+is asking for two incompatible things at once.</p>
+<blockquote>
+<p>In the case
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mn>22</mn></mrow><annotation encoding="application/x-tex">c = 22</annotation></semantics></math>
+a row
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">0=0</annotation></semantics></math>
+and a free unknown appear together, and it is tempting to read one as
+the cause of the other. They are not: see <a href="#res-4-1-14b"
+class="cita" target="_blank" rel="noopener">Remark 4.1.14b</a>.</p>
+</blockquote>
 <hr />
 <h2 id="exercises">Exercises</h2>
 <ol type="1">
@@ -5754,8 +5893,15 @@ pointing out the degenerate row that betrays the inconsistency.</li>
 <li>Give a
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>×</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">3\times 3</annotation></semantics></math>
 matrix that admits two different echelon forms, exhibiting the two
-chains of operations (this illustrates <a href="#res-4-1-13"
-class="cita" target="_blank" rel="noopener">Remark 4.1.13</a>).</li>
+chains of operations (this illustrates <a href="#res-4-1-14"
+class="cita" target="_blank" rel="noopener">Remark 4.1.14</a>).</li>
+<li>★ In <a href="#res-4-1-16" class="cita" target="_blank"
+rel="noopener">Example 4.1.16</a>, for which values of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>
+is the system consistent? Check moreover that the third equation is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><msub><mi>E</mi><mn>2</mn></msub><mo>−</mo><msub><mi>E</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">2E_2 - E_1</annotation></semantics></math>,
+and explain, without doing any new computation, why that forces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mn>22</mn></mrow><annotation encoding="application/x-tex">c = 22</annotation></semantics></math>.</li>
 </ol>
 <h2 id="going-further-and-references">Going further and references</h2>
 <blockquote>
@@ -5795,20 +5941,41 @@ Exercises and a Going further section at the end.</p>
 <p>In Session 1 the matrix was pure notation. The first step towards
 giving it life: writing a whole system in a single expression.</p>
 <p><span id="res-4-2-1" class="res-def"><strong>Definition 4.2.1
-(matrix·vector product).</strong></span> Let
+(matrix·vector product).</strong></span> The product is an
+<strong>operation</strong> with its own domain and codomain,
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>K</mi><mrow><mi>m</mi><mo>×</mo><mi>n</mi></mrow></msup><mo>×</mo><msup><mi>K</mi><mi>n</mi></msup><mo>→</mo><msup><mi>K</mi><mi>m</mi></msup><mo>,</mo><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mi>A</mi><mo>,</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>↦</mo><mi>A</mi><mi>x</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">K^{m\times n} \times K^n \longrightarrow K^m, \qquad (A, x) \longmapsto Ax,</annotation></semantics></math>
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>K</mi><mrow><mi>m</mi><mo>×</mo><mi>n</mi></mrow></msup><annotation encoding="application/x-tex">K^{m\times n}</annotation></semantics></math>
+denotes the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">m\times n</annotation></semantics></math>
+matrices over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>:
+given
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
-be an
+of size
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">m \times n</annotation></semantics></math>
-matrix over
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
 and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>∈</mo><msup><mi>K</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">x = (x_1,\dots,x_n) \in K^n</annotation></semantics></math>.
-The product
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>x</mi><mo>∈</mo><msup><mi>K</mi><mi>m</mi></msup></mrow><annotation encoding="application/x-tex">Ax \in K^m</annotation></semantics></math>
-is the vector whose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>∈</mo><msup><mi>K</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">x = (x_1,\dots,x_n) \in K^n</annotation></semantics></math>,
+the product
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">Ax</annotation></semantics></math>
+is the vector <strong>in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>K</mi><mi>m</mi></msup><annotation encoding="application/x-tex">K^m</annotation></semantics></math></strong>
+whose
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>-th
 component is
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>A</mi><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>i</mi></msub><mo>=</mo><msub><mi>a</mi><mrow><mi>i</mi><mn>1</mn></mrow></msub><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msub><mi>a</mi><mrow><mi>i</mi><mn>2</mn></mrow></msub><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>a</mi><mrow><mi>i</mi><mi>n</mi></mrow></msub><msub><mi>x</mi><mi>n</mi></msub><mo>=</mo><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><msub><mi>x</mi><mi>j</mi></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">(Ax)_i = a_{i1}x_1 + a_{i2}x_2 + \cdots + a_{in}x_n = \sum_{j=1}^{n} a_{ij}x_j.</annotation></semantics></math></p>
+<p>It is worth pausing on the three sizes, since they are the module’s
+first compatibility rule: the product is <strong>defined only</strong>
+when the number of <strong>columns</strong> of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+equals the number of components of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>;
+and the result <strong>does not live in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>K</mi><mi>n</mi></msup><annotation encoding="application/x-tex">K^n</annotation></semantics></math>,
+but in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>K</mi><mi>m</mi></msup><annotation encoding="application/x-tex">K^m</annotation></semantics></math></strong>
+— a vector with one entry per unknown goes in, one with one entry per
+equation comes out.</p>
 <p>The rule is not arbitrary:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>A</mi><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>i</mi></msub><annotation encoding="application/x-tex">(Ax)_i</annotation></semantics></math>
 is <em>literally</em> the left-hand side of the
@@ -6114,9 +6281,37 @@ The Gaussian operations are products: elementary matrices</h2>
 matrix</strong> is the identity
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mi>m</mi></msub><annotation encoding="application/x-tex">I_m</annotation></semantics></math>
 after applying <strong>one</strong> elementary row operation to it.
-There are three types, corresponding to (T1), (T2), (T3) of Session 1;
-in size
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2\times 2</annotation></semantics></math>:
+There are three types, corresponding to (T1), (T2), (T3) of Session 1.
+In size
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>×</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">m \times m</annotation></semantics></math>
+they are written with the identity in the background and <strong>only
+what the operation changes</strong>. Swapping rows
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mrow><mtext mathvariant="normal">(T1)</mtext><mo>,</mo><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>⋱</mo></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mtable><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mo>←</mo><mi>i</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mo>←</mo><mi>j</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">E_{\text{(T1)},ij} = \begin{pmatrix} 1 &amp; &amp; &amp; &amp; \\ &amp; 0 &amp; \cdots &amp; 1 &amp; \\ &amp; \vdots &amp; \ddots &amp; \vdots &amp; \\ &amp; 1 &amp; \cdots &amp; 0 &amp; \\ &amp; &amp; &amp; &amp; 1 \end{pmatrix} \begin{matrix} \\ \leftarrow i \\ \\ \leftarrow j \\ \\ \end{matrix}</annotation></semantics></math></p>
+<p>multiplying row
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\lambda \neq 0</annotation></semantics></math>:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mrow><mtext mathvariant="normal">(T2)</mtext><mo>,</mo><mi>i</mi><mo>,</mo><mi>λ</mi></mrow></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"><mi>λ</mi></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"><mo>⋱</mo></mtd><mtd columnalign="center" style="text-align: center"></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mtable><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mo>←</mo><mi>i</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">E_{\text{(T2)},i,\lambda} = \begin{pmatrix} 1 &amp; &amp; &amp; \\ &amp; \lambda &amp; &amp; \\ &amp; &amp; \ddots &amp; \\ &amp; &amp; &amp; 1 \end{pmatrix} \begin{matrix} \\ \leftarrow i \\ \\ \\ \end{matrix}</annotation></semantics></math></p>
+<p>and adding to row
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+a multiple
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>μ</mi><annotation encoding="application/x-tex">\mu</annotation></semantics></math>
+of row
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>≠</mo><mi>j</mi></mrow><annotation encoding="application/x-tex">i \neq j</annotation></semantics></math>),
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Δ</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><annotation encoding="application/x-tex">\Delta_{ij}</annotation></semantics></math>
+has a single
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>
+in position
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(i,j)</annotation></semantics></math>:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mrow><mtext mathvariant="normal">(T3)</mtext><mo>,</mo><mi>i</mi><mi>j</mi><mo>,</mo><mi>μ</mi></mrow></msub><mo>=</mo><mi>I</mi><mo>+</mo><mi>μ</mi><mspace width="0.167em"></mspace><msub><mi>Δ</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>⋱</mo></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"><mi>μ</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mtable><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mo>←</mo><mi>j</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mo>←</mo><mi>i</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">E_{\text{(T3)},ij,\mu} = I + \mu\,\Delta_{ij} = \begin{pmatrix} 1 &amp; &amp; &amp; &amp; \\ &amp; 1 &amp; &amp; &amp; \\ &amp; \vdots &amp; \ddots &amp; &amp; \\ &amp; \mu &amp; \cdots &amp; 1 &amp; \\ &amp; &amp; &amp; &amp; 1 \end{pmatrix} \begin{matrix} \\ \leftarrow j \\ \\ \leftarrow i \\ \\ \end{matrix}</annotation></semantics></math></p>
+<p>In size
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2\times 2</annotation></semantics></math>,
+which is how they show up in the exercises:
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mtext mathvariant="normal">(T1)</mtext></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>E</mi><mrow><mtext mathvariant="normal">(T2)</mtext><mo>,</mo><mi>λ</mi></mrow></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>λ</mi></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.278em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mi>λ</mi><mo>≠</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>E</mi><mrow><mtext mathvariant="normal">(T3)</mtext><mo>,</mo><mi>μ</mi></mrow></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>μ</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">E_{\text{(T1)}} = \begin{pmatrix} 0&amp;1\\1&amp;0 \end{pmatrix}, \qquad E_{\text{(T2)},\lambda} = \begin{pmatrix} 1&amp;0\\0&amp;\lambda \end{pmatrix} \;(\lambda \neq 0), \qquad E_{\text{(T3)},\mu} = \begin{pmatrix} 1&amp;0\\\mu&amp;1 \end{pmatrix}.</annotation></semantics></math></p>
 <p><span id="res-4-2-10" class="res-def"><strong>Lemma
 4.2.10.</strong></span> If
@@ -6243,6 +6438,108 @@ reduce
 to
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">[</mo><mi>I</mi><mo>∣</mo><msup><mi>A</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="true" form="postfix">]</mo></mrow><annotation encoding="application/x-tex">[I \mid A^{-1}]</annotation></semantics></math>,
 if possible).</p>
+<p>The target here is <strong>not the echelon form</strong> of Session
+1, but the identity, which is considerably more. That it can be reached
+needs a justification — and the justification also says exactly when it
+fails.</p>
+<p><span id="res-4-2-15b" class="res-def"><strong>Proposition 4.2.15b
+(why Gauss–Jordan reaches
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>).</strong></span>
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+be square
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n\times n</annotation></semantics></math>
+and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>′</mi></mrow><annotation encoding="application/x-tex">A&#39;</annotation></semantics></math>
+be an echelon form of it. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>′</mi></mrow><annotation encoding="application/x-tex">A&#39;</annotation></semantics></math>
+has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+pivots, then elementary operations take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>′</mi></mrow><annotation encoding="application/x-tex">A&#39;</annotation></semantics></math>
+all the way to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mi>n</mi></msub><annotation encoding="application/x-tex">I_n</annotation></semantics></math>.
+If it has fewer than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+pivots, the identity cannot be reached — and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+is not invertible.</p>
+<p><em>Proof.</em> Suppose there are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+pivots. The pivot of row
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+lies strictly to the right of the pivot of row
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">i-1</annotation></semantics></math>,
+so by induction it falls in a column
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">\geq i</annotation></semantics></math>;
+since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+pivots are spread over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+columns, it falls exactly in column
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>:
+<strong>the pivots occupy the diagonal</strong>, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>′</mi></mrow><annotation encoding="application/x-tex">A&#39;</annotation></semantics></math>
+is upper triangular with nonzero diagonal. Then:</p>
+<ol type="1">
+<li>with (T2), divide each row
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+by its pivot
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>i</mi></msub><annotation encoding="application/x-tex">p_i</annotation></semantics></math>
+—<strong>the field again</strong>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>i</mi></msub><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">p_i \neq 0</annotation></semantics></math>—
+and the diagonal becomes all ones;</li>
+<li>with (T3), <strong>from the bottom up</strong>: the pivot of row
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+kills every entry above it in column
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>;
+then the pivot of row
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n-1</annotation></semantics></math>
+does the same in its column, and so on up to row
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>.
+Subtracting a multiple of row
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+only modifies columns
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≥</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">\geq k</annotation></semantics></math>
+(to the left of pivot
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+that row is zero), so it never reintroduces anything into the columns
+already cleared.</li>
+</ol>
+<p>At the end each column has a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math>
+on the diagonal and zeros elsewhere: the result is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mi>n</mi></msub><annotation encoding="application/x-tex">I_n</annotation></semantics></math>.</p>
+<p>If there are fewer than
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+pivots, some row of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>′</mi></mrow><annotation encoding="application/x-tex">A&#39;</annotation></semantics></math>
+is zero, so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>′</mi><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A&#39;x = 0</annotation></semantics></math>
+has a nontrivial solution and so does
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">Ax = 0</annotation></semantics></math>
+(<a href="#res-4-1-8" class="cita" target="_blank"
+rel="noopener">Theorem 4.1.8</a>). Were there a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>B</mi><mi>A</mi><mo>=</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">BA = I</annotation></semantics></math>,
+that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x \neq 0</annotation></semantics></math>
+would satisfy
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>B</mi><mi>A</mi><mi>x</mi><mo>=</mo><mi>B</mi><mn>0</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x = BAx = B0 = 0</annotation></semantics></math>,
+absurd:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+is not invertible.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
+<blockquote>
+<p>Note how the work splits: step 1 is what turns the echelon form into
+a normalized one, and step 2 is what cleans it <em>above</em> —
+together, the reduced echelon form (<a href="#res-4-1-12" class="cita"
+target="_blank" rel="noopener">Def. 4.1.12</a>), which for a square
+matrix with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+pivots <strong>is</strong> the identity.</p>
+</blockquote>
 <div class="ejemplo" label="Example 4.2.16.">
 <p><span id="res-4-2-16" class="res-def"><strong>Example
 4.2.16.</strong></span>
@@ -6645,21 +6942,28 @@ the span stalls.</p>
 <p><span id="res-4-3-11" class="res-def"><strong>Method 4.3.11 (deciding
 independence = solving a homogeneous system).</strong></span> In
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>K</mi><mi>m</mi></msup><annotation encoding="application/x-tex">K^m</annotation></semantics></math>,
-setting up
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mn>1</mn></msub><msub><mi>v</mi><mn>1</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>a</mi><mi>k</mi></msub><msub><mi>v</mi><mi>k</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a_1 v_1 + \cdots + a_k v_k = 0</annotation></semantics></math>
+the coefficients of the combination become the <strong>unknowns</strong>
+of a system; as such we denote them
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">x_1,\dots,x_k</annotation></semantics></math>.
+Setting up
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><msub><mi>v</mi><mn>1</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>x</mi><mi>k</mi></msub><msub><mi>v</mi><mi>k</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x_1 v_1 + \cdots + x_k v_k = 0</annotation></semantics></math>
 is, by the reading by columns (<a href="#res-4-2-3" class="cita"
 target="_blank" rel="noopener">Proposition 4.2.3</a>), setting up
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>a</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A a = 0</annotation></semantics></math>
-where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">A x = 0</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>∈</mo><msup><mi>K</mi><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">x = (x_1,\dots,x_k) \in K^k</annotation></semantics></math>
+and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
-is the matrix whose <strong>columns</strong> are the
+the matrix whose <strong>columns</strong> are the
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>i</mi></msub><annotation encoding="application/x-tex">v_i</annotation></semantics></math>.
 Therefore: <em>independent
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>⇔</mo><annotation encoding="application/x-tex">\iff</annotation></semantics></math>
 the homogeneous system
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>a</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">Aa = 0</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">Ax = 0</annotation></semantics></math>
 has only the trivial solution</em>, and that is decided by Gaussian
-elimination.</p>
+elimination. <em>(The change of letter is not cosmetic: it spares having
+to read the resulting echelon form while translating the names of the
+unknowns.)</em></p>
 <div class="ejemplo" label="Example 4.3.12.">
 <p><span id="res-4-3-12" class="res-def"><strong>Example
 4.3.12.</strong></span> Are
@@ -7385,6 +7689,61 @@ coordinate.
 degrees of freedom” <strong>needs no separate proof: the proof is the
 very method</strong> of reducing to echelon form and solving.</p>
 </blockquote>
+<p><span id="res-4-4-5b" class="res-def"><strong>Corollary 4.4.5b
+(exactly how many solutions there are).</strong></span> <a
+href="#res-4-4-5" class="cita" target="_blank" rel="noopener">Theorem
+4.4.5</a> does not merely say that the solutions can be parametrized:
+being a <strong>bijection</strong>, it says there are as many solutions
+as tuples of parameters. Hence, for a consistent system with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">g</mi></mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">r = \mathrm{rg} A</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+unknowns,
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>#</mi><mo stretchy="false" form="prefix">{</mo><mtext mathvariant="normal">solutions</mtext><mo stretchy="false" form="postfix">}</mo><mspace width="0.278em"></mspace><mo>=</mo><mspace width="0.278em"></mspace><mrow><mo stretchy="true" form="prefix">|</mo><msup><mi>K</mi><mrow><mspace width="0.167em"></mspace><mi>n</mi><mo>−</mo><mi>r</mi></mrow></msup><mo stretchy="true" form="postfix">|</mo></mrow><mspace width="0.278em"></mspace><mo>=</mo><mspace width="0.278em"></mspace><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>K</mi><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mspace width="0.167em"></mspace><mi>n</mi><mo>−</mo><mi>r</mi></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">\#\{\text{solutions}\} \;=\; |K^{\,n-r}| \;=\; |K|^{\,n-r}.</annotation></semantics></math></p>
+<p>In particular:</p>
+<ul>
+<li>if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+is <strong>infinite</strong> and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>&lt;</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">r &lt; n</annotation></semantics></math>,
+the solutions are <strong>infinitely many</strong> — that is the exact
+sense of the “infinitely many” we have been saying since Session 1, now
+quantified;</li>
+<li>if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+is <strong>finite</strong> with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
+elements, there are <strong>exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>q</mi><mrow><mspace width="0.167em"></mspace><mi>n</mi><mo>−</mo><mi>r</mi></mrow></msup><annotation encoding="application/x-tex">q^{\,n-r}</annotation></semantics></math></strong>:
+over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mn>7</mn><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/7\mathbb{Z}</annotation></semantics></math>
+with one free parameter there are seven solutions, not one more; over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mn>2</mn><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/2\mathbb{Z}</annotation></semantics></math>
+with three parameters, eight;</li>
+<li>and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">r = n</annotation></semantics></math>
+gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>K</mi><mo stretchy="true" form="postfix">|</mo></mrow><mn>0</mn></msup><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|K|^0 = 1</annotation></semantics></math>
+<strong>over any field</strong>: uniqueness does not depend on the size
+of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>.</li>
+</ul>
+<blockquote>
+<p><strong>Why it is worth saying this way.</strong> “Consistent
+indeterminate” means <em>more than one solution</em> (<a
+href="#res-4-1-6" class="cita" target="_blank" rel="noopener">Definition
+4.1.6</a>), not <em>infinitely many</em>: the latter follows only if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+is infinite. Since the course convention is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">K = \mathbb{R}</annotation></semantics></math>
+unless stated otherwise, saying “infinitely many” is correct in nearly
+everything we do — but the statement to retain is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>K</mi><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>n</mi><mo>−</mo><mi>r</mi></mrow></msup><annotation encoding="application/x-tex">|K|^{n-r}</annotation></semantics></math>,
+which covers both cases and <strong>need not be unlearned</strong> when
+working over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mi>p</mi><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/p\mathbb{Z}</annotation></semantics></math>,
+where the course has been since Module 1.</p>
+</blockquote>
 <p><span id="res-4-4-6" class="res-def"><strong>Definition and Theorem
 4.4.6 (the kernel and its dimension).</strong></span> The solution set
 of
@@ -7616,6 +7975,26 @@ unique? <em>(Hint: count degrees of freedom in
 has a unique solution, then
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
 is square.” Justify or refute with an example.</li>
+<li>★ <strong>(The field decides how many.)</strong> Consider
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><mrow><mo stretchy="true" form="prefix">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><msub><mi>x</mi><mn>3</mn></msub><mo>=</mo><mn>2</mn></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mphantom><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mrow></mrow></mrow></mphantom><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>3</mn></msub><mo>=</mo><mn>0</mn></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">\;\begin{cases} x_1 + x_2 + x_3 = 2 \\ \phantom{x_1 + {}} x_2 - x_3 = 0 \end{cases}</annotation></semantics></math>
+<ol type="a">
+<li>Over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math>:
+parametrize and check that the general solution is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mi>t</mi><mspace width="0.167em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">(2,0,0) + t\,(-2,1,1)</annotation></semantics></math>,
+a line.</li>
+<li>Over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mn>5</mn><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/5\mathbb{Z}</annotation></semantics></math>:
+the very same computation holds word for word, but now
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+ranges over only five values. <strong>List the five solutions</strong>
+and verify each one in both equations.</li>
+<li>Check that the count agrees with <a href="#res-4-4-5b" class="cita"
+target="_blank" rel="noopener">Corollary 4.4.5b</a>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mo stretchy="true" form="prefix">|</mo><mi>K</mi><mo stretchy="true" form="postfix">|</mo></mrow><mrow><mi>n</mi><mo>−</mo><mi>r</mi></mrow></msup><annotation encoding="application/x-tex">|K|^{n-r}</annotation></semantics></math>,
+and say —without computing— how many solutions it would have over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ℤ</mi><mi>/</mi><mn>7</mn><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">\mathbb{Z}/7\mathbb{Z}</annotation></semantics></math>.</li>
+</ol></li>
 </ol>
 <h2 id="going-further-and-references-3">Going further and
 references</h2>
