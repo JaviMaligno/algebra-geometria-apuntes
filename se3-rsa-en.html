@@ -1074,6 +1074,23 @@ and the Chinese remainder theorem to glue the two congruences. With your
 and your
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>.</li>
 </ul>
+<blockquote>
+<p><strong>What counts as “with your numbers” — this is where the marks
+are.</strong> It is not taking <a
+href="apuntes-01-aritmetica-en.html#res-1-4-5" class="cita"
+target="_blank" rel="noopener">Theorem 1.4.5</a> and checking in Python
+that with your
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
+the message comes back — that verifies one case, and you already did it
+in phase 1. It is <strong>redoing the whole argument</strong>
+instantiated: writing your
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
+applying Fermat to each prime separately, and gluing the two congruences
+with the CRT. There is a full sample <a
+href="#the-sample-what-level-of-detail-is-expected">below</a>.</p>
+</blockquote>
 <p><strong>(b) Why YOUR
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>e</mi><annotation encoding="application/x-tex">e</annotation></semantics></math>.</strong>
 What you ruled out and why. And why not
@@ -1114,6 +1131,129 @@ curve:</strong> how far you got, how long the last one to fall took, and
 where your machine stalled. And then one question: if that is your wall,
 and real RSA uses keys of some 600 digits, how much margin is there?</p>
 <hr />
+<h2 id="the-sample-what-level-of-detail-is-expected">The sample: what
+level of detail is expected</h2>
+<p>Part (a) is worth <strong>3 of the 10 points</strong>, so here is
+exactly what is being asked for, worked out with toy primes. <strong>Do
+not use these</strong>: they are absurdly small and are here only to
+show the shape. With your 6–8 digit primes the text is the same; the
+numbers change.</p>
+<blockquote>
+<h3 id="sample-part-a-with-p-11-q-13">Sample — part (a) with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>11</mn></mrow><annotation encoding="application/x-tex">p = 11</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><mn>13</mn></mrow><annotation encoding="application/x-tex">q = 13</annotation></semantics></math></h3>
+<p>My keys:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>11</mn><mo>⋅</mo><mn>13</mn><mo>=</mo><mn>143</mn></mrow><annotation encoding="application/x-tex">n = 11 \cdot 13 = 143</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>φ</mi><mo>=</mo><mn>10</mn><mo>⋅</mo><mn>12</mn><mo>=</mo><mn>120</mn></mrow><annotation encoding="application/x-tex">\varphi = 10 \cdot 12 = 120</annotation></semantics></math>.
+I take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">e = 7</annotation></semantics></math>,
+which is prime and does not divide 120, so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">g</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>7</mn><mo>,</mo><mn>120</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\mathrm{gcd}(7,120) = 1</annotation></semantics></math>.</p>
+<p><strong>Where my
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+comes from.</strong> Extended Euclid on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>120</mn><mo>=</mo><mn>17</mn><mo>⋅</mo><mn>7</mn><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">120 = 17\cdot 7 + 1</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>=</mo><mn>120</mn><mo>−</mo><mn>17</mn><mo>⋅</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">1 = 120 - 17 \cdot 7</annotation></semantics></math>,
+and reading modulo 120:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>17</mn><mo>⋅</mo><mn>7</mn><mo>≡</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-17 \cdot 7 \equiv 1</annotation></semantics></math>.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>17</mn><mo>≡</mo><mn>103</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mn>120</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">-17 \equiv 103 \pmod{120}</annotation></semantics></math>,
+my
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>=</mo><mn>103</mn></mrow><annotation encoding="application/x-tex">d = 103</annotation></semantics></math>.</p>
+<p><strong>The check, with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+made explicit.</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>⋅</mo><mi>d</mi><mo>=</mo><mn>7</mn><mo>⋅</mo><mn>103</mn><mo>=</mo><mn>721</mn><mo>=</mo><mn>1</mn><mo>+</mo><mn>6</mn><mo>⋅</mo><mn>120</mn></mrow><annotation encoding="application/x-tex">e \cdot d = 7 \cdot 103 = 721 = 1 + 6 \cdot 120</annotation></semantics></math>,
+that is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mi>d</mi><mo>=</mo><mn>1</mn><mo>+</mo><mi>k</mi><mi>φ</mi></mrow><annotation encoding="application/x-tex">ed = 1 + k\varphi</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><mrow><mi>𝐤</mi><mo mathvariant="bold">=</mo><mn>𝟔</mn></mrow></mrow><annotation encoding="application/x-tex">\;\mathbf{k = 6}</annotation></semantics></math>.</p>
+<p><strong>Why
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mrow><mi>e</mi><mi>d</mi></mrow></msup><mo>≡</mo><mi>m</mi><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mn>143</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">m^{ed} \equiv m \pmod{143}</annotation></semantics></math>,
+for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>.</strong>
+I write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mrow><mi>e</mi><mi>d</mi></mrow></msup><mo>=</mo><msup><mi>m</mi><mrow><mn>1</mn><mo>+</mo><mn>6</mn><mo>⋅</mo><mn>120</mn></mrow></msup><mo>=</mo><mi>m</mi><mo>⋅</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>m</mi><mn>120</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">m^{ed} = m^{1 + 6 \cdot 120} = m \cdot \left(m^{120}\right)^{6}</annotation></semantics></math>,
+and look at it modulo each prime separately.</p>
+<p><em>Modulo 11.</em> If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>11</mn><mo>∤</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">11 \nmid m</annotation></semantics></math>,
+Fermat gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mn>10</mn></msup><mo>≡</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">m^{10} \equiv 1</annotation></semantics></math>.
+And
+<strong><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>120</mn><annotation encoding="application/x-tex">120</annotation></semantics></math>
+is a multiple of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>10</mn><annotation encoding="application/x-tex">10</annotation></semantics></math></strong>
+— precisely because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>φ</mi><annotation encoding="application/x-tex">\varphi</annotation></semantics></math>
+carries the factor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>−</mo><mn>1</mn><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">p-1 = 10</annotation></semantics></math>
+inside it —:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>120</mn><mo>=</mo><mn>10</mn><mo>⋅</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">120 = 10 \cdot 12</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mn>120</mn></msup><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>m</mi><mn>10</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mn>12</mn></msup><mo>≡</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">m^{120} = (m^{10})^{12} \equiv 1</annotation></semantics></math>
+and therefore
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mrow><mi>e</mi><mi>d</mi></mrow></msup><mo>≡</mo><mi>m</mi><mo>⋅</mo><mn>1</mn><mo>=</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">m^{ed} \equiv m \cdot 1 = m</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>11</mn><mo>∣</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">11 \mid m</annotation></semantics></math>,
+both sides are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≡</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\equiv 0</annotation></semantics></math>,
+and the congruence holds too.</p>
+<p><em>Modulo 13.</em> The same, with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>−</mo><mn>1</mn><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">q - 1 = 12</annotation></semantics></math>:
+if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>13</mn><mo>∤</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">13 \nmid m</annotation></semantics></math>,
+then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mn>12</mn></msup><mo>≡</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">m^{12} \equiv 1</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>120</mn><mo>=</mo><mn>12</mn><mo>⋅</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">120 = 12 \cdot 10</annotation></semantics></math>,
+so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mn>120</mn></msup><mo>≡</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">m^{120} \equiv 1</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mrow><mi>e</mi><mi>d</mi></mrow></msup><mo>≡</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">m^{ed} \equiv m</annotation></semantics></math>.
+And if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>13</mn><mo>∣</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">13 \mid m</annotation></semantics></math>,
+both sides are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>.</p>
+<p><strong>Gluing the two with the CRT.</strong> I have
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>11</mn><mo>∣</mo><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>m</mi><mrow><mi>e</mi><mi>d</mi></mrow></msup><mo>−</mo><mi>m</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">11 \mid (m^{ed} - m)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>13</mn><mo>∣</mo><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>m</mi><mrow><mi>e</mi><mi>d</mi></mrow></msup><mo>−</mo><mi>m</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">13 \mid (m^{ed} - m)</annotation></semantics></math>.
+Since 11 and 13 are coprime, their product divides the difference:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>143</mn><mo>∣</mo><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>m</mi><mrow><mi>e</mi><mi>d</mi></mrow></msup><mo>−</mo><mi>m</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">143 \mid (m^{ed} - m)</annotation></semantics></math>,
+that is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mrow><mi>e</mi><mi>d</mi></mrow></msup><mo>≡</mo><mi>m</mi><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mn>143</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">m^{ed} \equiv m \pmod{143}</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
+<p><strong>One case, to see it run.</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">m = 7</annotation></semantics></math>:
+I encrypt
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><msup><mn>7</mn><mn>7</mn></msup><mrow><mspace width="0.222em"></mspace><mo>mod</mo><mspace width="0.222em"></mspace><mn>143</mn></mrow><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">c = 7^{7} \bmod 143 = 6</annotation></semantics></math>,
+I decrypt
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>6</mn><mn>103</mn></msup><mrow><mspace width="0.222em"></mspace><mo>mod</mo><mspace width="0.222em"></mspace><mn>143</mn></mrow><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">6^{103} \bmod 143 = 7</annotation></semantics></math>
+✓. And
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mn>11</mn></mrow><annotation encoding="application/x-tex">m = 11</annotation></semantics></math>,
+which is a multiple of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+and therefore <strong>not</strong> coprime with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>11</mn><mrow><mn>7</mn><mo>⋅</mo><mn>103</mn></mrow></msup><mo>≡</mo><mn>11</mn></mrow><annotation encoding="application/x-tex">11^{7\cdot103} \equiv 11</annotation></semantics></math>
+all the same ✓ — the case that the Fermat + CRT proof covers and Euler’s
+theorem, on its own, does not.</p>
+</blockquote>
+<p><strong>What makes this worth the 3 points, rather than the three
+lines of checking it in Python</strong>, are the three things in bold:
+the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+written out, the reason
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>φ</mi><annotation encoding="application/x-tex">\varphi</annotation></semantics></math>
+is a multiple of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p-1</annotation></semantics></math>
+and of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">q-1</annotation></semantics></math>
+(which is <em>why</em> it works, not an accident of these numbers), and
+the CRT step done, not cited. Parts (b), (c) and (d) ask for the same
+level.</p>
 <h2 id="timeline">Timeline</h2>
 <table>
 <thead>
