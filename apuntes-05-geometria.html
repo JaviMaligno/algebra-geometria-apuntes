@@ -5521,6 +5521,19 @@ con directores
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>,</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">u, v</annotation></semantics></math>
 <strong>independientes</strong>:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><mi>π</mi><mo>=</mo><mi>P</mi><mo>+</mo><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>P</mi><mo>+</mo><mi>s</mi><mi>u</mi><mo>+</mo><mi>t</mi><mi>v</mi><mo>:</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo>∈</mo><mi>K</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\;\pi = P + \mathrm{span}(u,v) = \{P + su + tv : s,t \in K\}</annotation></semantics></math>.</p>
+<p>Es <strong>la misma definición</strong> con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+direcciones independientes,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>+</mo><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">P + \mathrm{span}(v_1,\dots,v_k)</annotation></semantics></math>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k=1</annotation></semantics></math>
+da la recta,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">k=2</annotation></semantics></math>
+el plano,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k = n-1</annotation></semantics></math>
+el <strong>hiperplano</strong> y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">k=n</annotation></semantics></math>
+el espacio entero. Lo único que cambia es cuántos parámetros hacen
+falta.</p>
 <p><span id="res-5-1-7b" class="res-def"><strong>Observación 5.1.7b (por
 qué esas hipótesis).</strong></span> Las dos condiciones son necesarias
 para que el nombre sea el correcto: con
@@ -5827,10 +5840,25 @@ y
 formas).</strong></span></p>
 <ul>
 <li><em>Paramétricas → implícitas:</em> <strong>eliminar los
-parámetros</strong> — tratar las paramétricas como sistema en los
-parámetros y expresar la condición de compatibilidad en
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
-(en la práctica: despejar y sustituir, o escalonar).</li>
+parámetros</strong>. En general, con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mi>P</mi><mo>+</mo><msub><mi>t</mi><mn>1</mn></msub><msub><mi>v</mi><mn>1</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>t</mi><mi>k</mi></msub><msub><mi>v</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">X = P + t_1v_1 + \cdots + t_kv_k</annotation></semantics></math>,
+se mira como un sistema cuya incógnita es el vector de
+<strong>todos</strong> los parámetros
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>t</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>t</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">t = (t_1,\dots,t_k)</annotation></semantics></math>:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mspace width="0.167em"></mspace><mi>t</mi><mo>=</mo><mi>X</mi><mo>−</mo><mi>P</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>V</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mspace width="0.167em"></mspace><msub><mi>v</mi><mn>1</mn></msub><mo>∣</mo><mi>⋯</mi><mo>∣</mo><msub><mi>v</mi><mi>k</mi></msub><mspace width="0.167em"></mspace><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.222em"></mspace><mtext mathvariant="normal">(los directores, por columnas)</mtext><mo>,</mo></mrow><annotation encoding="application/x-tex">V\,t = X - P, \qquad V = (\,v_1 \mid \cdots \mid v_k\,) \ \text{(los directores, por columnas)},</annotation></semantics></math>
+y las implícitas son la condición de compatibilidad (Rouché–Frobenius),
+en la que ya no aparece ningún parámetro:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">g</mi></mrow><mspace width="0.167em"></mspace><mrow><mo stretchy="true" form="prefix">[</mo><mspace width="0.167em"></mspace><mi>V</mi><mo>∣</mo><mi>X</mi><mo>−</mo><mi>P</mi><mspace width="0.167em"></mspace><mo stretchy="true" form="postfix">]</mo></mrow><mspace width="0.278em"></mspace><mo>=</mo><mspace width="0.278em"></mspace><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">g</mi></mrow><mspace width="0.167em"></mspace><mi>V</mi><mspace width="0.278em"></mspace><mo>=</mo><mspace width="0.278em"></mspace><mi>k</mi></mrow><annotation encoding="application/x-tex">\mathrm{rg}\,[\,V \mid X - P\,] \;=\; \mathrm{rg}\,V \;=\; k</annotation></semantics></math>
+(la última igualdad, porque los
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>i</mi></msub><annotation encoding="application/x-tex">v_i</annotation></semantics></math>
+son independientes). <em>(En la práctica, con uno o dos parámetros:
+despejar y sustituir, o escalonar.)</em> <strong>Nótese</strong> que
+esta
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+<strong>no</strong> es la matriz
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+de las implícitas: son dos sistemas distintos, uno con los parámetros de
+incógnita y otro con las coordenadas.</li>
 <li><em>Implícitas → paramétricas:</em> <strong>resolver el
 sistema</strong> y parametrizar — literalmente el <a
 href="apuntes-04-lineal.html#res-4-4-4" class="cita" target="_blank"
@@ -5858,9 +5886,13 @@ Vistas <strong>como sistema en la incógnita
 (con
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">x,y,z</annotation></semantics></math>
 de términos independientes), las paramétricas son
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mspace width="0.167em"></mspace><mn>1</mn><mo>,</mo><mspace width="0.167em"></mspace><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>𝖳</mi></msup><mi>t</mi><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo>,</mo><mspace width="0.278em"></mspace><mi>y</mi><mo>,</mo><mspace width="0.278em"></mspace><mi>z</mi><mo>−</mo><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>𝖳</mi></msup></mrow><annotation encoding="application/x-tex">\left(1,\,1,\,-1\right)^{\mathsf T} t = \left(x-1,\; y,\; z-2\right)^{\mathsf T}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mi>t</mi><mo>=</mo><mi>X</mi><mo>−</mo><mi>P</mi></mrow><annotation encoding="application/x-tex">V t = X - P</annotation></semantics></math>
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mspace width="0.167em"></mspace><mn>1</mn><mo>,</mo><mspace width="0.167em"></mspace><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>𝖳</mi></msup></mrow><annotation encoding="application/x-tex">V = \left(1,\,1,\,-1\right)^{\mathsf T}</annotation></semantics></math>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>−</mo><mi>P</mi><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo>,</mo><mspace width="0.278em"></mspace><mi>y</mi><mo>,</mo><mspace width="0.278em"></mspace><mi>z</mi><mo>−</mo><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>𝖳</mi></msup></mrow><annotation encoding="application/x-tex">X - P = \left(x-1,\; y,\; z-2\right)^{\mathsf T}</annotation></semantics></math>,
 y la condición de compatibilidad
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">g</mi></mrow><mrow><mo stretchy="true" form="prefix">[</mo><mi>A</mi><mo stretchy="false" form="prefix">|</mo><mi>b</mi><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\mathrm{rg}[A|b] = 1</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">g</mi></mrow><mrow><mo stretchy="true" form="prefix">[</mo><mspace width="0.167em"></mspace><mi>V</mi><mo>∣</mo><mi>X</mi><mo>−</mo><mi>P</mi><mspace width="0.167em"></mspace><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\mathrm{rg}[\,V \mid X-P\,] = 1</annotation></semantics></math>
 dice que las tres coordenadas del segundo miembro sean proporcionales a
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,1,-1)</annotation></semantics></math>,
 es decir,
@@ -5869,10 +5901,20 @@ y
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>−</mo><mn>2</mn><mo>=</mo><mo>−</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">z - 2 = -y</annotation></semantics></math>:
 las <strong>implícitas</strong>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>−</mo><mi>y</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x - y = 1</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><mi>y</mi><mo>+</mo><mi>z</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\;y + z = 2</annotation></semantics></math>
-(sistema de rango 2; dimensión de soluciones
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>−</mo><mn>2</mn><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">3 - 2 = 1</annotation></semantics></math>
-✓). <em>(En la práctica no se monta la matriz: se despeja
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><mi>y</mi><mo>+</mo><mi>z</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\;y + z = 2</annotation></semantics></math>.
+Escritas como
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>x</mi><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">Ax = b</annotation></semantics></math>,
+aquí
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mo>−</mo><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn><mspace width="0.222em"></mspace><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mi>b</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn><mspace width="0.222em"></mspace><mn>2</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex">A = \begin{pmatrix} 1 &amp; -1 &amp; 0 \ 0 &amp; 1 &amp; 1\end{pmatrix}, \qquad b = \begin{pmatrix} 1 \ 2\end{pmatrix},</annotation></semantics></math>
+con
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">g</mi></mrow><mspace width="0.167em"></mspace><mi>A</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\mathrm{rg}\,A = 2</annotation></semantics></math>,
+de modo que la dimensión del conjunto de soluciones es
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">g</mi></mrow><mspace width="0.167em"></mspace><mi>A</mi><mo>=</mo><mn>3</mn><mo>−</mo><mn>2</mn><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n - \mathrm{rg}\,A = 3 - 2 = 1</annotation></semantics></math>
+✓ — una recta, que es el
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+de partida. <strong>Esa comprobación conviene hacerla siempre</strong>:
+caza los errores de traducción. <em>(En la práctica no se monta la
+matriz: se despeja
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">t = y</annotation></semantics></math>
 de la segunda ecuación y se sustituye en las otras dos. Es la misma
 cuenta, hecha de cabeza.)</em></li>

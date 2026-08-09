@@ -5521,6 +5521,18 @@ The <strong>plane</strong> through
 with <strong>independent</strong> direction vectors
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>,</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">u, v</annotation></semantics></math>:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><mi>π</mi><mo>=</mo><mi>P</mi><mo>+</mo><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>P</mi><mo>+</mo><mi>s</mi><mi>u</mi><mo>+</mo><mi>t</mi><mi>v</mi><mo>:</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo>∈</mo><mi>K</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\;\pi = P + \mathrm{span}(u,v) = \{P + su + tv : s,t \in K\}</annotation></semantics></math>.</p>
+<p>It is <strong>the same definition</strong> with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+independent directions,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>+</mo><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">P + \mathrm{span}(v_1,\dots,v_k)</annotation></semantics></math>:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k=1</annotation></semantics></math>
+gives the line,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">k=2</annotation></semantics></math>
+the plane,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k = n-1</annotation></semantics></math>
+the <strong>hyperplane</strong> and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">k=n</annotation></semantics></math>
+the whole space. All that changes is how many parameters are needed.</p>
 <p><span id="res-5-1-7b" class="res-def"><strong>Remark 5.1.7b (why
 those hypotheses).</strong></span> Both conditions are needed for the
 name to be the right one: with
@@ -5828,10 +5840,25 @@ and
 between forms).</strong></span></p>
 <ul>
 <li><em>Parametric → implicit:</em> <strong>eliminate the
-parameters</strong> — treat the parametric equations as a system in the
-parameters and express the consistency condition in
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
-(in practice: solve and substitute, or reduce to echelon form).</li>
+parameters</strong>. In general, with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mi>P</mi><mo>+</mo><msub><mi>t</mi><mn>1</mn></msub><msub><mi>v</mi><mn>1</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>t</mi><mi>k</mi></msub><msub><mi>v</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">X = P + t_1v_1 + \cdots + t_kv_k</annotation></semantics></math>,
+one views it as a system whose unknown is the vector of
+<strong>all</strong> the parameters
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>t</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>t</mi><mi>k</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">t = (t_1,\dots,t_k)</annotation></semantics></math>:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mspace width="0.167em"></mspace><mi>t</mi><mo>=</mo><mi>X</mi><mo>−</mo><mi>P</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>V</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mspace width="0.167em"></mspace><msub><mi>v</mi><mn>1</mn></msub><mo>∣</mo><mi>⋯</mi><mo>∣</mo><msub><mi>v</mi><mi>k</mi></msub><mspace width="0.167em"></mspace><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.222em"></mspace><mtext mathvariant="normal">(the directions, as columns)</mtext><mo>,</mo></mrow><annotation encoding="application/x-tex">V\,t = X - P, \qquad V = (\,v_1 \mid \cdots \mid v_k\,) \ \text{(the directions, as columns)},</annotation></semantics></math>
+and the implicit equations are the consistency condition
+(Rouché–Capelli), in which no parameter appears any more:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">g</mi></mrow><mspace width="0.167em"></mspace><mrow><mo stretchy="true" form="prefix">[</mo><mspace width="0.167em"></mspace><mi>V</mi><mo>∣</mo><mi>X</mi><mo>−</mo><mi>P</mi><mspace width="0.167em"></mspace><mo stretchy="true" form="postfix">]</mo></mrow><mspace width="0.278em"></mspace><mo>=</mo><mspace width="0.278em"></mspace><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">g</mi></mrow><mspace width="0.167em"></mspace><mi>V</mi><mspace width="0.278em"></mspace><mo>=</mo><mspace width="0.278em"></mspace><mi>k</mi></mrow><annotation encoding="application/x-tex">\mathrm{rg}\,[\,V \mid X - P\,] \;=\; \mathrm{rg}\,V \;=\; k</annotation></semantics></math>
+(the last equality because the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>i</mi></msub><annotation encoding="application/x-tex">v_i</annotation></semantics></math>
+are independent). <em>(In practice, with one or two parameters: solve
+and substitute, or reduce to echelon form.)</em> <strong>Note</strong>
+that this
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+is <strong>not</strong> the matrix
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+of the implicit equations: they are two different systems, one with the
+parameters as unknowns and one with the coordinates.</li>
 <li><em>Implicit → parametric:</em> <strong>solve the system</strong>
 and parametrize — literally <a
 href="apuntes-04-lineal-en.html#res-4-4-4" class="cita" target="_blank"
@@ -5859,9 +5886,13 @@ Seen <strong>as a system in the unknown
 (with
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">x,y,z</annotation></semantics></math>
 playing the role of right-hand side), the parametric equations read
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mspace width="0.167em"></mspace><mn>1</mn><mo>,</mo><mspace width="0.167em"></mspace><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>𝖳</mi></msup><mi>t</mi><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo>,</mo><mspace width="0.278em"></mspace><mi>y</mi><mo>,</mo><mspace width="0.278em"></mspace><mi>z</mi><mo>−</mo><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>𝖳</mi></msup></mrow><annotation encoding="application/x-tex">\left(1,\,1,\,-1\right)^{\mathsf T} t = \left(x-1,\; y,\; z-2\right)^{\mathsf T}</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mi>t</mi><mo>=</mo><mi>X</mi><mo>−</mo><mi>P</mi></mrow><annotation encoding="application/x-tex">V t = X - P</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mspace width="0.167em"></mspace><mn>1</mn><mo>,</mo><mspace width="0.167em"></mspace><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>𝖳</mi></msup></mrow><annotation encoding="application/x-tex">V = \left(1,\,1,\,-1\right)^{\mathsf T}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>−</mo><mi>P</mi><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo>−</mo><mn>1</mn><mo>,</mo><mspace width="0.278em"></mspace><mi>y</mi><mo>,</mo><mspace width="0.278em"></mspace><mi>z</mi><mo>−</mo><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>𝖳</mi></msup></mrow><annotation encoding="application/x-tex">X - P = \left(x-1,\; y,\; z-2\right)^{\mathsf T}</annotation></semantics></math>,
 and the consistency condition
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">k</mi></mrow><mrow><mo stretchy="true" form="prefix">[</mo><mi>A</mi><mo stretchy="false" form="prefix">|</mo><mi>b</mi><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\mathrm{rank}[A|b] = 1</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">k</mi></mrow><mrow><mo stretchy="true" form="prefix">[</mo><mspace width="0.167em"></mspace><mi>V</mi><mo>∣</mo><mi>X</mi><mo>−</mo><mi>P</mi><mspace width="0.167em"></mspace><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\mathrm{rank}[\,V \mid X-P\,] = 1</annotation></semantics></math>
 says that the three coordinates on the right must be proportional to
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(1,1,-1)</annotation></semantics></math>,
 that is,
@@ -5870,10 +5901,20 @@ and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>−</mo><mn>2</mn><mo>=</mo><mo>−</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">z - 2 = -y</annotation></semantics></math>:
 the <strong>implicit</strong> equations
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>−</mo><mi>y</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x - y = 1</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><mi>y</mi><mo>+</mo><mi>z</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\;y + z = 2</annotation></semantics></math>
-(system of rank 2; dimension of solutions
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>−</mo><mn>2</mn><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">3 - 2 = 1</annotation></semantics></math>
-✓). <em>(In practice one does not write the matrix down: solve for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><mi>y</mi><mo>+</mo><mi>z</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\;y + z = 2</annotation></semantics></math>.
+Written as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>x</mi><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">Ax = b</annotation></semantics></math>,
+here
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mo>−</mo><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn><mspace width="0.222em"></mspace><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mi>b</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn><mspace width="0.222em"></mspace><mn>2</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex">A = \begin{pmatrix} 1 &amp; -1 &amp; 0 \ 0 &amp; 1 &amp; 1\end{pmatrix}, \qquad b = \begin{pmatrix} 1 \ 2\end{pmatrix},</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">k</mi></mrow><mspace width="0.167em"></mspace><mi>A</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\mathrm{rank}\,A = 2</annotation></semantics></math>,
+so the dimension of the solution set is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mrow><mi mathvariant="normal">r</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">k</mi></mrow><mspace width="0.167em"></mspace><mi>A</mi><mo>=</mo><mn>3</mn><mo>−</mo><mn>2</mn><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n - \mathrm{rank}\,A = 3 - 2 = 1</annotation></semantics></math>
+✓ — a line, which is the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+we started from. <strong>This check is worth doing every time</strong>:
+it catches translation errors. <em>(In practice one does not write the
+matrix down: solve for
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">t = y</annotation></semantics></math>
 in the second equation and substitute in the other two. It is the same
 computation, done in your head.)</em></li>
@@ -7298,10 +7339,6 @@ part. Details: exercise 6.)</em></p>
 <!-- This file was generated by dvisvgm 3.2.1 -->
 <svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='172.518pt' height='134.988pt' viewBox='0 0 172.518 134.988'>
 <defs>
-<font id='RIYZQN-CMMI7' horiz-adv-x='0'>
-<font-face font-family='RIYZQN-CMMI7' units-per-em='1000' ascent='750' descent='250'/>
-<glyph unicode='v' horiz-adv-x='571' vert-adv-y='571' glyph-name='v' d='M534 363C534 441 487 442 484 442C458 442 430 415 430 389C430 372 440 364 447 358C464 344 484 318 484 278C484 233 418 18 299 18C218 18 218 90 218 107C218 153 236 209 273 302C281 323 287 338 287 355C287 407 243 441 192 441C92 441 47 304 47 288C47 275 61 275 64 275C78 275 79 280 82 291C106 373 149 413 189 413C206 413 214 402 214 378C214 355 206 334 196 311C153 200 142 157 142 121C142 22 220-10 296-10C464-10 534 281 534 363Z'/>
-</font>
 <font id='OWBUGY-CMR10' horiz-adv-x='0'>
 <font-face font-family='OWBUGY-CMR10' units-per-em='1000' ascent='750' descent='250'/>
 <glyph unicode='(' horiz-adv-x='388' vert-adv-y='388' glyph-name='parenleft' d='M331-240C331-237 331-235 314-218C189-92 157 97 157 250C157 424 195 598 318 723C331 735 331 737 331 740C331 747 327 750 321 750C311 750 221 682 162 555C111 445 99 334 99 250C99 172 110 51 165-62C225-185 311-250 321-250C327-250 331-247 331-240Z'/>
@@ -7310,6 +7347,10 @@ part. Details: exercise 6.)</em></p>
 <glyph unicode='o' horiz-adv-x='500' vert-adv-y='500' glyph-name='o' d='M471 214C471 342 371 448 250 448C125 448 28 339 28 214C28 85 132-11 249-11C370-11 471 87 471 214ZM250 14C207 14 163 35 136 81C111 125 111 186 111 222C111 261 111 315 135 359C162 405 209 426 249 426C293 426 336 404 362 361S388 260 388 222C388 186 388 132 366 88C344 43 300 14 250 14Z'/>
 <glyph unicode='p' horiz-adv-x='555' vert-adv-y='555' glyph-name='p' d='M172 376V442L28 431V400C99 400 106 394 106 350V-118C106-163 95-163 28-163V-194C62-193 114-191 140-191C167-191 218-193 253-194V-163C186-163 175-163 175-118V50V59C180 43 222-11 298-11C417-11 521 87 521 216C521 343 424 442 312 442C234 442 192 398 172 376ZM175 114V337C204 388 253 417 304 417C377 417 438 329 438 216C438 95 368 11 294 11C254 11 216 31 189 72C175 93 175 94 175 114Z'/>
 <glyph unicode='r' horiz-adv-x='391' vert-adv-y='391' glyph-name='r' d='M167 332V442L28 431V400C98 400 106 393 106 344V76C106 31 95 31 28 31V0C67 1 114 3 142 3C182 3 229 3 269 0V31H248C174 31 172 42 172 78V232C172 331 214 420 290 420C297 420 299 420 301 419C298 418 278 406 278 380C278 352 299 337 321 337C339 337 364 349 364 381S333 442 290 442C217 442 181 375 167 332Z'/>
+</font>
+<font id='RIYZQN-CMMI7' horiz-adv-x='0'>
+<font-face font-family='RIYZQN-CMMI7' units-per-em='1000' ascent='750' descent='250'/>
+<glyph unicode='v' horiz-adv-x='571' vert-adv-y='571' glyph-name='v' d='M534 363C534 441 487 442 484 442C458 442 430 415 430 389C430 372 440 364 447 358C464 344 484 318 484 278C484 233 418 18 299 18C218 18 218 90 218 107C218 153 236 209 273 302C281 323 287 338 287 355C287 407 243 441 192 441C92 441 47 304 47 288C47 275 61 275 64 275C78 275 79 280 82 291C106 373 149 413 189 413C206 413 214 402 214 378C214 355 206 334 196 311C153 200 142 157 142 121C142 22 220-10 296-10C464-10 534 281 534 363Z'/>
 </font>
 <font id='OGJXKW-CMMI10' horiz-adv-x='0'>
 <font-face font-family='OGJXKW-CMMI10' units-per-em='1000' ascent='750' descent='250'/>
