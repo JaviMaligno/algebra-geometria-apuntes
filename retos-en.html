@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>SE3 · Mini-proyecto RSA</title>
+  <title>Challenges — optional tasks to raise your grade</title>
   <style>
     html {
       color: #1a1a1a;
@@ -920,19 +920,18 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title"><p>SE3 · Mini-proyecto RSA</p></h1>
+<h1 class="title"><p>Challenges — optional tasks to raise your
+grade</p></h1>
 </header>
-<h1 id="se3-mini-proyecto-rsa">SE3 · Mini-proyecto RSA</h1>
+<h1 id="challenges-optional-tasks-to-raise-your-grade">Challenges —
+optional tasks to raise your grade</h1>
 <blockquote>
-<p><strong>Qué es:</strong> el trabajo individual del curso — <strong>10
-% de la nota</strong>. Construyes un RSA de juguete, lo usas de verdad
-para intercambiar mensajes con el resto de la clase, explicas por qué
-funciona sobre <strong>tus</strong> números, y averiguas hasta dónde
-aguanta antes de romperse.</p>
-<p><strong>Qué se evalúa:</strong> la comprensión, no el código. Las
-llamadas caben en diez líneas y las escribe cualquiera; lo que se
-corrige es si sabes <strong>de dónde sale cada número</strong> y
-<strong>dónde se apoya cada paso</strong>.</p>
+<p><strong>What they are:</strong> <strong>optional</strong> tasks worth
+up to <strong>+1 point</strong> on your final grade. Pick the one you
+like, claim it in the forum, and hand it in whenever suits you.</p>
+<p><strong>They only add.</strong> Never subtract. If you do none of
+them, your grade is exactly what it would have been had this never
+existed.</p>
 </blockquote>
 <table>
 <colgroup>
@@ -941,447 +940,132 @@ corrige es si sabes <strong>de dónde sale cada número</strong> y
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><strong>Resultado de aprendizaje</strong></td>
-<td><strong>RA7</strong> — uso de software matemático. Y de paso
-RA1–RA2: la aritmética modular del Módulo 1, aplicada.</td>
+<td><strong>How much they add</strong></td>
+<td>0.25 or 0.5 each · <strong>cap of +1 point</strong></td>
 </tr>
 <tr class="even">
-<td><strong>Peso</strong></td>
-<td>10 % de la nota final</td>
+<td><strong>How many you can do</strong></td>
+<td>As many as you like up to the cap, but <strong>only one of each
+type</strong></td>
 </tr>
 <tr class="odd">
-<td><strong>Tiempo estimado</strong></td>
-<td><strong>7–12 h en total</strong>, repartidas a lo largo del semestre
-(desglose por fases en el <a href="#calendario">calendario</a>). No es
-un trabajo de un fin de semana: la fase 3 depende de que otras personas
-respondan.</td>
+<td><strong>Deadline</strong></td>
+<td>Up to <strong>two weeks before the final exam</strong> <em>(exact
+date in Canvas)</em></td>
 </tr>
 <tr class="even">
-<td><strong>Se entrega</strong></td>
-<td>Un cuaderno (Colab o <code>.ipynb</code>) por el aula virtual</td>
+<td><strong>How to claim one</strong></td>
+<td>In the <strong>“Challenges”</strong> thread of the forum — see
+below</td>
+</tr>
+<tr class="odd">
+<td><strong>Use of AI</strong></td>
+<td>Allowed, declared, as everywhere else in the course</td>
 </tr>
 </tbody>
 </table>
-<h2 id="antes-de-empezar">Antes de empezar</h2>
-<p>Llega con el <strong>ejercicio 4 de la Sesión 4</strong> hecho: el
-esquema completo montado con primos de 6–8 cifras, cifrando y
-descifrando. Es el calentamiento de esto, y te ahorra pelearte con el
-código mientras piensas en las matemáticas.</p>
-<p>El punto de partida es el bloque de Python de los apuntes, <a
-href="https://javimaligno.github.io/algebra-geometria-apuntes/apuntes-01-aritmetica.html#codigo-m1-s4-rsa">§4.3
-«La demo en Python»</a>, que puedes ejecutar y editar en la propia
-página.</p>
-<hr />
-<h2 id="fase-1-tus-claves">Fase 1 · Tus claves</h2>
-<p>Genera tus primos
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>≠</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p \neq q</annotation></semantics></math>,
-tu
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mi>p</mi><mi>q</mi></mrow><annotation encoding="application/x-tex">n = pq</annotation></semantics></math>
-y tu
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>φ</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>p</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>q</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\varphi = (p-1)(q-1)</annotation></semantics></math>.
-Usa primos de <strong>6 a 8 cifras</strong>: lo bastante grandes para
-que el intercambio no sea trivial, lo bastante pequeños para que todo
-corra al instante.</p>
-<p><strong>Elige tu
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>e</mi><annotation encoding="application/x-tex">e</annotation></semantics></math>,
-y prepárate para justificarlo.</strong> No copies el 65537 del recuadro
-porque esté ahí: el ejercicio 9 de la sesión te da las herramientas para
-decidirlo tú. Si acabas eligiendo 65537, perfecto — pero tendrás que
-decir por qué.</p>
-<p>Calcula
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
-y comprueba que descifra.</p>
 <blockquote>
-<p><strong>La distinción
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>≠</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p \neq q</annotation></semantics></math>
-no es una precaución:</strong> es hipótesis del <a
-href="apuntes-01-aritmetica.html#res-1-4-5" class="cita" target="_blank"
-rel="noopener">Teorema 1.4.5</a>. Si las igualas,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>p</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>q</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">(p-1)(q-1)</annotation></semantics></math>
-deja de ser el número que hace funcionar el descifrado.</p>
+<p><strong>One thing worth knowing up front.</strong> These points
+<strong>raise grades, they do not clear thresholds</strong>: they are no
+substitute for the minimum exam average of 5 that the regulations
+require in order to pass. If that minimum is not met, the bonus does not
+fix it.</p>
 </blockquote>
-<h2 id="fase-2-el-directorio-público">Fase 2 · El directorio
-público</h2>
-<p>Publica tu
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>,</mo><mi>e</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(n, e)</annotation></semantics></math>
-—<strong>solo eso</strong>— en el hilo <strong>«Directorio de claves
-públicas»</strong> del foro, en un mensaje con tu nombre.</p>
-<p>Una clave pública va en público: ese hilo no es una metáfora de un
-directorio de claves, <strong>es</strong> un directorio de claves. Tu
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>,
-tus
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
-y tu
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
-no salen de tu máquina.</p>
-<blockquote>
-<p><strong>Fecha límite propia.</strong> Esta fase cuesta quince minutos
-y tiene fecha propia, muy anterior a la entrega: si el directorio no
-está completo a tiempo, los últimos en publicar se quedan sin nadie con
-quien intercambiar.</p>
-</blockquote>
-<h2 id="fase-3-el-intercambio">Fase 3 · El intercambio</h2>
-<p>Cuatro papeles. Los cuatro son obligatorios y los cuatro dejan rastro
-en el foro.</p>
-<p><strong>1 · Emisor.</strong> Elige a alguien del directorio, cifra un
-mensaje numérico con <strong>su</strong> clave pública y publícalo
-dirigido a esa persona.</p>
-<p><strong>2 · Receptor.</strong> Descifra el mensaje que te hayan
-mandado a ti.</p>
-<p><strong>3 · Firmante.</strong> Responde con el mensaje descifrado
-<strong>y su firma</strong>
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><msup><mi>m</mi><mi>d</mi></msup><mrow><mspace width="0.222em"></mspace><mo>mod</mo><mspace width="0.222em"></mspace><mi>n</mi></mrow></mrow><annotation encoding="application/x-tex">s = m^d \bmod n</annotation></semantics></math>,
-calculada con <strong>tu</strong> clave privada.</p>
-<p><strong>4 · Verificador.</strong> Elige la respuesta firmada de
-<strong>un tercero</strong> —ni tuya ni de quien te escribió— y verifica
-su firma con su clave pública. Publica si cuadra o no.</p>
-<blockquote>
-<p><strong>Por qué la firma.</strong> Publicar el mensaje descifrado no
-demuestra nada: quien lo cifró ya lo sabía. La firma sí, porque solo se
-puede producir con
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>,
-y <strong>cualquiera</strong> la comprueba con la clave pública. Es el
-mismo teorema del descifrado con los papeles cambiados.</p>
-</blockquote>
-<p><strong>¿Nadie con quien intercambiar?</strong> Mi clave está en el
-directorio como la de cualquiera. Si te quedas descolgado, intercambias
-conmigo y sigues adelante. No hace falta que avises ni que esperes a que
-te asignen pareja.</p>
-<h2 id="fase-4-la-memoria">Fase 4 · La memoria</h2>
-<p>Cuatro apartados. <strong>Todo con tus números, no con
-letras.</strong></p>
-<p><strong>(a) Por qué funciona.</strong></p>
+<h2 id="how-they-are-shared-out">How they are shared out</h2>
+<p>In the <strong>“Challenges”</strong> thread of the forum. Claim the
+one you want with a message; <strong>whoever asks first gets
+it</strong>, and the forum timestamp settles it. Nothing needs my
+approval.</p>
+<p><strong>And they cannot be repeated</strong>, which is not fussiness:
+if two people audit the same proof, the second one has the answer a
+message away. Uniqueness is what keeps the task a task.</p>
 <ul>
-<li>De dónde sale tu
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>:
-los pasos del algoritmo de Euclides extendido, no solo el
-resultado.</li>
-<li>Comprueba
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>⋅</mo><mi>d</mi><mo>≡</mo><mn>1</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mi>φ</mi><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">e \cdot d \equiv 1 \pmod{\varphi}</annotation></semantics></math>
-y escribe el
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
-concreto de
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mi>d</mi><mo>=</mo><mn>1</mn><mo>+</mo><mi>k</mi><mi>φ</mi></mrow><annotation encoding="application/x-tex">ed = 1 + k\varphi</annotation></semantics></math>.</li>
-<li>Por qué
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mrow><mi>e</mi><mi>d</mi></mrow></msup><mo>≡</mo><mi>m</mi><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mi>n</mi><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">m^{ed} \equiv m \pmod n</annotation></semantics></math>:
-Fermat módulo
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>,
-Fermat módulo
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>,
-y el teorema chino del resto para pegar las dos congruencias. Con tu
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
-y tu
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>.</li>
+<li>In <strong>R1</strong> and <strong>R6</strong> you claim a
+<strong>specific item</strong> from a published list; they run out.</li>
+<li>In <strong>R2</strong>, <strong>R3</strong>, <strong>R4</strong> and
+<strong>R5</strong> you claim the <strong>target</strong>: which error,
+which theorem, which module, so that no two people collide.</li>
 </ul>
-<blockquote>
-<p><strong>Qué cuenta como «con tus números», que es donde se juega la
-nota.</strong> No es tomar el <a
-href="apuntes-01-aritmetica.html#res-1-4-5" class="cita" target="_blank"
-rel="noopener">Teorema 1.4.5</a> y comprobar en Python que con tus
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
-y
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
-el mensaje vuelve — eso es verificar un caso, y ya lo hiciste en la fase
-1. Es <strong>rehacer el razonamiento entero</strong> instanciado:
-escribir tu
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>,
-aplicar Fermat en cada primo por separado, y pegar las dos congruencias
-con el TCR. Tienes una muestra completa <a
-href="#la-muestra-el-nivel-de-detalle-esperado">más abajo</a>.</p>
-</blockquote>
-<p><strong>(b) Por qué TU
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>e</mi><annotation encoding="application/x-tex">e</annotation></semantics></math>.</strong>
-Qué descartaste y por qué. Y por qué no
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">e = 3</annotation></semantics></math>,
-que sería más barato.</p>
-<p><strong>(c) Rómpelo a propósito.</strong> Elige <strong>uno</strong>
-de los dos y enséñalo corriendo:</p>
-<ul>
-<li>Toma un
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>e</mi><annotation encoding="application/x-tex">e</annotation></semantics></math>
-con
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>e</mi><mo>,</mo><mi>φ</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>≠</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\mathrm{mcd}(e, \varphi) \neq 1</annotation></semantics></math>.
-¿Qué paso falla, <strong>exactamente</strong>?</li>
-<li>O toma
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p = q</annotation></semantics></math>.
-¿Dónde se cae la demostración?</li>
-</ul>
-<p>No basta con decir que deja de funcionar: hay que <strong>señalar el
-punto</strong> donde la hipótesis entraba en juego.</p>
-<p><strong>(d) Qué le falta para ser real.</strong> Tu escalera de la
-fase 5 dice algo sobre el tamaño de clave: dilo. Y explica por qué tu
-RSA, siendo correcto, todavía no serviría para nada serio.</p>
-<h2 id="fase-5-la-escalera-de-ataque">Fase 5 · La escalera de
-ataque</h2>
-<p>Tienes una <strong>escalera de objetivos</strong> —parejas
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>,</mo><mi>e</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(n, e)</annotation></semantics></math>
-con un mensaje cifrado, de tamaño creciente— en <a
-href="se3-escalera.html">SE3 · Escalera de objetivos</a>. Ninguna es de
-un compañero: son mías, puestas ahí para que las rompas.</p>
-<p>Para cada una que puedas: factoriza
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>,
-recupera
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>φ</mi><annotation encoding="application/x-tex">\varphi</annotation></semantics></math>,
-recupera
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>,
-y lee el mensaje.</p>
-<p><strong>Lo que entregas no es «rompí tres», es la curva:</strong>
-hasta qué tamaño llegaste, cuánto tardó el último que cayó, y dónde se
-plantó tu máquina. Con eso, una pregunta: si ahí está tu muro y RSA de
-verdad usa claves de unas 600 cifras, ¿cuánto margen hay?</p>
-<blockquote>
-<p><strong>¿Se te ha quedado corta?</strong> Hay objetivos más grandes,
-sin garantía de que caigan, entre las <a href="retos.html">tareas
-voluntarias de subida de nota</a> — reto R6.</p>
-</blockquote>
 <hr />
-<h2 id="la-muestra-el-nivel-de-detalle-esperado">La muestra: el nivel de
-detalle esperado</h2>
-<p>El apartado (a) vale <strong>3 de los 10 puntos</strong>, así que
-aquí tienes exactamente lo que se pide, resuelto con unos primos de
-juguete. <strong>No los uses</strong>: son ridículamente pequeños y
-están aquí solo para enseñar la forma. Con tus primos de 6–8 cifras el
-texto es el mismo; cambian los números.</p>
-<blockquote>
-<h3 id="muestra-apartado-a-con-p-11-q-13">Muestra — apartado (a) con
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>=</mo><mn>11</mn></mrow><annotation encoding="application/x-tex">p = 11</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><mn>13</mn></mrow><annotation encoding="application/x-tex">q = 13</annotation></semantics></math></h3>
-<p>Mis claves:
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>11</mn><mo>⋅</mo><mn>13</mn><mo>=</mo><mn>143</mn></mrow><annotation encoding="application/x-tex">n = 11 \cdot 13 = 143</annotation></semantics></math>
-y
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>φ</mi><mo>=</mo><mn>10</mn><mo>⋅</mo><mn>12</mn><mo>=</mo><mn>120</mn></mrow><annotation encoding="application/x-tex">\varphi = 10 \cdot 12 = 120</annotation></semantics></math>.
-Tomo
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">e = 7</annotation></semantics></math>,
-que es primo y no divide a 120, luego
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">d</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mn>7</mn><mo>,</mo><mn>120</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\mathrm{mcd}(7,120) = 1</annotation></semantics></math>.</p>
-<p><strong>De dónde sale mi
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>.</strong>
-Euclides extendido sobre
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>120</mn><mo>=</mo><mn>17</mn><mo>⋅</mo><mn>7</mn><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">120 = 17\cdot 7 + 1</annotation></semantics></math>,
-así que
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>=</mo><mn>120</mn><mo>−</mo><mn>17</mn><mo>⋅</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">1 = 120 - 17 \cdot 7</annotation></semantics></math>,
-y leyendo módulo 120:
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>17</mn><mo>⋅</mo><mn>7</mn><mo>≡</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-17 \cdot 7 \equiv 1</annotation></semantics></math>.
-Como
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>17</mn><mo>≡</mo><mn>103</mn><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mn>120</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">-17 \equiv 103 \pmod{120}</annotation></semantics></math>,
-mi
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>=</mo><mn>103</mn></mrow><annotation encoding="application/x-tex">d = 103</annotation></semantics></math>.</p>
-<p><strong>La comprobación, con el
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
-explícito.</strong>
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>⋅</mo><mi>d</mi><mo>=</mo><mn>7</mn><mo>⋅</mo><mn>103</mn><mo>=</mo><mn>721</mn><mo>=</mo><mn>1</mn><mo>+</mo><mn>6</mn><mo>⋅</mo><mn>120</mn></mrow><annotation encoding="application/x-tex">e \cdot d = 7 \cdot 103 = 721 = 1 + 6 \cdot 120</annotation></semantics></math>,
-o sea
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mi>d</mi><mo>=</mo><mn>1</mn><mo>+</mo><mi>k</mi><mi>φ</mi></mrow><annotation encoding="application/x-tex">ed = 1 + k\varphi</annotation></semantics></math>
-con
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mspace width="0.278em"></mspace><mrow><mi>𝐤</mi><mo mathvariant="bold">=</mo><mn>𝟔</mn></mrow></mrow><annotation encoding="application/x-tex">\;\mathbf{k = 6}</annotation></semantics></math>.</p>
-<p><strong>Por qué
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mrow><mi>e</mi><mi>d</mi></mrow></msup><mo>≡</mo><mi>m</mi><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mn>143</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">m^{ed} \equiv m \pmod{143}</annotation></semantics></math>,
-para todo
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>.</strong>
-Escribo
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mrow><mi>e</mi><mi>d</mi></mrow></msup><mo>=</mo><msup><mi>m</mi><mrow><mn>1</mn><mo>+</mo><mn>6</mn><mo>⋅</mo><mn>120</mn></mrow></msup><mo>=</mo><mi>m</mi><mo>⋅</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>m</mi><mn>120</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mn>6</mn></msup></mrow><annotation encoding="application/x-tex">m^{ed} = m^{1 + 6 \cdot 120} = m \cdot \left(m^{120}\right)^{6}</annotation></semantics></math>,
-y lo miro en cada primo por separado.</p>
-<p><em>Módulo 11.</em> Si
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>11</mn><mo>∤</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">11 \nmid m</annotation></semantics></math>,
-Fermat da
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mn>10</mn></msup><mo>≡</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">m^{10} \equiv 1</annotation></semantics></math>.
-Y
-<strong><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>120</mn><annotation encoding="application/x-tex">120</annotation></semantics></math>
-es múltiplo de
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>10</mn><annotation encoding="application/x-tex">10</annotation></semantics></math></strong>
-—justamente porque
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>φ</mi><annotation encoding="application/x-tex">\varphi</annotation></semantics></math>
-lleva dentro el factor
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>−</mo><mn>1</mn><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">p-1 = 10</annotation></semantics></math>—:
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>120</mn><mo>=</mo><mn>10</mn><mo>⋅</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">120 = 10 \cdot 12</annotation></semantics></math>,
-luego
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mn>120</mn></msup><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>m</mi><mn>10</mn></msup><mo stretchy="true" form="postfix">)</mo></mrow><mn>12</mn></msup><mo>≡</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">m^{120} = (m^{10})^{12} \equiv 1</annotation></semantics></math>
-y por tanto
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mrow><mi>e</mi><mi>d</mi></mrow></msup><mo>≡</mo><mi>m</mi><mo>⋅</mo><mn>1</mn><mo>=</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">m^{ed} \equiv m \cdot 1 = m</annotation></semantics></math>.
-Si
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>11</mn><mo>∣</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">11 \mid m</annotation></semantics></math>,
-los dos lados son
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≡</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\equiv 0</annotation></semantics></math>,
-y la congruencia también se cumple.</p>
-<p><em>Módulo 13.</em> Igual, con
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>−</mo><mn>1</mn><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">q - 1 = 12</annotation></semantics></math>:
-si
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>13</mn><mo>∤</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">13 \nmid m</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mn>12</mn></msup><mo>≡</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">m^{12} \equiv 1</annotation></semantics></math>
-y
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>120</mn><mo>=</mo><mn>12</mn><mo>⋅</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">120 = 12 \cdot 10</annotation></semantics></math>,
-luego
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mn>120</mn></msup><mo>≡</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">m^{120} \equiv 1</annotation></semantics></math>
-y
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mrow><mi>e</mi><mi>d</mi></mrow></msup><mo>≡</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">m^{ed} \equiv m</annotation></semantics></math>.
-Y si
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>13</mn><mo>∣</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">13 \mid m</annotation></semantics></math>,
-ambos lados son
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>.</p>
-<p><strong>Pegar las dos con el TCR.</strong> Tengo
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>11</mn><mo>∣</mo><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>m</mi><mrow><mi>e</mi><mi>d</mi></mrow></msup><mo>−</mo><mi>m</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">11 \mid (m^{ed} - m)</annotation></semantics></math>
-y
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>13</mn><mo>∣</mo><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>m</mi><mrow><mi>e</mi><mi>d</mi></mrow></msup><mo>−</mo><mi>m</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">13 \mid (m^{ed} - m)</annotation></semantics></math>.
-Como 11 y 13 son coprimos, su producto divide a la diferencia:
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>143</mn><mo>∣</mo><mrow><mo stretchy="true" form="prefix">(</mo><msup><mi>m</mi><mrow><mi>e</mi><mi>d</mi></mrow></msup><mo>−</mo><mi>m</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">143 \mid (m^{ed} - m)</annotation></semantics></math>,
-es decir
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>m</mi><mrow><mi>e</mi><mi>d</mi></mrow></msup><mo>≡</mo><mi>m</mi><mrow><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">(</mo><mo>mod</mo><mspace width="0.222em"></mspace><mn>143</mn><mo stretchy="false" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">m^{ed} \equiv m \pmod{143}</annotation></semantics></math>.
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
-<p><strong>Un caso, para verlo rodar.</strong>
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">m = 7</annotation></semantics></math>:
-cifro
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><msup><mn>7</mn><mn>7</mn></msup><mrow><mspace width="0.222em"></mspace><mo>mod</mo><mspace width="0.222em"></mspace><mn>143</mn></mrow><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">c = 7^{7} \bmod 143 = 6</annotation></semantics></math>,
-descifro
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>6</mn><mn>103</mn></msup><mrow><mspace width="0.222em"></mspace><mo>mod</mo><mspace width="0.222em"></mspace><mn>143</mn></mrow><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">6^{103} \bmod 143 = 7</annotation></semantics></math>
-✓. Y
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mn>11</mn></mrow><annotation encoding="application/x-tex">m = 11</annotation></semantics></math>,
-que es múltiplo de
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
-y por tanto <strong>no</strong> es coprimo con
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>:
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>11</mn><mrow><mn>7</mn><mo>⋅</mo><mn>103</mn></mrow></msup><mo>≡</mo><mn>11</mn></mrow><annotation encoding="application/x-tex">11^{7\cdot103} \equiv 11</annotation></semantics></math>
-igual ✓ — el caso que la prueba por Fermat + TCR cubre y el teorema de
-Euler, por sí solo, no.</p>
-</blockquote>
-<p><strong>Lo que hace que esto valga los 3 puntos, y no las tres líneas
-de comprobarlo en Python</strong>, son las tres cosas señaladas en
-negrita: el
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
-escrito, la razón por la que
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>φ</mi><annotation encoding="application/x-tex">\varphi</annotation></semantics></math>
-es múltiplo de
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p-1</annotation></semantics></math>
-y de
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">q-1</annotation></semantics></math>
-(que es <em>por qué</em> funciona, no un accidente de estos números), y
-el paso del TCR hecho, no citado. Los apartados (b), (c) y (d) piden el
-mismo nivel.</p>
-<h2 id="calendario">Calendario</h2>
-<table>
-<thead>
-<tr class="header">
-<th>Fase</th>
-<th>Cuándo</th>
-<th>Cuánto te llevará</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1 · Tus claves</td>
-<td>desde que se publica el enunciado</td>
-<td>1–2 h</td>
-</tr>
-<tr class="even">
-<td>2 · Publicar
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>,</mo><mi>e</mi><mo stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(n,e)</annotation></semantics></math></td>
-<td><strong>fecha propia</strong> <em>(ver Canvas)</em></td>
-<td>15 min</td>
-</tr>
-<tr class="odd">
-<td>3 · El intercambio</td>
-<td>ventana de tres semanas</td>
-<td>2–3 h, repartidas</td>
-</tr>
-<tr class="even">
-<td>4 · La memoria</td>
-<td>hasta la entrega</td>
-<td>3–4 h</td>
-</tr>
-<tr class="odd">
-<td>5 · La escalera</td>
-<td>cuando quieras</td>
-<td>1–2 h</td>
-</tr>
-<tr class="even">
-<td><strong>Entrega final</strong></td>
-<td><em>(ver Canvas)</em></td>
-<td><strong>7–12 h en total</strong></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p><strong>Las dos fechas exactas —la de la fase 2 y la de la entrega—
-están en el calendario de Canvas</strong>, con día y hora. Aquí no se
-repiten para que no haya dos versiones de la misma fecha; la de Canvas
-es la que vale.</p>
-</blockquote>
-<p><strong>La fase 2 tiene fecha propia y es la que no se puede
-posponer.</strong> Cuesta quince minutos y solo sirve para que el
-directorio esté completo antes de que empiece el intercambio: quien
-publica tarde se queda sin nadie a quien escribir, y bloquea a quien
-esperaba escribirle.</p>
-<p><strong>Fuera de plazo.</strong> La entrega final admite
-<strong>hasta 3 días de retraso, con un 10 % de penalización por
-día</strong>; pasados los tres, no se evalúa. La <strong>fase 2 no
-admite retraso</strong> —no por severidad, sino porque publicar la clave
-cuando los demás ya han intercambiado no sirve de nada—; si se te pasa,
-escríbeme y hacemos el intercambio directamente conmigo, sin
-penalización.</p>
-<h2 id="qué-entregas">Qué entregas</h2>
-<p><strong>Un solo cuaderno</strong> con el código y la memoria dentro,
-en celdas de texto.</p>
-<p>Recomiendo <strong>Google Colab</strong>: no hay que instalar nada,
-<code>sympy</code> ya está, y se entrega como enlace. Si prefieres
-trabajar en local, un <code>.ipynb</code> equivalente vale igual.</p>
-<p>El hilo del foro <strong>no se entrega</strong>: ya está publicado y
-fechado.</p>
-<h2 id="cómo-se-corrige">Cómo se corrige</h2>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th>Puntos</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Fase 1 · claves correctas y <strong>justificación de
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>e</mi><annotation encoding="application/x-tex">e</annotation></semantics></math></strong></td>
-<td>1,5</td>
-</tr>
-<tr class="even">
-<td>Fases 2–3 · el protocolo completo, verificable en el foro</td>
-<td>2,5</td>
-</tr>
-<tr class="odd">
-<td>Fase 4a · la demostración con tus números</td>
-<td>3,0</td>
-</tr>
-<tr class="even">
-<td>Fase 4c · el contrafactual</td>
-<td>1,5</td>
-</tr>
-<tr class="odd">
-<td>Fase 5 · la escalera y su lectura</td>
-<td>1,5</td>
-</tr>
-</tbody>
-</table>
-<p>La memoria vale <strong>4,5 de 10</strong>: un cuaderno que cifra y
-descifra perfectamente, sin explicar nada, no llega a aprobado.</p>
-<p>Se aplica el criterio del resto del curso: <strong>un resultado sin
-justificación puntúa como máximo un tercio del apartado</strong>.</p>
-<h2 id="sobre-el-uso-de-ia">Sobre el uso de IA</h2>
-<p><strong>Permitida y recomendada</strong>, declarando qué usaste y
-para qué, como indica la guía de uso de IA del curso.</p>
-<p>Y conviene que sepas cómo está montado esto: <strong>tus números son
-tuyos</strong>, así que no hay memoria genérica que sirva; <strong>el
-hilo del foro es público y fechado</strong>, así que la fase 3 la haces
-tú; <strong>el contrafactual exige provocar un fallo y
-diagnosticarlo</strong>, no describir que existe; y <strong>la escalera
-es una medición en tu máquina</strong>. Puedes usar la IA para todo el
-camino — lo que se corrige es si entiendes el resultado.</p>
-<h2 id="lo-que-este-proyecto-quiere-dejarte">Lo que este proyecto quiere
-dejarte</h2>
-<p>Que RSA no es una receta de cuatro líneas que funciona por arte de
-magia. Cada línea está sostenida por un teorema que has demostrado este
-módulo: Euclides te da
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>,
-Fermat y el teorema chino del resto te devuelven el mensaje, y la
-dificultad de factorizar es lo único que separa tu clave de la de
-cualquiera.</p>
-<p>Y que ese «lo único» es medible. Al final de la fase 5 vas a saber,
-con datos de tu propio portátil, exactamente cuánto vale tu juguete — y
-por qué el de verdad necesita ser tan grande.</p>
+<h2 id="r1-the-audit-0.5-individual">R1 · The audit — 0.5 ·
+individual</h2>
+<p>I give you an <strong>AI-generated</strong> proof of a result from
+the course. It looks impeccable, it cites theorems by their number, and
+it contains <strong>exactly one invalid step</strong>. Three things:</p>
+<ol type="1">
+<li><strong>Detect</strong> — point at the step and say which hypothesis
+it skips.</li>
+<li><strong>Instantiate</strong> — build a case with <strong>concrete
+numbers</strong> where the conclusion is visibly false.</li>
+<li><strong>Repair</strong> — say what would have to be added to make it
+correct, or why it is beyond repair.</li>
+</ol>
+<p><em>Why this challenge exists:</em> auditing what the machine
+produces <strong>is</strong> the job of anyone doing mathematics with AI
+today. It is not a disguised exam: it is the real task.</p>
+<p><em>Detecting without instantiating does not count.</em> “It fails
+here” is a suspicion; the numbers are the proof.</p>
+<h2 id="r2-the-meme-0.25-individual-or-pair">R2 · The meme — 0.25 ·
+individual or pair</h2>
+<p>Propose a <strong>meme</strong> — or an exercise with a narrative
+dressing — that captures a <strong>real conceptual error</strong> from
+the course, with a 100–150 word paragraph explaining what confusion it
+portrays and why it is a confusion.</p>
+<p><strong>The paragraph is what gets marked, not the joke.</strong> And
+a practical warning: <strong>your own or generic characters</strong>,
+never copyrighted ones.</p>
+<p><em>If it turns out well, it goes into the course material with your
+name on it.</em></p>
+<h2 id="r3-the-counterexample-0.25-individual">R3 · The counterexample —
+0.25 · individual</h2>
+<p>Take a hypothesis of a theorem from the course <strong>that the notes
+do not already break</strong>, and break it: state the counterexample,
+prove that it is one, and say what stops being true without that
+hypothesis.</p>
+<p><em>I am not asking for absolute originality — that would be unfair.
+I am asking for a hypothesis the material has not broken yet. That
+requires reading the theorems with an eye on what holds them up, which
+is the habit the whole course is after.</em></p>
+<h2 id="r4-lean-0.5-in-a-group-23-people">R4 · Lean — 0.5 · <strong>in a
+group (2–3 people)</strong></h2>
+<p>Formalise a small result from the course in <strong>Lean</strong>,
+hand it in <strong>compiling</strong>, and add a paragraph on
+<strong>what it forced you to make explicit</strong> that on paper was
+taken for granted.</p>
+<p><strong>In a group on purpose:</strong> it is the hardest challenge
+and a team carries it better. Recommended entry point: the <em>Natural
+Number Game</em>.</p>
+<p><em>It is the most ambitious challenge here and it may be that nobody
+takes it. That is fine too.</em></p>
+<h2 id="r5-the-exam-question-0.25-individual">R5 · The exam question —
+0.25 · individual</h2>
+<p>Write an <strong>exam-quality</strong> question on one module, with
+its full solution, the <strong>declared trap</strong> — what mistake
+someone who has not quite got it will make — and which learning outcome
+it assesses.</p>
+<p><em>Writing a good problem requires understanding what separates the
+easy from the hard, which is a step above being able to solve
+it.</em></p>
+<h2 id="r6-one-more-rung-0.25-individual">R6 · One more rung — 0.25 ·
+individual</h2>
+<p>Break one of the <a href="se3-retos-escalera-en.html">challenge
+targets</a>, which sit above the eight rungs of the SE3 ladder. Document
+the machine, the method and the time.</p>
+<p><em>There is no guarantee they will fall. Break one nobody has broken
+— and “nobody” includes me.</em></p>
+<hr />
+<h2 id="about-ai-so-there-is-no-doubt">About AI, so there is no
+doubt</h2>
+<p>It is <strong>allowed and recommended</strong>, declared. These
+challenges are <strong>not designed so that AI cannot do them</strong>:
+that would be a lost race and would prepare you for a world that does
+not exist. AI is the tool with which mathematics is done today.</p>
+<p>What does not count is <strong>handing in something you could not
+stand behind</strong>. And it is worth saying without condescension:
+reading a correct solution produces the very same feeling of
+understanding as building one, and telling the two apart from the inside
+is hard. With 0.25 points at stake, delegating a whole challenge is a
+terrible deal — you lose precisely the thing that made it worth
+doing.</p>
 </body>
 </html>
