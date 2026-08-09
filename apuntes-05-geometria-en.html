@@ -6716,6 +6716,22 @@ only if <strong>each</strong> summand is
 that is,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">u = 0</annotation></semantics></math>.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>◼</mi><annotation encoding="application/x-tex">\blacksquare</annotation></semantics></math></p>
+<p><strong>Convention for the rest of the session.</strong> Everything
+that follows —Cauchy–Schwarz, norm, distance, angle, orthogonality and
+projection— is stated and proved using <strong>only the three
+axioms</strong>, so it holds in any real vector space
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+with an inner product, not just in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mi>n</mi></msup><annotation encoding="application/x-tex">\mathbb{R}^n</annotation></semantics></math>.
+We write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mi>n</mi></msup><annotation encoding="application/x-tex">\mathbb{R}^n</annotation></semantics></math>
+with its standard product when <strong>coordinates</strong> are needed
+—in examples and computations— and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+when the statement does not need them. <em>(Same criterion as in Linear
+Algebra with “if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+is a field…”.)</em></p>
 <p><span id="res-5-3-3" class="res-def"><strong>Remark 5.3.3 (where
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math>
 is used — the thread of fields, final twist).</strong></span> Property
@@ -6856,8 +6872,10 @@ with equality only at
 comes out of the bilinearity and the square root returns it as
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="true" form="prefix">|</mo><mi>λ</mi><mo stretchy="true" form="postfix">|</mo></mrow><annotation encoding="application/x-tex">|\lambda|</annotation></semantics></math>).</p>
 <p><span id="res-5-3-5" class="res-def"><strong>Theorem 5.3.5
-(Cauchy–Schwarz inequality).</strong></span> For all
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>,</mo><mi>v</mi><mo>∈</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">u, v \in \mathbb{R}^n</annotation></semantics></math>:
+(Cauchy–Schwarz inequality).</strong></span> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+be real with an inner product. For all
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>,</mo><mi>v</mi><mo>∈</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">u, v \in V</annotation></semantics></math>:
 <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo stretchy="true" form="prefix">|</mo><mi>u</mi><mo>⋅</mo><mi>v</mi><mo stretchy="true" form="postfix">|</mo></mrow><mo>≤</mo><mo stretchy="false" form="postfix">∥</mo><mi>u</mi><mo stretchy="false" form="postfix">∥</mo><mspace width="0.167em"></mspace><mo stretchy="false" form="postfix">∥</mo><mi>v</mi><mo stretchy="false" form="postfix">∥</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">|u \cdot v| \le \|u\| \, \|v\|,</annotation></semantics></math>
 with equality <strong>if and only if</strong>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>
@@ -7318,12 +7336,14 @@ then
 2. For fixed
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v \neq 0</annotation></semantics></math>,
 the set
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mi>v</mi><msup><mo stretchy="false" form="postfix">}</mo><mo>⊥</mo></msup><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>u</mi><mo>:</mo><mi>u</mi><mo>⋅</mo><mi>v</mi><mo>=</mo><mn>0</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{v\}^\perp = \{u : u \cdot v = 0\}</annotation></semantics></math>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mi>v</mi><msup><mo stretchy="false" form="postfix">}</mo><mo>⊥</mo></msup><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>u</mi><mo>∈</mo><mi>V</mi><mo>:</mo><mo stretchy="false" form="prefix">⟨</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><mn>0</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{v\}^\perp = \{u \in V : \langle u,v\rangle = 0\}</annotation></semantics></math>
 is a <strong>subspace</strong> of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mi>n</mi></msup><annotation encoding="application/x-tex">\mathbb{R}^n</annotation></semantics></math>,
-of dimension
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n - 1</annotation></semantics></math>
-(a vector hyperplane).</p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+(by bilinearity). In
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">V = \mathbb{R}^n</annotation></semantics></math>
+it has dimension
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n - 1</annotation></semantics></math>:
+a vector hyperplane.</p>
 <p><em>Proof.</em> (1) Expanding with bilinearity and symmetry,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><mi>u</mi><mo>+</mo><mi>v</mi><msup><mo stretchy="false" form="postfix">∥</mo><mn>2</mn></msup><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>u</mi><mo>+</mo><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>⋅</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>u</mi><mo>+</mo><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo stretchy="false" form="postfix">∥</mo><mi>u</mi><msup><mo stretchy="false" form="postfix">∥</mo><mn>2</mn></msup><mo>+</mo><mn>2</mn><mrow><mo stretchy="true" form="prefix">(</mo><mi>u</mi><mo>⋅</mo><mi>v</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mo stretchy="false" form="postfix">∥</mo><mi>v</mi><msup><mo stretchy="false" form="postfix">∥</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\|u+v\|^2 = (u+v)\cdot(u+v) = \|u\|^2 + 2(u\cdot v) + \|v\|^2</annotation></semantics></math>;
 if
@@ -7715,6 +7735,44 @@ then
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mi>w</mi></mrow><annotation encoding="application/x-tex">v = w</annotation></semantics></math>.”
 Justify or give a counterexample (in
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mn>3</mn></msup><annotation encoding="application/x-tex">\mathbb{R}^3</annotation></semantics></math>!).</li>
+<li>★ <strong>(Gram–Schmidt, step by step.)</strong> In
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mn>3</mn></msup><annotation encoding="application/x-tex">\mathbb{R}^3</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">v_1 = (1,1,0)</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>2</mn></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">v_2 = (1,0,1)</annotation></semantics></math>:
+<ol type="a">
+<li>Normalize the first: check that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>=</mo><mfrac displaystyle="false"><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">e_1 = \tfrac{1}{\sqrt2}(1,1,0)</annotation></semantics></math>
+is a unit vector.</li>
+<li>Compute
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><msub><mi>v</mi><mn>2</mn></msub><mo>,</mo><msub><mi>e</mi><mn>1</mn></msub><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">\langle v_2, e_1\rangle</annotation></semantics></math>
+and subtract from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mn>2</mn></msub><annotation encoding="application/x-tex">v_2</annotation></semantics></math>
+its projection onto
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mn>1</mn></msub><annotation encoding="application/x-tex">e_1</annotation></semantics></math>:
+you should get
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>2</mn></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mfrac displaystyle="false"><mn>1</mn><mn>2</mn></mfrac><mo>,</mo><mo>−</mo><mfrac displaystyle="false"><mn>1</mn><mn>2</mn></mfrac><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">w_2 = (\tfrac12, -\tfrac12, 1)</annotation></semantics></math>.</li>
+<li>Check that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>2</mn></msub><mo>⊥</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">w_2 \perp e_1</annotation></semantics></math>
+— <strong>that is the whole point of the method</strong>: subtracting
+the projection removes exactly the part visible from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mn>1</mn></msub><annotation encoding="application/x-tex">e_1</annotation></semantics></math>.</li>
+<li>Normalize:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mn>2</mn></msub><mo>=</mo><mfrac displaystyle="false"><mn>1</mn><msqrt><mn>6</mn></msqrt></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>,</mo><mo>−</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">e_2 = \tfrac{1}{\sqrt6}(1,-1,2)</annotation></semantics></math>.
+Verify
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="postfix">∥</mo><msub><mi>e</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">∥</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\|e_2\| = 1</annotation></semantics></math>.</li>
+<li>Check that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>e</mi><mn>1</mn></msub><mo>,</mo><msub><mi>e</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">n</mi></mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><msub><mi>v</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathrm{span}(e_1,e_2) = \mathrm{span}(v_1,v_2)</annotation></semantics></math>,
+which is what makes the result a <strong>basis</strong> of the same
+plane.</li>
+<li>With the orthonormal basis in hand, compute
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><msub><mi>v</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">\langle v_1, v_2\rangle</annotation></semantics></math>
+in two ways —directly, and by summing products of coordinates in the
+basis
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><msub><mi>e</mi><mn>1</mn></msub><mo>,</mo><msub><mi>e</mi><mn>2</mn></msub><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{e_1,e_2\}</annotation></semantics></math>—
+and check they agree.</li>
+</ol></li>
 </ol>
 <h2 id="going-further-and-references-2">Going further and
 references</h2>
@@ -7730,6 +7788,37 @@ the right product is
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∑</mo><msub><mi>u</mi><mi>i</mi></msub><mover><msub><mi>v</mi><mi>i</mi></msub><mo accent="true">¯</mo></mover></mrow><annotation encoding="application/x-tex">\sum u_i \overline{v_i}</annotation></semantics></math>
 (with conjugates, to rescue positivity). See Axler, <em>Linear Algebra
 Done Right</em>, ch. 6.</p>
+<p><strong>Going further (Gram–Schmidt: manufacturing orthonormal
+bases).</strong> A basis
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">\{v_1,\dots,v_k\}</annotation></semantics></math>
+is <strong>orthonormal</strong> if its vectors are unit and pairwise
+orthogonal; in such a basis coordinates are read off with inner products
+—<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mo>∑</mo><mo stretchy="false" form="prefix">⟨</mo><mi>v</mi><mo>,</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">⟩</mo><msub><mi>e</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">v = \sum \langle v, e_i\rangle e_i</annotation></semantics></math>—
+and the inner product is computed by summing products of coordinates, as
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ℝ</mi><mi>k</mi></msup><annotation encoding="application/x-tex">\mathbb{R}^k</annotation></semantics></math>.
+Every basis can be turned into an orthonormal one by <strong>subtracting
+projections</strong>, which is all the <strong>Gram–Schmidt</strong>
+process does: set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>=</mo><msub><mi>v</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">w_1 = v_1</annotation></semantics></math>
+and, at each step,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mi>j</mi></msub><mo>=</mo><msub><mi>v</mi><mi>j</mi></msub><mo>−</mo><msub><mo>∑</mo><mrow><mi>i</mi><mo>&lt;</mo><mi>j</mi></mrow></msub><msub><mrow><mi mathvariant="normal">p</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">j</mi></mrow><msub><mi>w</mi><mi>i</mi></msub></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>v</mi><mi>j</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">w_j = v_j - \sum_{i&lt;j} \mathrm{proj}_{w_i}(v_j)</annotation></semantics></math>
+—the vector
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>j</mi></msub><annotation encoding="application/x-tex">v_j</annotation></semantics></math>
+minus whatever the previous ones already cover (§3.4)—, normalizing at
+the end,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mi>i</mi></msub><mo>=</mo><msub><mi>w</mi><mi>i</mi></msub><mi>/</mi><mo stretchy="false" form="postfix">∥</mo><msub><mi>w</mi><mi>i</mi></msub><mo stretchy="false" form="postfix">∥</mo></mrow><annotation encoding="application/x-tex">e_i = w_i/\|w_i\|</annotation></semantics></math>.
+The span never changes, and no
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>w</mi><mi>j</mi></msub><annotation encoding="application/x-tex">w_j</annotation></semantics></math>
+comes out zero if the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>j</mi></msub><annotation encoding="application/x-tex">v_j</annotation></semantics></math>
+were independent. It is the general case of the two-step trick used in
+the remark after <a href="#res-5-3-6b" class="cita" target="_blank"
+rel="noopener">Proposition 5.3.6b</a>, and exercise 9 walks through it
+with numbers. See Hefferon, <em>Linear Algebra</em>, Three.VI, or Axler,
+ch. 6.</p>
+</blockquote>
+<blockquote>
 <p><strong>Going further (least squares).</strong> The orthogonal
 projection onto a subspace (not just a line) solves the problem of “the
 best approximate solution” of an inconsistent system — the <strong>least
