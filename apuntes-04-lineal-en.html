@@ -8970,27 +8970,45 @@ collapses space to a lower dimension.</figcaption></figure>
 <p>Instead of giving a formula, we impose the properties that an
 oriented volume <strong>must</strong> have.</p>
 <p><span id="res-4-6-1" class="res-def"><strong>Definition
-4.6.1.</strong></span> A <strong>determinant function</strong> is a map
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>det</mo><annotation encoding="application/x-tex">\det</annotation></semantics></math>
-assigning to each
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n \times n</annotation></semantics></math>
-matrix over
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
-a scalar, satisfying:</p>
+4.6.1.</strong></span> A <strong>determinant function</strong> (in size
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>)
+is a map
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mspace width="0.278em"></mspace><mo>:</mo><mspace width="0.278em"></mspace><msub><mi>ℳ</mi><mrow><mi>n</mi><mo>×</mo><mi>n</mi></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>K</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>→</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">\det \;:\; \mathcal{M}_{n\times n}(K) \longrightarrow K</annotation></semantics></math>
+—assigning a scalar to each square matrix over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>—
+satisfying (D1), (D2) and (D3) below.</p>
+<p><em>Row notation, used throughout.</em> We write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+by its rows
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>A</mi><mi>n</mi></msub><mo>∈</mo><msup><mi>K</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">A_1, \dots, A_n \in K^n</annotation></semantics></math>
+and set
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mi>A</mi><mspace width="0.278em"></mspace><mo>=</mo><mspace width="0.278em"></mspace><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>A</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>A</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">\det A \;=\; \det(A_1, \dots, A_n).</annotation></semantics></math>
+When only rows
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+matter we abbreviate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>…</mi><mo>,</mo><mi>u</mi><mo>,</mo><mi>…</mi><mo>,</mo><mi>v</mi><mo>,</mo><mi>…</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\det(\dots, u, \dots, v, \dots)</annotation></semantics></math>:
+<strong>the dots are not an “and so on”</strong>, they are the remaining
+rows, and they are <strong>the same in every term</strong> of the
+identity in which they appear. The only thing changing from one term to
+another is what is written.</p>
 <ul>
-<li><strong>(D1) Multilinear in the rows:</strong> with the other rows
+<li><strong>(D1) Multilinear in the rows:</strong> with the others
 fixed,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>det</mo><annotation encoding="application/x-tex">\det</annotation></semantics></math>
-is “linear in each row”: if row
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
-is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>+</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">u + v</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mo>=</mo><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>…</mi><mi>u</mi><mi>…</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>…</mi><mi>v</mi><mi>…</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\det = \det(\dots u \dots) + \det(\dots v \dots)</annotation></semantics></math>;
-and if it is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">\lambda u</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mo>=</mo><mi>λ</mi><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>…</mi><mi>u</mi><mi>…</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\det = \lambda \det(\dots u \dots)</annotation></semantics></math>.
-<em>(Stretching one side scales the volume; splitting one side splits
-the volume.)</em></li>
+is linear in each row. That is, for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>,
+all
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>,</mo><mi>v</mi><mo>∈</mo><msup><mi>K</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">u, v \in K^n</annotation></semantics></math>
+and every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>∈</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">\lambda \in K</annotation></semantics></math>:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>A</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><munder><munder><mrow><mi>u</mi><mo>+</mo><mi>v</mi></mrow><mo accent="true">⏟</mo></munder><mrow><mrow><mtext mathvariant="normal">row </mtext><mspace width="0.333em"></mspace></mrow><mi>i</mi></mrow></munder><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>A</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>A</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><mi>u</mi><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>A</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>A</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><mi>v</mi><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>A</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex">\det(A_1, \dots, \underbrace{u + v}_{\text{row } i}, \dots, A_n) = \det(A_1, \dots, u, \dots, A_n) + \det(A_1, \dots, v, \dots, A_n),</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>A</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><munder><munder><mrow><mi>λ</mi><mi>u</mi></mrow><mo accent="true">⏟</mo></munder><mrow><mrow><mtext mathvariant="normal">row </mtext><mspace width="0.333em"></mspace></mrow><mi>i</mi></mrow></munder><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>A</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>λ</mi><mspace width="0.167em"></mspace><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>A</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><mi>u</mi><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>A</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">\det(A_1, \dots, \underbrace{\lambda u}_{\text{row } i}, \dots, A_n) = \lambda \, \det(A_1, \dots, u, \dots, A_n).</annotation></semantics></math>
+The three matrices in the first identity <strong>differ only in row
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math></strong>;
+the rest are the same. <em>(Stretching one side scales the volume;
+splitting one side splits the volume.)</em></li>
 <li><strong>(D2) Alternating:</strong> if two rows are equal,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\det = 0</annotation></semantics></math>.
 <em>(A flattened body has no volume.)</em></li>
@@ -8998,42 +9016,6 @@ the volume.)</em></li>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mi>I</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\det I = 1</annotation></semantics></math>.
 <em>(The unit cube has volume 1.)</em></li>
 </ul>
-<blockquote>
-<p><strong>Notation (what those dots mean).</strong> In expressions such
-as
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>…</mi><mo>,</mo><mi>u</mi><mo>,</mo><mi>…</mi><mo>,</mo><mi>v</mi><mo>,</mo><mi>…</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\det(\dots, u, \dots, v, \dots)</annotation></semantics></math>
-the dots are <strong>not</strong> an “and so on”: they are <strong>fixed
-rows</strong>. Row
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
-is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>,
-row
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
-is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>,
-and all the others are <strong>the same in every term</strong> of the
-identity — the only thing that changes from one term to another is what
-is written out. That is precisely why the terms can be compared and
-cancelled against each other, which is what the proofs below do.</p>
-</blockquote>
-<blockquote>
-<p><strong>Notation (the dots).</strong> In expressions such as
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>…</mi><mo>,</mo><mi>u</mi><mo>,</mo><mi>…</mi><mo>,</mo><mi>v</mi><mo>,</mo><mi>…</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\det(\dots, u, \dots, v, \dots)</annotation></semantics></math>
-the dots are <strong>not</strong> an “and so on”: they are <strong>fixed
-rows</strong>. The notation means <em>row
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
-equals
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>,
-row
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
-equals
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>,
-and all the other rows are whatever they are</em> — <strong>the same
-ones in every term</strong> of the identity where they appear. That is
-exactly what lets the terms be compared and cancelled against each
-other: the only thing that changes from one to another is what is
-written out.</p>
-</blockquote>
 <p><span id="res-4-6-2" class="res-def"><strong>Proposition 4.6.2
 (immediate consequences).</strong></span> For a determinant function: 1.
 A zero row
@@ -9306,6 +9288,26 @@ smaller determinants— but for
 it is convenient and <strong>it is used verbatim in Geometry</strong>
 (Session 4 of the next module, where the cross product is written as a
 symbolic determinant with the canonical basis in the first row).</p>
+<blockquote>
+<p><strong>Sarrus’ rule (and only for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">n = 3</annotation></semantics></math>).</strong>
+Expanding the three
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2\times2</annotation></semantics></math>
+determinants above in full gives
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mi>A</mi><mo>=</mo><msub><mi>a</mi><mn>11</mn></msub><msub><mi>a</mi><mn>22</mn></msub><msub><mi>a</mi><mn>33</mn></msub><mo>+</mo><msub><mi>a</mi><mn>12</mn></msub><msub><mi>a</mi><mn>23</mn></msub><msub><mi>a</mi><mn>31</mn></msub><mo>+</mo><msub><mi>a</mi><mn>13</mn></msub><msub><mi>a</mi><mn>21</mn></msub><msub><mi>a</mi><mn>32</mn></msub><mo>−</mo><msub><mi>a</mi><mn>13</mn></msub><msub><mi>a</mi><mn>22</mn></msub><msub><mi>a</mi><mn>31</mn></msub><mo>−</mo><msub><mi>a</mi><mn>11</mn></msub><msub><mi>a</mi><mn>23</mn></msub><msub><mi>a</mi><mn>32</mn></msub><mo>−</mo><msub><mi>a</mi><mn>12</mn></msub><msub><mi>a</mi><mn>21</mn></msub><msub><mi>a</mi><mn>33</mn></msub><mo>,</mo></mrow><annotation encoding="application/x-tex">\det A = a_{11}a_{22}a_{33} + a_{12}a_{23}a_{31} + a_{13}a_{21}a_{32} - a_{13}a_{22}a_{31} - a_{11}a_{23}a_{32} - a_{12}a_{21}a_{33},</annotation></semantics></math>
+that is, <strong>the three descending diagonal products minus the three
+ascending ones</strong> (mentally repeating the first two columns on the
+right). It is convenient and it is the one almost everyone remembers,
+but <strong>it is exclusive to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>×</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">3\times3</annotation></semantics></math></strong>:
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">n = 4</annotation></semantics></math>
+there is nothing like it —Leibniz’s formula already has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>24</mn><annotation encoding="application/x-tex">24</annotation></semantics></math>
+terms, not
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>8</mn><annotation encoding="application/x-tex">8</annotation></semantics></math>—
+and extending it is a classic mistake.</p>
+</blockquote>
 <p><strong>Method (computation by Gaussian elimination).</strong> Reduce
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
 to echelon form keeping track of the effects: each swap contributes a

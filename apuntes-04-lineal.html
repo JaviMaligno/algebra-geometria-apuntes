@@ -8972,28 +8972,47 @@ espacio a una dimensión menor.</figcaption></figure>
 <p>En vez de dar una fórmula, imponemos las propiedades que el volumen
 orientado <strong>debe</strong> tener.</p>
 <p><span id="res-4-6-1" class="res-def"><strong>Definición
-4.6.1.</strong></span> Una <strong>función determinante</strong> es una
-aplicación
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>det</mo><annotation encoding="application/x-tex">\det</annotation></semantics></math>
-que asigna a cada matriz
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>×</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n \times n</annotation></semantics></math>
-sobre
+4.6.1.</strong></span> Una <strong>función determinante</strong> (en
+tamaño
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>)
+es una aplicación
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mspace width="0.278em"></mspace><mo>:</mo><mspace width="0.278em"></mspace><msub><mi>ℳ</mi><mrow><mi>n</mi><mo>×</mo><mi>n</mi></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>K</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>→</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">\det \;:\; \mathcal{M}_{n\times n}(K) \longrightarrow K</annotation></semantics></math>
+—a cada matriz cuadrada sobre
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
-un escalar, cumpliendo:</p>
-<ul>
-<li><strong>(D1) Multilineal en las filas:</strong> fijadas las demás
-filas,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>det</mo><annotation encoding="application/x-tex">\det</annotation></semantics></math>
-es “lineal en cada fila”: si la fila
+le asigna un escalar— que cumple (D1), (D2) y (D3) de abajo.</p>
+<p><em>Notación por filas, que se usa en todo lo que sigue.</em>
+Escribimos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+por sus filas
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>A</mi><mi>n</mi></msub><mo>∈</mo><msup><mi>K</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">A_1, \dots, A_n \in K^n</annotation></semantics></math>
+y ponemos
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mi>A</mi><mspace width="0.278em"></mspace><mo>=</mo><mspace width="0.278em"></mspace><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>A</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>A</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">\det A \;=\; \det(A_1, \dots, A_n).</annotation></semantics></math>
+Cuando solo interesen las filas
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
-es
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>+</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">u + v</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mo>=</mo><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>…</mi><mi>u</mi><mi>…</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>…</mi><mi>v</mi><mi>…</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\det = \det(\dots u \dots) + \det(\dots v \dots)</annotation></semantics></math>;
-y si es
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">\lambda u</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mo>=</mo><mi>λ</mi><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>…</mi><mi>u</mi><mi>…</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\det = \lambda \det(\dots u \dots)</annotation></semantics></math>.
-<em>(Estirar un lado escala el volumen; descomponer un lado descompone
-el volumen.)</em></li>
+y
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
+abreviamos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>…</mi><mo>,</mo><mi>u</mi><mo>,</mo><mi>…</mi><mo>,</mo><mi>v</mi><mo>,</mo><mi>…</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\det(\dots, u, \dots, v, \dots)</annotation></semantics></math>:
+<strong>los puntos no son un «etcétera»</strong>, son las filas
+restantes, que son <strong>las mismas en todos los términos</strong> de
+la igualdad donde aparecen. Lo único que cambia de un término a otro es
+lo que está escrito.</p>
+<ul>
+<li><strong>(D1) Multilineal en las filas:</strong> fijadas las demás,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>det</mo><annotation encoding="application/x-tex">\det</annotation></semantics></math>
+es lineal en cada fila. Es decir, para todo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>,
+todos
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>,</mo><mi>v</mi><mo>∈</mo><msup><mi>K</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">u, v \in K^n</annotation></semantics></math>
+y todo
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>∈</mo><mi>K</mi></mrow><annotation encoding="application/x-tex">\lambda \in K</annotation></semantics></math>:
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>A</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><munder><munder><mrow><mi>u</mi><mo>+</mo><mi>v</mi></mrow><mo accent="true">⏟</mo></munder><mrow><mrow><mtext mathvariant="normal">fila </mtext><mspace width="0.333em"></mspace></mrow><mi>i</mi></mrow></munder><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>A</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>A</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><mi>u</mi><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>A</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>A</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><mi>v</mi><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>A</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex">\det(A_1, \dots, \underbrace{u + v}_{\text{fila } i}, \dots, A_n) = \det(A_1, \dots, u, \dots, A_n) + \det(A_1, \dots, v, \dots, A_n),</annotation></semantics></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>A</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><munder><munder><mrow><mi>λ</mi><mi>u</mi></mrow><mo accent="true">⏟</mo></munder><mrow><mrow><mtext mathvariant="normal">fila </mtext><mspace width="0.333em"></mspace></mrow><mi>i</mi></mrow></munder><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>A</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>λ</mi><mspace width="0.167em"></mspace><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>A</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><mi>u</mi><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>A</mi><mi>n</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">\det(A_1, \dots, \underbrace{\lambda u}_{\text{fila } i}, \dots, A_n) = \lambda \, \det(A_1, \dots, u, \dots, A_n).</annotation></semantics></math>
+Las tres matrices de la primera igualdad <strong>se diferencian solo en
+la fila
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math></strong>;
+las demás son las mismas. <em>(Estirar un lado escala el volumen;
+descomponer un lado descompone el volumen.)</em></li>
 <li><strong>(D2) Alterna:</strong> si dos filas son iguales,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\det = 0</annotation></semantics></math>.
 <em>(Un cuerpo aplastado no tiene volumen.)</em></li>
@@ -9001,42 +9020,6 @@ el volumen.)</em></li>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mi>I</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\det I = 1</annotation></semantics></math>.
 <em>(El cubo unidad tiene volumen 1.)</em></li>
 </ul>
-<blockquote>
-<p><strong>Notación (qué son esos puntos suspensivos).</strong> En
-expresiones como
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>…</mi><mo>,</mo><mi>u</mi><mo>,</mo><mi>…</mi><mo>,</mo><mi>v</mi><mo>,</mo><mi>…</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\det(\dots, u, \dots, v, \dots)</annotation></semantics></math>
-los puntos <strong>no</strong> son un «etcétera»: son <strong>filas
-fijas</strong>. La fila
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
-vale
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>,
-la fila
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
-vale
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>,
-y todas las demás son <strong>las mismas en todos los términos</strong>
-de la igualdad — lo único que cambia de un término a otro es lo que está
-escrito. Justamente por eso los términos se pueden comparar y cancelar
-entre sí, que es lo que hacen las pruebas de aquí abajo.</p>
-</blockquote>
-<blockquote>
-<p><strong>Notación (los puntos suspensivos).</strong> En expresiones
-como
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>…</mi><mo>,</mo><mi>u</mi><mo>,</mo><mi>…</mi><mo>,</mo><mi>v</mi><mo>,</mo><mi>…</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\det(\dots, u, \dots, v, \dots)</annotation></semantics></math>
-los puntos <strong>no</strong> son un “etcétera”: son <strong>filas
-fijas</strong>. La escritura significa <em>la fila
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>i</mi><annotation encoding="application/x-tex">i</annotation></semantics></math>
-vale
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>,
-la fila
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
-vale
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>,
-y todas las demás filas son las que fueran</em> — <strong>las mismas en
-todos los términos</strong> de la igualdad en que aparecen. Precisamente
-por eso los términos se pueden comparar y cancelar entre sí: lo único
-que cambia de uno a otro es lo que está escrito.</p>
-</blockquote>
 <p><span id="res-4-6-2" class="res-def"><strong>Proposición 4.6.2
 (consecuencias inmediatas).</strong></span> Para una función
 determinante: 1. Una fila nula
@@ -9307,6 +9290,26 @@ determinantes más pequeños—, pero para
 es cómodo y <strong>se usa tal cual en Geometría</strong> (Sesión 4 del
 módulo siguiente, donde el producto vectorial se escribe como un
 determinante simbólico con la base canónica en la primera fila).</p>
+<blockquote>
+<p><strong>Regla de Sarrus (y solo para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">n = 3</annotation></semantics></math>).</strong>
+Desarrollando del todo los tres determinantes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2\times2</annotation></semantics></math>
+de arriba queda
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>det</mo><mi>A</mi><mo>=</mo><msub><mi>a</mi><mn>11</mn></msub><msub><mi>a</mi><mn>22</mn></msub><msub><mi>a</mi><mn>33</mn></msub><mo>+</mo><msub><mi>a</mi><mn>12</mn></msub><msub><mi>a</mi><mn>23</mn></msub><msub><mi>a</mi><mn>31</mn></msub><mo>+</mo><msub><mi>a</mi><mn>13</mn></msub><msub><mi>a</mi><mn>21</mn></msub><msub><mi>a</mi><mn>32</mn></msub><mo>−</mo><msub><mi>a</mi><mn>13</mn></msub><msub><mi>a</mi><mn>22</mn></msub><msub><mi>a</mi><mn>31</mn></msub><mo>−</mo><msub><mi>a</mi><mn>11</mn></msub><msub><mi>a</mi><mn>23</mn></msub><msub><mi>a</mi><mn>32</mn></msub><mo>−</mo><msub><mi>a</mi><mn>12</mn></msub><msub><mi>a</mi><mn>21</mn></msub><msub><mi>a</mi><mn>33</mn></msub><mo>,</mo></mrow><annotation encoding="application/x-tex">\det A = a_{11}a_{22}a_{33} + a_{12}a_{23}a_{31} + a_{13}a_{21}a_{32} - a_{13}a_{22}a_{31} - a_{11}a_{23}a_{32} - a_{12}a_{21}a_{33},</annotation></semantics></math>
+es decir, <strong>los tres productos en diagonal descendente menos los
+tres en diagonal ascendente</strong> (repitiendo mentalmente las dos
+primeras columnas a la derecha). Es cómoda y es la que casi todo el
+mundo recuerda, pero <strong>es exclusiva del
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>×</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">3\times3</annotation></semantics></math></strong>:
+para
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">n = 4</annotation></semantics></math>
+no hay nada parecido —la fórmula de Leibniz tiene ya
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>24</mn><annotation encoding="application/x-tex">24</annotation></semantics></math>
+términos, no
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>8</mn><annotation encoding="application/x-tex">8</annotation></semantics></math>—,
+y extenderla es un error clásico.</p>
+</blockquote>
 <p><strong>Método (cálculo por Gauss).</strong> Escalonar
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
 anotando los efectos: cada intercambio aporta un factor
